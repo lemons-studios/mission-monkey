@@ -11,3 +11,6 @@ The greatest game to ever be created
 2. Visual Studio 2019 (or later) with the "Game Development with Unity" workload
 
 3. A somewhat decent Computer
+
+
+> When Contributing, please use pull requests instead of comitting directly
