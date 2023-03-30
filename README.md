@@ -1,4 +1,4 @@
-# Mission Monkey
+# Mission: Monkey
 
 A game for a school project created by at least 2 grade 10 students
 
