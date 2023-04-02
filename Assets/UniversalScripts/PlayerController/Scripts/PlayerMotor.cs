@@ -1,20 +1,28 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class PlayerMotor : MonoBehaviour
 {
+    private InputAction spaceAction;
     private CharacterController controller;
     private Vector3 playerVelocity;
     private bool isGrounded;
+
     public float gravity = -9.8f;
     public float speed = 5f;
     public float jumpHeight = 3f;
+    public float jumpCap = 1f;
     
     // Start is called before the first frame update
     void Start()
     {
         controller = GetComponent<CharacterController>();
+        spaceAction = new InputAction("disableSpacebar", InputActionType.Button, "<Keyboard>/space");
+        spaceAction.performed += ctx => Debug.Log("Spacebar Disabled");
+        spaceAction.canceled += ctx => Debug.Log("Spacebar enabled");
+        
     }
 
     // Update is called once per frame
@@ -38,6 +46,12 @@ public class PlayerMotor : MonoBehaviour
     }
 
     public void Jump() {
-        playerVelocity.y = Mathf.Sqrt(jumpHeight * -3.0f * gravity);
+        if (isGrounded) {
+            spaceAction.Enable();
+            playerVelocity.y = Mathf.Sqrt(jumpHeight * -3.0f * gravity);
+        }
+        else if(!isGrounded) {
+            spaceAction.Disable();
+        }
     }
 }

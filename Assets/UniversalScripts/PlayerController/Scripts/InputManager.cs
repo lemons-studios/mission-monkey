@@ -11,6 +11,7 @@ public class InputManager : MonoBehaviour
     private PlayerMotor motor;
     private PlayerLook look;
 
+    public float JumpCapCheck = 0f;
     void Awake() {
         
         playerInput = new PlayerInput();
