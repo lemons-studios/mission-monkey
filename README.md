@@ -1,6 +1,6 @@
 <h1 align="center">
 <sub>
-<img src="Assets/DiscordRPC/MissionMonkey512x512.jpg?raw=true" height=144>
+<img src="Assets/MissionMonkey512x512.jpg?raw=true" height=144>
 </sub>
 <br>
 Mission: Monkey
