@@ -65,12 +65,7 @@ public class DiscordController : MonoBehaviour
                 Match = "matchId"
             }
         };
-        activityManager.UpdateActivity(activity, (res) => {
-            if (res == Discord.Result.Ok)
-                Debug.Log("Discord status set!");
-            else
-                Debug.LogError("Discord status failed!");
-        });
+
         discord.RunCallbacks();
     }
 
