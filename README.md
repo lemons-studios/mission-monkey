@@ -17,10 +17,20 @@ Mission: Monkey
 <p align="center"><i>A game for a school project created by at least 2 grade 10 students</i></p>
 <hr>
 
-## 🛠️ Requirements to run
+## 🚀 Requirements to play:
+1. Windows 10/11 or MacOS (Intel and M1)
+
+2. 9th Generation Intel Desktop chip or higher
+3. NVIDIA 1660/AMD Equivilent
+> **Note**
+> Other platforms will be supported in the future, but currently, only MacOS and Windows are the only supported platforms
+
+> These are the recommended requirements. you can probably get away with older hardware
+
+## 🛠️ Requirements to Develop
 
 1. [Unity 2021.3.9f1](https://unity.com/releases/editor/archive#download-archive-2021)
-> **Note**  
+> **Warning**  
 > You must use this specific version to contribute to this repository. any pull request that contains a version older or newer than 2021.3.9f1 will be denied
 
 2. [Visual Studio 2019 or 2022](https://visualstudio.microsoft.com/thank-you-downloading-visual-studio/?sku=Community) with the "Game Development with Unity" workload
