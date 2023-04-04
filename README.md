@@ -27,7 +27,7 @@ Mission: Monkey
 1. Windows 10/11 or MacOS (Intel and M1)
 
 2. 9th Generation Intel Desktop chip or higher
-3. NVIDIA 1660/AMD Equivilent
+3. NVIDIA GTX 1660/AMD Equivilent
 > **Note**
 > Other platforms will be supported in the future, but currently, only MacOS and Windows are the only supported platforms
 
