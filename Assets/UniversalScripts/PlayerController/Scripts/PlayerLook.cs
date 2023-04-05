@@ -21,4 +21,9 @@ public class PlayerLook : MonoBehaviour
 
         transform.Rotate(Vector3.up * (mouseX * Time.deltaTime) * xSens);
     }
+
+    public void setMouseSensitivity(float sensitivity) {
+        xSens = sensitivity;
+        ySens = sensitivity;
+    }
 }
