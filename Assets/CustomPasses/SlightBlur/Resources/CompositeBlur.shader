@@ -1,4 +1,4 @@
-Shader "Hidden/Fullscreen/CompositeBlur"
+﻿Shader "Hidden/Fullscreen/CompositeBlur"
 {
     HLSLINCLUDE
 
