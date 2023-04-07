@@ -803,7 +803,6 @@ GameObject:
   - component: {fileID: 477510005}
   - component: {fileID: 477510004}
   - component: {fileID: 477510003}
-  - component: {fileID: 477510007}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -895,47 +894,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
---- !u!114 &477510007
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 477510002}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 26d6499a6bd256e47b859377446493a1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_IsGlobal: 1
-  fadeRadius: 0
-  priority: 0
-  customPasses:
-  - rid: 4686952149349564420
-  injectionPoint: 3
-  m_TargetCamera: {fileID: 0}
-  useTargetCamera: 0
-  references:
-    version: 2
-    RefIds:
-    - rid: 4686952149349564420
-      type: {class: SlightBlur, ns: , asm: Assembly-CSharp}
-      data:
-        m_Name: Custom Pass
-        enabled: 1
-        targetColorBuffer: 0
-        targetDepthBuffer: 0
-        clearFlags: 0
-        passFoldout: 0
-        m_Version: 0
-        radius: 16
-        useMask: 0
-        maskLayer:
-          serializedVersion: 2
-          m_Bits: 32
-        invertMask: 0
-        compositeShader: {fileID: 0}
-        whiteRenderersShader: {fileID: 0}
 --- !u!1 &561162187
 GameObject:
   m_ObjectHideFlags: 0
@@ -947,7 +905,6 @@ GameObject:
   - component: {fileID: 561162188}
   - component: {fileID: 561162190}
   - component: {fileID: 561162189}
-  - component: {fileID: 561162191}
   m_Layer: 5
   m_Name: Background
   m_TagString: Untagged
@@ -1013,47 +970,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 561162187}
   m_CullTransparentMesh: 1
---- !u!114 &561162191
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 561162187}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 26d6499a6bd256e47b859377446493a1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_IsGlobal: 1
-  fadeRadius: 0
-  priority: 0
-  customPasses:
-  - rid: 4686952149349564421
-  injectionPoint: 3
-  m_TargetCamera: {fileID: 0}
-  useTargetCamera: 0
-  references:
-    version: 2
-    RefIds:
-    - rid: 4686952149349564421
-      type: {class: SlightBlur, ns: , asm: Assembly-CSharp}
-      data:
-        m_Name: Custom Pass
-        enabled: 1
-        targetColorBuffer: 0
-        targetDepthBuffer: 0
-        clearFlags: -1
-        passFoldout: 0
-        m_Version: 0
-        radius: 16
-        useMask: 0
-        maskLayer:
-          serializedVersion: 2
-          m_Bits: 32
-        invertMask: 0
-        compositeShader: {fileID: 0}
-        whiteRenderersShader: {fileID: 0}
 --- !u!1 &569121441
 GameObject:
   m_ObjectHideFlags: 0
@@ -1553,6 +1469,7 @@ GameObject:
   - component: {fileID: 963194227}
   - component: {fileID: 963194226}
   - component: {fileID: 963194229}
+  - component: {fileID: 963194230}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -1751,6 +1668,47 @@ MonoBehaviour:
       enableFptlForForwardOpaque: 0
       enableBigTilePrepass: 0
       isFptlEnabled: 0
+--- !u!114 &963194230
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 963194225}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 26d6499a6bd256e47b859377446493a1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_IsGlobal: 1
+  fadeRadius: 0
+  priority: 0
+  customPasses:
+  - rid: 4686952149349564422
+  injectionPoint: 1
+  m_TargetCamera: {fileID: 0}
+  useTargetCamera: 0
+  references:
+    version: 2
+    RefIds:
+    - rid: 4686952149349564422
+      type: {class: SlightBlur, ns: , asm: Assembly-CSharp}
+      data:
+        m_Name: Custom Pass
+        enabled: 1
+        targetColorBuffer: 0
+        targetDepthBuffer: 0
+        clearFlags: 0
+        passFoldout: 0
+        m_Version: 0
+        radius: 16
+        useMask: 0
+        maskLayer:
+          serializedVersion: 2
+          m_Bits: 2147483647
+        invertMask: 0
+        compositeShader: {fileID: 4800000, guid: d82546742f9c2b94d909ada774b0aa86, type: 3}
+        whiteRenderersShader: {fileID: 4800000, guid: 8386dcbf863f5f94ba335f17fdf15443, type: 3}
 --- !u!1 &981955308
 GameObject:
   m_ObjectHideFlags: 0
