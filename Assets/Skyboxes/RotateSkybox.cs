@@ -17,6 +17,6 @@ public class RotateSkybox : MonoBehaviour
     private void FixedUpdate()
     {
         /// ROTATE HDRI SKYBOX
-        sky.rotation.value += RotateSpeed;
+        sky.rotation.value = (sky.rotation.value + RotateSpeed) % 360;   
     }
 }
