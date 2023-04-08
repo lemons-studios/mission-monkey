@@ -6,8 +6,8 @@ public class PlayerLook : MonoBehaviour
 {
 
     public static float[] sens = {xSens, ySens};
-    public static float xSens = 30f;
-    public static float ySens = 30f;
+    public static float xSens = 100f;
+    public static float ySens = 100f;
     public Camera cam;
     public float xRotation = 0f;
 
@@ -16,12 +16,14 @@ public class PlayerLook : MonoBehaviour
         float mouseX = input.x;
         float mouseY = input.y;
 
-        xRotation -= (mouseY * Time.deltaTime) * ySens;
+        // xRotation -= (mouseY * Time.deltaTime) * ySens;
+        xRotation -= (mouseY * Time.deltaTime) * ySens * ySens / 200;
         xRotation = Mathf.Clamp(xRotation, -80f, 80f);
 
         cam.transform.localRotation = Quaternion.Euler(xRotation, 0, 0);
 
-        transform.Rotate(Vector3.up * (mouseX * Time.deltaTime) * xSens);
+        // transform.Rotate(Vector3.up * (mouseX * Time.deltaTime) * xSens);
+        transform.Rotate(Vector3.up * (mouseX * Time.deltaTime) * xSens * xSens / 200);
     }
 
     public void setMouseSensitivity(float sensitivity) {
