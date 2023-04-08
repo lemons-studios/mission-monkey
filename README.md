@@ -45,3 +45,6 @@ Mission: Monkey
 
 
 > When Contributing, please use pull requests instead of comitting directly
+
+## 📃 Credits
+- https://github.com/alelievr/HDRP-Custom-Passes for HDRP custom passes scripts
