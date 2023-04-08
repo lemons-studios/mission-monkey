@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class PlayerLook : MonoBehaviour
 {
+
+    public static float[] sens = {xSens, ySens};
+    public static float xSens = 30f;
+    public static float ySens = 30f;
     public Camera cam;
     public float xRotation = 0f;
 
-    public static float xSens = 30f;
-    public static float ySens = 30f;
-
-    public static float[] sens = {xSens, ySens};
     // Start is called before the first frame update
     public void ProcessLook(Vector2 input) {
         float mouseX = input.x;
