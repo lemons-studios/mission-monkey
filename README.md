@@ -41,7 +41,7 @@
 > **Warning**  
 > You must use this specific version to contribute to this repository. any pull request that contains a version older or newer than 2021.3.9f1 will be denied
 
-2. [Visual Studio 2019 or 2022](https://visualstudio.microsoft.com/thank-you-downloading-visual-studio/?sku=Community) with the "Game Development with Unity" workload
+2. [Visual Studio 2022](https://visualstudio.microsoft.com/thank-you-downloading-visual-studio/?sku=Community) with the "Game Development with Unity" workload
 
 3. A somewhat decent Computer (Around 10th Gen Intel/Ryzen 3000 with a relatively new dedicated GPU)
 
