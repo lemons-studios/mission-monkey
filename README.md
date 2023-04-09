@@ -24,16 +24,16 @@
      <img src="https://img.shields.io/badge/mac%20os-000000?style=for-the-badge&logo=apple&logoColor=white">
   </a>
 </p>
-<p align="center"><i>A game for a school project created by at least 2 grade 10 students</i></p>
+<p align="center"><i>A game for a school project created by 2 grade 10 students</i></p>
 <hr>
 
 ## 🚀 Requirements to play:
-1. Windows 10/11 or MacOS (Intel and M1)
+1. Windows 10/11
+> **Note**
+> This project uses the Unity High-Definition Render Pipeline, which is only supported on windows, Therefore, no Mac/Linux/Etc build will be possible.
 
 2. 9th Generation Intel Desktop chip or higher
 3. NVIDIA GTX 1660/AMD Equivilent
-> **Note**
-> Other platforms will be supported in the future, but currently, only MacOS and Windows are the only supported platforms
 
 > These are the recommended requirements. you can probably get away with older hardware
 
@@ -51,4 +51,4 @@
 > When Contributing, please use pull requests instead of comitting directly
 
 ## 📃 Credits
-- https://github.com/alelievr/HDRP-Custom-Passes for HDRP custom passes scripts
+- See [SPECIALTHANKS](https://github.com/funny-unity-game/Mission-Monkey/blob/realChapter1/SPECIALTHANKS.txt) for more credits
