@@ -49,4 +49,4 @@
 > When Contributing, please use pull requests instead of comitting directly
 
 ## 📃 Credits
-- See [SPECIALTHANKS](https://github.com/funny-unity-game/Mission-Monkey/blob/realChapter1/SPECIALTHANKS.txt) for more credits
+- See [SPECIALTHANKS](https://github.com/funny-unity-game/Mission-Monkey/blob/main/THANKS) for credits
