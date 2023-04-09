@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour {
     public int Chapter1 = 1;
+    public int Mainmenu = 0;
     public void Load(){
 
     }
@@ -18,5 +19,9 @@ public class MainMenu : MonoBehaviour {
             Application.Quit();
         #endif
     }
+    public void QuitToMenu() {
+        SceneManager.LoadScene(Mainmenu);
+    }
+
 }
 
