@@ -1,10 +1,14 @@
-<h1 align="center">
-<sub>
-<img src="https://cdn.discordapp.com/attachments/888136140564095007/1091974996965982279/Ek9VjzB.png?raw=true" height=144>
-</sub>
-<br>
-Mission: Monkey
-</h1>
+<!--
+  logo
+  <img src="https://cdn.discordapp.com/attachments/888136140564095007/1091974996965982279/Ek9VjzB.png?raw=true" height=144>
+-->
+<!--
+  banner with no text
+  <img src="https://user-images.githubusercontent.com/120770627/230755565-04f6b0f3-9de7-4d8f-96a3-c7add6872857.png?raw=true">
+-->
+<!-- banner with text -->
+<img src="https://user-images.githubusercontent.com/120770627/230755569-33b4feac-b65c-40af-890f-728149635ea6.png?raw=true">
+
 <br>
 <p align="center">
   <a href="https://learn.microsoft.com/en-us/dotnet/csharp">
