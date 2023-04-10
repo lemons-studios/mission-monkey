@@ -20,6 +20,7 @@ public class MainMenu : MonoBehaviour {
         #endif
     }
     public void QuitToMenu() {
+        Cursor.lockState = CursorLockMode.None;
         SceneManager.LoadScene(Mainmenu);
     }
 

@@ -6,7 +6,21 @@ public class PauseMenu : MonoBehaviour
 {
 
     public static bool gameIsPaused;
+    public GameObject mainMenu;
+    public GameObject optionsMenu;
     public GameObject pauseMenu;
+    public void PauseGame () {
+        Time.timeScale = 0;
+        Cursor.lockState = CursorLockMode.None;
+        GetComponent<InputManager>().OnDisable();
+    }
+    public void ResumeGame () {
+        Time.timeScale = 1;
+        Cursor.lockState = CursorLockMode.Locked;
+        GetComponent<InputManager>().OnEnable();
+        mainMenu.SetActive(true);
+        optionsMenu.SetActive(false);
+    }
     public void TogglePause () {
         gameIsPaused = !gameIsPaused;
         pauseMenu.SetActive(gameIsPaused);
@@ -15,16 +29,6 @@ public class PauseMenu : MonoBehaviour
         } else {
             ResumeGame();
         }
-    }
-    void PauseGame () {
-        Time.timeScale = 0;
-        Cursor.lockState = CursorLockMode.None;
-        GetComponent<InputManager>().OnDisable();
-    }
-    void ResumeGame () {
-        Time.timeScale = 1;
-        Cursor.lockState = CursorLockMode.Locked;
-        GetComponent<InputManager>().OnEnable();
     }
     void Update()
     {
