@@ -24,18 +24,16 @@
      <img src="https://img.shields.io/badge/mac%20os-000000?style=for-the-badge&logo=apple&logoColor=white">
   </a>
 </p>
-<p align="center"><i>A game for a school project created by at least 2 grade 10 students</i></p>
+<p align="center"><i>A game for a school project created by 2 grade 10 students</i></p>
 <hr>
 
 ## 🚀 Requirements to play:
-1. Windows 10/11 or MacOS (Intel and M1)
+1. [Windows](https://www.microsoft.com/windows) 10 or 11
+> **Note**
+> This project uses the Unity High-Definition Render Pipeline, which is only supported on windows, Therefore, no Mac/Linux/Etc build will be possible.
 
 2. 9th Generation Intel Desktop chip or higher
-3. NVIDIA GTX 1660/AMD Equivilent
-> **Note**
-> Other platforms will be supported in the future, but currently, only MacOS and Windows are the only supported platforms
-
-> These are the recommended requirements. you can probably get away with older hardware
+3. A Graphics card that supports DirectX12 (DX11 will probably work, but with degraded graphics)
 
 ## 🛠️ Requirements to Develop
 
@@ -43,7 +41,7 @@
 > **Warning**  
 > You must use this specific version to contribute to this repository. any pull request that contains a version older or newer than 2021.3.9f1 will be denied
 
-2. [Visual Studio 2019 or 2022](https://visualstudio.microsoft.com/thank-you-downloading-visual-studio/?sku=Community) with the "Game Development with Unity" workload
+2. [Visual Studio 2022](https://visualstudio.microsoft.com/thank-you-downloading-visual-studio/?sku=Community) with the "Game Development with Unity" workload
 
 3. A somewhat decent Computer (Around 10th Gen Intel/Ryzen 3000 with a relatively new dedicated GPU)
 
@@ -51,4 +49,4 @@
 > When Contributing, please use pull requests instead of comitting directly
 
 ## 📃 Credits
-- https://github.com/alelievr/HDRP-Custom-Passes for HDRP custom passes scripts
+- See [THANKS](https://github.com/funny-unity-game/Mission-Monkey/blob/main/THANKS) for credits

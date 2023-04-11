@@ -362,7 +362,7 @@ GameObject:
   - component: {fileID: 403686643}
   - component: {fileID: 403686644}
   m_Layer: 5
-  m_Name: Slider
+  m_Name: volSlider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -442,7 +442,7 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 460976686}
+      - m_Target: {fileID: 477510009}
         m_TargetAssemblyTypeName: SettingsMenu, Assembly-CSharp
         m_MethodName: Volume
         m_Mode: 0
@@ -555,7 +555,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 460976685}
-  - component: {fileID: 460976686}
   - component: {fileID: 460976687}
   - component: {fileID: 460976688}
   m_Layer: 5
@@ -590,19 +589,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &460976686
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 460976684}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a7b0612e513f1434fa0721c79283b221, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  audiomixer: {fileID: 24100000, guid: 3a5200ccdd38f3e4f95028236fab6f11, type: 2}
 --- !u!114 &460976687
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -694,6 +680,7 @@ GameObject:
   - component: {fileID: 477510003}
   - component: {fileID: 477510008}
   - component: {fileID: 477510007}
+  - component: {fileID: 477510009}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -822,6 +809,23 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 477510002}
   m_CullTransparentMesh: 1
+--- !u!114 &477510009
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 477510002}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7b0612e513f1434fa0721c79283b221, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audiomixer: {fileID: 24100000, guid: 3a5200ccdd38f3e4f95028236fab6f11, type: 2}
+  fovSlider: {fileID: 797039204}
+  msSlider: {fileID: 1212151374}
+  optionMenu: {fileID: 460976684}
+  volSlider: {fileID: 403686644}
 --- !u!1 &569121441
 GameObject:
   m_ObjectHideFlags: 0
@@ -1630,7 +1634,7 @@ GameObject:
   - component: {fileID: 797039203}
   - component: {fileID: 797039204}
   m_Layer: 5
-  m_Name: Slider
+  m_Name: fovSlider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1710,9 +1714,9 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 460976688}
-        m_TargetAssemblyTypeName: CameraFOV, Assembly-CSharp
-        m_MethodName: setCameraFOV
+      - m_Target: {fileID: 477510009}
+        m_TargetAssemblyTypeName: SettingsMenu, Assembly-CSharp
+        m_MethodName: FOV
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1911,6 +1915,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Chapter1: 1
+  Mainmenu: 0
 --- !u!1 &963194225
 GameObject:
   m_ObjectHideFlags: 0
@@ -2180,7 +2185,7 @@ MonoBehaviour:
   priority: 0
   blendDistance: 0
   weight: 1
-  sharedProfile: {fileID: 11400000, guid: a4e3a3ee7db512347bef11d9749367a6, type: 2}
+  sharedProfile: {fileID: 11400000, guid: 61c859c0da71f764d9e484878e408cf5, type: 2}
 --- !u!1 &984247453
 GameObject:
   m_ObjectHideFlags: 0
@@ -2654,7 +2659,7 @@ GameObject:
   - component: {fileID: 1212151373}
   - component: {fileID: 1212151374}
   m_Layer: 5
-  m_Name: Slider
+  m_Name: msSlider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2734,9 +2739,9 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 460976687}
-        m_TargetAssemblyTypeName: PlayerLook, Assembly-CSharp
-        m_MethodName: setMouseSensitivity
+      - m_Target: {fileID: 477510009}
+        m_TargetAssemblyTypeName: SettingsMenu, Assembly-CSharp
+        m_MethodName: MouseSens
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

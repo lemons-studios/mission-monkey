@@ -5,17 +5,28 @@ using UnityEngine.InputSystem;
 
 public class InputManager : MonoBehaviour
 {
-    private PlayerInput playerInput;
-    private PlayerInput.OnFootActions onFoot;
-
-    private PlayerMotor motor;
-    private PlayerLook look;
 
     public float JumpCapCheck = 0f;
+    private PlayerLook look;
+
+    private PlayerMotor motor;
+    private PlayerInput.OnFootActions onFoot;
+    private PlayerInput playerInput;
+
+    public void OnDisable() {
+        onFoot.Disable();
+    }
+
+    public void OnEnable() {
+        onFoot.Enable();
+    }
+    private void LateUpdate() {
+        look.ProcessLook(onFoot.Look.ReadValue<Vector2>());
+    }
     void Awake() {
-        
+
         playerInput = new PlayerInput();
-        onFoot = playerInput.OnFoot;    
+        onFoot = playerInput.OnFoot;
         motor = GetComponent<PlayerMotor>();
         look = GetComponent<PlayerLook>();
         Cursor.lockState = CursorLockMode.Locked;
@@ -25,16 +36,5 @@ public class InputManager : MonoBehaviour
     void FixedUpdate() {
         // Tell the player motor to move from the movement ingame
         motor.ProcessMove(onFoot.Movement.ReadValue<Vector2>());
-    }
-    private void LateUpdate() {
-        look.ProcessLook(onFoot.Look.ReadValue<Vector2>());
-    }
-
-    private void OnEnable() {
-        onFoot.Enable();    
-    }
-
-    private void OnDisable() {
-        onFoot.Disable();
     }
 }
