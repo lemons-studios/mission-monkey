@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.14170113, g: 0.15791528, b: 0.18919331, a: 1}
+  m_IndirectSpecularColor: {r: 0.14198393, g: 0.15809973, b: 0.1894391, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -274,6 +274,23 @@ MonoBehaviour:
   mask:
     serializedVersion: 2
     m_Bits: 0
+--- !u!114 &20600027
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 20600010}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7b0612e513f1434fa0721c79283b221, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audiomixer: {fileID: 24100000, guid: 3a5200ccdd38f3e4f95028236fab6f11, type: 2}
+  fovSlider: {fileID: 1061288444}
+  msSlider: {fileID: 1880563913}
+  optionMenu: {fileID: 385799004}
+  volSlider: {fileID: 1061288444}
 --- !u!43 &59821180
 Mesh:
   m_ObjectHideFlags: 0
@@ -2436,7 +2453,7 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 20600026}
+      - m_Target: {fileID: 20600027}
         m_TargetAssemblyTypeName: SettingsMenu, Assembly-CSharp
         m_MethodName: FOV
         m_Mode: 0
@@ -4099,7 +4116,7 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 20600026}
+      - m_Target: {fileID: 20600027}
         m_TargetAssemblyTypeName: SettingsMenu, Assembly-CSharp
         m_MethodName: Volume
         m_Mode: 0
@@ -6495,7 +6512,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 0.6666667}
+  m_Color: {r: 0, g: 0, b: 0, a: 0.98039216}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -6695,7 +6712,7 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 20600026}
+      - m_Target: {fileID: 20600027}
         m_TargetAssemblyTypeName: SettingsMenu, Assembly-CSharp
         m_MethodName: MouseSens
         m_Mode: 0
@@ -7925,7 +7942,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh36652
+  m_Name: pb_Mesh39820
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
