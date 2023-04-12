@@ -39,7 +39,7 @@
 
 1. [Unity 2021.3.9f1](https://unity.com/releases/editor/archive#download-archive-2021)
 > **Warning**  
-> You must use this specific version to contribute to this repository. any pull request that contains a version older or newer than 2021.3.9f1 will be denied
+> You must use this specific version to contribute to this repository. any pull request that contains a version older or newer than 2021.3.9f1 will be closed
 
 2. [Visual Studio 2022](https://visualstudio.microsoft.com/thank-you-downloading-visual-studio/?sku=Community) with the "Game Development with Unity" workload
 
