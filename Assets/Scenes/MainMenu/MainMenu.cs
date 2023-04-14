@@ -9,8 +9,8 @@ public class MainMenu : MonoBehaviour {
     public void Load(){
 
     }
-    public void Play(){
-        SceneManager.LoadScene(Chapter1);
+    public void Play(int scene){
+        SceneManager.LoadScene(scene);
     }
     public void Quit() {
         #if UNITY_EDITOR
