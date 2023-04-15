@@ -1,21 +1,19 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
-public class InteractionTemplate : interactable
+using TMPro;
+public class PlayerUI : MonoBehaviour
 {
     // Start is called before the first frame update
+    [SerializeField]
+    private TextMeshProUGUI promptText;
     void Start()
     {
         
     }
 
     // Update is called once per frame
-    void Update()
-    {
-        
-    }
-    protected override void Interact() {
-        Debug.Log("Interacted with " + gameObject.name);
+    public void UpdateText(string promptMessage) {
+        promptText.text = promptMessage;
     }
 }

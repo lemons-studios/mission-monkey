@@ -2,15 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class interactable : MonoBehaviour
+public abstract class Interactable : MonoBehaviour
 {
-    //Message that will display when the player looks at an interactable object
-    public string promptMessage; 
+    public string poromptMessage;
+    
     public void BaseInteract() {
         Interact();
     }
     protected virtual void Interact() {
-
+        //No code here, as it is a template for other scripts to overwrite
     }
-
 }
