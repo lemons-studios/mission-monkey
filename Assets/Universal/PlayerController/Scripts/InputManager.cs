@@ -5,12 +5,11 @@ using UnityEngine.InputSystem;
 
 public class InputManager : MonoBehaviour
 {
-
     public float JumpCapCheck = 0f;
     private PlayerLook look;
 
     private PlayerMotor motor;
-    private PlayerInput.OnFootActions onFoot;
+    public PlayerInput.OnFootActions onFoot;
     private PlayerInput playerInput;
 
     public void OnDisable() {
@@ -24,7 +23,6 @@ public class InputManager : MonoBehaviour
         look.ProcessLook(onFoot.Look.ReadValue<Vector2>());
     }
     void Awake() {
-
         playerInput = new PlayerInput();
         onFoot = playerInput.OnFoot;
         motor = GetComponent<PlayerMotor>();

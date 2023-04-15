@@ -2662,8 +2662,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 705632776}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 24.31, y: 1.594, z: 231.51}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 27.04, y: 2.116, z: 233.344}
+  m_LocalScale: {x: 0.63931924, y: 1, z: 0.14084}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -2682,6 +2682,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   poromptMessage: Use Keypad
+  door: {fileID: 1932467651}
 --- !u!1 &719273757
 GameObject:
   m_ObjectHideFlags: 0
@@ -4248,7 +4249,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh33426
+  m_Name: pb_Mesh42404
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -7136,6 +7137,7 @@ GameObject:
   - component: {fileID: 1932467654}
   - component: {fileID: 1932467653}
   - component: {fileID: 1932467652}
+  - component: {fileID: 1932467658}
   m_Layer: 0
   m_Name: Door1
   m_TagString: Untagged
@@ -7466,6 +7468,26 @@ Transform:
   m_Father: {fileID: 697283237}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &1932467658
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1932467651}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: e38045df3a09f694e88ad6ce69d676ea, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &1946879160
 GameObject:
   m_ObjectHideFlags: 0
