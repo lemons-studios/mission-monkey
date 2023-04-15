@@ -9,10 +9,12 @@ public class PauseMenu : MonoBehaviour
     public GameObject mainMenu;
     public GameObject optionsMenu;
     public GameObject pauseMenu;
+    public GameObject playerGUI;
     public void PauseGame () {
         Time.timeScale = 0;
         Cursor.lockState = CursorLockMode.None;
         GetComponent<InputManager>().OnDisable();
+        playerGUI.SetActive(false);
     }
     public void ResumeGame () {
         Time.timeScale = 1;
@@ -20,10 +22,12 @@ public class PauseMenu : MonoBehaviour
         GetComponent<InputManager>().OnEnable();
         mainMenu.SetActive(true);
         optionsMenu.SetActive(false);
+        playerGUI.SetActive(true);
     }
     public void TogglePause () {
         gameIsPaused = !gameIsPaused;
         pauseMenu.SetActive(gameIsPaused);
+        playerGUI.SetActive(!gameIsPaused);
         if (gameIsPaused) {
             PauseGame();
         } else {
