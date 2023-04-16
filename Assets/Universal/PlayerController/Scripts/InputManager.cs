@@ -6,6 +6,7 @@ using UnityEngine.InputSystem;
 public class InputManager : MonoBehaviour
 {
     public float JumpCapCheck = 0f;
+    public float sprintSpeed = 13.86f;
     private PlayerLook look;
 
     private PlayerMotor motor;
