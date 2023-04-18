@@ -12,74 +12,93 @@ public class DiscordController : MonoBehaviour
 
     private long startTime;
 
+    bool discordRunning = false;
+
     void Start()
     {
-        discord = new Discord.Discord(1090862646993096745, (System.UInt64)Discord.CreateFlags.Default);
-        var activityManager = discord.GetActivityManager();
-        startTime = DateTimeOffset.Now.ToUnixTimeSeconds();
-        var activity = new Discord.Activity
+        // loops through open processes
+        for (int i = 0; i < System.Diagnostics.Process.GetProcesses().Length; i++)
         {
-            Details = sDetails,
-            State = sState,
-            Assets =
+            // checks if current process is discord
+            if (System.Diagnostics.Process.GetProcesses()[i].ToString() == "System.Diagnostics.Process (Discord)")
             {
-                LargeImage = sLargeImage,
-                LargeText = sLargeText,
-                SmallImage = sSmallImage,
-                SmallText = sSmallText
-            },
-            Timestamps =
-            {
-                Start = startTime
+                discordRunning = true;
+                break;
             }
-        };
-        activityManager.UpdateActivity(activity, (res) =>
-        {
-            if (res == Discord.Result.Ok)
-                Debug.Log("Discord status set!");
-            else
-                Debug.LogError("Discord status failed!");
-        });
+        }
+
+        if (discordRunning) {
+            discord = new Discord.Discord(1090862646993096745, (System.UInt64)Discord.CreateFlags.Default);
+            var activityManager = discord.GetActivityManager();
+            startTime = DateTimeOffset.Now.ToUnixTimeSeconds();
+            var activity = new Discord.Activity
+            {
+                Details = sDetails,
+                State = sState,
+                Assets =
+                {
+                    LargeImage = sLargeImage,
+                    LargeText = sLargeText,
+                    SmallImage = sSmallImage,
+                    SmallText = sSmallText
+                },
+                Timestamps =
+                {
+                    Start = startTime
+                }
+            };
+            activityManager.UpdateActivity(activity, (res) =>
+            {
+                if (res == Discord.Result.Ok)
+                    Debug.Log("Discord status set!");
+                else
+                    Debug.LogError("Discord status failed!");
+            });
+        }
     }
 
     void Update()
     {
-        var activityManager = discord.GetActivityManager();
-        var elapsedTime = DateTimeOffset.Now.ToUnixTimeSeconds() - startTime;
-        var activity = new Discord.Activity
-        {
-            Details = sDetails,
-            State = sState,
-            Assets =
+        if (discordRunning) {
+            var activityManager = discord.GetActivityManager();
+            var elapsedTime = DateTimeOffset.Now.ToUnixTimeSeconds() - startTime;
+            var activity = new Discord.Activity
             {
-                LargeImage = sLargeImage,
-                LargeText = sLargeText,
-                SmallImage = sSmallImage,
-                SmallText = sSmallText
-            },
-            Timestamps =
-            {
-                Start = startTime
-            },
-            Secrets =
-            {
-                Match = "matchId"
-            }
-        };
+                Details = sDetails,
+                State = sState,
+                Assets =
+                {
+                    LargeImage = sLargeImage,
+                    LargeText = sLargeText,
+                    SmallImage = sSmallImage,
+                    SmallText = sSmallText
+                },
+                Timestamps =
+                {
+                    Start = startTime
+                },
+                Secrets =
+                {
+                    Match = "matchId"
+                }
+            };
 
-        discord.RunCallbacks();
+            discord.RunCallbacks();
+        }
     }
 
     void OnApplicationQuit()
     {
-        var activityManager = discord.GetActivityManager();
-        activityManager.ClearActivity((res) =>
-        {
-            if (res == Discord.Result.Ok)
-                Debug.Log("Discord status cleared!");
-            else
-                Debug.LogError("Discord status clear failed!");
-        });
-        discord.Dispose();
+        if (discordRunning) {
+            var activityManager = discord.GetActivityManager();
+            activityManager.ClearActivity((res) =>
+            {
+                if (res == Discord.Result.Ok)
+                    Debug.Log("Discord status cleared!");
+                else
+                    Debug.LogError("Discord status clear failed!");
+            });
+            discord.Dispose();
+        }
     }
 }
