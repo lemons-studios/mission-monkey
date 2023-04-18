@@ -26,12 +26,12 @@
 
 ## 🚀 Requirements to play:
 1. [Windows](https://www.microsoft.com/windows) 10 or 11
-> **Note**
-> This project uses the Unity High-Definition Render Pipeline, which is only supported on windows, Therefore, no Mac/Linux/Etc build will be possible.
 
 2. 9th Generation Intel Desktop chip or higher
-3. A Graphics card that supports DirectX12 (DX11 will probably work, but with degraded graphics)
+3. A Graphics card that supports DirectX11
 
+## Non-Windows Users:
+We probably won't be making any native Mac/Linux ports, because this project depends on DirectX, but if you really want to computers, A tutorial to get the game working can be found [here](https://github.com/funny-unity-game/Mission-Monkey/blob/main/WINE.md)
 ## 🛠️ Requirements to Develop
 
 1. [Unity 2021.3.9f1](https://unity.com/releases/editor/archive#download-archive-2021)
