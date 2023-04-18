@@ -2,14 +2,15 @@
 If you are reading this, then you want to go install this stupid game on your Linux device. Let's get going with that!
 
 ## 📕 Chapters:
-- [Base Requirements]()
+- [Base Requirements](https://github.com/funny-unity-game/Mission-Monkey/blob/main/WINE.md#-base-requirements)
 
-- [Installing Packages]()
-  - [Ubuntu-Based]()
-  - [Fedora-Based]()
-  - [Arch-Based]()
-  - [OpenSuse-Based]()
-  - [Gentoo]()
+- [Installing Packages](https://github.com/funny-unity-game/Mission-Monkey/blob/main/WINE.md#-base-requirements)
+  - [Ubuntu-Based](https://github.com/funny-unity-game/Mission-Monkey/blob/main/WINE.md#-installing-packages)
+  - [Fedora-Based](https://github.com/funny-unity-game/Mission-Monkey/blob/main/WINE.md#ubuntu-based-distros)
+  - [Arch-Based](https://github.com/funny-unity-game/Mission-Monkey/blob/main/WINE.md#fedora-based-distros)
+  - [OpenSuse-Based](https://github.com/funny-unity-game/Mission-Monkey/blob/main/WINE.md#fedora-based-distros)
+  - [Gentoo](https://github.com/funny-unity-game/Mission-Monkey/blob/main/WINE.md#gentoo)
+ 
 ## 🧱 Base requirements
 To even run this game, you will need only three things, which are:
 - An X86_64/amd64 CPU (Unless your computer is from 2003, it has this)
