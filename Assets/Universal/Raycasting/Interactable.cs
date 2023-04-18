@@ -5,11 +5,13 @@ using UnityEngine;
 public abstract class Interactable : MonoBehaviour
 {
     public string poromptMessage;
-    
-    public void BaseInteract() {
+
+    public void BaseInteract()
+    {
         Interact();
     }
-    protected virtual void Interact() {
+    protected virtual void Interact()
+    {
         //No code here, as it is a template for other scripts to overwrite
     }
 }

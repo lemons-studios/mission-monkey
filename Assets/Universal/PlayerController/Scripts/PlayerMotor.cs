@@ -14,7 +14,7 @@ public class PlayerMotor : MonoBehaviour
     public float sprintSpeed = 7.4f;
     public float jumpHeight = 3f;
     public float jumpCap = 1f;
-    
+
     // Start is called before the first frame update
     void Start()
     {
@@ -22,7 +22,7 @@ public class PlayerMotor : MonoBehaviour
         spaceAction = new InputAction("disableSpacebar", InputActionType.Button, "<Keyboard>/space");
         spaceAction.performed += ctx => Debug.Log("Spacebar Disabled");
         spaceAction.canceled += ctx => Debug.Log("Spacebar enabled");
-        
+
     }
 
     // Update is called once per frame
@@ -33,7 +33,8 @@ public class PlayerMotor : MonoBehaviour
 
     // Receive the inputs from the inputmanager.cs file 
 
-    public void ProcessMove(Vector2 input, bool isSprinting) {
+    public void ProcessMove(Vector2 input, bool isSprinting)
+    {
         Vector3 moveDirection = Vector3.zero;
         moveDirection.x = input.x;
         moveDirection.z = input.y;
@@ -44,17 +45,20 @@ public class PlayerMotor : MonoBehaviour
         playerVelocity.y += gravity * Time.deltaTime;
 
         if (isGrounded && playerVelocity.y < 0)
-                playerVelocity.y = -2f;
-                
+            playerVelocity.y = -2f;
+
         controller.Move(playerVelocity * Time.deltaTime);
     }
 
-    public void Jump() {
-        if (isGrounded) {
+    public void Jump()
+    {
+        if (isGrounded)
+        {
             spaceAction.Enable();
             playerVelocity.y = Mathf.Sqrt(jumpHeight * -3.0f * gravity);
         }
-        else if(!isGrounded) {
+        else if (!isGrounded)
+        {
             spaceAction.Disable();
         }
     }

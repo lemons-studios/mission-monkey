@@ -9,11 +9,12 @@ public class PlayerUI : MonoBehaviour
     private TextMeshProUGUI promptText;
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
-    public void UpdateText(string promptMessage) {
+    public void UpdateText(string promptMessage)
+    {
         promptText.text = promptMessage;
     }
 }

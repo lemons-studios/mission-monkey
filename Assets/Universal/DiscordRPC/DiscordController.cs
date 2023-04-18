@@ -21,7 +21,7 @@ public class DiscordController : MonoBehaviour
         {
             Details = sDetails,
             State = sState,
-            Assets = 
+            Assets =
             {
                 LargeImage = sLargeImage,
                 LargeText = sLargeText,
@@ -33,7 +33,8 @@ public class DiscordController : MonoBehaviour
                 Start = startTime
             }
         };
-        activityManager.UpdateActivity(activity, (res) => {
+        activityManager.UpdateActivity(activity, (res) =>
+        {
             if (res == Discord.Result.Ok)
                 Debug.Log("Discord status set!");
             else
@@ -49,7 +50,7 @@ public class DiscordController : MonoBehaviour
         {
             Details = sDetails,
             State = sState,
-            Assets = 
+            Assets =
             {
                 LargeImage = sLargeImage,
                 LargeText = sLargeText,
@@ -72,7 +73,8 @@ public class DiscordController : MonoBehaviour
     void OnApplicationQuit()
     {
         var activityManager = discord.GetActivityManager();
-        activityManager.ClearActivity((res) => {
+        activityManager.ClearActivity((res) =>
+        {
             if (res == Discord.Result.Ok)
                 Debug.Log("Discord status cleared!");
             else

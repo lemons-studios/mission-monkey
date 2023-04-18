@@ -5,14 +5,15 @@ using UnityEngine;
 public class PlayerLook : MonoBehaviour
 {
 
-    public static float[] sens = {xSens, ySens};
+    public static float[] sens = { xSens, ySens };
     public static float xSens = 100f;
     public static float ySens = 100f;
     public Camera cam;
     public float xRotation = 0f;
 
     // Start is called before the first frame update
-    public void ProcessLook(Vector2 input) {
+    public void ProcessLook(Vector2 input)
+    {
         float mouseX = input.x;
         float mouseY = input.y;
 
@@ -26,7 +27,8 @@ public class PlayerLook : MonoBehaviour
         transform.Rotate(Vector3.up * (mouseX * Time.deltaTime) * xSens * xSens / 200);
     }
 
-    public void setMouseSensitivity(float sensitivity) {
+    public void setMouseSensitivity(float sensitivity)
+    {
         xSens = sensitivity;
         ySens = sensitivity;
     }
