@@ -9,9 +9,9 @@ public class PlayerMotor : MonoBehaviour
     private CharacterController controller;
     private Vector3 playerVelocity;
     private bool isGrounded;
-
     public float gravity = -9.8f;
     public float speed = 5f;
+    public float sprintSpeed = 7.4f;
     public float jumpHeight = 3f;
     public float jumpCap = 1f;
     
@@ -33,14 +33,19 @@ public class PlayerMotor : MonoBehaviour
 
     // Receive the inputs from the inputmanager.cs file 
 
-    public void ProcessMove(Vector2 input) {
+    public void ProcessMove(Vector2 input, bool isSprinting) {
         Vector3 moveDirection = Vector3.zero;
         moveDirection.x = input.x;
         moveDirection.z = input.y;
-        controller.Move(transform.TransformDirection(moveDirection) * speed * Time.deltaTime);
+
+        float currentSpeed = isSprinting ? sprintSpeed : speed;
+        controller.Move(transform.TransformDirection(moveDirection) * currentSpeed * Time.deltaTime);
+
         playerVelocity.y += gravity * Time.deltaTime;
+
         if (isGrounded && playerVelocity.y < 0)
                 playerVelocity.y = -2f;
+                
         controller.Move(playerVelocity * Time.deltaTime);
     }
 

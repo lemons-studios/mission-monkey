@@ -6,7 +6,6 @@ using UnityEngine.InputSystem;
 public class InputManager : MonoBehaviour
 {
     public float JumpCapCheck = 0f;
-    public float sprintSpeed = 13.86f;
     private PlayerLook look;
 
     private PlayerMotor motor;
@@ -34,6 +33,6 @@ public class InputManager : MonoBehaviour
 
     void FixedUpdate() {
         // Tell the player motor to move from the movement ingame
-        motor.ProcessMove(onFoot.Movement.ReadValue<Vector2>());
+        motor.ProcessMove(onFoot.Movement.ReadValue<Vector2>(), onFoot.Sprint.ReadValue<float>() > 0);
     }
 }
