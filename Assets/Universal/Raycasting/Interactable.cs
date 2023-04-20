@@ -7,7 +7,7 @@ public abstract class Interactable : MonoBehaviour
     // Add or remove an InteractionEvent to this gameObject
     public bool useEvents;
     [SerializeField]
-    public string poromptMessage;
+    public string promptMessage;
 
     public void BaseInteract()
     {
