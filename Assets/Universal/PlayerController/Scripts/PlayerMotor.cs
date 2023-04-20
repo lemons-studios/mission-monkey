@@ -7,6 +7,7 @@ public class PlayerMotor : MonoBehaviour
 {
     private InputAction spaceAction;
     private CharacterController controller;
+    private ViewBobbing viewbobbing;
     private Vector3 playerVelocity;
     private bool isGrounded;
     public float gravity = -9.8f;
@@ -18,10 +19,11 @@ public class PlayerMotor : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        viewbobbing = GetComponent<ViewBobbing>();
         controller = GetComponent<CharacterController>();
         spaceAction = new InputAction("disableSpacebar", InputActionType.Button, "<Keyboard>/space");
-        spaceAction.performed += ctx => Debug.Log("Spacebar Disabled");
-        spaceAction.canceled += ctx => Debug.Log("Spacebar enabled");
+        // spaceAction.performed += ctx => Debug.Log("Spacebar Disabled");
+        // spaceAction.canceled += ctx => Debug.Log("Spacebar enabled");
 
     }
 
@@ -38,6 +40,12 @@ public class PlayerMotor : MonoBehaviour
         Vector3 moveDirection = Vector3.zero;
         moveDirection.x = input.x;
         moveDirection.z = input.y;
+
+        if (moveDirection.x > 0 || moveDirection.z > 0) {
+            viewbobbing.EnableViewBobbing();
+        } else {
+            viewbobbing.DisableViewBobbing();
+        }
 
         float currentSpeed = isSprinting ? sprintSpeed : speed;
         controller.Move(transform.TransformDirection(moveDirection) * currentSpeed * Time.deltaTime);
