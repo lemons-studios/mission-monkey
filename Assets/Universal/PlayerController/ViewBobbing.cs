@@ -9,9 +9,19 @@ public class ViewBobbing : MonoBehaviour
     public float sineBob = 1f;
     public float BobMultiplier = 1.25f; 
     public bool isMoving;
+    private bool bobView = false;
+
+    public void EnableViewBobbing() {
+        bobView = true;
+    }
+    public void DisableViewBobbing() {
+        bobView = false;
+    }
 
     void Update()
     {
-         cam.transform.position = new Vector3(player.transform.position.x, player.transform.position.y + 0.6f - (Mathf.Abs(Mathf.Sin(Time.fixedTime * sineBob)) * BobMultiplier), player.transform.position.z);
+        if (bobView) {
+            cam.transform.position = new Vector3(player.transform.position.x, player.transform.position.y + 0.4f + (Mathf.Abs(Mathf.Sin(Time.fixedTime * sineBob)) * BobMultiplier), player.transform.position.z);
+        }
     }
 }
