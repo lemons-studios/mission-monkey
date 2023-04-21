@@ -31,10 +31,10 @@
 3. A Graphics card that supports DirectX11
 
 ## 🐧 Linux Users:
-There will be no support/native builds for Linux, but if you really want to play this game, check out this tutorial [here](https://github.com/funny-unity-game/Mission-Monkey/blob/main/WINE.md)
+You are on your own. If you want to, you can try and install Wine/DXVK to run the game. No documentation will be provided
 > **Warning**
 > 
-> Any and all Issues that are specific to Linux will automatically be closed, as we do not (currently) have native Linux Builds. 
+> Any and all Issues that are specific to Linux will automatically be closed, as we do not (and will not) have native Linux Builds. 
 ## 🛠️ Requirements to Develop
 
 1. [Unity 2021.3.9f1](https://unity.com/releases/editor/archive#download-archive-2021)
