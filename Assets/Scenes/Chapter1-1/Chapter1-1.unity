@@ -1169,6 +1169,7 @@ GameObject:
   - component: {fileID: 311672797}
   - component: {fileID: 311672799}
   - component: {fileID: 311672798}
+  - component: {fileID: 311672800}
   m_Layer: 5
   m_Name: PromptTextContainer
   m_TagString: Untagged
@@ -1235,6 +1236,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 311672796}
   m_CullTransparentMesh: 1
+--- !u!225 &311672800
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 311672796}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &338825886
 GameObject:
   m_ObjectHideFlags: 0
@@ -10062,8 +10075,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 187d4923d8525c449b6ea40c8f7b31f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  promptTextContainer: {fileID: 311672796}
   promptText: {fileID: 658570110}
+  promptTextContainer: {fileID: 311672800}
 --- !u!114 &7874428295488156801
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -2,25 +2,46 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 public class PlayerUI : MonoBehaviour
 {
-    public GameObject promptTextContainer;
-    // Start is called before the first frame update
-    [SerializeField]
-    private TextMeshProUGUI promptText;
+    private bool canUpdatePromptText = true;
+    private bool fadeIn = false;
+    private bool fadeOut = true;
 
-    // Update is called once per frame
+    [SerializeField] private TextMeshProUGUI promptText;
+    [SerializeField] private CanvasGroup promptTextContainer;
+
     public void UpdateText(string promptMessage)
     {
         if (promptMessage == "") {
-            promptTextContainer.SetActive(false);
+            canUpdatePromptText = false;
+            fadeIn = false;
+            fadeOut = true;
         } else {
-            promptTextContainer.SetActive(true);
+            canUpdatePromptText = true;
+            fadeIn = true;
+            fadeOut = false;
         }
-        promptText.text = promptMessage;
+        if (canUpdatePromptText) {
+            promptText.text = promptMessage;
+        }
     }
-    void Start()
-    {
 
+    void Update()
+    {
+        if (fadeIn) {
+            if (promptTextContainer.alpha < 1) {
+                promptTextContainer.alpha += Time.deltaTime * 4;
+                canUpdatePromptText = true;
+            }
+        } else if (fadeOut) {
+            if (promptTextContainer.alpha > 0) {
+                promptTextContainer.alpha -= Time.deltaTime * 4;
+                canUpdatePromptText = false;
+            } else {
+                canUpdatePromptText = true;
+            }
+        }
     }
 }
