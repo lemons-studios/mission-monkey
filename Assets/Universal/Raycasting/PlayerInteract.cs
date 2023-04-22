@@ -34,7 +34,7 @@ public class PlayerInteract : MonoBehaviour
             {
                 Interactable interactable = hitInfo.collider.GetComponent<Interactable>();
                 // Display an interaction text if the player is looking at an interactable
-                playerUI.UpdateText(interactable.poromptMessage);
+                playerUI.UpdateText(interactable.promptMessage);
                 if (inputManager.onFoot.Interact.triggered)
                 {
                     interactable.BaseInteract();
