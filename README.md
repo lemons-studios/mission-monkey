@@ -26,15 +26,16 @@
 
 ## 🚀 Requirements to play:
 1. [Windows](https://www.microsoft.com/windows) 10 or 11
+2. [9th Generation Intel](https://en.wikipedia.org/wiki/Coffee_Lake#Coffee_Lake-S_(Desktop_processors)) Desktop CPU/[AMD Equivilent](https://www.cpu-monkey.com/en/cpu_group-amd_ryzen_3000-14)
+3. A Graphics card that supports DirectX11 (Unless your computer is 20 years old, you have this)
 
-2. 9th Generation Intel Desktop chip or higher
-3. A Graphics card that supports DirectX11
+> **Note**  
+> These are the recommended system requirements to run this game. You can run this at a lower framerate on a less powerful PC
 
 ## 🐧 Linux Users:
 You are on your own. If you want to, you can try and install Wine/DXVK to run the game. No documentation will be provided
-> **Warning**
-> 
-> Any and all Issues that are specific to Linux will automatically be closed, as we do not (and (probably) will not) have native Linux Builds. 
+> **Warning**  
+> Any and all Issues that are specific to Linux will automatically be closed, as we do not (and (probably) will not) have native Linux Builds
 ## 🛠️ Requirements to Develop
 
 1. [Unity 2021.3.9f1](https://unity.com/releases/editor/archive#download-archive-2021)
@@ -43,10 +44,7 @@ You are on your own. If you want to, you can try and install Wine/DXVK to run th
 
 2. [Visual Studio 2022](https://visualstudio.microsoft.com/thank-you-downloading-visual-studio/?sku=Community) with the "Game Development with Unity" workload
 
-3. A somewhat decent Computer (Around 10th Gen Intel/Ryzen 3000 with a relatively new dedicated GPU)
-
-
-> When Contributing, please use pull requests instead of comitting directly
+3. A somewhat decent Computer (Around 11th Gen Intel/Ryzen 5th gen with a NVIDIA 2000 series/AMD Equivilent GPU)
 
 ## 📃 Credits
 - See [THANKS](https://github.com/funny-unity-game/Mission-Monkey/blob/main/THANKS) for credits
