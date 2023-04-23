@@ -1,21 +1,32 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerHealth : MonoBehaviour
+public class PlayerHealth : DamageInfo
 {
+    private PlayerUI deathUI;
     public float Health = 100f;
-    public GameObject Player;
+
     private PlayerMotor Motor;
     // Start is called before the first frame update
     void Start()
     {
+        Player = GameObject.Find("Player");
         Motor = Player.GetComponent<PlayerMotor>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        if (dealtDamage == false)
+        {
+
+        }
+        else if (dealtDamage == true)
+        {
+            Health = Health - damageTaken;
+        }
+        if (Health == 0)
+        {
+
+        }
     }
 }
