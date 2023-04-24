@@ -10,10 +10,10 @@ public class PlayerMotor : MonoBehaviour
     private ViewBobbing viewbobbing;
     private Vector3 playerVelocity;
     private bool isGrounded;
-    public float gravity = -9.8f;
+    public float gravity = -20f;
     public float speed = 5f;
-    public float sprintSpeed = 7.4f;
-    public float jumpHeight = 3f;
+    public float sprintSpeed = 10f;
+    public float jumpHeight = 1f;
     public float jumpCap = 1f;
 
     // Start is called before the first frame update
