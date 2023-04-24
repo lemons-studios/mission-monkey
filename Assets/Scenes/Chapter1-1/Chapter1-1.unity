@@ -128,11 +128,11 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 1758630955}
+    m_TransformParent: {fileID: 1153395559}
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 6244669fe07e9f74d9ca6e171722b52e, type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 6244669fe07e9f74d9ca6e171722b52e, type: 3}
       propertyPath: m_LocalScale.x
@@ -152,11 +152,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 6244669fe07e9f74d9ca6e171722b52e, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2.825
+      value: -3.4250002
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 6244669fe07e9f74d9ca6e171722b52e, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.757
+      value: 0.7570038
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 6244669fe07e9f74d9ca6e171722b52e, type: 3}
       propertyPath: m_LocalRotation.w
@@ -5893,6 +5893,11 @@ Mesh:
     offset: 0
     size: 0
     path: 
+--- !u!4 &1153395559 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7874428294217788524, guid: d209a8360626d1d489538bece15a567e, type: 3}
+  m_PrefabInstance: {fileID: 7874428295488156797}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1191881453
 GameObject:
   m_ObjectHideFlags: 0
@@ -7981,11 +7986,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1757975901}
   m_CullTransparentMesh: 1
---- !u!4 &1758630955 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 7874428295471784097, guid: d209a8360626d1d489538bece15a567e, type: 3}
-  m_PrefabInstance: {fileID: 7874428295488156797}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1797733115
 GameObject:
   m_ObjectHideFlags: 0
@@ -9681,12 +9681,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2097843842}
   m_LocalRotation: {x: -0.07620462, y: -0, z: -0, w: 0.99709225}
-  m_LocalPosition: {x: 0.4522, y: 0.18800002, z: 0.20939988}
+  m_LocalPosition: {x: 0.45219994, y: -0.41199994, z: 0.20939636}
   m_LocalScale: {x: -0.08485707, y: 0.27787, z: 0.68343467}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1758630955}
-  m_RootOrder: 1
+  m_Father: {fileID: 1153395559}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: -8.741, y: 0, z: 0}
 --- !u!1 &2099878461
 GameObject:
@@ -10209,5 +10209,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dealtDamage: 0
   Player: {fileID: 7874428295488156798}
-  damageTaken: 0
+  damageTaken: 6
   Health: 100
