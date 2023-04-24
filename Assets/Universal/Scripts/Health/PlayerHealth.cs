@@ -11,8 +11,7 @@ public class PlayerHealth : DamageInfo
     // Start is called before the first frame update
     void Start()
     {
-        // (Implement later when animation exists) DeathAnim = GetComponent<>();
-        DeathAnim["Die"].speed = Time.deltaTime;
+        DeathAnim["Die"].speed = 1/Time.deltaTime;
         Player = GameObject.Find("Player");
         Motor = Player.GetComponent<PlayerMotor>();
     }
@@ -29,12 +28,11 @@ public class PlayerHealth : DamageInfo
         }
         if (Health == 0)
         {
+            DeathAnim.Play("Die");
             if (DeathAnim.isPlaying)
             {
                 Debug.Log("Played Death Animation!");
             }
-
-            DeathAnim.Play("Die");
         }
     }
 }
