@@ -16,7 +16,7 @@ public class PlayerHealth : MonoBehaviour
     {
         if (dealtDamage == false)
         {
-
+            return 0;
         }
         else if (dealtDamage == true)
         {
