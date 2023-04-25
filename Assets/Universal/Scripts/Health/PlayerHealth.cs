@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEditor.UI;
 public class PlayerHealth : MonoBehaviour
 {
     private Animation DeathAnim;
