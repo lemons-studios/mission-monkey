@@ -10,23 +10,12 @@ public class Glock : MonoBehaviour
     public Transform firePoint;
     public PlayerInput.OnFootActions onFoot;
     public GameObject projectile;
+    public float projectileSpeed = 30f;
 
     private Vector3 destination;
     private PlayerInput playerInput;
 
-    void Awake()
-    {
-        playerInput = new PlayerInput();
-        onFoot = playerInput.OnFoot;
-        onFoot.GunFire.performed += ctx => UnityEngine.Debug.Log("bullet");;
-    }
-
-    void InstantiateProjectile(Transform point) {
-        var projectileObj = Instantiate(projectile, point.position, Quaternion.identity) as GameObject;
-    }
-
-    void ShootProjectile() {
-        UnityEngine.Debug.Log("shot a bullet");
+    public void ShootProjectile() {
         Ray ray = cam.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
         RaycastHit hit;
 
@@ -39,7 +28,18 @@ public class Glock : MonoBehaviour
         InstantiateProjectile(firePoint);
     }
 
-    void Start() {
+    void Awake()
+    {
+        playerInput = new PlayerInput();
+        onFoot = playerInput.OnFoot;
+        onFoot.Enable();
+        onFoot.GunFire.performed += ctx => ShootProjectile();
+    }
 
+    void InstantiateProjectile(Transform point) {
+        var projectileObj = Instantiate(projectile, point.position, Quaternion.FromToRotation(point.position, destination)) as GameObject;
+        projectileObj.SetActive(true);
+        projectileObj.GetComponent<Rigidbody>().velocity = (destination - point.position).normalized * projectileSpeed;
+        Destroy (projectileObj, 3);
     }
 }
