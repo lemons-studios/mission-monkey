@@ -3,7 +3,7 @@ using UnityEngine.AI;
 using System.Collections;
 using System.Collections.Generic;
 
-public class PathfindingEssential : DamageInfo
+public class PathfindingEssential : MonoBehaviour
 {
     public GameObject MonkeyPlayer;
     public Transform Parent;

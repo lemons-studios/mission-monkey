@@ -3,7 +3,11 @@ using UnityEditor.UI;
 public class PlayerHealth : MonoBehaviour
 {
     private Animation DeathAnim;
-    // Start is called before the first frame update
+    public static bool dealtDamage;
+    public GameObject Player;
+    public static float damageTaken;
+    public static float Health = 100f;
+    
     void Start()
     {
         DeathAnim["Die"].speed = Time.deltaTime;
@@ -11,17 +15,17 @@ public class PlayerHealth : MonoBehaviour
 
     void Update()
     {
-        if (DamageInfo.dealtDamage == false)
+        if (dealtDamage == false)
         {
 
         }
-        else if (DamageInfo.dealtDamage == true)
+        else if (dealtDamage == true)
         {
             Debug.Log("dealt Damage!");
-            DamageInfo.Health = DamageInfo.Health - DamageInfo.damageTaken;
-            DamageInfo.dealtDamage = false;
+            Health = Health - damageTaken;
+            dealtDamage = false;
         }
-        if (DamageInfo.Health == 0)
+        if (Health == 0)
         {
             DeathAnim.Play("Die");
             if (DeathAnim.isPlaying)

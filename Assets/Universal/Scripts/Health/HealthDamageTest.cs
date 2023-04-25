@@ -6,7 +6,7 @@ public class HealthDamageTest : Interactable
 {
     protected override void Interact()
     {
-        DamageInfo.damageTaken = 20;
-        DamageInfo.dealtDamage = true;
+        PlayerHealth.damageTaken = 20;
+        PlayerHealth.dealtDamage = true;
     }
 }

@@ -9,6 +9,6 @@ public class HealthDisplay : MonoBehaviour
     public TextMeshProUGUI HealthT;
     void Update()
     {
-        HealthT.text = DamageInfo.Health.ToString();
+        HealthT.text = PlayerHealth.Health.ToString();
     }
 }
