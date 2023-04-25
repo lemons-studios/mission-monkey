@@ -10,22 +10,28 @@ public class Glock : MonoBehaviour
     public Transform firePoint;
     public PlayerInput.OnFootActions onFoot;
     public GameObject projectile;
-    public float projectileSpeed = 30f;
+    public float projectileSpeed = 100f;
+    public float shotCooldown = 1f;
 
     private Vector3 destination;
     private PlayerInput playerInput;
+    private float timeToFire;
 
     public void ShootProjectile() {
-        Ray ray = cam.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
-        RaycastHit hit;
+        if (Time.time >= timeToFire) {
+            timeToFire = Time.time + shotCooldown;
 
-        if (Physics.Raycast(ray, out hit)) {
-            destination = hit.point;
-        } else {
-            destination = ray.GetPoint(1000);
+            Ray ray = cam.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
+            RaycastHit hit;
+
+            if (Physics.Raycast(ray, out hit)) {
+                destination = hit.point;
+            } else {
+                destination = ray.GetPoint(1000);
+            }
+
+            InstantiateProjectile(firePoint);
         }
-
-        InstantiateProjectile(firePoint);
     }
 
     void Awake()
