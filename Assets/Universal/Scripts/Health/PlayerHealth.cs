@@ -1,38 +1,35 @@
 using UnityEngine;
 using UnityEditor.UI;
-public class PlayerHealth : DamageInfo
+public class PlayerHealth : MonoBehaviour
 {
-    private Canvas DeathUI;
     private Animation DeathAnim;
-
-    public float Health = 100f;
-
-    private PlayerMotor Motor;
     // Start is called before the first frame update
     void Start()
     {
-        DeathAnim["Die"].speed = 1/Time.deltaTime;
-        Player = GameObject.Find("Player");
-        Motor = Player.GetComponent<PlayerMotor>();
+        DeathAnim["Die"].speed = Time.deltaTime;
     }
-    
+
     void Update()
     {
-        if (dealtDamage == false)
+        if (DamageInfo.dealtDamage == false)
         {
 
         }
-        else if (dealtDamage == true)
+        else if (DamageInfo.dealtDamage == true)
         {
-            Health = Health - damageTaken;
+            Debug.Log("dealt Damage!");
+            DamageInfo.Health = DamageInfo.Health - DamageInfo.damageTaken;
+            DamageInfo.dealtDamage = false;
         }
-        if (Health == 0)
+        if (DamageInfo.Health == 0)
         {
             DeathAnim.Play("Die");
             if (DeathAnim.isPlaying)
             {
                 Debug.Log("Played Death Animation!");
             }
+
+            
         }
     }
 }

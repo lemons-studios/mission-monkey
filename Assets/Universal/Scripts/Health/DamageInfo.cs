@@ -1,8 +1,9 @@
 using UnityEngine;
 
-public abstract class DamageInfo : MonoBehaviour
+public class DamageInfo : MonoBehaviour
 {
-    public bool dealtDamage;
+    public static bool dealtDamage;
     public GameObject Player;
-    public float damageTaken;
+    public static float damageTaken;
+    public static float Health = 100f;
 }
