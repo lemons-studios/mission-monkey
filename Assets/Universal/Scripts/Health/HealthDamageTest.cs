@@ -4,5 +4,6 @@ public class HealthDamageTest : Interactable
     {
         PlayerHealth.damageTaken = 20;
         PlayerHealth.dealtDamage = true;
+        PlayerHealth.DamagePlayer();
     }
 }
