@@ -5,7 +5,5 @@ public class HealInteractable : Interactable
         PlayerHealth.healthHealed = 20f;
         PlayerHealth.healedHealth = true;
         PlayerHealth.HealPlayer();
-
-        // Update Health GUI
     }
 }

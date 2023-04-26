@@ -13,11 +13,6 @@ public class PlayerHealth : MonoBehaviour
     public static float healthHealed;
     public static float Health = 100f;
 
-    void Start()
-    {
-        // DeathAnim["Die"].speed = Time.deltaTime;
-        maxHealth = 100f;
-    }
     public static void DamagePlayer()
     {
         if (dealtDamage == false)
@@ -46,22 +41,17 @@ public class PlayerHealth : MonoBehaviour
             healedHealth = false;
         }
     }
+    private void KillPlayer()
+    {
+        Cursor.lockState = CursorLockMode.None;
+        SceneManager.LoadScene("MainMenu");
+        Health = 100f;
+    }
     void Update()
     {
         if (Health == 0)
         {
-            // TODO
-            /* DeathAnim.Play("Die");
-            if (DeathAnim.isPlaying)
-            {
-                Debug.Log("Played Death Animation!");
-            }
-            */
-
-            // For now the script will boot you back to the main menu lol
-            // Unlock cursor so the player can interact with GUI elements and load the MainMenu scene
-            Cursor.lockState = CursorLockMode.None;
-            SceneManager.LoadScene("MainMenu");
+            KillPlayer();
         }
     }
 }
