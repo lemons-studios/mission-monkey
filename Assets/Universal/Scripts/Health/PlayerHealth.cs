@@ -6,6 +6,7 @@ public class PlayerHealth : MonoBehaviour
 {
     // private Animation DeathAnim;
     private float maxHealth;
+    private bool EnforceMaxHealth = true;
     public static bool dealtDamage;
     public static bool healedHealth;
     public GameObject Player;
@@ -22,7 +23,7 @@ public class PlayerHealth : MonoBehaviour
         }
         else if (dealtDamage == true)
         {
-            Debug.Log("dealt Damage!");
+            // Debug.Log("dealt Damage!");
             Health = Health - damageTaken;
             dealtDamage = false;
         }
@@ -36,22 +37,35 @@ public class PlayerHealth : MonoBehaviour
         }
         else if (healedHealth == true)
         {
-            Debug.Log("Healed Health!");
+            // Debug.Log("Healed Health!");
             Health = Health + healthHealed;
             healedHealth = false;
         }
     }
     private void KillPlayer()
     {
+        // Unlock Cursor and Load the main menu scene
+        // Also set the health float value back to 100 to prevent infinite death loops upon loading into the scene
+        // There is probably a better way to do this
+
         Cursor.lockState = CursorLockMode.None;
         SceneManager.LoadScene("MainMenu");
+        Health = 100f;
+    }
+    private void EnforceMaxHP()
+    {
         Health = 100f;
     }
     void Update()
     {
         if (Health == 0)
         {
+            // If the player health float hits zero, it
             KillPlayer();
+        }
+        if (Health > 100 && EnforceMaxHealth == true)
+        {
+            EnforceMaxHP();
         }
     }
 }
