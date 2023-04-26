@@ -6,10 +6,10 @@ using UnityEngine.InputSystem;
 public class InputManager : MonoBehaviour
 {
     public float JumpCapCheck = 0f;
+    public PlayerInput.OnFootActions onFoot;
     private PlayerLook look;
 
     private PlayerMotor motor;
-    public PlayerInput.OnFootActions onFoot;
     private PlayerInput playerInput;
 
     public void OnDisable()
