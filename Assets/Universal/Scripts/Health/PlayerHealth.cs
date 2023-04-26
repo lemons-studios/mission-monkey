@@ -9,7 +9,6 @@ public class PlayerHealth : MonoBehaviour
     private bool EnforceMaxHealth = true;
     public static bool dealtDamage;
     public static bool healedHealth;
-    public GameObject Player;
     public static float damageTaken;
     public static float healthHealed;
     public static float Health = 100f;
@@ -52,20 +51,13 @@ public class PlayerHealth : MonoBehaviour
         SceneManager.LoadScene("MainMenu");
         Health = 100f;
     }
-    private void EnforceMaxHP()
-    {
-        Health = 100f;
-    }
+ 
     void Update()
     {
         if (Health == 0)
         {
             // If the player health float hits zero, it
             KillPlayer();
-        }
-        if (Health > 100 && EnforceMaxHealth == true)
-        {
-            EnforceMaxHP();
         }
     }
 }
