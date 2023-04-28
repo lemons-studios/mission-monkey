@@ -1,12 +1,12 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEditor.Animations;
 
 // Anything death animation related will be added later
 public class PlayerHealth : MonoBehaviour
 {
     // private Animation DeathAnim;
-    private float maxHealth;
-    private bool EnforceMaxHealth = true;
+    public static bool EnforceMaxHealth = true;
     public static bool dealtDamage;
     public static bool healedHealth;
     public static float damageTaken;
@@ -51,9 +51,17 @@ public class PlayerHealth : MonoBehaviour
         SceneManager.LoadScene("MainMenu");
         Health = 100f;
     }
- 
+    private void EnforceHealthCap()
+    {
+        Health = 100f;
+    }
+
     void Update()
     {
+        if (EnforceMaxHealth == true && Health > 101)
+        {
+            EnforceHealthCap();
+        }
         if (Health == 0)
         {
             // If the player health float hits zero, it
