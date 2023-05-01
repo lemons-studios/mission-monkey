@@ -1,6 +1,5 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEditor.Animations;
 
 // Anything death animation related will be added later
 public class PlayerHealth : MonoBehaviour

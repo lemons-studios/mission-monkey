@@ -12,37 +12,46 @@ public class SettingsMenu : MonoBehaviour
     public GameObject optionMenu;
     public TMP_Dropdown qualitySelect;
     public Slider volSlider;
-    public static float fov, mouseSens, volume;
+    float fov, mouseSens, volume;
+    public static float publicFOV, publicMouseSens, publicVolume;
     int quality;
 
-    public void FOV(float fov) {
+    public void FOV(float fov)
+    {
         // GameObject.Find("OptionsMenu").GetComponent<CameraFOV>().setCameraFOV(fov);
         PlayerPrefs.SetFloat("CameraFOV", fov);
         optionMenu.GetComponent<CameraFOV>().setCameraFOV(fov);
-        if (fovSlider.value != fov) {
+        if (fovSlider.value != fov)
+        {
             fovSlider.value = fov;
         }
     }
-    public void MouseSens(float sens) {
+    public void MouseSens(float sens)
+    {
         // GameObject.Find("OptionsMenu").GetComponent<PlayerLook>().setMouseSensitivity(sens);
         PlayerPrefs.SetFloat("MouseSens", sens);
         optionMenu.GetComponent<PlayerLook>().setMouseSensitivity(sens);
-        if (msSlider.value != sens) {
+        if (msSlider.value != sens)
+        {
             msSlider.value = sens;
         }
     }
-    public void Quality(int index) {
+    public void Quality(int index)
+    {
         QualitySettings.SetQualityLevel(index, true);
         PlayerPrefs.SetInt("Quality", index);
-        if (qualitySelect.value != index) {
+        if (qualitySelect.value != index)
+        {
             qualitySelect.value = index;
         }
     }
-    public void Volume(float volume) {
+    public void Volume(float volume)
+    {
         audiomixer.SetFloat("Volume", volume * volume * volume / 6400);
         // audiomixer.SetFloat("Volume", volume * volume * volume * volume / -512000);
         PlayerPrefs.SetFloat("Volume", volume);
-        if (volSlider.value != volume) {
+        if (volSlider.value != volume)
+        {
             volSlider.value = volume;
         }
     }
