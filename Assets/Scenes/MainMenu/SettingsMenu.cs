@@ -8,15 +8,13 @@ using UnityEngine.UI;
 public class SettingsMenu : MonoBehaviour
 {
     public AudioMixer audiomixer;
-    public Slider fovSlider;
-    public Slider msSlider;
+    public Slider fovSlider, msSlider;
     public GameObject optionMenu;
     public TMP_Dropdown qualitySelect;
     public Slider volSlider;
-    float fov;
-    float mouseSens;
+    public static float fov, mouseSens, volume;
     int quality;
-    float volume;
+
     public void FOV(float fov) {
         // GameObject.Find("OptionsMenu").GetComponent<CameraFOV>().setCameraFOV(fov);
         PlayerPrefs.SetFloat("CameraFOV", fov);
