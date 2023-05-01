@@ -1,3 +1,6 @@
+// Thanks to "Lofi Dev" for making the tutorial that was used to make this script
+// https://www.youtube.com/watch?v=c8Nq19gkNfs
+
 using UnityEngine;
 using UnityEngine.AI;
 
