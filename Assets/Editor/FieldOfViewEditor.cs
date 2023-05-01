@@ -1,15 +1,12 @@
-// Thanks to Comp-3 Interactive for providing the tutorial used to make this script
-// https://www.youtube.com/watch?v=j1-OyLo77ss
-
 using UnityEditor;
 using UnityEngine;
 
-[CustomEditor(typeof(AIFoV))]
-public class FieldOfViewVisualisation : Editor
+[CustomEditor(typeof(FieldOfView))]
+public class FieldOfViewEditor : Editor
 {
     private void OnSceneGUI()
     {
-        AIFoV fov = (AIFoV)target;
+        FieldOfView fov = (FieldOfView)target;
         Handles.color = Color.white;
         Handles.DrawWireArc(fov.transform.position, Vector3.up, Vector3.forward, 360, fov.radius);
 
@@ -23,7 +20,7 @@ public class FieldOfViewVisualisation : Editor
         if (fov.canSeePlayer)
         {
             Handles.color = Color.green;
-            Handles.DrawLine(fov.transform.forward, fov.playerRef.transform.position);
+            Handles.DrawLine(fov.transform.position, fov.playerRef.transform.position);
         }
     }
 
