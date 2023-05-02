@@ -11,19 +11,19 @@ public class SettingsMenu : MonoBehaviour
     public Slider volSlider;
     float mouseSens, volume;
     public static float publicFOV, publicMouseSens, publicVolume;
-    int quality;
+    int quality, antiAliasingQuality;
 
-/*    public void FOV(float fov)
-    {
-        // GameObject.Find("OptionsMenu").GetComponent<CameraFOV>().setCameraFOV(fov);
-        PlayerPrefs.SetFloat("CameraFOV", fov);
-        optionMenu.GetComponent<CameraFOV>().setCameraFOV(fov);
-        if (fovSlider.value != fov)
+    /*    public void FOV(float fov)
         {
-            fovSlider.value = fov;
-        }
-    }
-    */
+            // GameObject.Find("OptionsMenu").GetComponent<CameraFOV>().setCameraFOV(fov);
+            PlayerPrefs.SetFloat("CameraFOV", fov);
+            optionMenu.GetComponent<CameraFOV>().setCameraFOV(fov);
+            if (fovSlider.value != fov)
+            {
+                fovSlider.value = fov;
+            }
+        }*/
+
     public void MouseSens(float sens)
     {
         // GameObject.Find("OptionsMenu").GetComponent<PlayerLook>().setMouseSensitivity(sens);
@@ -42,6 +42,10 @@ public class SettingsMenu : MonoBehaviour
         {
             qualitySelect.value = index;
         }
+    }
+    public void setAntiAliasingQuality(int antiAliasingQuality)
+    {
+
     }
     public void Volume(float volume)
     {
