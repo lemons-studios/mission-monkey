@@ -5,15 +5,15 @@ using UnityEngine.UI;
 public class SettingsMenu : MonoBehaviour
 {
     public AudioMixer audiomixer;
-    public Slider fovSlider, msSlider;
+    public Slider msSlider;
     public GameObject optionMenu;
     public TMP_Dropdown qualitySelect;
     public Slider volSlider;
-    float fov, mouseSens, volume;
+    float mouseSens, volume;
     public static float publicFOV, publicMouseSens, publicVolume;
     int quality;
 
-    public void FOV(float fov)
+/*    public void FOV(float fov)
     {
         // GameObject.Find("OptionsMenu").GetComponent<CameraFOV>().setCameraFOV(fov);
         PlayerPrefs.SetFloat("CameraFOV", fov);
@@ -23,6 +23,7 @@ public class SettingsMenu : MonoBehaviour
             fovSlider.value = fov;
         }
     }
+    */
     public void MouseSens(float sens)
     {
         // GameObject.Find("OptionsMenu").GetComponent<PlayerLook>().setMouseSensitivity(sens);
@@ -54,12 +55,12 @@ public class SettingsMenu : MonoBehaviour
     }
     void Start()
     {
-        fov = PlayerPrefs.GetFloat("CameraFOV", 60);
+        // fov = PlayerPrefs.GetFloat("CameraFOV", 60);
         mouseSens = PlayerPrefs.GetFloat("MouseSens", 80);
         quality = PlayerPrefs.GetInt("Quality", 4);
         volume = PlayerPrefs.GetFloat("Volume", -5);
 
-        FOV(fov);
+        // FOV(fov);
         MouseSens(mouseSens);
         Quality(quality);
         Volume(volume);
