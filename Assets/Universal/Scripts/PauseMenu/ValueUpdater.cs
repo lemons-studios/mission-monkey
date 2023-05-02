@@ -19,11 +19,11 @@ public class ValueUpdater : MonoBehaviour
         float volumeInDecibels;
         VolumeMixer.GetFloat("Volume", out volumeInDecibels);
         float LinearVolume = DbToLinear(volumeInDecibels);
-        VolumeValue.text = (LinearVolume * 100).ToString("F0") + "%";
+        VolumeValue.text = (LinearVolume * 10000 / 102 ).ToString("F0") + "%";
     }
     public void UpdateMouseSensValue()
     {
-        MouseSensValue.text = PlayerLook.averagedSens.ToString() + "%";
+        MouseSensValue.text = PlayerLook.averagedSens.ToString();
     }
     float DbToLinear(float dbValue)
     {
