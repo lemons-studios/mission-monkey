@@ -8,8 +8,9 @@ public abstract class TemplateProjectile : MonoBehaviour
     public LayerMask IsEnemy;
     public PlayerInput Input;
     public PlayerMotor Motor;
-    
-    protected virtual void start() {
+
+    protected virtual void start()
+    {
         Input = GetComponent<PlayerInput>();
         Motor = GetComponent<PlayerMotor>();
     }

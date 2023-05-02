@@ -9,7 +9,8 @@ public abstract class TemplateHitscan : MonoBehaviour
     public LayerMask IsEnemy;
     public PlayerInput Input;
 
-    protected virtual void start() {
+    protected virtual void start()
+    {
         Input = GetComponent<PlayerInput>();
     }
 }

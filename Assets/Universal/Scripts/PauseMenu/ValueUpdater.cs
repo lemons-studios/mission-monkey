@@ -1,23 +1,18 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.Audio;
 
 public class ValueUpdater : MonoBehaviour
 {
-    public Camera fovCam;
     public AudioMixer VolumeMixer;
     public TextMeshProUGUI VolumeValue;
     public TextMeshProUGUI MouseSensValue;
-    public TextMeshProUGUI fovValue;
 
 
     void Update()
     {
         UpdateVolumePercentage();
         UpdateMouseSensValue();
-        UpdateFOVValue();
     }
     public void UpdateVolumePercentage()
     {
@@ -28,11 +23,7 @@ public class ValueUpdater : MonoBehaviour
     }
     public void UpdateMouseSensValue()
     {
-        MouseSensValue.text = PlayerLook.averagedSens.ToString();
-    }
-    public void UpdateFOVValue()
-    {
-        fovValue.text = fovCam.fieldOfView.ToString() + "°";
+        MouseSensValue.text = PlayerLook.averagedSens.ToString() + "%";
     }
     float DbToLinear(float dbValue)
     {
