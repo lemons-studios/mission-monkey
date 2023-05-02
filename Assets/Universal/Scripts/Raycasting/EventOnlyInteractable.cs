@@ -1,3 +1,4 @@
 public class EventOnlyInteractable : Interactable
 {
+    
 }

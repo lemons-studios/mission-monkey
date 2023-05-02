@@ -24,7 +24,8 @@ public class DiscordController : MonoBehaviour
             }
         }
 
-        if (discordRunning) {
+        if (discordRunning)
+        {
             discord = new Discord.Discord(1090862646993096745, (System.UInt64)Discord.CreateFlags.Default);
             var activityManager = discord.GetActivityManager();
             startTime = DateTimeOffset.Now.ToUnixTimeSeconds();
@@ -56,7 +57,8 @@ public class DiscordController : MonoBehaviour
 
     void Update()
     {
-        if (discordRunning) {
+        if (discordRunning)
+        {
             var activityManager = discord.GetActivityManager();
             var elapsedTime = DateTimeOffset.Now.ToUnixTimeSeconds() - startTime;
             var activity = new Discord.Activity
@@ -86,7 +88,8 @@ public class DiscordController : MonoBehaviour
 
     void OnApplicationQuit()
     {
-        if (discordRunning) {
+        if (discordRunning)
+        {
             var activityManager = discord.GetActivityManager();
             activityManager.ClearActivity((res) =>
             {

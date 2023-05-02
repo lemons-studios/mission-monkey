@@ -1,8 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
-using System.Diagnostics;
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 public class Glock : MonoBehaviour
 {
@@ -17,16 +13,21 @@ public class Glock : MonoBehaviour
     private PlayerInput playerInput;
     private float timeToFire;
 
-    public void ShootProjectile() {
-        if (Time.time >= timeToFire) {
+    public void ShootProjectile()
+    {
+        if (Time.time >= timeToFire)
+        {
             timeToFire = Time.time + shotCooldown;
 
             Ray ray = cam.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
             RaycastHit hit;
 
-            if (Physics.Raycast(ray, out hit)) {
+            if (Physics.Raycast(ray, out hit))
+            {
                 destination = hit.point;
-            } else {
+            }
+            else
+            {
                 destination = ray.GetPoint(1000);
             }
 
@@ -42,10 +43,11 @@ public class Glock : MonoBehaviour
         onFoot.GunFire.performed += ctx => ShootProjectile();
     }
 
-    void InstantiateProjectile(Transform point) {
+    void InstantiateProjectile(Transform point)
+    {
         var projectileObj = Instantiate(projectile, point.position, Quaternion.FromToRotation(point.position, destination)) as GameObject;
         projectileObj.SetActive(true);
         projectileObj.GetComponent<Rigidbody>().velocity = (destination - point.position).normalized * projectileSpeed;
-        Destroy (projectileObj, 3);
+        Destroy(projectileObj, 3);
     }
 }
