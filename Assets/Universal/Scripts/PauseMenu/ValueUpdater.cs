@@ -1,13 +1,15 @@
+using System;
 using UnityEngine;
 using TMPro;
 using UnityEngine.Audio;
+using UnityEngine.UI;
 
 public class ValueUpdater : MonoBehaviour
 {
     public AudioMixer VolumeMixer;
     public TextMeshProUGUI VolumeValue;
     public TextMeshProUGUI MouseSensValue;
-
+    public Slider volSlider;
 
     void Update()
     {
@@ -16,21 +18,10 @@ public class ValueUpdater : MonoBehaviour
     }
     public void UpdateVolumePercentage()
     {
-        float volumeInDecibels;
-        VolumeMixer.GetFloat("Volume", out volumeInDecibels);
-        float LinearVolume = DbToLinear(volumeInDecibels);
-        VolumeValue.text = (LinearVolume * 10000 / 102 ).ToString("F0") + "%";
+        VolumeValue.text = (Math.Round((volSlider.value + 80) * 10 / 9)).ToString("F0") + "%";
     }
     public void UpdateMouseSensValue()
     {
         MouseSensValue.text = PlayerLook.averagedSens.ToString();
     }
-    float DbToLinear(float dbValue)
-    {
-        float minimumDb = -80f;
-        float maximumDb = 0f;
-        float normalizedDb = Mathf.InverseLerp(minimumDb, maximumDb, dbValue);
-        return Mathf.Pow(10, (dbValue / 20));
-    }
-
 }
