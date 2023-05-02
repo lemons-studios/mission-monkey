@@ -10,6 +10,7 @@ public class PlayerLook : MonoBehaviour
     public static float ySens = 100f;
     public Camera cam;
     public float xRotation = 0f;
+    public static float averagedSens;
 
     // Start is called before the first frame update
     public void ProcessLook(Vector2 input)
@@ -31,5 +32,9 @@ public class PlayerLook : MonoBehaviour
     {
         xSens = sensitivity;
         ySens = sensitivity;
+    }
+    public void Update()
+    {
+        averagedSens = (xSens + ySens) / 2;
     }
 }
