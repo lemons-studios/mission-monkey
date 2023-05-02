@@ -33,6 +33,7 @@ public class PlayerLook : MonoBehaviour
         xSens = sensitivity;
         ySens = sensitivity;
     }
+
     public void Update()
     {
         averagedSens = (xSens + ySens) / 2;
