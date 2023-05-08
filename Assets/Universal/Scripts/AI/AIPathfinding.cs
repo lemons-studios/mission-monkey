@@ -12,6 +12,7 @@ public class AIPathfinding : MonoBehaviour
     FieldOfView fov;
     Vector3 target;
     int waypointIndex;
+
     void IterateWaypointIndex()
     {
         waypointIndex++;
@@ -20,6 +21,7 @@ public class AIPathfinding : MonoBehaviour
             waypointIndex = 0;
         }
     }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -36,7 +38,7 @@ public class AIPathfinding : MonoBehaviour
         }
         UpdateDestination();
         fov = GetComponent<FieldOfView>();
-        if (fov.canSeePlayer && Vector3.Distance(transform.position, target) < 10)
+        if (fov.canSeePlayer)
         {
             agent.speed = 3.5f;
         }
@@ -45,6 +47,7 @@ public class AIPathfinding : MonoBehaviour
             agent.speed = 0;
         }
     }
+
     void UpdateDestination()
     {
         target = waypoints[waypointIndex].position;

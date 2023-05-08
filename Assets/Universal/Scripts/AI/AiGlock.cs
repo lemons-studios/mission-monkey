@@ -1,16 +1,24 @@
+using System.Collections.Generic;
 using UnityEngine;
 
-public class Glock : MonoBehaviour
+public class AiGlock : MonoBehaviour
 {
-    public Camera cam;
-    public Transform firePoint;
-    public PlayerInput.OnFootActions onFoot;
-    public GameObject projectile;
-    public float projectileSpeed = 100f;
-    public float shotCooldown = 1f;
-
+    [SerializeField]
+    private GameObject ai;
     private Vector3 destination;
-    private PlayerInput playerInput;
+
+    [SerializeField]
+    private Transform firePoint;
+
+    [SerializeField]
+    private GameObject projectile;
+
+    [SerializeField]
+    private float projectileSpeed = 100f;
+    private List<GameObject> projectiles;
+
+    [SerializeField]
+    private float shotCooldown = 1f;
     private float timeToFire;
 
     public void ShootProjectile()
@@ -19,7 +27,7 @@ public class Glock : MonoBehaviour
         {
             timeToFire = Time.time + shotCooldown;
 
-            Ray ray = cam.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
+            Ray ray = new Ray(transform.position, ai.transform.forward);
             RaycastHit hit;
 
             if (Physics.Raycast(ray, out hit))
@@ -35,14 +43,6 @@ public class Glock : MonoBehaviour
         }
     }
 
-    void Awake()
-    {
-        playerInput = new PlayerInput();
-        onFoot = playerInput.OnFoot;
-        onFoot.Enable();
-        onFoot.GunFire.performed += ctx => ShootProjectile();
-    }
-
     void InstantiateProjectile(Transform point)
     {
         var projectileObj =
@@ -54,6 +54,7 @@ public class Glock : MonoBehaviour
         projectileObj.SetActive(true);
         projectileObj.GetComponent<Rigidbody>().velocity =
             (destination - point.position).normalized * projectileSpeed;
-        Destroy(projectileObj, 3);
+        projectiles.Add(projectileObj);
+        Destroy(projectileObj, 3f);
     }
 }

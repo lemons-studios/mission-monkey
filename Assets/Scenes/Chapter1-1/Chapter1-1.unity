@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.14198393, g: 0.15809973, b: 0.1894391, a: 1}
+  m_IndirectSpecularColor: {r: 0.1417965, g: 0.15796058, b: 0.18931827, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -541,9 +541,9 @@ Canvas:
   m_GameObject: {fileID: 44493315}
   m_Enabled: 1
   serializedVersion: 3
-  m_RenderMode: 1
+  m_RenderMode: 0
   m_Camera: {fileID: 20600011}
-  m_PlaneDistance: 100
+  m_PlaneDistance: 0.1
   m_PixelPerfect: 0
   m_ReceivesEvents: 1
   m_OverrideSorting: 0
@@ -1295,11 +1295,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8391222552659086748, guid: 6244669fe07e9f74d9ca6e171722b52e, type: 3}
       propertyPath: m_Layer
-      value: 8
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -7640558969779515294, guid: 6244669fe07e9f74d9ca6e171722b52e, type: 3}
       propertyPath: m_Layer
-      value: 8
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -6093592463355912122, guid: 6244669fe07e9f74d9ca6e171722b52e, type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -1323,7 +1323,7 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 5f223e1472f573243baef2be7d51e106, type: 2}
     - target: {fileID: -516098083770646512, guid: 6244669fe07e9f74d9ca6e171722b52e, type: 3}
       propertyPath: m_Layer
-      value: 8
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 6244669fe07e9f74d9ca6e171722b52e, type: 3}
       propertyPath: m_Name
@@ -1331,7 +1331,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 6244669fe07e9f74d9ca6e171722b52e, type: 3}
       propertyPath: m_Layer
-      value: 8
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 6244669fe07e9f74d9ca6e171722b52e, type: 3}
       propertyPath: m_TagString
@@ -1339,13 +1339,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5717209592646566608, guid: 6244669fe07e9f74d9ca6e171722b52e, type: 3}
       propertyPath: m_Layer
-      value: 8
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6244669fe07e9f74d9ca6e171722b52e, type: 3}
 --- !u!4 &229864463 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 6244669fe07e9f74d9ca6e171722b52e, type: 3}
+  m_PrefabInstance: {fileID: 229864462}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &229864464 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8519183417986545248, guid: 6244669fe07e9f74d9ca6e171722b52e, type: 3}
   m_PrefabInstance: {fileID: 229864462}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &309417601
@@ -2262,7 +2267,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 753.7, y: 61.200012}
+  m_AnchoredPosition: {x: 753.69995, y: 61.200012}
   m_SizeDelta: {x: 192, y: 69}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &380354002
@@ -3254,7 +3259,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -790.7, y: 61.200012}
+  m_AnchoredPosition: {x: -790.69995, y: 61.200012}
   m_SizeDelta: {x: 192, y: 69}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &508787985
@@ -3605,7 +3610,7 @@ GameObject:
   - component: {fileID: 624118306}
   - component: {fileID: 624118305}
   - component: {fileID: 624118304}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: GunArm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4844,7 +4849,7 @@ PrefabInstance:
     - target: {fileID: 2511811754567536238, guid: 6989bd7b2ad4ec248b56416e47d857be, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: ada058c9596fa564e96ac8d6d5e452b1, type: 2}
+      objectReference: {fileID: 2100000, guid: d75935aac9e30654ba900fdd150eea66, type: 2}
     - target: {fileID: 2511811754567536238, guid: 6989bd7b2ad4ec248b56416e47d857be, type: 3}
       propertyPath: m_Materials.Array.data[1]
       value: 
@@ -14611,6 +14616,8 @@ GameObject:
   - component: {fileID: 1870364544}
   - component: {fileID: 1870364543}
   - component: {fileID: 1870364549}
+  - component: {fileID: 1870364551}
+  - component: {fileID: 1870364550}
   m_Layer: 0
   m_Name: EnemyPlaceholder
   m_TagString: Untagged
@@ -14749,7 +14756,46 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c192505dafac87d42870dd454aa9307f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  angle: 108
+  angle: 169
+  canSeePlayer: 0
+  obstructionMask:
+    serializedVersion: 2
+    m_Bits: 512
+  playerRef: {fileID: 7874428295488156798}
+  radius: 10
+  targetMask:
+    serializedVersion: 2
+    m_Bits: 256
+--- !u!114 &1870364550
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1870364542}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b670b3ea6c046104e8ccefe445d5b6fb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ai: {fileID: 1870364542}
+  firePoint: {fileID: 229864464}
+  projectile: {fileID: 1157606212}
+  projectileSpeed: 100
+  shotCooldown: 1
+--- !u!114 &1870364551
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1870364542}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c4b977a91b529d24493204b27b4f18b0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  angle: 169
   canSeePlayer: 0
   obstructionMask:
     serializedVersion: 2
