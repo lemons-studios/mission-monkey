@@ -38,7 +38,7 @@ public class AIPathfinding : MonoBehaviour
         }
         UpdateDestination();
         fov = GetComponent<FieldOfView>();
-        if (fov.canSeePlayer)
+        if (fov.canSeePlayer && Vector3.Distance(transform.position, target) > 3)
         {
             agent.speed = 3.5f;
         }

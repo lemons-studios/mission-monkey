@@ -33,6 +33,13 @@ public class AiGlock : MonoBehaviour
             if (Physics.Raycast(ray, out hit))
             {
                 destination = hit.point;
+                if (hit.collider.gameObject.tag == "Player")
+                {
+                    Debug.Log("Player got shot");
+                    PlayerHealth.damageTaken = 5;
+                    PlayerHealth.dealtDamage = true;
+                    PlayerHealth.DamagePlayer();
+                }
             }
             else
             {
@@ -54,7 +61,7 @@ public class AiGlock : MonoBehaviour
         projectileObj.SetActive(true);
         projectileObj.GetComponent<Rigidbody>().velocity =
             (destination - point.position).normalized * projectileSpeed;
-        projectiles.Add(projectileObj);
+        // projectiles.Add(projectileObj);
         Destroy(projectileObj, 3f);
     }
 }
