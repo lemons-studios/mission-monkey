@@ -27,7 +27,7 @@ public class TriggerEventDebug : Interactable
         for (int i = 0; i < BarsRigidBody.Length; i++)
         {
             BarsRigidBody[i].useGravity = true;
-            BarsRigidBody[i].AddForce(Vector3.back * ExplosionForce);
+            BarsRigidBody[i].AddForce(Vector3.back * Random.Range(30.0f, 99.99f));
             Destroy(PrisonBars[i], DestroyTransitionTime);
         }
         Debug.Log("Event triggered!");
