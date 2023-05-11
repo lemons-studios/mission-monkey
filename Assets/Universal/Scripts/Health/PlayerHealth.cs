@@ -12,6 +12,10 @@ public class PlayerHealth : MonoBehaviour
     public static float healthHealed;
     public static float Health = 100f;
 
+    public static bool showDeathAnimation = false;
+    public GameObject playerGui;
+    public GameObject playerDeathScreen;
+
     public static void DamagePlayer()
     {
         if (dealtDamage == false)
@@ -47,8 +51,12 @@ public class PlayerHealth : MonoBehaviour
         // There is probably a better way to do this
 
         Cursor.lockState = CursorLockMode.None;
-        SceneManager.LoadScene("MainMenu");
         Health = 100f;
+        playerGui.SetActive(false);
+        playerDeathScreen.SetActive(true);
+        showDeathAnimation = true;
+
+        // SceneManager.LoadScene("MainMenu");
     }
     private void EnforceHealthCap()
     {
