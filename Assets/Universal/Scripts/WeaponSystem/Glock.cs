@@ -8,6 +8,7 @@ public class Glock : MonoBehaviour
     public GameObject projectile;
     public float projectileSpeed = 100f;
     public float shotCooldown = 1f;
+    public float projectileDamage = 15f;
 
     private Vector3 destination;
     private PlayerInput playerInput;
@@ -25,6 +26,14 @@ public class Glock : MonoBehaviour
             if (Physics.Raycast(ray, out hit))
             {
                 destination = hit.point;
+                if (hit.collider.gameObject.tag == "Enemy")
+                {
+                    GameObject enemy = hit.collider.gameObject;
+                    AiHealth hp = enemy.GetComponent<AiHealth>();
+                    hp.aiDmgTaken = projectileDamage;
+                    hp.aiDealtDamage = true;
+                    hp.DamageEnemy();
+                }
             }
             else
             {

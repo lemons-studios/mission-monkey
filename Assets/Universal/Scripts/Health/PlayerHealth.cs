@@ -61,9 +61,9 @@ public class PlayerHealth : MonoBehaviour
         {
             EnforceHealthCap();
         }
-        if (Health == 0)
+        if (Health <= 0)
         {
-            // If the player health float hits zero, it
+            // If the player health float hits zero, it kills the player
             KillPlayer();
         }
     }
