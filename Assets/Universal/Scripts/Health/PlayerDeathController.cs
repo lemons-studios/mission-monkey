@@ -15,6 +15,7 @@ public class PlayerDeathController : MonoBehaviour
     public void ReloadLevel()
     {
         isDead = false;
+        PlayerHealth.Health = 100f;
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }
