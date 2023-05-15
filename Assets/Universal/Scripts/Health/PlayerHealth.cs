@@ -11,8 +11,7 @@ public class PlayerHealth : MonoBehaviour
     public static float damageTaken;
     public static float healthHealed;
     public static float Health = 100f;
-
-    public static bool showDeathAnimation = false;
+  
     public GameObject playerGui;
     public GameObject playerDeathScreen;
 
@@ -54,7 +53,7 @@ public class PlayerHealth : MonoBehaviour
         Health = 100f;
         playerGui.SetActive(false);
         playerDeathScreen.SetActive(true);
-        showDeathAnimation = true;
+        playerDeathScreen.GetComponent<Animator>().SetBool("Died", true);
 
         // SceneManager.LoadScene("MainMenu");
     }
