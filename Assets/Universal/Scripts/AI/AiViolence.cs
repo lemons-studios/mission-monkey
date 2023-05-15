@@ -12,7 +12,7 @@ public class AiViolence : FieldOfView
     {
         fov = GetComponent<FieldOfView>();
         glock = GetComponent<AiGlock>();
-        if (fov.canSeePlayer)
+        if (fov.canSeePlayer && !PlayerDeathController.isDead)
         {
             glock.ShootProjectile();
         }

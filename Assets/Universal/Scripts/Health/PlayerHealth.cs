@@ -54,6 +54,7 @@ public class PlayerHealth : MonoBehaviour
         playerGui.SetActive(false);
         playerDeathScreen.SetActive(true);
         playerDeathScreen.GetComponent<Animator>().SetBool("Died", true);
+        PlayerDeathController.PlayerDeath();
 
         // SceneManager.LoadScene("MainMenu");
     }
