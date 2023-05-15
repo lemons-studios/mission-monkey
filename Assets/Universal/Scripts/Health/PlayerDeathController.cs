@@ -8,14 +8,14 @@ public class PlayerDeathController : MonoBehaviour
     {
         isDead = true;
     }
-    public void LoadMainMenu()
-    {
-        SceneManager.LoadScene("MainMenu");
-    }
     public void ReloadLevel()
     {
         isDead = false;
         PlayerHealth.Health = 100f;
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
+    public void PlayerRevive()
+    {
+        isDead = false;
     }
 }

@@ -75,4 +75,8 @@ public class PlayerHealth : MonoBehaviour
             KillPlayer();
         }
     }
+    private void Start()
+    {
+        Health = 100f;
+    }
 }
