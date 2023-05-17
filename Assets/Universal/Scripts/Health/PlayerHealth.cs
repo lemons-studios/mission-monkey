@@ -11,9 +11,6 @@ public class PlayerHealth : MonoBehaviour
     public static float damageTaken;
     public static float healthHealed;
     public static float Health = 100f;
-  
-    public GameObject playerGui;
-    public GameObject playerDeathScreen;
 
     public static void DamagePlayer()
     {
@@ -50,13 +47,8 @@ public class PlayerHealth : MonoBehaviour
         // There is probably a better way to do this
 
         Cursor.lockState = CursorLockMode.None;
+        SceneManager.LoadScene("MainMenu");
         Health = 100f;
-        playerGui.SetActive(false);
-        playerDeathScreen.SetActive(true);
-        playerDeathScreen.GetComponent<Animator>().SetBool("Died", true);
-        PlayerDeathController.PlayerDeath();
-
-        // SceneManager.LoadScene("MainMenu");
     }
     private void EnforceHealthCap()
     {
@@ -69,14 +61,10 @@ public class PlayerHealth : MonoBehaviour
         {
             EnforceHealthCap();
         }
-        if (Health <= 0)
+        if (Health == 0)
         {
-            // If the player health float hits zero, it kills the player
+            // If the player health float hits zero, it
             KillPlayer();
         }
-    }
-    private void Start()
-    {
-        Health = 100f;
     }
 }

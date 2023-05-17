@@ -37,14 +37,4 @@ public class InputManager : MonoBehaviour
         // Tell the player motor to move from the movement ingame
         motor.ProcessMove(onFoot.Movement.ReadValue<Vector2>(), onFoot.Sprint.ReadValue<float>() > 0);
     }
-    private void Update()
-    {
-        if (PlayerDeathController.isDead)
-        {
-            OnDisable();
-        } else
-        {
-            OnEnable();
-        }
-    }
 }

@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 7874428294217788530}
   - component: {fileID: 7874428294217788535}
   - component: {fileID: 7874428294217788531}
+  - component: {fileID: 7874428294217788527}
   m_Layer: 0
   m_Name: Camera
   m_TagString: Untagged
@@ -266,6 +267,19 @@ MonoBehaviour:
         invertMask: 1
         compositeShader: {fileID: 4800000, guid: d82546742f9c2b94d909ada774b0aa86, type: 3}
         whiteRenderersShader: {fileID: 4800000, guid: 8386dcbf863f5f94ba335f17fdf15443, type: 3}
+--- !u!114 &7874428294217788527
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7874428294217788532}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2662b21dd796e9841becde305bb5c6f8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rayLength: 3
 --- !u!1 &7874428295471784119
 GameObject:
   m_ObjectHideFlags: 0
@@ -388,7 +402,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gravity: -20
   speed: 10
-  sprintSpeed: 10
   jumpHeight: 1
   jumpCap: 1
 --- !u!114 &7874428295471784113
@@ -433,7 +446,6 @@ MonoBehaviour:
   mainMenu: {fileID: 0}
   optionsMenu: {fileID: 0}
   pauseMenu: {fileID: 0}
-  playerGUI: {fileID: 0}
 --- !u!114 &7874428295471784102
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -447,7 +459,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   audiomixer: {fileID: 24100000, guid: 3a5200ccdd38f3e4f95028236fab6f11, type: 2}
+  fovSlider: {fileID: 0}
   msSlider: {fileID: 0}
   optionMenu: {fileID: 0}
-  qualitySelect: {fileID: 0}
   volSlider: {fileID: 0}

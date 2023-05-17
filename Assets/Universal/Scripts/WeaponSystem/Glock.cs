@@ -8,7 +8,6 @@ public class Glock : MonoBehaviour
     public GameObject projectile;
     public float projectileSpeed = 100f;
     public float shotCooldown = 1f;
-    public float projectileDamage = 15f;
 
     private Vector3 destination;
     private PlayerInput playerInput;
@@ -16,7 +15,7 @@ public class Glock : MonoBehaviour
 
     public void ShootProjectile()
     {
-        if (Time.time >= timeToFire && !PlayerDeathController.isDead)
+        if (Time.time >= timeToFire)
         {
             timeToFire = Time.time + shotCooldown;
 
@@ -26,14 +25,6 @@ public class Glock : MonoBehaviour
             if (Physics.Raycast(ray, out hit))
             {
                 destination = hit.point;
-                if (hit.collider.gameObject.tag == "Enemy")
-                {
-                    GameObject enemy = hit.collider.gameObject;
-                    AiHealth hp = enemy.GetComponent<AiHealth>();
-                    hp.aiDmgTaken = projectileDamage;
-                    hp.aiDealtDamage = true;
-                    hp.DamageEnemy();
-                }
             }
             else
             {
@@ -54,15 +45,9 @@ public class Glock : MonoBehaviour
 
     void InstantiateProjectile(Transform point)
     {
-        var projectileObj =
-            Instantiate(
-                projectile,
-                point.position,
-                Quaternion.FromToRotation(point.position, destination)
-            ) as GameObject;
+        var projectileObj = Instantiate(projectile, point.position, Quaternion.FromToRotation(point.position, destination)) as GameObject;
         projectileObj.SetActive(true);
-        projectileObj.GetComponent<Rigidbody>().velocity =
-            (destination - point.position).normalized * projectileSpeed;
+        projectileObj.GetComponent<Rigidbody>().velocity = (destination - point.position).normalized * projectileSpeed;
         Destroy(projectileObj, 3);
     }
 }
