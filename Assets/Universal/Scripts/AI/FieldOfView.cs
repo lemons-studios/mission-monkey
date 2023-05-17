@@ -1,25 +1,17 @@
 using System;
 using System.Collections;
 using UnityEngine;
-
 public class FieldOfView : MonoBehaviour
 {
-    public float radius;
     [Range(0, 360)]
     public float angle;
+    public bool canSeePlayer;
+    public LayerMask obstructionMask;
 
     public GameObject playerRef;
+    public float radius;
 
     public LayerMask targetMask;
-    public LayerMask obstructionMask;
-    public bool canSeePlayer;
-
-
-    private void Start()
-    {
-        playerRef = GameObject.FindGameObjectWithTag("Player");
-        StartCoroutine(FOVRoutine());
-    }
 
     private IEnumerator FOVRoutine()
     {
@@ -55,5 +47,11 @@ public class FieldOfView : MonoBehaviour
         }
         else if (canSeePlayer)
             canSeePlayer = false;
+    }
+
+    private void Start()
+    {
+        playerRef = GameObject.FindGameObjectWithTag("Player");
+        StartCoroutine(FOVRoutine());
     }
 }

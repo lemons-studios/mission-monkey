@@ -42,7 +42,10 @@ public class PauseMenu : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            TogglePause();
+            if (!PlayerDeathController.isDead)
+            {
+                TogglePause();
+            }
         }
     }
 }
