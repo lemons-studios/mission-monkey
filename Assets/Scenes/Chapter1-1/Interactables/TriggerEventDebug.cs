@@ -1,5 +1,5 @@
 using UnityEngine;
-
+using System.Collections;
 public class TriggerEventDebug : Interactable
 {
     private bool EventTriggered = false;
@@ -32,22 +32,22 @@ public class TriggerEventDebug : Interactable
         }
         DisplayDistroyTransition = true;
         Debug.Log("Event triggered!");
+        StartCoroutine(WaitBeforeDestroy());
+        fadeOut();
+
+
+    }
+    
+    IEnumerator WaitBeforeDestroy()
+    {
+        yield return new WaitForSeconds(DestroyTransitionTime);
     }
 
-    private void Update()
+    private void fadeOut()
     {
-        if (DisplayDistroyTransition)
+        foreach (GameObject i in PrisonBars)
         {
-            if (TransitionMaterial.color.a >= 0.69420)
-            {
-                Color mat = TransitionMaterial.color;
-                mat.a -= 0.2f;
-                TransitionMaterial.color = mat;
-            } else
-            {
-                Destroy(gameObject);
-            }
+            Destroy(i);
         }
     }
-
 }
