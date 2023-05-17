@@ -6,10 +6,22 @@ using UnityEngine.AI;
 
 public class AIPathfinding : MonoBehaviour
 {
-    NavMeshAgent agent;
+    public bool alwaysUpdateDestination = false;
     public Transform[] waypoints;
-    int waypointIndex;
+    NavMeshAgent agent;
+    FieldOfView fov;
     Vector3 target;
+    int waypointIndex;
+
+    void IterateWaypointIndex()
+    {
+        waypointIndex++;
+        if (waypointIndex == waypoints.Length)
+        {
+            waypointIndex = 0;
+        }
+    }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -23,20 +35,22 @@ public class AIPathfinding : MonoBehaviour
         if (Vector3.Distance(transform.position, target) < 1)
         {
             IterateWaypointIndex();
-            UpdateDestination();
+        }
+        UpdateDestination();
+        fov = GetComponent<FieldOfView>();
+        if (fov.canSeePlayer && Vector3.Distance(transform.position, target) > 3)
+        {
+            agent.speed = 3.5f;
+        }
+        else
+        {
+            agent.speed = 0;
         }
     }
+
     void UpdateDestination()
     {
         target = waypoints[waypointIndex].position;
         agent.SetDestination(target);
-    }
-    void IterateWaypointIndex()
-    {
-        waypointIndex++;
-        if (waypointIndex == waypoints.Length)
-        {
-            waypointIndex = 0;
-        }
     }
 }

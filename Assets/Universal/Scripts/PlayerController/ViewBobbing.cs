@@ -20,7 +20,7 @@ public class ViewBobbing : MonoBehaviour
 
     void Update()
     {
-        if (bobView)
+        if (bobView && !PlayerDeathController.isDead)
         {
             cam.transform.position = new Vector3(player.transform.position.x, player.transform.position.y + 0.4f + (Mathf.Abs(Mathf.Sin(Time.fixedTime * sineBob)) * BobMultiplier), player.transform.position.z);
         }
