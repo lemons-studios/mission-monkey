@@ -84,6 +84,10 @@ public class DiscordController : MonoBehaviour
 
             discord.RunCallbacks();
         }
+        else 
+        {
+            return;
+        }
     }
 
     void OnApplicationQuit()
