@@ -1,25 +1,19 @@
 using System;
 using System.Collections;
 using UnityEngine;
-
 public class FieldOfView : MonoBehaviour
 {
-    public float radius;
     [Range(0, 360)]
     public float angle;
+    public bool canSeePlayer;
+    public LayerMask obstructionMask;
 
     public GameObject playerRef;
+    public float radius;
 
     public LayerMask targetMask;
-    public LayerMask obstructionMask;
-    public bool canSeePlayer;
 
-
-    private void Start()
-    {
-        playerRef = GameObject.FindGameObjectWithTag("Player");
-        StartCoroutine(FOVRoutine());
-    }
+    private Vector3 targetPos;
 
     private IEnumerator FOVRoutine()
     {
@@ -45,15 +39,30 @@ public class FieldOfView : MonoBehaviour
             {
                 float distanceToTarget = Vector3.Distance(transform.position, target.position);
 
-                if (!Physics.Raycast(transform.position, directionToTarget, distanceToTarget, obstructionMask))
-                    canSeePlayer = true;
-                else
+                if (!Physics.Raycast(transform.position, directionToTarget, distanceToTarget, obstructionMask)) {
+                    targetPos = GetComponent<AIPathfinding>().target;
+                    if (Vector3.Distance(transform.position, targetPos) < 10)
+                    {
+                        canSeePlayer = true;
+                    } else
+                    {
+                        canSeePlayer = false;
+                    }
+                }
+                else {
                     canSeePlayer = false;
+                }
             }
             else
                 canSeePlayer = false;
         }
         else if (canSeePlayer)
             canSeePlayer = false;
+    }
+
+    private void Start()
+    {
+        playerRef = GameObject.FindGameObjectWithTag("Player");
+        StartCoroutine(FOVRoutine());
     }
 }
