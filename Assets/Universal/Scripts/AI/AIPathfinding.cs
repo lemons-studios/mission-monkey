@@ -10,7 +10,7 @@ public class AIPathfinding : MonoBehaviour
     public Transform[] waypoints;
     NavMeshAgent agent;
     FieldOfView fov;
-    Vector3 target;
+    public Vector3 target;
     int waypointIndex;
 
     void IterateWaypointIndex()
@@ -38,7 +38,7 @@ public class AIPathfinding : MonoBehaviour
         }
         UpdateDestination();
         fov = GetComponent<FieldOfView>();
-        if (fov.canSeePlayer && Vector3.Distance(transform.position, target) > 3)
+        if (Vector3.Distance(transform.position, target) > 3 && Vector3.Distance(transform.position, target) < 10)
         {
             agent.speed = 3.5f;
         }

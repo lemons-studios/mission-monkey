@@ -13,6 +13,8 @@ public class FieldOfView : MonoBehaviour
 
     public LayerMask targetMask;
 
+    private Vector3 targetPos;
+
     private IEnumerator FOVRoutine()
     {
         WaitForSeconds wait = new WaitForSeconds(0.2f);
@@ -37,10 +39,19 @@ public class FieldOfView : MonoBehaviour
             {
                 float distanceToTarget = Vector3.Distance(transform.position, target.position);
 
-                if (!Physics.Raycast(transform.position, directionToTarget, distanceToTarget, obstructionMask))
-                    canSeePlayer = true;
-                else
+                if (!Physics.Raycast(transform.position, directionToTarget, distanceToTarget, obstructionMask)) {
+                    targetPos = GetComponent<AIPathfinding>().target;
+                    if (Vector3.Distance(transform.position, targetPos) < 10)
+                    {
+                        canSeePlayer = true;
+                    } else
+                    {
+                        canSeePlayer = false;
+                    }
+                }
+                else {
                     canSeePlayer = false;
+                }
             }
             else
                 canSeePlayer = false;
