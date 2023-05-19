@@ -3,6 +3,8 @@ using System.Collections;
 public class TriggerEventDebug : Interactable
 {
     private bool EventTriggered = false;
+    public float minRange = 80f;
+    public float maxRange = 100f;
 
     public GameObject[] PrisonBars;
     public Rigidbody[] BarsRigidBody;
@@ -28,17 +30,18 @@ public class TriggerEventDebug : Interactable
         for (int i = 0; i < BarsRigidBody.Length; i++)
         {
             BarsRigidBody[i].useGravity = true;
-            BarsRigidBody[i].AddForce(Vector3.back * Random.Range(30.0f, 99.99f));
+            BarsRigidBody[i].AddForce(Vector3.forward * Random.Range(minRange, maxRange));
         }
         DisplayDistroyTransition = true;
         Debug.Log("Event triggered!");
-        StartCoroutine(WaitBeforeDestroy());
-        fadeOut();
+
+        // StartCoroutine(WaitBeforeDestroy());
+        // fadeOut();
 
 
     }
     
-    IEnumerator WaitBeforeDestroy()
+/*  IEnumerator WaitBeforeDestroy()
     {
         yield return new WaitForSeconds(DestroyTransitionTime);
     }
@@ -49,5 +52,5 @@ public class TriggerEventDebug : Interactable
         {
             Destroy(i);
         }
-    }
+    } */
 }

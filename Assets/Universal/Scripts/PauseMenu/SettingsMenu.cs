@@ -8,6 +8,7 @@ public class SettingsMenu : MonoBehaviour
     public Slider msSlider;
     public GameObject optionMenu;
     public TMP_Dropdown qualitySelect;
+    public TMP_Dropdown AASelect;
     public Slider volSlider;
     float mouseSens, volume;
     public static float publicFOV, publicMouseSens, publicVolume;
@@ -43,9 +44,9 @@ public class SettingsMenu : MonoBehaviour
             qualitySelect.value = index;
         }
     }
-    public void setAntiAliasingQuality(int antiAliasingQuality)
+    public void SetAntiAliasing(int aaIndex)
     {
-
+        // For 0.2.1
     }
     public void Volume(float volume)
     {
