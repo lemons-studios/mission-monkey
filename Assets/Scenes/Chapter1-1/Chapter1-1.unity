@@ -261,7 +261,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh34648
+  m_Name: pb_Mesh61820
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -452,7 +452,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh33712
+  m_Name: pb_Mesh60858
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -9303,7 +9303,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh34724
+  m_Name: pb_Mesh61906
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -14526,7 +14526,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 36
+  m_RootOrder: 37
   m_LocalEulerAnglesHint: {x: 0, y: 30, z: 0}
 --- !u!328 &1186170265
 VideoPlayer:
@@ -15247,7 +15247,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh34440
+  m_Name: pb_Mesh61598
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -16146,7 +16146,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 38
+  m_RootOrder: 39
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: -90}
 --- !u!64 &1376469922
 MeshCollider:
@@ -23658,7 +23658,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 39
+  m_RootOrder: 40
   m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
 --- !u!1 &1757975901
 GameObject:
@@ -24758,7 +24758,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 37
+  m_RootOrder: 38
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -90}
 --- !u!1001 &1826975367
 PrefabInstance:
@@ -25399,6 +25399,7 @@ MonoBehaviour:
   alwaysUpdateDestination: 0
   waypoints:
   - {fileID: 7874428295488156828}
+  target: {x: 0, y: 0, z: 0}
 --- !u!195 &1870364544
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -30401,6 +30402,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0c56837259a0f5e48b6d6c015a2daac6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 7874428295488156798}
   playerGui: {fileID: 44493315}
   playerDeathScreen: {fileID: 1174446962}
 --- !u!114 &7874428295488156818
@@ -30420,7 +30422,7 @@ MonoBehaviour:
   projectile: {fileID: 1235250484}
   projectileSpeed: 300
   shotCooldown: 0.5
-  projectileDamage: 15
+  projectileDamage: 420
 --- !u!95 &7874428295488156826
 Animator:
   serializedVersion: 4
@@ -30429,9 +30431,9 @@ Animator:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7874428295488156798}
-  m_Enabled: 0
+  m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: c093c2ed016219648b9f1a00a310a7ee, type: 2}
+  m_Controller: {fileID: 9100000, guid: 07b816d5a7b7a5343806193fc8b69a2d, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
