@@ -38,7 +38,7 @@ public class PlayerMotor : MonoBehaviour
         Vector3 moveDirection = Vector3.zero;
         moveDirection.x = input.x;
         moveDirection.z = input.y;
-
+        
         if (moveDirection.x > 0 || moveDirection.z > 0) {
             viewbobbing.EnableViewBobbing();
         } else {
