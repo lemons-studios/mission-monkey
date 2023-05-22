@@ -1,6 +1,5 @@
 using System;
 using UnityEngine;
-
 public class DiscordController : MonoBehaviour
 {
     public Discord.Discord discord;

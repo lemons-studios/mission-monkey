@@ -1,10 +1,13 @@
 using UnityEngine;
+using UnityEngine.Audio;
 using System.Collections;
-public class TriggerEventDebug : Interactable
+
+public class TriggerBarsEventDebug : Interactable
 {
     private bool EventTriggered = false;
     public float minRange = 80f;
     public float maxRange = 100f;
+    public AudioSource barsEffectSource;
 
     public GameObject[] PrisonBars;
     public Rigidbody[] BarsRigidBody;
@@ -27,11 +30,14 @@ public class TriggerEventDebug : Interactable
     {
         if (EventTriggered) return;
         EventTriggered = true;
+        
+        
         for (int i = 0; i < BarsRigidBody.Length; i++)
         {
             BarsRigidBody[i].useGravity = true;
             BarsRigidBody[i].AddForce(Vector3.forward * Random.Range(minRange, maxRange));
         }
+        barsEffectSource.Play();
         DisplayDistroyTransition = true;
         Debug.Log("Event triggered!");
 
@@ -40,17 +46,4 @@ public class TriggerEventDebug : Interactable
 
 
     }
-    
-/*  IEnumerator WaitBeforeDestroy()
-    {
-        yield return new WaitForSeconds(DestroyTransitionTime);
-    }
-
-    private void fadeOut()
-    {
-        foreach (GameObject i in PrisonBars)
-        {
-            Destroy(i);
-        }
-    } */
 }
