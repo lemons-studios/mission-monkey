@@ -28,8 +28,8 @@ public class TriggerBarsEventDebug : Interactable
 
     protected override void Interact()
     {
-        if (EventTriggered) return;
-        EventTriggered = true;
+        //if (EventTriggered) return;
+        //EventTriggered = true;
         
         
         for (int i = 0; i < BarsRigidBody.Length; i++)
