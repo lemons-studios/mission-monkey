@@ -26,6 +26,7 @@ public class Glock : MonoBehaviour
             if (Physics.Raycast(ray, out hit))
             {
                 destination = hit.point;
+                Debug.Log("hit");
                 if (hit.collider.gameObject.CompareTag("Enemy"))
                 {
                     GameObject enemy = hit.collider.gameObject;
@@ -38,7 +39,7 @@ public class Glock : MonoBehaviour
                 {
                     Debug.Log("barrel");
                     GameObject barrel = hit.collider.gameObject;
-                    barrel.GetComponent<BarrelExplosion>().explodeBars();
+                    barrel.GetComponent<BarrelExplosion>().ExplodeBars();
                 }
 
             }

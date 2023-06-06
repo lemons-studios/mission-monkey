@@ -21,7 +21,7 @@ public class BarrelExplosion : MonoBehaviour
             BarsRigidBody[i] = PrisonBars[i].GetComponent<Rigidbody>();
         }
     }
-    public void explodeBars()
+    public void ExplodeBars()
     {
         //if (EventTriggered) return;
         //EventTriggered = true;
@@ -35,5 +35,6 @@ public class BarrelExplosion : MonoBehaviour
 
         // StartCoroutine(WaitBeforeDestroy());
         // fadeOut();
+        Destroy(gameObject);
     }
 }
