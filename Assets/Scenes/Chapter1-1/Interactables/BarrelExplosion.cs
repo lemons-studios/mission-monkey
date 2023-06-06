@@ -1,10 +1,9 @@
-using UnityEngine;
-using UnityEngine.Audio;
 using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
 
-public class TriggerBarsEventDebug : Interactable
+public class BarrelExplosion : MonoBehaviour
 {
-    private bool EventTriggered = false;
     public float minRange = 80f;
     public float maxRange = 100f;
     public AudioSource barsEffectSource;
@@ -12,8 +11,6 @@ public class TriggerBarsEventDebug : Interactable
     public GameObject[] PrisonBars;
     public Rigidbody[] BarsRigidBody;
     public Material TransitionMaterial;
-    private float DestroyTransitionTime = 2.5f;
-    private bool DisplayDistroyTransition = false;
 
     private void Awake()
     {
@@ -24,20 +21,17 @@ public class TriggerBarsEventDebug : Interactable
             BarsRigidBody[i] = PrisonBars[i].GetComponent<Rigidbody>();
         }
     }
-
-    protected override void Interact()
+    public void explodeBars()
     {
         //if (EventTriggered) return;
         //EventTriggered = true;
-        
-        
+
         for (int i = 0; i < BarsRigidBody.Length; i++)
         {
             BarsRigidBody[i].useGravity = true;
             BarsRigidBody[i].AddForce(Vector3.forward * Random.Range(minRange, maxRange));
         }
         barsEffectSource.Play();
-        DisplayDistroyTransition = true;
 
         // StartCoroutine(WaitBeforeDestroy());
         // fadeOut();

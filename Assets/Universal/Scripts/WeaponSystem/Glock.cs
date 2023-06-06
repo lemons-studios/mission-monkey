@@ -26,7 +26,7 @@ public class Glock : MonoBehaviour
             if (Physics.Raycast(ray, out hit))
             {
                 destination = hit.point;
-                if (hit.collider.gameObject.tag == "Enemy")
+                if (hit.collider.gameObject.CompareTag("Enemy"))
                 {
                     GameObject enemy = hit.collider.gameObject;
                     AiHealth hp = enemy.GetComponent<AiHealth>();
@@ -34,6 +34,13 @@ public class Glock : MonoBehaviour
                     hp.aiDealtDamage = true;
                     hp.DamageEnemy();
                 }
+                if (hit.collider.gameObject.CompareTag("Barrel"))
+                {
+                    Debug.Log("barrel");
+                    GameObject barrel = hit.collider.gameObject;
+                    barrel.GetComponent<BarrelExplosion>().explodeBars();
+                }
+
             }
             else
             {
