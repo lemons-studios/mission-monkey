@@ -3,7 +3,7 @@ using System.Collections;
 using UnityEngine;
 public class FieldOfView : MonoBehaviour
 {
-    [Range(0, 360)]
+    [Range(0, 130)]
     public float angle;
     public bool canSeePlayer;
     public LayerMask obstructionMask;
