@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_PixelRect:
     serializedVersion: 2
-    x: -326
-    y: 27
+    x: 8
+    y: 51
     width: 1902
     height: 979
   m_ShowMode: 4
@@ -43,11 +43,11 @@ MonoBehaviour:
     y: 0
     width: 295
     height: 929
-  m_MinSize: {x: 200, y: 200}
-  m_MaxSize: {x: 4000, y: 4000}
-  m_ActualView: {fileID: 14}
+  m_MinSize: {x: 201, y: 221}
+  m_MaxSize: {x: 4001, y: 4021}
+  m_ActualView: {fileID: 13}
   m_Panes:
-  - {fileID: 14}
+  - {fileID: 13}
   m_Selected: 0
   m_LastSelected: 0
 --- !u!114 &3
@@ -74,7 +74,7 @@ MonoBehaviour:
   m_MinSize: {x: 300, y: 200}
   m_MaxSize: {x: 24288, y: 16192}
   vertical: 0
-  controlID: 65
+  controlID: 18
 --- !u!114 &4
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -85,7 +85,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 12006, guid: 0000000000000000e000000000000000, type: 0}
-  m_Name: ProjectBrowser
+  m_Name: ConsoleWindow
   m_EditorClassIdentifier: 
   m_Children: []
   m_Position:
@@ -94,15 +94,15 @@ MonoBehaviour:
     y: 690
     width: 1607
     height: 239
-  m_MinSize: {x: 231, y: 271}
-  m_MaxSize: {x: 10001, y: 10021}
+  m_MinSize: {x: 101, y: 121}
+  m_MaxSize: {x: 4001, y: 4021}
   m_ActualView: {fileID: 18}
   m_Panes:
+  - {fileID: 17}
   - {fileID: 18}
   - {fileID: 19}
-  - {fileID: 20}
-  m_Selected: 0
-  m_LastSelected: 2
+  m_Selected: 1
+  m_LastSelected: 0
 --- !u!114 &5
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -127,7 +127,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 200}
   m_MaxSize: {x: 16192, y: 16192}
   vertical: 1
-  controlID: 66
+  controlID: 19
 --- !u!114 &6
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -149,10 +149,10 @@ MonoBehaviour:
     height: 690
   m_MinSize: {x: 276, y: 71}
   m_MaxSize: {x: 4001, y: 4021}
-  m_ActualView: {fileID: 21}
+  m_ActualView: {fileID: 20}
   m_Panes:
+  - {fileID: 20}
   - {fileID: 21}
-  - {fileID: 22}
   m_Selected: 0
   m_LastSelected: 0
 --- !u!114 &7
@@ -250,7 +250,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 100}
   m_MaxSize: {x: 16192, y: 8096}
   vertical: 0
-  controlID: 67
+  controlID: 20
 --- !u!114 &11
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -272,1936 +272,15 @@ MonoBehaviour:
     height: 690
   m_MinSize: {x: 202, y: 221}
   m_MaxSize: {x: 4002, y: 4021}
-  m_ActualView: {fileID: 15}
+  m_ActualView: {fileID: 14}
   m_Panes:
-  - {fileID: 15}
-  - {fileID: 13}
-  - {fileID: 17}
-  - {fileID: 16}
+  - {fileID: 14}
   - {fileID: 12}
+  - {fileID: 16}
+  - {fileID: 15}
   m_Selected: 0
   m_LastSelected: 3
 --- !u!114 &12
-MonoBehaviour:
-  m_ObjectHideFlags: 52
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 139222468, guid: 8dc1be91775c4bb469f6b74cef450eaa, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_MinSize: {x: 100, y: 100}
-  m_MaxSize: {x: 4000, y: 4000}
-  m_TitleContent:
-    m_Text: NuGet
-    m_Image: {fileID: 0}
-    m_Tooltip: 
-  m_Pos:
-    serializedVersion: 2
-    x: 298
-    y: 73
-    width: 1316
-    height: 682
-  m_ViewDataDictionary: {fileID: 0}
-  m_OverlayCanvas:
-    m_LastAppliedPresetName: Default
-    m_SaveData: []
-  availablePackages:
-  - Id: Newtonsoft.Json
-    Version: 13.0.3
-    Authors: James Newton-King
-    Description: Json.NET is a popular high-performance JSON framework for .NET
-    DownloadCount: 2147483647
-    DownloadUrl: https://www.nuget.org/api/v2/package/Newtonsoft.Json/13.0.3
-    icon: {fileID: 0}
-    IconUrl: https://api.nuget.org/v3-flatcontainer/newtonsoft.json/13.0.3/icon
-    LicenseUrl: https://www.nuget.org/packages/Newtonsoft.Json/13.0.3/license
-    ProjectUrl: https://www.newtonsoft.com/json
-    ReleaseNotes: 
-    RepositoryBranch: 
-    RepositoryCommit: 
-    RepositoryType: 0
-    RepositoryUrl: 
-    Summary: 
-    Title: Json.NET
-  - Id: Microsoft.Extensions.DependencyInjection
-    Version: 7.0.0
-    Authors: Microsoft
-    Description: Default implementation of dependency injection for Microsoft.Extensions.DependencyInjection.
-    DownloadCount: 2147483647
-    DownloadUrl: https://www.nuget.org/api/v2/package/Microsoft.Extensions.DependencyInjection/7.0.0
-    icon: {fileID: 0}
-    IconUrl: https://api.nuget.org/v3-flatcontainer/microsoft.extensions.dependencyinjection/7.0.0/icon
-    LicenseUrl: https://www.nuget.org/packages/Microsoft.Extensions.DependencyInjection/7.0.0/license
-    ProjectUrl: https://dot.net/
-    ReleaseNotes: https://go.microsoft.com/fwlink/?LinkID=799421
-    RepositoryBranch: 
-    RepositoryCommit: 
-    RepositoryType: 0
-    RepositoryUrl: 
-    Summary: 
-    Title: Microsoft.Extensions.DependencyInjection
-  - Id: Microsoft.Extensions.Logging
-    Version: 7.0.0
-    Authors: Microsoft
-    Description: Logging infrastructure default implementation for Microsoft.Extensions.Logging.
-    DownloadCount: 2084378027
-    DownloadUrl: https://www.nuget.org/api/v2/package/Microsoft.Extensions.Logging/7.0.0
-    icon: {fileID: 0}
-    IconUrl: https://api.nuget.org/v3-flatcontainer/microsoft.extensions.logging/7.0.0/icon
-    LicenseUrl: https://www.nuget.org/packages/Microsoft.Extensions.Logging/7.0.0/license
-    ProjectUrl: https://dot.net/
-    ReleaseNotes: https://go.microsoft.com/fwlink/?LinkID=799421
-    RepositoryBranch: 
-    RepositoryCommit: 
-    RepositoryType: 0
-    RepositoryUrl: 
-    Summary: 
-    Title: Microsoft.Extensions.Logging
-  - Id: System.Text.Json
-    Version: 7.0.2
-    Authors: Microsoft
-    Description: 'Provides high-performance and low-allocating types that serialize
-      objects to JavaScript Object Notation (JSON) text and deserialize JSON text
-      to objects, with UTF-8 support built-in. Also provides types to read and write
-      JSON text encoded as UTF-8, and to create an in-memory document object model
-      (DOM), that is read-only, for random access of the JSON elements within a structured
-      view of the data.
-
-
-      The System.Text.Json library is built-in as part
-      of the shared framework in .NET Runtime. The package can be installed when
-      you need to use it in other target frameworks.'
-    DownloadCount: 1138098121
-    DownloadUrl: https://www.nuget.org/api/v2/package/System.Text.Json/7.0.2
-    icon: {fileID: 0}
-    IconUrl: https://api.nuget.org/v3-flatcontainer/system.text.json/7.0.2/icon
-    LicenseUrl: https://www.nuget.org/packages/System.Text.Json/7.0.2/license
-    ProjectUrl: https://dot.net/
-    ReleaseNotes: https://go.microsoft.com/fwlink/?LinkID=799421
-    RepositoryBranch: 
-    RepositoryCommit: 
-    RepositoryType: 0
-    RepositoryUrl: 
-    Summary: 
-    Title: System.Text.Json
-  - Id: Microsoft.Bcl.AsyncInterfaces
-    Version: 7.0.0
-    Authors: Microsoft
-    Description: 'Provides the IAsyncEnumerable<T> and IAsyncDisposable interfaces
-      and helper types for .NET Standard 2.0. This package is not required starting
-      with .NET Standard 2.1 and .NET Core 3.0.
-
-
-      Commonly Used Types:
-
-      System.IAsyncDisposable
-
-      System.Collections.Generic.IAsyncEnumerable
-
-      System.Collections.Generic.IAsyncEnumerator'
-    DownloadCount: 942801399
-    DownloadUrl: https://www.nuget.org/api/v2/package/Microsoft.Bcl.AsyncInterfaces/7.0.0
-    icon: {fileID: 0}
-    IconUrl: https://api.nuget.org/v3-flatcontainer/microsoft.bcl.asyncinterfaces/7.0.0/icon
-    LicenseUrl: https://www.nuget.org/packages/Microsoft.Bcl.AsyncInterfaces/7.0.0/license
-    ProjectUrl: https://dot.net/
-    ReleaseNotes: https://go.microsoft.com/fwlink/?LinkID=799421
-    RepositoryBranch: 
-    RepositoryCommit: 
-    RepositoryType: 0
-    RepositoryUrl: 
-    Summary: 
-    Title: Microsoft.Bcl.AsyncInterfaces
-  - Id: System.Drawing.Common
-    Version: 7.0.0
-    Authors: Microsoft
-    Description: 'Provides access to GDI+ graphics functionality.
-
-
-      Commonly
-      Used Types:
-
-      System.Drawing.Bitmap
-
-      System.Drawing.BitmapData
-
-      System.Drawing.Brush
-
-      System.Drawing.Font
-
-      System.Drawing.Graphics
-
-      System.Drawing.Icon
-
-
-      Since
-      .NET 7, non-Windows platforms are not supported, even with the runtime configuration
-      switch. See https://aka.ms/systemdrawingnonwindows for more information.'
-    DownloadCount: 821056903
-    DownloadUrl: https://www.nuget.org/api/v2/package/System.Drawing.Common/7.0.0
-    icon: {fileID: 0}
-    IconUrl: https://api.nuget.org/v3-flatcontainer/system.drawing.common/7.0.0/icon
-    LicenseUrl: https://www.nuget.org/packages/System.Drawing.Common/7.0.0/license
-    ProjectUrl: https://dot.net/
-    ReleaseNotes: https://go.microsoft.com/fwlink/?LinkID=799421
-    RepositoryBranch: 
-    RepositoryCommit: 
-    RepositoryType: 0
-    RepositoryUrl: 
-    Summary: 
-    Title: System.Drawing.Common
-  - Id: Serilog
-    Version: 2.12.0
-    Authors: Serilog Contributors
-    Description: Simple .NET logging with fully-structured events
-    DownloadCount: 781783856
-    DownloadUrl: https://www.nuget.org/api/v2/package/Serilog/2.12.0
-    icon: {fileID: 0}
-    IconUrl: https://api.nuget.org/v3-flatcontainer/serilog/2.12.0/icon
-    LicenseUrl: https://www.nuget.org/packages/Serilog/2.12.0/license
-    ProjectUrl: https://serilog.net/
-    ReleaseNotes: 
-    RepositoryBranch: 
-    RepositoryCommit: 
-    RepositoryType: 0
-    RepositoryUrl: 
-    Summary: 
-    Title: Serilog
-  - Id: Microsoft.Win32.SystemEvents
-    Version: 7.0.0
-    Authors: Microsoft
-    Description: 'Provides access to Windows system event notifications.
-
-
-      Commonly
-      Used Types:
-
-      Microsoft.Win32.SystemEvents'
-    DownloadCount: 761237209
-    DownloadUrl: https://www.nuget.org/api/v2/package/Microsoft.Win32.SystemEvents/7.0.0
-    icon: {fileID: 0}
-    IconUrl: https://api.nuget.org/v3-flatcontainer/microsoft.win32.systemevents/7.0.0/icon
-    LicenseUrl: https://www.nuget.org/packages/Microsoft.Win32.SystemEvents/7.0.0/license
-    ProjectUrl: https://dot.net/
-    ReleaseNotes: https://go.microsoft.com/fwlink/?LinkID=799421
-    RepositoryBranch: 
-    RepositoryCommit: 
-    RepositoryType: 0
-    RepositoryUrl: 
-    Summary: 
-    Title: Microsoft.Win32.SystemEvents
-  - Id: Microsoft.EntityFrameworkCore
-    Version: 7.0.5
-    Authors: Microsoft
-    Description: 'Entity Framework Core is a modern object-database mapper for .NET.
-      It supports LINQ queries, change tracking, updates, and schema migrations.
-      EF Core works with SQL Server, Azure SQL Database, SQLite, Azure Cosmos DB,
-      MySQL, PostgreSQL, and other databases through a provider plugin API.
-
-
-      Commonly
-      Used Types:
-
-      Microsoft.EntityFrameworkCore.DbContext
-
-      Microsoft.EntityFrameworkCore.DbSet'
-    DownloadCount: 714982272
-    DownloadUrl: https://www.nuget.org/api/v2/package/Microsoft.EntityFrameworkCore/7.0.5
-    icon: {fileID: 0}
-    IconUrl: https://api.nuget.org/v3-flatcontainer/microsoft.entityframeworkcore/7.0.5/icon
-    LicenseUrl: https://www.nuget.org/packages/Microsoft.EntityFrameworkCore/7.0.5/license
-    ProjectUrl: https://docs.microsoft.com/ef/core/
-    ReleaseNotes: 
-    RepositoryBranch: 
-    RepositoryCommit: 
-    RepositoryType: 0
-    RepositoryUrl: 
-    Summary: 
-    Title: Microsoft.EntityFrameworkCore
-  - Id: System.Windows.Extensions
-    Version: 7.0.0
-    Authors: Microsoft
-    Description: 'Provides miscellaneous Windows-specific types
-
-
-      Commonly
-      Used Types:
-
-      System.Security.Cryptography.X509Certificates.X509Certificate2UI
-
-      System.Security.Cryptography.X509Certificates.X509SelectionFlag'
-    DownloadCount: 615652358
-    DownloadUrl: https://www.nuget.org/api/v2/package/System.Windows.Extensions/7.0.0
-    icon: {fileID: 0}
-    IconUrl: https://api.nuget.org/v3-flatcontainer/system.windows.extensions/7.0.0/icon
-    LicenseUrl: https://www.nuget.org/packages/System.Windows.Extensions/7.0.0/license
-    ProjectUrl: https://dot.net/
-    ReleaseNotes: https://go.microsoft.com/fwlink/?LinkID=799421
-    RepositoryBranch: 
-    RepositoryCommit: 
-    RepositoryType: 0
-    RepositoryUrl: 
-    Summary: 
-    Title: System.Windows.Extensions
-  - Id: Castle.Core
-    Version: 5.1.1
-    Authors: Castle Project Contributors
-    Description: Castle Core, including DynamicProxy, Logging Abstractions and DictionaryAdapter
-    DownloadCount: 592306584
-    DownloadUrl: https://www.nuget.org/api/v2/package/Castle.Core/5.1.1
-    icon: {fileID: 0}
-    IconUrl: https://api.nuget.org/v3-flatcontainer/castle.core/5.1.1/icon
-    LicenseUrl: https://www.nuget.org/packages/Castle.Core/5.1.1/license
-    ProjectUrl: http://www.castleproject.org/
-    ReleaseNotes: 
-    RepositoryBranch: 
-    RepositoryCommit: 
-    RepositoryType: 0
-    RepositoryUrl: 
-    Summary: 
-    Title: Castle.Core
-  - Id: Azure.Core
-    Version: 1.32.0
-    Authors: Microsoft
-    Description: This is the implementation of the Azure Client Pipeline
-    DownloadCount: 571463214
-    DownloadUrl: https://www.nuget.org/api/v2/package/Azure.Core/1.32.0
-    icon: {fileID: 0}
-    IconUrl: https://api.nuget.org/v3-flatcontainer/azure.core/1.32.0/icon
-    LicenseUrl: https://www.nuget.org/packages/Azure.Core/1.32.0/license
-    ProjectUrl: https://github.com/Azure/azure-sdk-for-net/blob/Azure.Core_1.32.0/sdk/core/Azure.Core/README.md
-    ReleaseNotes: https://github.com/Azure/azure-sdk-for-net/blob/Azure.Core_1.32.0/sdk/core/Azure.Core/CHANGELOG.md
-    RepositoryBranch: 
-    RepositoryCommit: 
-    RepositoryType: 0
-    RepositoryUrl: 
-    Summary: 
-    Title: Azure.Core
-  - Id: Microsoft.Identity.Client
-    Version: 4.54.1
-    Authors: Microsoft
-    Description: "This package contains the binaries of the Microsoft Authentication
-      Library for .NET (MSAL.NET).\n      MSAL.NET makes it easy to obtain tokens
-      from the Microsoft identity platform for developers (formally Azure AD v2.0)
-      signing-in users with work & school accounts, Microsoft personal accounts,
-      and social identities via Azure AD B2C. These tokens provide access to Microsoft
-      Cloud API and any other API secured by the Microsoft identity platform. This
-      version supports adding authentication functionality to your .NET based clients
-      - .NET, .NET Framework, .NET MAUI, Xamarin iOS, Xamarin Android and UWP"
-    DownloadCount: 556972086
-    DownloadUrl: https://www.nuget.org/api/v2/package/Microsoft.Identity.Client/4.54.1
-    icon: {fileID: 0}
-    IconUrl: 
-    LicenseUrl: https://www.nuget.org/packages/Microsoft.Identity.Client/4.54.1/license
-    ProjectUrl: https://go.microsoft.com/fwlink/?linkid=844761
-    ReleaseNotes: The release notes are available at https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/releases
-      and the roadmap at https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki#roadmap.
-      To provide feedback, fill-in the survey at https://ncv.microsoft.com/JrXkdySi0m.
-    RepositoryBranch: 
-    RepositoryCommit: 
-    RepositoryType: 0
-    RepositoryUrl: 
-    Summary: 
-    Title: Microsoft Authentication Library for .NET
-  - Id: AWSSDK.Core
-    Version: 3.7.107.2
-    Authors: Amazon Web Services
-    Description: The Amazon Web Services SDK for .NET - Core Runtime
-    DownloadCount: 500506370
-    DownloadUrl: https://www.nuget.org/api/v2/package/AWSSDK.Core/3.7.107.2
-    icon: {fileID: 0}
-    IconUrl: https://api.nuget.org/v3-flatcontainer/awssdk.core/3.7.107.2/icon
-    LicenseUrl: http://aws.amazon.com/apache2.0/
-    ProjectUrl: https://github.com/aws/aws-sdk-net/
-    ReleaseNotes: 
-    RepositoryBranch: 
-    RepositoryCommit: 
-    RepositoryType: 0
-    RepositoryUrl: 
-    Summary: 
-    Title: AWSSDK - Core Runtime
-  - Id: Microsoft.Extensions.Http
-    Version: 7.0.0
-    Authors: Microsoft
-    Description: 'The HttpClient factory is a pattern for configuring and retrieving
-      named HttpClients in a composable way. The HttpClient factory provides extensibility
-      to plug in DelegatingHandlers that address cross-cutting concerns such as service
-      location, load balancing, and reliability. The default HttpClient factory provides
-      built-in diagnostics and logging and manages the lifetimes of connections in
-      a performant way.
-
-
-      Commonly Used Types:
-
-      System.Net.Http.IHttpClientFactory'
-    DownloadCount: 485551377
-    DownloadUrl: https://www.nuget.org/api/v2/package/Microsoft.Extensions.Http/7.0.0
-    icon: {fileID: 0}
-    IconUrl: https://api.nuget.org/v3-flatcontainer/microsoft.extensions.http/7.0.0/icon
-    LicenseUrl: https://www.nuget.org/packages/Microsoft.Extensions.Http/7.0.0/license
-    ProjectUrl: https://dot.net/
-    ReleaseNotes: https://go.microsoft.com/fwlink/?LinkID=799421
-    RepositoryBranch: 
-    RepositoryCommit: 
-    RepositoryType: 0
-    RepositoryUrl: 
-    Summary: 
-    Title: Microsoft.Extensions.Http
-  - Id: Newtonsoft.Json.Bson
-    Version: 1.0.2
-    Authors: James Newton-King
-    Description: Json.NET BSON adds support for reading and writing BSON
-    DownloadCount: 468669014
-    DownloadUrl: https://www.nuget.org/api/v2/package/Newtonsoft.Json.Bson/1.0.2
-    icon: {fileID: 0}
-    IconUrl: https://api.nuget.org/v3-flatcontainer/newtonsoft.json.bson/1.0.2/icon
-    LicenseUrl: https://www.nuget.org/packages/Newtonsoft.Json.Bson/1.0.2/license
-    ProjectUrl: http://www.newtonsoft.com/json
-    ReleaseNotes: 
-    RepositoryBranch: 
-    RepositoryCommit: 
-    RepositoryType: 0
-    RepositoryUrl: 
-    Summary: 
-    Title: Newtonsoft.Json.Bson
-  - Id: System.Security.Cryptography.Pkcs
-    Version: 7.0.1
-    Authors: Microsoft
-    Description: 'Provides support for PKCS and CMS algorithms.
-
-
-      Commonly
-      Used Types:
-
-      System.Security.Cryptography.Pkcs.EnvelopedCms'
-    DownloadCount: 460931248
-    DownloadUrl: https://www.nuget.org/api/v2/package/System.Security.Cryptography.Pkcs/7.0.1
-    icon: {fileID: 0}
-    IconUrl: https://api.nuget.org/v3-flatcontainer/system.security.cryptography.pkcs/7.0.1/icon
-    LicenseUrl: https://www.nuget.org/packages/System.Security.Cryptography.Pkcs/7.0.1/license
-    ProjectUrl: https://dot.net/
-    ReleaseNotes: https://go.microsoft.com/fwlink/?LinkID=799421
-    RepositoryBranch: 
-    RepositoryCommit: 
-    RepositoryType: 0
-    RepositoryUrl: 
-    Summary: 
-    Title: System.Security.Cryptography.Pkcs
-  - Id: Moq
-    Version: 4.18.4
-    Authors: Daniel Cazzulino, kzu
-    Description: 'Moq is the most popular and friendly mocking framework for .NET.
-
-
-      Built
-      from https://github.com/moq/moq4/tree/042a2ebbe'
-    DownloadCount: 444759568
-    DownloadUrl: https://www.nuget.org/api/v2/package/Moq/4.18.4
-    icon: {fileID: 0}
-    IconUrl: https://api.nuget.org/v3-flatcontainer/moq/4.18.4/icon
-    LicenseUrl: https://raw.githubusercontent.com/moq/moq4/main/License.txt
-    ProjectUrl: https://github.com/moq/moq4
-    ReleaseNotes: A changelog is available at https://github.com/moq/moq4/blob/main/CHANGELOG.md.
-    RepositoryBranch: 
-    RepositoryCommit: 
-    RepositoryType: 0
-    RepositoryUrl: 
-    Summary: 
-    Title: 'Moq: an enjoyable mocking library'
-  - Id: AutoMapper
-    Version: 12.0.1
-    Authors: Jimmy Bogard
-    Description: A convention-based object-object mapper.
-    DownloadCount: 429779027
-    DownloadUrl: https://www.nuget.org/api/v2/package/AutoMapper/12.0.1
-    icon: {fileID: 0}
-    IconUrl: https://api.nuget.org/v3-flatcontainer/automapper/12.0.1/icon
-    LicenseUrl: https://www.nuget.org/packages/AutoMapper/12.0.1/license
-    ProjectUrl: https://automapper.org/
-    ReleaseNotes: 
-    RepositoryBranch: 
-    RepositoryCommit: 
-    RepositoryType: 0
-    RepositoryUrl: 
-    Summary: 
-    Title: AutoMapper
-  - Id: Swashbuckle.AspNetCore.Swagger
-    Version: 6.5.0
-    Authors: Swashbuckle.AspNetCore.Swagger
-    Description: Middleware to expose Swagger JSON endpoints from APIs built on ASP.NET
-      Core
-    DownloadCount: 422142278
-    DownloadUrl: https://www.nuget.org/api/v2/package/Swashbuckle.AspNetCore.Swagger/6.5.0
-    icon: {fileID: 0}
-    IconUrl: 
-    LicenseUrl: https://www.nuget.org/packages/Swashbuckle.AspNetCore.Swagger/6.5.0/license
-    ProjectUrl: https://github.com/domaindrivendev/Swashbuckle.AspNetCore
-    ReleaseNotes: 
-    RepositoryBranch: 
-    RepositoryCommit: 
-    RepositoryType: 0
-    RepositoryUrl: 
-    Summary: 
-    Title: Swashbuckle.AspNetCore.Swagger
-  - Id: Swashbuckle.AspNetCore.SwaggerGen
-    Version: 6.5.0
-    Authors: Swashbuckle.AspNetCore.SwaggerGen
-    Description: Swagger Generator for APIs built on ASP.NET Core
-    DownloadCount: 420449487
-    DownloadUrl: https://www.nuget.org/api/v2/package/Swashbuckle.AspNetCore.SwaggerGen/6.5.0
-    icon: {fileID: 0}
-    IconUrl: 
-    LicenseUrl: https://www.nuget.org/packages/Swashbuckle.AspNetCore.SwaggerGen/6.5.0/license
-    ProjectUrl: https://github.com/domaindrivendev/Swashbuckle.AspNetCore
-    ReleaseNotes: 
-    RepositoryBranch: 
-    RepositoryCommit: 
-    RepositoryType: 0
-    RepositoryUrl: 
-    Summary: 
-    Title: Swashbuckle.AspNetCore.SwaggerGen
-  - Id: System.Diagnostics.PerformanceCounter
-    Version: 7.0.0
-    Authors: Microsoft
-    Description: 'Provides the System.Diagnostics.PerformanceCounter class, which
-      allows access to Windows performance counters.
-
-
-      Commonly Used Types:
-
-      System.Diagnostics.PerformanceCounter'
-    DownloadCount: 407361451
-    DownloadUrl: https://www.nuget.org/api/v2/package/System.Diagnostics.PerformanceCounter/7.0.0
-    icon: {fileID: 0}
-    IconUrl: https://api.nuget.org/v3-flatcontainer/system.diagnostics.performancecounter/7.0.0/icon
-    LicenseUrl: https://www.nuget.org/packages/System.Diagnostics.PerformanceCounter/7.0.0/license
-    ProjectUrl: https://dot.net/
-    ReleaseNotes: https://go.microsoft.com/fwlink/?LinkID=799421
-    RepositoryBranch: 
-    RepositoryCommit: 
-    RepositoryType: 0
-    RepositoryUrl: 
-    Summary: 
-    Title: System.Diagnostics.PerformanceCounter
-  - Id: Microsoft.ApplicationInsights
-    Version: 2.21.0
-    Authors: Microsoft
-    Description: 'Application Insights Base API. This package provides core functionality
-      for transmission of all Application Insights Telemetry Types and is a dependent
-      package for all other Application Insights packages. Please install the platform
-      specific package for the best experience. Privacy statement: https://go.microsoft.com/fwlink/?LinkId=512156'
-    DownloadCount: 403464250
-    DownloadUrl: https://www.nuget.org/api/v2/package/Microsoft.ApplicationInsights/2.21.0
-    icon: {fileID: 0}
-    IconUrl: https://api.nuget.org/v3-flatcontainer/microsoft.applicationinsights/2.21.0/icon
-    LicenseUrl: https://www.nuget.org/packages/Microsoft.ApplicationInsights/2.21.0/license
-    ProjectUrl: https://go.microsoft.com/fwlink/?LinkId=392727
-    ReleaseNotes: "You should not use this nuget package for Win Phone, WinStore
-      and UWP applications. It is not supported starting 2.0.0.\n      For the release
-      notes please follow http://go.microsoft.com/fwlink/?LinkId=535037"
-    RepositoryBranch: 
-    RepositoryCommit: 
-    RepositoryType: 0
-    RepositoryUrl: 
-    Summary: 
-    Title: Application Insights API
-  - Id: System.Runtime.Caching
-    Version: 7.0.0
-    Authors: Microsoft
-    Description: 'Provides classes to use caching facilities.
-
-
-      Commonly Used
-      Types:
-
-      System.Runtime.Caching.CacheEntryChangeMonitor
-
-      System.Runtime.Caching.CacheEntryRemovedArguments
-
-      System.Runtime.Caching.CacheEntryUpdateArguments
-
-      System.Runtime.Caching.CacheItem
-
-      System.Runtime.Caching.CacheItemPolicy
-
-      System.Runtime.Caching.ChangeMonitor
-
-      System.Runtime.Caching.FileChangeMonitor
-
-      System.Runtime.Caching.HostFileChangeMonitor
-
-      System.Runtime.Caching.MemoryCache
-
-      System.Runtime.Caching.ObjectCache'
-    DownloadCount: 369763676
-    DownloadUrl: https://www.nuget.org/api/v2/package/System.Runtime.Caching/7.0.0
-    icon: {fileID: 0}
-    IconUrl: https://api.nuget.org/v3-flatcontainer/system.runtime.caching/7.0.0/icon
-    LicenseUrl: https://www.nuget.org/packages/System.Runtime.Caching/7.0.0/license
-    ProjectUrl: https://dot.net/
-    ReleaseNotes: https://go.microsoft.com/fwlink/?LinkID=799421
-    RepositoryBranch: 
-    RepositoryCommit: 
-    RepositoryType: 0
-    RepositoryUrl: 
-    Summary: 
-    Title: System.Runtime.Caching
-  - Id: Swashbuckle.AspNetCore.SwaggerUI
-    Version: 6.5.0
-    Authors: Swashbuckle.AspNetCore.SwaggerUI
-    Description: Middleware to expose an embedded version of the swagger-ui from
-      an ASP.NET Core application
-    DownloadCount: 369445951
-    DownloadUrl: https://www.nuget.org/api/v2/package/Swashbuckle.AspNetCore.SwaggerUI/6.5.0
-    icon: {fileID: 0}
-    IconUrl: 
-    LicenseUrl: https://www.nuget.org/packages/Swashbuckle.AspNetCore.SwaggerUI/6.5.0/license
-    ProjectUrl: https://github.com/domaindrivendev/Swashbuckle.AspNetCore
-    ReleaseNotes: 
-    RepositoryBranch: 
-    RepositoryCommit: 
-    RepositoryType: 0
-    RepositoryUrl: 
-    Summary: 
-    Title: Swashbuckle.AspNetCore.SwaggerUI
-  - Id: Polly
-    Version: 7.2.3
-    Authors: Michael Wolfenden, App vNext
-    Description: Polly is a library that allows developers to express resilience
-      and transient fault handling policies such as Retry, Circuit Breaker, Timeout,
-      Bulkhead Isolation, and Fallback in a fluent and thread-safe manner.
-    DownloadCount: 366667931
-    DownloadUrl: https://www.nuget.org/api/v2/package/Polly/7.2.3
-    icon: {fileID: 0}
-    IconUrl: https://api.nuget.org/v3-flatcontainer/polly/7.2.3/icon
-    LicenseUrl: https://www.nuget.org/packages/Polly/7.2.3/license
-    ProjectUrl: https://github.com/App-vNext/Polly
-    ReleaseNotes: See https://github.com/App-vNext/Polly/blob/master/CHANGELOG.md
-      for details
-    RepositoryBranch: 
-    RepositoryCommit: 
-    RepositoryType: 0
-    RepositoryUrl: 
-    Summary: 
-    Title: Polly
-  - Id: Azure.Storage.Blobs
-    Version: 12.16.0
-    Authors: Microsoft
-    Description: "This client library enables working with the Microsoft Azure Storage
-      Blob service for storing binary and text data.\n      For this release see
-      notes - https://github.com/Azure/azure-sdk-for-net/blob/main/sdk/storage/Azure.Storage.Blobs/README.md
-      and https://github.com/Azure/azure-sdk-for-net/blob/main/sdk/storage/Azure.Storage.Blobs/CHANGELOG.md\n     
-      in addition to the breaking changes https://github.com/Azure/azure-sdk-for-net/blob/main/sdk/storage/Azure.Storage.Blobs/BreakingChanges.txt\n     
-      Microsoft Azure Storage quickstarts and tutorials - https://docs.microsoft.com/en-us/azure/storage/\n     
-      Microsoft Azure Storage REST API Reference - https://docs.microsoft.com/en-us/rest/api/storageservices/\n     
-      REST API Reference for Blob Service - https://docs.microsoft.com/en-us/rest/api/storageservices/blob-service-rest-api"
-    DownloadCount: 131163552
-    DownloadUrl: https://www.nuget.org/api/v2/package/Azure.Storage.Blobs/12.16.0
-    icon: {fileID: 0}
-    IconUrl: https://api.nuget.org/v3-flatcontainer/azure.storage.blobs/12.16.0/icon
-    LicenseUrl: https://www.nuget.org/packages/Azure.Storage.Blobs/12.16.0/license
-    ProjectUrl: https://github.com/Azure/azure-sdk-for-net/blob/Azure.Storage.Blobs_12.16.0/sdk/storage/Azure.Storage.Blobs/README.md
-    ReleaseNotes: https://github.com/Azure/azure-sdk-for-net/blob/Azure.Storage.Blobs_12.16.0/sdk/storage/Azure.Storage.Blobs/CHANGELOG.md
-    RepositoryBranch: 
-    RepositoryCommit: 
-    RepositoryType: 0
-    RepositoryUrl: 
-    Summary: 
-    Title: Azure.Storage.Blobs
-  - Id: Serilog.Sinks.File
-    Version: 5.0.0
-    Authors: Serilog Contributors
-    Description: Write Serilog events to text files in plain or JSON format.
-    DownloadCount: 353525972
-    DownloadUrl: https://www.nuget.org/api/v2/package/Serilog.Sinks.File/5.0.0
-    icon: {fileID: 0}
-    IconUrl: https://api.nuget.org/v3-flatcontainer/serilog.sinks.file/5.0.0/icon
-    LicenseUrl: https://www.nuget.org/packages/Serilog.Sinks.File/5.0.0/license
-    ProjectUrl: https://serilog.net/
-    ReleaseNotes: 
-    RepositoryBranch: 
-    RepositoryCommit: 
-    RepositoryType: 0
-    RepositoryUrl: 
-    Summary: 
-    Title: Serilog.Sinks.File
-  - Id: Microsoft.Extensions.Hosting
-    Version: 7.0.1
-    Authors: Microsoft
-    Description: Hosting and startup infrastructures for applications.
-    DownloadCount: 345259256
-    DownloadUrl: https://www.nuget.org/api/v2/package/Microsoft.Extensions.Hosting/7.0.1
-    icon: {fileID: 0}
-    IconUrl: https://api.nuget.org/v3-flatcontainer/microsoft.extensions.hosting/7.0.1/icon
-    LicenseUrl: https://www.nuget.org/packages/Microsoft.Extensions.Hosting/7.0.1/license
-    ProjectUrl: https://dot.net/
-    ReleaseNotes: https://go.microsoft.com/fwlink/?LinkID=799421
-    RepositoryBranch: 
-    RepositoryCommit: 
-    RepositoryType: 0
-    RepositoryUrl: 
-    Summary: 
-    Title: Microsoft.Extensions.Hosting
-  - Id: Microsoft.Data.SqlClient
-    Version: 5.1.1
-    Authors: Microsoft
-    Description: "Provides the data provider for SQL Server. These classes provide
-      access to versions of SQL Server and encapsulate database-specific protocols,
-      including tabular data stream (TDS)\n    \nCommonly Used Types:\nMicrosoft.Data.SqlClient.SqlConnection\nMicrosoft.Data.SqlClient.SqlException\nMicrosoft.Data.SqlClient.SqlParameter\nMicrosoft.Data.SqlClient.SqlDataReader\nMicrosoft.Data.SqlClient.SqlCommand\nMicrosoft.Data.SqlClient.SqlTransaction\nMicrosoft.Data.SqlClient.SqlParameterCollection\nMicrosoft.Data.SqlClient.SqlClientFactory\n\nWhen
-      using NuGet 3.x this package requires at least version 3.4."
-    DownloadCount: 338606932
-    DownloadUrl: https://www.nuget.org/api/v2/package/Microsoft.Data.SqlClient/5.1.1
-    icon: {fileID: 0}
-    IconUrl: https://api.nuget.org/v3-flatcontainer/microsoft.data.sqlclient/5.1.1/icon
-    LicenseUrl: https://www.nuget.org/packages/Microsoft.Data.SqlClient/5.1.1/license
-    ProjectUrl: https://aka.ms/sqlclientproject
-    ReleaseNotes: https://go.microsoft.com/fwlink/?linkid=2090501
-    RepositoryBranch: 
-    RepositoryCommit: 
-    RepositoryType: 0
-    RepositoryUrl: 
-    Summary: 
-    Title: Microsoft.Data.SqlClient
-  - Id: Swashbuckle.AspNetCore
-    Version: 6.5.0
-    Authors: Swashbuckle.AspNetCore
-    Description: Swagger tools for documenting APIs built on ASP.NET Core
-    DownloadCount: 337081725
-    DownloadUrl: https://www.nuget.org/api/v2/package/Swashbuckle.AspNetCore/6.5.0
-    icon: {fileID: 0}
-    IconUrl: 
-    LicenseUrl: https://www.nuget.org/packages/Swashbuckle.AspNetCore/6.5.0/license
-    ProjectUrl: https://github.com/domaindrivendev/Swashbuckle.AspNetCore
-    ReleaseNotes: 
-    RepositoryBranch: 
-    RepositoryCommit: 
-    RepositoryType: 0
-    RepositoryUrl: 
-    Summary: 
-    Title: Swashbuckle.AspNetCore
-  - Id: System.Threading.Channels
-    Version: 7.0.0
-    Authors: Microsoft
-    Description: 'Provides types for passing data between producers and consumers.
-
-
-      Commonly
-      Used Types:
-
-      System.Threading.Channel
-
-      System.Threading.Channel<T>'
-    DownloadCount: 333181814
-    DownloadUrl: https://www.nuget.org/api/v2/package/System.Threading.Channels/7.0.0
-    icon: {fileID: 0}
-    IconUrl: https://api.nuget.org/v3-flatcontainer/system.threading.channels/7.0.0/icon
-    LicenseUrl: https://www.nuget.org/packages/System.Threading.Channels/7.0.0/license
-    ProjectUrl: https://dot.net/
-    ReleaseNotes: https://go.microsoft.com/fwlink/?LinkID=799421
-    RepositoryBranch: 
-    RepositoryCommit: 
-    RepositoryType: 0
-    RepositoryUrl: 
-    Summary: 
-    Title: System.Threading.Channels
-  - Id: System.Diagnostics.EventLog
-    Version: 7.0.0
-    Authors: Microsoft
-    Description: 'Provides the System.Diagnostics.EventLog class, which allows the
-      applications to use the windows event log service.
-
-
-      Commonly Used Types:
-
-      System.Diagnostics.EventLog'
-    DownloadCount: 332461858
-    DownloadUrl: https://www.nuget.org/api/v2/package/System.Diagnostics.EventLog/7.0.0
-    icon: {fileID: 0}
-    IconUrl: https://api.nuget.org/v3-flatcontainer/system.diagnostics.eventlog/7.0.0/icon
-    LicenseUrl: https://www.nuget.org/packages/System.Diagnostics.EventLog/7.0.0/license
-    ProjectUrl: https://dot.net/
-    ReleaseNotes: https://go.microsoft.com/fwlink/?LinkID=799421
-    RepositoryBranch: 
-    RepositoryCommit: 
-    RepositoryType: 0
-    RepositoryUrl: 
-    Summary: 
-    Title: System.Diagnostics.EventLog
-  - Id: Microsoft.IdentityModel.Clients.ActiveDirectory
-    Version: 5.3.0
-    Authors: Microsoft
-    Description: "There is a newer version of this library available here: https://www.nuget.org/packages/Microsoft.Identity.Client/\n     
-      Migration guide: https://docs.microsoft.com/en-us/azure/active-directory/develop/msal-net-migration\n     
-      ADAL no longer receives new feature improvements."
-    DownloadCount: 326713789
-    DownloadUrl: https://www.nuget.org/api/v2/package/Microsoft.IdentityModel.Clients.ActiveDirectory/5.3.0
-    icon: {fileID: 0}
-    IconUrl: 
-    LicenseUrl: https://go.microsoft.com/fwlink/?linkid=841311
-    ProjectUrl: https://aka.ms/adalnet
-    ReleaseNotes: 
-    RepositoryBranch: 
-    RepositoryCommit: 
-    RepositoryType: 0
-    RepositoryUrl: 
-    Summary: 
-    Title: Active Directory Authentication Library
-  - Id: Microsoft.OpenApi
-    Version: 1.6.4
-    Authors: Microsoft
-    Description: .NET models with JSON and YAML writers for OpenAPI specification
-    DownloadCount: 325626327
-    DownloadUrl: https://www.nuget.org/api/v2/package/Microsoft.OpenApi/1.6.4
-    icon: {fileID: 0}
-    IconUrl: https://api.nuget.org/v3-flatcontainer/microsoft.openapi/1.6.4/icon
-    LicenseUrl: https://www.nuget.org/packages/Microsoft.OpenApi/1.6.4/license
-    ProjectUrl: https://github.com/Microsoft/OpenAPI.NET
-    ReleaseNotes: https://github.com/microsoft/OpenAPI.NET/releases
-    RepositoryBranch: 
-    RepositoryCommit: 
-    RepositoryType: 0
-    RepositoryUrl: 
-    Summary: 
-    Title: Microsoft.OpenApi
-  - Id: xunit
-    Version: 2.4.2
-    Authors: jnewkirk, bradwilson
-    Description: 'xUnit.net is a developer testing framework, built to support Test
-      Driven Development, with a design goal of extreme simplicity and alignment
-      with framework features.
-
-
-      Installing this package installs xunit.core,
-      xunit.assert, and xunit.analyzers.'
-    DownloadCount: 325038190
-    DownloadUrl: https://www.nuget.org/api/v2/package/xunit/2.4.2
-    icon: {fileID: 0}
-    IconUrl: https://api.nuget.org/v3-flatcontainer/xunit/2.4.2/icon
-    LicenseUrl: https://www.nuget.org/packages/xunit/2.4.2/license
-    ProjectUrl: 
-    ReleaseNotes: 
-    RepositoryBranch: 
-    RepositoryCommit: 
-    RepositoryType: 0
-    RepositoryUrl: 
-    Summary: 
-    Title: xUnit.net
-  - Id: Serilog.Sinks.Console
-    Version: 4.1.0
-    Authors: Serilog Contributors
-    Description: A Serilog sink that writes log events to the console/terminal.
-    DownloadCount: 312832896
-    DownloadUrl: https://www.nuget.org/api/v2/package/Serilog.Sinks.Console/4.1.0
-    icon: {fileID: 0}
-    IconUrl: https://api.nuget.org/v3-flatcontainer/serilog.sinks.console/4.1.0/icon
-    LicenseUrl: https://www.nuget.org/packages/Serilog.Sinks.Console/4.1.0/license
-    ProjectUrl: https://github.com/serilog/serilog-sinks-console
-    ReleaseNotes: 
-    RepositoryBranch: 
-    RepositoryCommit: 
-    RepositoryType: 0
-    RepositoryUrl: 
-    Summary: 
-    Title: Serilog.Sinks.Console
-  - Id: Serilog.Extensions.Logging
-    Version: 7.0.0
-    Authors: Microsoft,Serilog Contributors
-    Description: Low-level Serilog provider for Microsoft.Extensions.Logging
-    DownloadCount: 303046095
-    DownloadUrl: https://www.nuget.org/api/v2/package/Serilog.Extensions.Logging/7.0.0
-    icon: {fileID: 0}
-    IconUrl: https://api.nuget.org/v3-flatcontainer/serilog.extensions.logging/7.0.0/icon
-    LicenseUrl: https://www.nuget.org/packages/Serilog.Extensions.Logging/7.0.0/license
-    ProjectUrl: https://github.com/serilog/serilog-extensions-logging
-    ReleaseNotes: 
-    RepositoryBranch: 
-    RepositoryCommit: 
-    RepositoryType: 0
-    RepositoryUrl: 
-    Summary: 
-    Title: Serilog.Extensions.Logging
-  - Id: Microsoft.Extensions.ApiDescription.Server
-    Version: 7.0.5
-    Authors: Microsoft
-    Description: 'MSBuild tasks and targets for build-time Swagger and OpenApi document
-      generation
-
-
-      This package was built from the source code at https://github.com/dotnet/aspnetcore/tree/d47e49e9c1e173ac90821f7e89cc38e710274241'
-    DownloadCount: 288843468
-    DownloadUrl: https://www.nuget.org/api/v2/package/Microsoft.Extensions.ApiDescription.Server/7.0.5
-    icon: {fileID: 0}
-    IconUrl: https://api.nuget.org/v3-flatcontainer/microsoft.extensions.apidescription.server/7.0.5/icon
-    LicenseUrl: https://www.nuget.org/packages/Microsoft.Extensions.ApiDescription.Server/7.0.5/license
-    ProjectUrl: https://asp.net/
-    ReleaseNotes: 
-    RepositoryBranch: 
-    RepositoryCommit: 
-    RepositoryType: 0
-    RepositoryUrl: 
-    Summary: 
-    Title: Microsoft.Extensions.ApiDescription.Server
-  - Id: runtime.win-x86.runtime.native.System.Data.SqlClient.sni
-    Version: 4.4.0
-    Authors: Microsoft
-    Description: "Internal implementation package not meant for direct consumption. 
-      Please do not reference directly. \nd0d5c7b49271cadb6d97de26d8e623e98abdc8db
-      \nWhen using NuGet 3.x this package requires at least version 3.4."
-    DownloadCount: 279936736
-    DownloadUrl: https://www.nuget.org/api/v2/package/runtime.win-x86.runtime.native.System.Data.SqlClient.sni/4.4.0
-    icon: {fileID: 0}
-    IconUrl: https://api.nuget.org/v3-flatcontainer/runtime.win-x86.runtime.native.system.data.sqlclient.sni/4.4.0/icon
-    LicenseUrl: http://go.microsoft.com/fwlink/?LinkId=329770
-    ProjectUrl: https://dot.net/
-    ReleaseNotes: https://go.microsoft.com/fwlink/?LinkID=799421
-    RepositoryBranch: 
-    RepositoryCommit: 
-    RepositoryType: 0
-    RepositoryUrl: 
-    Summary: 
-    Title: runtime.win-x86.runtime.native.System.Data.SqlClient.sni
-  - Id: runtime.win-x64.runtime.native.System.Data.SqlClient.sni
-    Version: 4.4.0
-    Authors: Microsoft
-    Description: "Internal implementation package not meant for direct consumption. 
-      Please do not reference directly. \nd0d5c7b49271cadb6d97de26d8e623e98abdc8db
-      \nWhen using NuGet 3.x this package requires at least version 3.4."
-    DownloadCount: 279827298
-    DownloadUrl: https://www.nuget.org/api/v2/package/runtime.win-x64.runtime.native.System.Data.SqlClient.sni/4.4.0
-    icon: {fileID: 0}
-    IconUrl: https://api.nuget.org/v3-flatcontainer/runtime.win-x64.runtime.native.system.data.sqlclient.sni/4.4.0/icon
-    LicenseUrl: http://go.microsoft.com/fwlink/?LinkId=329770
-    ProjectUrl: https://dot.net/
-    ReleaseNotes: https://go.microsoft.com/fwlink/?LinkID=799421
-    RepositoryBranch: 
-    RepositoryCommit: 
-    RepositoryType: 0
-    RepositoryUrl: 
-    Summary: 
-    Title: runtime.win-x64.runtime.native.System.Data.SqlClient.sni
-  - Id: runtime.win-arm64.runtime.native.System.Data.SqlClient.sni
-    Version: 4.4.0
-    Authors: Microsoft
-    Description: "Internal implementation package not meant for direct consumption. 
-      Please do not reference directly. \nd0d5c7b49271cadb6d97de26d8e623e98abdc8db
-      \nWhen using NuGet 3.x this package requires at least version 3.4."
-    DownloadCount: 279686252
-    DownloadUrl: https://www.nuget.org/api/v2/package/runtime.win-arm64.runtime.native.System.Data.SqlClient.sni/4.4.0
-    icon: {fileID: 0}
-    IconUrl: https://api.nuget.org/v3-flatcontainer/runtime.win-arm64.runtime.native.system.data.sqlclient.sni/4.4.0/icon
-    LicenseUrl: http://go.microsoft.com/fwlink/?LinkId=329770
-    ProjectUrl: https://dot.net/
-    ReleaseNotes: https://go.microsoft.com/fwlink/?LinkID=799421
-    RepositoryBranch: 
-    RepositoryCommit: 
-    RepositoryType: 0
-    RepositoryUrl: 
-    Summary: 
-    Title: runtime.win-arm64.runtime.native.System.Data.SqlClient.sni
-  - Id: FluentValidation
-    Version: 11.5.2
-    Authors: Jeremy Skinner
-    Description: A validation library for .NET that uses a fluent interface to construct
-      strongly-typed validation rules.
-    DownloadCount: 275614352
-    DownloadUrl: https://www.nuget.org/api/v2/package/FluentValidation/11.5.2
-    icon: {fileID: 0}
-    IconUrl: https://api.nuget.org/v3-flatcontainer/fluentvalidation/11.5.2/icon
-    LicenseUrl: https://www.nuget.org/packages/FluentValidation/11.5.2/license
-    ProjectUrl: https://fluentvalidation.net/
-    ReleaseNotes: 'FluentValidation 11 is a major release. Please read the upgrade
-      guide at https://docs.fluentvalidation.net/en/latest/upgrading-to-11.html
-
-
-      Full
-      release notes can be found at https://github.com/FluentValidation/FluentValidation/releases'
-    RepositoryBranch: 
-    RepositoryCommit: 
-    RepositoryType: 0
-    RepositoryUrl: 
-    Summary: 
-    Title: FluentValidation
-  - Id: Microsoft.AspNetCore.Mvc.NewtonsoftJson
-    Version: 7.0.5
-    Authors: Microsoft
-    Description: 'ASP.NET Core MVC features that use Newtonsoft.Json. Includes input
-      and output formatters for JSON and JSON PATCH.
-
-
-      This package was built
-      from the source code at https://github.com/dotnet/aspnetcore/tree/d47e49e9c1e173ac90821f7e89cc38e710274241'
-    DownloadCount: 268218914
-    DownloadUrl: https://www.nuget.org/api/v2/package/Microsoft.AspNetCore.Mvc.NewtonsoftJson/7.0.5
-    icon: {fileID: 0}
-    IconUrl: https://api.nuget.org/v3-flatcontainer/microsoft.aspnetcore.mvc.newtonsoftjson/7.0.5/icon
-    LicenseUrl: https://www.nuget.org/packages/Microsoft.AspNetCore.Mvc.NewtonsoftJson/7.0.5/license
-    ProjectUrl: https://asp.net/
-    ReleaseNotes: 
-    RepositoryBranch: 
-    RepositoryCommit: 
-    RepositoryType: 0
-    RepositoryUrl: 
-    Summary: 
-    Title: Microsoft.AspNetCore.Mvc.NewtonsoftJson
-  - Id: StackExchange.Redis
-    Version: 2.6.111
-    Authors: Stack Exchange, Inc.,Marc Gravell,Nick Craver
-    Description: High performance Redis client, incorporating both synchronous and
-      asynchronous usage.
-    DownloadCount: 265525387
-    DownloadUrl: https://www.nuget.org/api/v2/package/StackExchange.Redis/2.6.111
-    icon: {fileID: 0}
-    IconUrl: 
-    LicenseUrl: https://www.nuget.org/packages/StackExchange.Redis/2.6.111/license
-    ProjectUrl: https://stackexchange.github.io/StackExchange.Redis/
-    ReleaseNotes: https://stackexchange.github.io/StackExchange.Redis/ReleaseNotes
-    RepositoryBranch: 
-    RepositoryCommit: 
-    RepositoryType: 0
-    RepositoryUrl: 
-    Summary: 
-    Title: StackExchange.Redis
-  - Id: Serilog.Formatting.Compact
-    Version: 1.1.0
-    Authors: Serilog Contributors
-    Description: A simple, compact JSON-based event format for Serilog.
-    DownloadCount: 264643342
-    DownloadUrl: https://www.nuget.org/api/v2/package/Serilog.Formatting.Compact/1.1.0
-    icon: {fileID: 0}
-    IconUrl: https://api.nuget.org/v3-flatcontainer/serilog.formatting.compact/1.1.0/icon
-    LicenseUrl: https://www.nuget.org/packages/Serilog.Formatting.Compact/1.1.0/license
-    ProjectUrl: https://github.com/serilog/serilog-formatting-compact
-    ReleaseNotes: 
-    RepositoryBranch: 
-    RepositoryCommit: 
-    RepositoryType: 0
-    RepositoryUrl: 
-    Summary: 
-    Title: Serilog.Formatting.Compact
-  - Id: NUnit
-    Version: 3.13.3
-    Authors: Charlie Poole, Rob Prouse
-    Description: 'NUnit features a fluent assert syntax, parameterized, generic and
-      theory tests and is user-extensible.
-
-
-      This package includes the NUnit
-      3 framework assembly, which is referenced by your tests. You will need to install
-      version 3 of the nunit3-console program or a third-party runner that supports
-      NUnit 3 in order to execute tests. Runners intended for use with NUnit 2.x
-      will not run NUnit 3 tests correctly.
-
-
-      Supported platforms:
-
-      -
-      .NET Framework 3.5+
-
-      - .NET Standard 2.0+'
-    DownloadCount: 256863579
-    DownloadUrl: https://www.nuget.org/api/v2/package/NUnit/3.13.3
-    icon: {fileID: 0}
-    IconUrl: https://api.nuget.org/v3-flatcontainer/nunit/3.13.3/icon
-    LicenseUrl: https://www.nuget.org/packages/NUnit/3.13.3/license
-    ProjectUrl: https://nunit.org/
-    ReleaseNotes: This package includes the NUnit 3 framework assembly, which is
-      referenced by your tests. You will need to install version 3 of the nunit3-console
-      program or a third-party runner that supports NUnit 3 in order to execute tests.
-      Runners intended for use with NUnit 2.x will not run NUnit 3 tests correctly.
-    RepositoryBranch: 
-    RepositoryCommit: 
-    RepositoryType: 0
-    RepositoryUrl: 
-    Summary: NUnit is a unit-testing framework for all .NET languages with a strong
-      TDD focus.
-    Title: NUnit
-  - Id: Serilog.Settings.Configuration
-    Version: 7.0.0
-    Authors: Serilog Contributors
-    Description: Microsoft.Extensions.Configuration (appsettings.json) support for
-      Serilog.
-    DownloadCount: 256541125
-    DownloadUrl: https://www.nuget.org/api/v2/package/Serilog.Settings.Configuration/7.0.0
-    icon: {fileID: 0}
-    IconUrl: https://api.nuget.org/v3-flatcontainer/serilog.settings.configuration/7.0.0/icon
-    LicenseUrl: https://www.nuget.org/packages/Serilog.Settings.Configuration/7.0.0/license
-    ProjectUrl: 
-    ReleaseNotes: 
-    RepositoryBranch: 
-    RepositoryCommit: 
-    RepositoryType: 0
-    RepositoryUrl: 
-    Summary: 
-    Title: Serilog.Settings.Configuration
-  - Id: FluentAssertions
-    Version: 6.11.0
-    Authors: Dennis Doomen,Jonas Nyrup
-    Description: "A very extensive set of extension methods that allow you to more
-      naturally specify the expected outcome of a TDD or\n      BDD-style unit tests.
-      Targets .NET Framework 4.7, .NET Core 2.1 and 3.0, .NET 6, as well as .NET
-      Standard 2.0 and 2.1.\n      Supports the unit test frameworks MSTest2, NUnit3,
-      XUnit2, MSpec, and NSpec3.\n\n      Supported by InfoSupport B.V."
-    DownloadCount: 247446147
-    DownloadUrl: https://www.nuget.org/api/v2/package/FluentAssertions/6.11.0
-    icon: {fileID: 0}
-    IconUrl: https://api.nuget.org/v3-flatcontainer/fluentassertions/6.11.0/icon
-    LicenseUrl: https://www.nuget.org/packages/FluentAssertions/6.11.0/license
-    ProjectUrl: https://www.fluentassertions.com/
-    ReleaseNotes: See https://fluentassertions.com/releases/
-    RepositoryBranch: 
-    RepositoryCommit: 
-    RepositoryType: 0
-    RepositoryUrl: 
-    Summary: 
-    Title: FluentAssertions
-  - Id: Azure.Security.KeyVault.Secrets
-    Version: 4.5.0
-    Authors: Microsoft
-    Description: This is the Microsoft Azure Key Vault Secrets client library
-    DownloadCount: 114423614
-    DownloadUrl: https://www.nuget.org/api/v2/package/Azure.Security.KeyVault.Secrets/4.5.0
-    icon: {fileID: 0}
-    IconUrl: https://api.nuget.org/v3-flatcontainer/azure.security.keyvault.secrets/4.5.0/icon
-    LicenseUrl: https://www.nuget.org/packages/Azure.Security.KeyVault.Secrets/4.5.0/license
-    ProjectUrl: https://github.com/Azure/azure-sdk-for-net/blob/Azure.Security.KeyVault.Secrets_4.5.0/sdk/keyvault/Azure.Security.KeyVault.Secrets/README.md
-    ReleaseNotes: https://github.com/Azure/azure-sdk-for-net/blob/Azure.Security.KeyVault.Secrets_4.5.0/sdk/keyvault/Azure.Security.KeyVault.Secrets/CHANGELOG.md
-    RepositoryBranch: 
-    RepositoryCommit: 
-    RepositoryType: 0
-    RepositoryUrl: 
-    Summary: 
-    Title: Azure.Security.KeyVault.Secrets
-  - Id: Google.Protobuf
-    Version: 3.23.2
-    Authors: Google Inc.
-    Description: C# runtime library for Protocol Buffers - Google's data interchange
-      format.
-    DownloadCount: 244166315
-    DownloadUrl: https://www.nuget.org/api/v2/package/Google.Protobuf/3.23.2
-    icon: {fileID: 0}
-    IconUrl: 
-    LicenseUrl: https://www.nuget.org/packages/Google.Protobuf/3.23.2/license
-    ProjectUrl: https://github.com/protocolbuffers/protobuf
-    ReleaseNotes: C# proto3 support
-    RepositoryBranch: 
-    RepositoryCommit: 
-    RepositoryType: 0
-    RepositoryUrl: 
-    Summary: 
-    Title: Google.Protobuf
-  - Id: Microsoft.Extensions.Logging.EventLog
-    Version: 7.0.0
-    Authors: Microsoft
-    Description: Windows Event Log logger provider implementation for Microsoft.Extensions.Logging.
-    DownloadCount: 239950400
-    DownloadUrl: https://www.nuget.org/api/v2/package/Microsoft.Extensions.Logging.EventLog/7.0.0
-    icon: {fileID: 0}
-    IconUrl: https://api.nuget.org/v3-flatcontainer/microsoft.extensions.logging.eventlog/7.0.0/icon
-    LicenseUrl: https://www.nuget.org/packages/Microsoft.Extensions.Logging.EventLog/7.0.0/license
-    ProjectUrl: https://dot.net/
-    ReleaseNotes: https://go.microsoft.com/fwlink/?LinkID=799421
-    RepositoryBranch: 
-    RepositoryCommit: 
-    RepositoryType: 0
-    RepositoryUrl: 
-    Summary: 
-    Title: Microsoft.Extensions.Logging.EventLog
-  - Id: Microsoft.Extensions.Diagnostics.HealthChecks.Abstractions
-    Version: 7.0.5
-    Authors: Microsoft
-    Description: "Abstractions for defining health checks in .NET applications\n\nCommonly
-      Used Types\nMicrosoft.Extensions.Diagnostics.HealthChecks.IHealthCheck\n   
-      \n\nThis package was built from the source code at https://github.com/dotnet/aspnetcore/tree/d47e49e9c1e173ac90821f7e89cc38e710274241"
-    DownloadCount: 235815518
-    DownloadUrl: https://www.nuget.org/api/v2/package/Microsoft.Extensions.Diagnostics.HealthChecks.Abstractions/7.0.5
-    icon: {fileID: 0}
-    IconUrl: https://api.nuget.org/v3-flatcontainer/microsoft.extensions.diagnostics.healthchecks.abstractions/7.0.5/icon
-    LicenseUrl: https://www.nuget.org/packages/Microsoft.Extensions.Diagnostics.HealthChecks.Abstractions/7.0.5/license
-    ProjectUrl: https://asp.net/
-    ReleaseNotes: 
-    RepositoryBranch: 
-    RepositoryCommit: 
-    RepositoryType: 0
-    RepositoryUrl: 
-    Summary: 
-    Title: Microsoft.Extensions.Diagnostics.HealthChecks.Abstractions
-  - Id: coverlet.collector
-    Version: 6.0.0
-    Authors: tonerdo
-    Description: Coverlet is a cross platform code coverage library for .NET, with
-      support for line, branch and method coverage.
-    DownloadCount: 234499184
-    DownloadUrl: https://www.nuget.org/api/v2/package/coverlet.collector/6.0.0
-    icon: {fileID: 0}
-    IconUrl: https://api.nuget.org/v3-flatcontainer/coverlet.collector/6.0.0/icon
-    LicenseUrl: https://www.nuget.org/packages/coverlet.collector/6.0.0/license
-    ProjectUrl: https://github.com/coverlet-coverage/coverlet
-    ReleaseNotes: 
-    RepositoryBranch: 
-    RepositoryCommit: 
-    RepositoryType: 0
-    RepositoryUrl: 
-    Summary: 
-    Title: coverlet.collector
-  - Id: Dapper
-    Version: 2.0.123
-    Authors: Sam Saffron, Marc Gravell, Nick Craver
-    Description: A high performance Micro-ORM supporting SQL Server, MySQL, Sqlite,
-      SqlCE, Firebird etc..
-    DownloadCount: 231304691
-    DownloadUrl: https://www.nuget.org/api/v2/package/Dapper/2.0.123
-    icon: {fileID: 0}
-    IconUrl: https://api.nuget.org/v3-flatcontainer/dapper/2.0.123/icon
-    LicenseUrl: https://www.nuget.org/packages/Dapper/2.0.123/license
-    ProjectUrl: https://github.com/DapperLib/Dapper
-    ReleaseNotes: https://dapperlib.github.io/Dapper/
-    RepositoryBranch: 
-    RepositoryCommit: 
-    RepositoryType: 0
-    RepositoryUrl: 
-    Summary: 
-    Title: Dapper
-  - Id: NLog
-    Version: 5.2.0
-    Authors: Jarek Kowalski,Kim Christensen,Julian Verdurmen
-    Description: 'NLog is a logging platform for .NET with rich log routing and management
-      capabilities.
-
-      NLog supports traditional logging, structured logging
-      and the combination of both.
-
-
-      Supported platforms:
-
-
-      - .NET 5,
-      6 and 7
-
-      - .NET Core 1, 2 and 3
-
-      - .NET Standard 1.3+ and 2.0+
-
-      -
-      .NET Framework 3.5 - 4.8
-
-      - Xamarin Android + iOS (.NET Standard)
-
-      -
-      Mono 4
-
-
-      For ASP.NET Core, check: https://www.nuget.org/packages/NLog.Web.AspNetCore'
-    DownloadCount: 230486818
-    DownloadUrl: https://www.nuget.org/api/v2/package/NLog/5.2.0
-    icon: {fileID: 0}
-    IconUrl: https://api.nuget.org/v3-flatcontainer/nlog/5.2.0/icon
-    LicenseUrl: https://www.nuget.org/packages/NLog/5.2.0/license
-    ProjectUrl: https://nlog-project.org/
-    ReleaseNotes: 'ChangeLog:
-
-
-      - ConfigurationItemFactory annotated for trimming
-      and obsoleted CreateInstance-delegate (#5191) (@snakefoot)
-
-      - Refactor
-      - Apply ThrowIfNull and ThrowIfNullOrEmpty (#5216) (@nih0n)
-
-
-      NLog v5.2
-      changes how to load extensions: https://nlog-project.org/2023/05/30/nlog-5-2-trim-warnings.html
-
-
-      List
-      of major changes in NLog 5.0: https://nlog-project.org/2022/05/16/nlog-5-0-finally-ready.html
-
-
-      Full
-      changelog: https://github.com/NLog/NLog/blob/master/CHANGELOG.md
-
-
-      For
-      all config options and platform support, check https://nlog-project.org/config/'
-    RepositoryBranch: 
-    RepositoryCommit: 
-    RepositoryType: 0
-    RepositoryUrl: 
-    Summary: 
-    Title: NLog for .NET Framework and .NET Standard
-  - Id: Pipelines.Sockets.Unofficial
-    Version: 2.2.8
-    Authors: Pipelines.Sockets.Unofficial
-    Description: Package Description
-    DownloadCount: 227832306
-    DownloadUrl: https://www.nuget.org/api/v2/package/Pipelines.Sockets.Unofficial/2.2.8
-    icon: {fileID: 0}
-    IconUrl: 
-    LicenseUrl: https://www.nuget.org/packages/Pipelines.Sockets.Unofficial/2.2.8/license
-    ProjectUrl: https://github.com/mgravell/Pipelines.Sockets.Unofficial
-    ReleaseNotes: https://mgravell.github.io/Pipelines.Sockets.Unofficial/docs/releasenotes
-    RepositoryBranch: 
-    RepositoryCommit: 
-    RepositoryType: 0
-    RepositoryUrl: 
-    Summary: 
-    Title: Pipelines.Sockets.Unofficial
-  - Id: Microsoft.Extensions.Diagnostics.HealthChecks
-    Version: 7.0.5
-    Authors: Microsoft
-    Description: "Components for performing health checks in .NET applications\n\nCommonly
-      Used Types:\nMicrosoft.Extensions.Diagnostics.HealthChecks.HealthCheckService\nMicrosoft.Extensions.Diagnostics.HealthChecks.IHealthChecksBuilder\n   
-      \n\nThis package was built from the source code at https://github.com/dotnet/aspnetcore/tree/d47e49e9c1e173ac90821f7e89cc38e710274241"
-    DownloadCount: 226732562
-    DownloadUrl: https://www.nuget.org/api/v2/package/Microsoft.Extensions.Diagnostics.HealthChecks/7.0.5
-    icon: {fileID: 0}
-    IconUrl: https://api.nuget.org/v3-flatcontainer/microsoft.extensions.diagnostics.healthchecks/7.0.5/icon
-    LicenseUrl: https://www.nuget.org/packages/Microsoft.Extensions.Diagnostics.HealthChecks/7.0.5/license
-    ProjectUrl: https://asp.net/
-    ReleaseNotes: 
-    RepositoryBranch: 
-    RepositoryCommit: 
-    RepositoryType: 0
-    RepositoryUrl: 
-    Summary: 
-    Title: Microsoft.Extensions.Diagnostics.HealthChecks
-  - Id: Humanizer.Core
-    Version: 2.14.1
-    Authors: Mehdi Khalili, Claire Novotny
-    Description: Humanizer core package that contains the library and the neutral
-      language (English) resources
-    DownloadCount: 224809417
-    DownloadUrl: https://www.nuget.org/api/v2/package/Humanizer.Core/2.14.1
-    icon: {fileID: 0}
-    IconUrl: https://api.nuget.org/v3-flatcontainer/humanizer.core/2.14.1/icon
-    LicenseUrl: https://www.nuget.org/packages/Humanizer.Core/2.14.1/license
-    ProjectUrl: https://github.com/Humanizr/Humanizer
-    ReleaseNotes: 
-    RepositoryBranch: 
-    RepositoryCommit: 
-    RepositoryType: 0
-    RepositoryUrl: 
-    Summary: 
-    Title: Humanizer Locale (en)
-  - Id: Azure.Identity
-    Version: 1.9.0
-    Authors: Microsoft
-    Description: This is the implementation of the Azure SDK Client Library for Azure
-      Identity
-    DownloadCount: 218306947
-    DownloadUrl: https://www.nuget.org/api/v2/package/Azure.Identity/1.9.0
-    icon: {fileID: 0}
-    IconUrl: https://api.nuget.org/v3-flatcontainer/azure.identity/1.9.0/icon
-    LicenseUrl: https://www.nuget.org/packages/Azure.Identity/1.9.0/license
-    ProjectUrl: https://github.com/Azure/azure-sdk-for-net/blob/Azure.Identity_1.9.0/sdk/identity/Azure.Identity/README.md
-    ReleaseNotes: https://github.com/Azure/azure-sdk-for-net/blob/Azure.Identity_1.9.0/sdk/identity/Azure.Identity/CHANGELOG.md
-    RepositoryBranch: 
-    RepositoryCommit: 
-    RepositoryType: 0
-    RepositoryUrl: 
-    Summary: 
-    Title: Azure.Identity
-  - Id: Autofac
-    Version: 7.0.1
-    Authors: Autofac Contributors
-    Description: Autofac is an IoC container for Microsoft .NET. It manages the dependencies
-      between classes so that applications stay easy to change as they grow in size
-      and complexity.
-    DownloadCount: 218498517
-    DownloadUrl: https://www.nuget.org/api/v2/package/Autofac/7.0.1
-    icon: {fileID: 0}
-    IconUrl: https://api.nuget.org/v3-flatcontainer/autofac/7.0.1/icon
-    LicenseUrl: https://www.nuget.org/packages/Autofac/7.0.1/license
-    ProjectUrl: https://autofac.org/
-    ReleaseNotes: Release notes are at https://github.com/autofac/Autofac/releases
-    RepositoryBranch: 
-    RepositoryCommit: 
-    RepositoryType: 0
-    RepositoryUrl: 
-    Summary: 
-    Title: Autofac
-  - Id: IdentityModel
-    Version: 6.1.0
-    Authors: Dominick Baier,Brock Allen
-    Description: OpenID Connect & OAuth 2.0 client library
-    DownloadCount: 218303461
-    DownloadUrl: https://www.nuget.org/api/v2/package/IdentityModel/6.1.0
-    icon: {fileID: 0}
-    IconUrl: https://api.nuget.org/v3-flatcontainer/identitymodel/6.1.0/icon
-    LicenseUrl: https://www.nuget.org/packages/IdentityModel/6.1.0/license
-    ProjectUrl: https://github.com/IdentityModel/IdentityModel
-    ReleaseNotes: 
-    RepositoryBranch: 
-    RepositoryCommit: 
-    RepositoryType: 0
-    RepositoryUrl: 
-    Summary: 
-    Title: IdentityModel
-  - Id: Npgsql
-    Version: 7.0.4
-    Authors: Shay Rojansky,Nikita Kazmin,Brar Piening,Yoh Deadfall,Austin Drenski,Emil
-      Lenngren,Francisco Figueiredo Jr.,Kenji Uno
-    Description: Npgsql is the open source .NET data provider for PostgreSQL.
-    DownloadCount: 217815915
-    DownloadUrl: https://www.nuget.org/api/v2/package/Npgsql/7.0.4
-    icon: {fileID: 0}
-    IconUrl: https://api.nuget.org/v3-flatcontainer/npgsql/7.0.4/icon
-    LicenseUrl: https://www.nuget.org/packages/Npgsql/7.0.4/license
-    ProjectUrl: https://github.com/npgsql/npgsql
-    ReleaseNotes: 
-    RepositoryBranch: 
-    RepositoryCommit: 
-    RepositoryType: 0
-    RepositoryUrl: 
-    Summary: 
-    Title: Npgsql
-  - Id: Microsoft.Azure.WebJobs
-    Version: 3.0.37
-    Authors: Microsoft
-    Description: This package contains the runtime assemblies for Microsoft.Azure.WebJobs.Host.
-      It also adds rich diagnostics capabilities which makes it easier to monitor
-      the WebJobs in the dashboard. For more information, please visit http://go.microsoft.com/fwlink/?LinkID=320971
-    DownloadCount: 215473579
-    DownloadUrl: https://www.nuget.org/api/v2/package/Microsoft.Azure.WebJobs/3.0.37
-    icon: {fileID: 0}
-    IconUrl: https://api.nuget.org/v3-flatcontainer/microsoft.azure.webjobs/3.0.37/icon
-    LicenseUrl: https://www.nuget.org/packages/Microsoft.Azure.WebJobs/3.0.37/license
-    ProjectUrl: http://go.microsoft.com/fwlink/?LinkID=320972
-    ReleaseNotes: 
-    RepositoryBranch: 
-    RepositoryCommit: 
-    RepositoryType: 0
-    RepositoryUrl: 
-    Summary: 
-    Title: Microsoft.Azure.WebJobs
-  - Id: EntityFramework
-    Version: 6.4.4
-    Authors: Microsoft
-    Description: Entity Framework 6 (EF6) is a tried and tested object-relational
-      mapper for .NET with many years of feature development and stabilization.
-    DownloadCount: 214867242
-    DownloadUrl: https://www.nuget.org/api/v2/package/EntityFramework/6.4.4
-    icon: {fileID: 0}
-    IconUrl: https://api.nuget.org/v3-flatcontainer/entityframework/6.4.4/icon
-    LicenseUrl: https://www.nuget.org/packages/EntityFramework/6.4.4/license
-    ProjectUrl: http://go.microsoft.com/fwlink/?LinkID=263480
-    ReleaseNotes: 
-    RepositoryBranch: 
-    RepositoryCommit: 
-    RepositoryType: 0
-    RepositoryUrl: 
-    Summary: 
-    Title: EntityFramework
-  - Id: RestSharp
-    Version: 110.2.0
-    Authors: .NET Foundation and Contributors
-    Description: Simple REST and HTTP API Client
-    DownloadCount: 213741190
-    DownloadUrl: https://www.nuget.org/api/v2/package/RestSharp/110.2.0
-    icon: {fileID: 0}
-    IconUrl: https://api.nuget.org/v3-flatcontainer/restsharp/110.2.0/icon
-    LicenseUrl: https://www.nuget.org/packages/RestSharp/110.2.0/license
-    ProjectUrl: https://restsharp.dev/
-    ReleaseNotes: 
-    RepositoryBranch: 
-    RepositoryCommit: 
-    RepositoryType: 0
-    RepositoryUrl: 
-    Summary: 
-    Title: RestSharp
-  - Id: Serilog.AspNetCore
-    Version: 7.0.0
-    Authors: Microsoft,Serilog Contributors
-    Description: Serilog support for ASP.NET Core logging
-    DownloadCount: 211961683
-    DownloadUrl: https://www.nuget.org/api/v2/package/Serilog.AspNetCore/7.0.0
-    icon: {fileID: 0}
-    IconUrl: https://api.nuget.org/v3-flatcontainer/serilog.aspnetcore/7.0.0/icon
-    LicenseUrl: https://www.nuget.org/packages/Serilog.AspNetCore/7.0.0/license
-    ProjectUrl: https://github.com/serilog/serilog-aspnetcore
-    ReleaseNotes: 
-    RepositoryBranch: 
-    RepositoryCommit: 
-    RepositoryType: 0
-    RepositoryUrl: 
-    Summary: 
-    Title: Serilog.AspNetCore
-  - Id: Microsoft.Data.SqlClient.SNI.runtime
-    Version: 5.1.0
-    Authors: Microsoft
-    Description: 'Internal implementation package not meant for direct consumption.
-      Please do not reference directly.
-
-
-      When using NuGet 3.x this package
-      requires at least version 3.4.'
-    DownloadCount: 210939964
-    DownloadUrl: https://www.nuget.org/api/v2/package/Microsoft.Data.SqlClient.SNI.runtime/5.1.0
-    icon: {fileID: 0}
-    IconUrl: https://api.nuget.org/v3-flatcontainer/microsoft.data.sqlclient.sni.runtime/5.1.0/icon
-    LicenseUrl: https://www.nuget.org/packages/Microsoft.Data.SqlClient.SNI.runtime/5.1.0/license
-    ProjectUrl: https://aka.ms/sqlclientproject
-    ReleaseNotes: https://go.microsoft.com/fwlink/?linkid=2090501
-    RepositoryBranch: 
-    RepositoryCommit: 
-    RepositoryType: 0
-    RepositoryUrl: 
-    Summary: 
-    Title: Microsoft.Data.SqlClient.SNI.runtime
-  - Id: Azure.Storage.Queues
-    Version: 12.14.0
-    Authors: Microsoft
-    Description: "This client library enables working with the Microsoft Azure Storage
-      Queue service for storing messages that may be accessed by a client.\n     
-      For this release see notes - https://github.com/Azure/azure-sdk-for-net/blob/main/sdk/storage/Azure.Storage.Queues/README.md
-      and https://github.com/Azure/azure-sdk-for-net/blob/main/sdk/storage/Azure.Storage.Queues/CHANGELOG.md\n     
-      in addition to the breaking changes https://github.com/Azure/azure-sdk-for-net/blob/main/sdk/storage/Azure.Storage.Queues/BreakingChanges.txt\n     
-      Microsoft Azure Storage quickstarts and tutorials - https://docs.microsoft.com/en-us/azure/storage/\n     
-      Microsoft Azure Storage REST API Reference - https://docs.microsoft.com/en-us/rest/api/storageservices/\n     
-      REST API Reference for Queue Service - https://docs.microsoft.com/en-us/rest/api/storageservices/queue-service-rest-api"
-    DownloadCount: 35151674
-    DownloadUrl: https://www.nuget.org/api/v2/package/Azure.Storage.Queues/12.14.0
-    icon: {fileID: 0}
-    IconUrl: https://api.nuget.org/v3-flatcontainer/azure.storage.queues/12.14.0/icon
-    LicenseUrl: https://www.nuget.org/packages/Azure.Storage.Queues/12.14.0/license
-    ProjectUrl: https://github.com/Azure/azure-sdk-for-net/blob/Azure.Storage.Queues_12.14.0/sdk/storage/Azure.Storage.Queues/README.md
-    ReleaseNotes: https://github.com/Azure/azure-sdk-for-net/blob/Azure.Storage.Queues_12.14.0/sdk/storage/Azure.Storage.Queues/CHANGELOG.md
-    RepositoryBranch: 
-    RepositoryCommit: 
-    RepositoryType: 0
-    RepositoryUrl: 
-    Summary: 
-    Title: Azure.Storage.Queues
-  - Id: Serilog.Extensions.Hosting
-    Version: 7.0.0
-    Authors: Microsoft,Serilog Contributors
-    Description: Serilog support for .NET Core logging in hosted services
-    DownloadCount: 206623874
-    DownloadUrl: https://www.nuget.org/api/v2/package/Serilog.Extensions.Hosting/7.0.0
-    icon: {fileID: 0}
-    IconUrl: https://api.nuget.org/v3-flatcontainer/serilog.extensions.hosting/7.0.0/icon
-    LicenseUrl: https://www.nuget.org/packages/Serilog.Extensions.Hosting/7.0.0/license
-    ProjectUrl: https://github.com/serilog/serilog-extensions-hosting
-    ReleaseNotes: 
-    RepositoryBranch: 
-    RepositoryCommit: 
-    RepositoryType: 0
-    RepositoryUrl: 
-    Summary: 
-    Title: Serilog.Extensions.Hosting
-  - Id: System.CodeDom
-    Version: 7.0.0
-    Authors: Microsoft
-    Description: 'Provides types that can be used to model the structure of a source
-      code document and to output source code for that model in a supported language.
-
-
-      Commonly
-      Used Types:
-
-      System.CodeDom.CodeObject
-
-      System.CodeDom.Compiler.CodeDomProvider
-
-      Microsoft.CSharp.CSharpCodeProvider
-
-      Microsoft.VisualBasic.VBCodeProvider'
-    DownloadCount: 206135884
-    DownloadUrl: https://www.nuget.org/api/v2/package/System.CodeDom/7.0.0
-    icon: {fileID: 0}
-    IconUrl: https://api.nuget.org/v3-flatcontainer/system.codedom/7.0.0/icon
-    LicenseUrl: https://www.nuget.org/packages/System.CodeDom/7.0.0/license
-    ProjectUrl: https://dot.net/
-    ReleaseNotes: https://go.microsoft.com/fwlink/?LinkID=799421
-    RepositoryBranch: 
-    RepositoryCommit: 
-    RepositoryType: 0
-    RepositoryUrl: 
-    Summary: 
-    Title: System.CodeDom
-  - Id: Microsoft.Identity.Client.Extensions.Msal
-    Version: 2.31.0
-    Authors: Microsoft
-    Description: This package contains extensions to Microsoft Authentication Library
-      for .NET (MSAL.NET)
-    DownloadCount: 200966067
-    DownloadUrl: https://www.nuget.org/api/v2/package/Microsoft.Identity.Client.Extensions.Msal/2.31.0
-    icon: {fileID: 0}
-    IconUrl: 
-    LicenseUrl: https://www.nuget.org/packages/Microsoft.Identity.Client.Extensions.Msal/2.31.0/license
-    ProjectUrl: https://github.com/AzureAD/microsoft-authentication-extensions-for-dotnet
-    ReleaseNotes: 
-    RepositoryBranch: 
-    RepositoryCommit: 
-    RepositoryType: 0
-    RepositoryUrl: 
-    Summary: 
-    Title: Microsoft.Identity.Client.Extensions.Msal
-  - Id: Portable.BouncyCastle
-    Version: 1.9.0
-    Authors: Claire Novotny
-    Description: BouncyCastle portable version with support for .NET 4, .NET Standard
-      2.0
-    DownloadCount: 200333869
-    DownloadUrl: https://www.nuget.org/api/v2/package/Portable.BouncyCastle/1.9.0
-    icon: {fileID: 0}
-    IconUrl: https://api.nuget.org/v3-flatcontainer/portable.bouncycastle/1.9.0/icon
-    LicenseUrl: https://www.bouncycastle.org/csharp/licence.html
-    ProjectUrl: https://www.bouncycastle.org/csharp/
-    ReleaseNotes: https://www.bouncycastle.org/csharp/#DOWNLOAD1900
-    RepositoryBranch: 
-    RepositoryCommit: 
-    RepositoryType: 0
-    RepositoryUrl: 
-    Summary: 
-    Title: Bouncy Castle Portable
-  - Id: Serilog.Sinks.Debug
-    Version: 2.0.0
-    Authors: Serilog Contributors
-    Description: A Serilog sink that writes log events to the debug output window.
-    DownloadCount: 191575568
-    DownloadUrl: https://www.nuget.org/api/v2/package/Serilog.Sinks.Debug/2.0.0
-    icon: {fileID: 0}
-    IconUrl: https://api.nuget.org/v3-flatcontainer/serilog.sinks.debug/2.0.0/icon
-    LicenseUrl: https://www.nuget.org/packages/Serilog.Sinks.Debug/2.0.0/license
-    ProjectUrl: https://github.com/serilog/serilog-sinks-debug
-    ReleaseNotes: 
-    RepositoryBranch: 
-    RepositoryCommit: 
-    RepositoryType: 0
-    RepositoryUrl: 
-    Summary: 
-    Title: Serilog.Sinks.Debug
-  - Id: System.Memory.Data
-    Version: 7.0.0
-    Authors: Microsoft
-    Description: 'A lightweight abstraction for a payload of bytes. Provides methods
-      for converting between strings, streams, JSON, and bytes.
-
-
-      Commonly
-      Used Types:
-
-      System.BinaryData'
-    DownloadCount: 191010080
-    DownloadUrl: https://www.nuget.org/api/v2/package/System.Memory.Data/7.0.0
-    icon: {fileID: 0}
-    IconUrl: https://api.nuget.org/v3-flatcontainer/system.memory.data/7.0.0/icon
-    LicenseUrl: https://www.nuget.org/packages/System.Memory.Data/7.0.0/license
-    ProjectUrl: https://dot.net/
-    ReleaseNotes: https://go.microsoft.com/fwlink/?LinkID=799421
-    RepositoryBranch: 
-    RepositoryCommit: 
-    RepositoryType: 0
-    RepositoryUrl: 
-    Summary: 
-    Title: System.Memory.Data
-  - Id: Microsoft.Azure.Amqp
-    Version: 2.6.2
-    Authors: Microsoft
-    Description: Package for Azure AMQP
-    DownloadCount: 185809769
-    DownloadUrl: https://www.nuget.org/api/v2/package/Microsoft.Azure.Amqp/2.6.2
-    icon: {fileID: 0}
-    IconUrl: https://api.nuget.org/v3-flatcontainer/microsoft.azure.amqp/2.6.2/icon
-    LicenseUrl: https://www.nuget.org/packages/Microsoft.Azure.Amqp/2.6.2/license
-    ProjectUrl: https://github.com/Azure/azure-amqp
-    ReleaseNotes: 
-    RepositoryBranch: 
-    RepositoryCommit: 
-    RepositoryType: 0
-    RepositoryUrl: 
-    Summary: 
-    Title: Microsoft Azure Amqp
-  - Id: NUnit3TestAdapter
-    Version: 4.5.0
-    Authors: Charlie Poole, Terje Sandstrom
-    Description: "The NUnit3 TestAdapter for Visual Studio, all versions from 2012
-      and onwards, and DotNet (incl. .Net core), versions .net framework 4.6.2 or
-      higher, .net core 3.1, .net 5 or higher.\n\n      Note that this package ONLY
-      contains the adapter, not the NUnit framework.\n      For VS 2017 and forward,
-      you should add this package to every test project in your solution. (Earlier
-      versions only require a single adapter package per solution.)"
-    DownloadCount: 184379916
-    DownloadUrl: https://www.nuget.org/api/v2/package/NUnit3TestAdapter/4.5.0
-    icon: {fileID: 0}
-    IconUrl: https://api.nuget.org/v3-flatcontainer/nunit3testadapter/4.5.0/icon
-    LicenseUrl: https://www.nuget.org/packages/NUnit3TestAdapter/4.5.0/license
-    ProjectUrl: https://docs.nunit.org/articles/vs-test-adapter/Index.html
-    ReleaseNotes: See https://docs.nunit.org/articles/vs-test-adapter/Adapter-Release-Notes.html
-    RepositoryBranch: 
-    RepositoryCommit: 
-    RepositoryType: 0
-    RepositoryUrl: 
-    Summary: NUnit3 adapter for running tests in Visual Studio and DotNet. Works
-      with NUnit 3.x, use the NUnit 2 adapter for 2.x tests.
-    Title: NUnit3 Test Adapter for Visual Studio and DotNet
-  - Id: Microsoft.Bcl.HashCode
-    Version: 1.1.1
-    Authors: Microsoft
-    Description: "Provides the HashCode type for .NET Standard 2.0. This package
-      is not required starting with .NET Standard 2.1 and .NET Core 3.0.\n\nCommonly
-      Used Types:\nSystem.HashCode\n \nWhen using NuGet 3.x this package requires
-      at least version 3.4."
-    DownloadCount: 181107563
-    DownloadUrl: https://www.nuget.org/api/v2/package/Microsoft.Bcl.HashCode/1.1.1
-    icon: {fileID: 0}
-    IconUrl: https://api.nuget.org/v3-flatcontainer/microsoft.bcl.hashcode/1.1.1/icon
-    LicenseUrl: https://www.nuget.org/packages/Microsoft.Bcl.HashCode/1.1.1/license
-    ProjectUrl: https://github.com/dotnet/corefx
-    ReleaseNotes: https://go.microsoft.com/fwlink/?LinkID=799421
-    RepositoryBranch: 
-    RepositoryCommit: 
-    RepositoryType: 0
-    RepositoryUrl: 
-    Summary: 
-    Title: Microsoft.Bcl.HashCode
-  - Id: Microsoft.AspNet.Mvc
-    Version: 5.2.9
-    Authors: Microsoft
-    Description: This package contains the runtime assemblies for ASP.NET MVC. ASP.NET
-      MVC gives you a powerful, patterns-based way to build dynamic websites that
-      enables a clean separation of concerns and that gives you full control over
-      markup.
-    DownloadCount: 178893492
-    DownloadUrl: https://www.nuget.org/api/v2/package/Microsoft.AspNet.Mvc/5.2.9
-    icon: {fileID: 0}
-    IconUrl: https://api.nuget.org/v3-flatcontainer/microsoft.aspnet.mvc/5.2.9/icon
-    LicenseUrl: https://www.nuget.org/packages/Microsoft.AspNet.Mvc/5.2.9/license
-    ProjectUrl: https://www.asp.net/mvc
-    ReleaseNotes: 
-    RepositoryBranch: 
-    RepositoryCommit: 
-    RepositoryType: 0
-    RepositoryUrl: 
-    Summary: This package contains the runtime assemblies for ASP.NET MVC.
-    Title: Microsoft ASP.NET MVC
-  - Id: log4net
-    Version: 2.0.15
-    Authors: The Apache Software Foundation
-    Description: "log4net is a tool to help the programmer output log statements
-      to a variety of output targets.\n      In case of problems with an application,
-      it is helpful to enable logging so that the problem \n      can be located.
-      With log4net it is possible to enable logging at runtime without modifying
-      the\n      application binary. The log4net package is designed so that log
-      statements can remain in \n      shipped code without incurring a high performance
-      cost. It follows that the speed of logging\n      (or rather not logging) is
-      crucial.\n\n      At the same time, log output can be so voluminous that it
-      quickly becomes overwhelming.\n      One of the distinctive features of log4net
-      is the notion of hierarchical loggers.\n      Using these loggers it is possible
-      to selectively control which log statements are output\n      at arbitrary
-      granularity.\n\n      log4net is designed with two distinct goals in mind:
-      speed and flexibility"
-    DownloadCount: 174304886
-    DownloadUrl: https://www.nuget.org/api/v2/package/log4net/2.0.15
-    icon: {fileID: 0}
-    IconUrl: https://api.nuget.org/v3-flatcontainer/log4net/2.0.15/icon
-    LicenseUrl: https://www.nuget.org/packages/log4net/2.0.15/license
-    ProjectUrl: https://logging.apache.org/log4net/
-    ReleaseNotes: 
-    RepositoryBranch: 
-    RepositoryCommit: 
-    RepositoryType: 0
-    RepositoryUrl: 
-    Summary: 
-    Title: Apache log4net
-  - Id: Azure.Messaging.ServiceBus
-    Version: 7.14.0
-    Authors: Microsoft
-    Description: Azure Service Bus is a fully managed enterprise integration message
-      broker. Service Bus can decouple applications and services. Service Bus offers
-      a reliable and secure platform for asynchronous transfer of data and state.
-      This client library allows for both sending and receiving messages using Azure
-      Service Bus. For more information about Service Bus, see https://docs.microsoft.com/en-us/azure/service-bus-messaging/service-bus-messaging-overview
-    DownloadCount: 55468303
-    DownloadUrl: https://www.nuget.org/api/v2/package/Azure.Messaging.ServiceBus/7.14.0
-    icon: {fileID: 0}
-    IconUrl: https://api.nuget.org/v3-flatcontainer/azure.messaging.servicebus/7.14.0/icon
-    LicenseUrl: https://www.nuget.org/packages/Azure.Messaging.ServiceBus/7.14.0/license
-    ProjectUrl: https://github.com/Azure/azure-sdk-for-net/blob/Azure.Messaging.ServiceBus_7.14.0/sdk/servicebus/Azure.Messaging.ServiceBus/README.md
-    ReleaseNotes: https://github.com/Azure/azure-sdk-for-net/blob/Azure.Messaging.ServiceBus_7.14.0/sdk/servicebus/Azure.Messaging.ServiceBus/CHANGELOG.md
-    RepositoryBranch: 
-    RepositoryCommit: 
-    RepositoryType: 0
-    RepositoryUrl: 
-    Summary: 
-    Title: Azure.Messaging.ServiceBus
-  - Id: Microsoft.AspNetCore.Mvc
-    Version: 2.2.0
-    Authors: Microsoft
-    Description: 'ASP.NET Core MVC is a web framework that gives you a powerful,
-      patterns-based way to build dynamic websites and web APIs. ASP.NET Core MVC
-      enables a clean separation of concerns and gives you full control over markup.
-
-
-      This
-      package was built from the source code at https://github.com/aspnet/Mvc/tree/a6199bbfbab05583f987bae322fb04566841aaea'
-    DownloadCount: 172965065
-    DownloadUrl: https://www.nuget.org/api/v2/package/Microsoft.AspNetCore.Mvc/2.2.0
-    icon: {fileID: 0}
-    IconUrl: https://api.nuget.org/v3-flatcontainer/microsoft.aspnetcore.mvc/2.2.0/icon
-    LicenseUrl: https://raw.githubusercontent.com/aspnet/AspNetCore/2.0.0/LICENSE.txt
-    ProjectUrl: https://asp.net/
-    ReleaseNotes: 
-    RepositoryBranch: 
-    RepositoryCommit: 
-    RepositoryType: 0
-    RepositoryUrl: 
-    Summary: 
-    Title: Microsoft.AspNetCore.Mvc
-  - Id: Azure.Security.KeyVault.Certificates
-    Version: 4.5.1
-    Authors: Microsoft
-    Description: This is the Microsoft Azure Key Vault Certificates client library
-    DownloadCount: 40108369
-    DownloadUrl: https://www.nuget.org/api/v2/package/Azure.Security.KeyVault.Certificates/4.5.1
-    icon: {fileID: 0}
-    IconUrl: https://api.nuget.org/v3-flatcontainer/azure.security.keyvault.certificates/4.5.1/icon
-    LicenseUrl: https://www.nuget.org/packages/Azure.Security.KeyVault.Certificates/4.5.1/license
-    ProjectUrl: https://github.com/Azure/azure-sdk-for-net/blob/Azure.Security.KeyVault.Certificates_4.5.1/sdk/keyvault/Azure.Security.KeyVault.Certificates/README.md
-    ReleaseNotes: https://github.com/Azure/azure-sdk-for-net/blob/Azure.Security.KeyVault.Certificates_4.5.1/sdk/keyvault/Azure.Security.KeyVault.Certificates/CHANGELOG.md
-    RepositoryBranch: 
-    RepositoryCommit: 
-    RepositoryType: 0
-    RepositoryUrl: 
-    Summary: 
-    Title: Azure.Security.KeyVault.Certificates
-  - Id: System.Formats.Asn1
-    Version: 7.0.0
-    Authors: Microsoft
-    Description: 'Provides classes that can read and write the ASN.1 BER, CER, and
-      DER data formats.
-
-
-      Commonly Used Types:
-
-      System.Formats.Asn1.AsnReader
-
-      System.Formats.Asn1.AsnWriter'
-    DownloadCount: 171435294
-    DownloadUrl: https://www.nuget.org/api/v2/package/System.Formats.Asn1/7.0.0
-    icon: {fileID: 0}
-    IconUrl: https://api.nuget.org/v3-flatcontainer/system.formats.asn1/7.0.0/icon
-    LicenseUrl: https://www.nuget.org/packages/System.Formats.Asn1/7.0.0/license
-    ProjectUrl: https://dot.net/
-    ReleaseNotes: https://go.microsoft.com/fwlink/?LinkID=799421
-    RepositoryBranch: 
-    RepositoryCommit: 
-    RepositoryType: 0
-    RepositoryUrl: 
-    Summary: 
-    Title: System.Formats.Asn1
-  - Id: Serilog.Sinks.PeriodicBatching
-    Version: 3.1.0
-    Authors: Serilog Contributors
-    Description: Buffer batches of log events to be flushed asynchronously.
-    DownloadCount: 170144849
-    DownloadUrl: https://www.nuget.org/api/v2/package/Serilog.Sinks.PeriodicBatching/3.1.0
-    icon: {fileID: 0}
-    IconUrl: https://api.nuget.org/v3-flatcontainer/serilog.sinks.periodicbatching/3.1.0/icon
-    LicenseUrl: https://www.nuget.org/packages/Serilog.Sinks.PeriodicBatching/3.1.0/license
-    ProjectUrl: https://github.com/serilog/serilog-sinks-periodicbatching
-    ReleaseNotes: 
-    RepositoryBranch: 
-    RepositoryCommit: 
-    RepositoryType: 0
-    RepositoryUrl: 
-    Summary: 
-    Title: Serilog.Sinks.PeriodicBatching
-  - Id: Grpc.Core.Api
-    Version: 2.53.0
-    Authors: The gRPC Authors
-    Description: gRPC C# Surface API
-    DownloadCount: 168656916
-    DownloadUrl: https://www.nuget.org/api/v2/package/Grpc.Core.Api/2.53.0
-    icon: {fileID: 0}
-    IconUrl: https://api.nuget.org/v3-flatcontainer/grpc.core.api/2.53.0/icon
-    LicenseUrl: https://www.nuget.org/packages/Grpc.Core.Api/2.53.0/license
-    ProjectUrl: https://github.com/grpc/grpc-dotnet
-    ReleaseNotes: 
-    RepositoryBranch: 
-    RepositoryCommit: 
-    RepositoryType: 0
-    RepositoryUrl: 
-    Summary: 
-    Title: Grpc.Core.Api
-  - Id: AutoMapper.Extensions.Microsoft.DependencyInjection
-    Version: 12.0.1
-    Authors: Jimmy Bogard
-    Description: AutoMapper extensions for ASP.NET Core
-    DownloadCount: 165859084
-    DownloadUrl: https://www.nuget.org/api/v2/package/AutoMapper.Extensions.Microsoft.DependencyInjection/12.0.1
-    icon: {fileID: 0}
-    IconUrl: https://api.nuget.org/v3-flatcontainer/automapper.extensions.microsoft.dependencyinjection/12.0.1/icon
-    LicenseUrl: https://www.nuget.org/packages/AutoMapper.Extensions.Microsoft.DependencyInjection/12.0.1/license
-    ProjectUrl: https://automapper.org/
-    ReleaseNotes: 
-    RepositoryBranch: 
-    RepositoryCommit: 
-    RepositoryType: 0
-    RepositoryUrl: 
-    Summary: 
-    Title: AutoMapper.Extensions.Microsoft.DependencyInjection
-  - Id: RabbitMQ.Client
-    Version: 6.5.0
-    Authors: VMware
-    Description: The RabbitMQ .NET client is the official client library for C# (and,
-      implicitly, other .NET languages)
-    DownloadCount: 163346187
-    DownloadUrl: https://www.nuget.org/api/v2/package/RabbitMQ.Client/6.5.0
-    icon: {fileID: 0}
-    IconUrl: https://api.nuget.org/v3-flatcontainer/rabbitmq.client/6.5.0/icon
-    LicenseUrl: https://www.nuget.org/packages/RabbitMQ.Client/6.5.0/license
-    ProjectUrl: https://www.rabbitmq.com/dotnet.html
-    ReleaseNotes: 
-    RepositoryBranch: 
-    RepositoryCommit: 
-    RepositoryType: 0
-    RepositoryUrl: 
-    Summary: 
-    Title: RabbitMQ.Client
-  - Id: AWSSDK.S3
-    Version: 3.7.104.28
-    Authors: Amazon Web Services
-    Description: Amazon Simple Storage Service (Amazon S3), provides developers and
-      IT teams with secure, durable, highly-scalable object storage.
-    DownloadCount: 162309415
-    DownloadUrl: https://www.nuget.org/api/v2/package/AWSSDK.S3/3.7.104.28
-    icon: {fileID: 0}
-    IconUrl: https://api.nuget.org/v3-flatcontainer/awssdk.s3/3.7.104.28/icon
-    LicenseUrl: http://aws.amazon.com/apache2.0/
-    ProjectUrl: https://github.com/aws/aws-sdk-net/
-    ReleaseNotes: 
-    RepositoryBranch: 
-    RepositoryCommit: 
-    RepositoryType: 0
-    RepositoryUrl: 
-    Summary: 
-    Title: AWSSDK - S3
-  - Id: MongoDB.Bson
-    Version: 2.19.2
-    Authors: MongoDB Inc.
-    Description: MongoDB's Official Bson Library.
-    DownloadCount: 161911588
-    DownloadUrl: https://www.nuget.org/api/v2/package/MongoDB.Bson/2.19.2
-    icon: {fileID: 0}
-    IconUrl: https://api.nuget.org/v3-flatcontainer/mongodb.bson/2.19.2/icon
-    LicenseUrl: https://www.nuget.org/packages/MongoDB.Bson/2.19.2/license
-    ProjectUrl: https://www.mongodb.com/docs/drivers/csharp/
-    ReleaseNotes: 
-    RepositoryBranch: 
-    RepositoryCommit: 
-    RepositoryType: 0
-    RepositoryUrl: 
-    Summary: 
-    Title: MongoDB.Bson
-  defaultIcon: {fileID: 2800000, guid: eec19781926cd2248b7c9abfde8db555, type: 3}
-  hasRefreshed: 1
-  numberToSkip: 75
-  updatePackages: []
---- !u!114 &13
 MonoBehaviour:
   m_ObjectHideFlags: 52
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2293,7 +372,7 @@ MonoBehaviour:
   m_LowResolutionForAspectRatios: 01000000000000000000
   m_XRRenderMode: 0
   m_RenderTexture: {fileID: 0}
---- !u!114 &14
+--- !u!114 &13
 MonoBehaviour:
   m_ObjectHideFlags: 52
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2313,7 +392,7 @@ MonoBehaviour:
     m_Tooltip: 
   m_Pos:
     serializedVersion: 2
-    x: -326
+    x: 8
     y: 81
     width: 294
     height: 908
@@ -2324,23 +403,23 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: ba950000
+      m_SelectedIDs: 
       m_LastClickedID: 0
-      m_ExpandedIDs: a053feff5e72feff1a45ffff1c45ffffba6cffffc6bdffff4cc8ffff68f2ffffbcf3ffff2cf5ffff14faffff328f00004c900000aa900000b2900000ae940000c0940000c4940000
+      m_ExpandedIDs: b0faffff
       m_RenameOverlay:
         m_UserAcceptedRename: 0
-        m_Name: ElevatorShaft
-        m_OriginalName: ElevatorShaft
+        m_Name: 
+        m_OriginalName: 
         m_EditFieldRect:
           serializedVersion: 2
           x: 0
           y: 0
           width: 0
           height: 0
-        m_UserData: 38192
+        m_UserData: 0
         m_IsWaitingForDelay: 0
         m_IsRenaming: 0
-        m_OriginalEventType: 0
+        m_OriginalEventType: 11
         m_IsRenamingFilename: 0
         m_ClientGUIView: {fileID: 2}
       m_SearchString: 
@@ -2350,7 +429,7 @@ MonoBehaviour:
       m_IsLocked: 0
     m_CurrentSortingName: TransformSorting
   m_WindowGUID: 4c969a2b90040154d917609493e03593
---- !u!114 &15
+--- !u!114 &14
 MonoBehaviour:
   m_ObjectHideFlags: 52
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2370,7 +449,7 @@ MonoBehaviour:
     m_Tooltip: 
   m_Pos:
     serializedVersion: 2
-    x: -31
+    x: 303
     y: 81
     width: 1304
     height: 669
@@ -2630,9 +709,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: 43.57608, y: 12.175684, z: 217.77351}
+    m_Target: {x: 35.456284, y: 23.209385, z: 218.20024}
     speed: 2
-    m_Value: {x: 43.57608, y: 12.175684, z: 217.77351}
+    m_Value: {x: 35.456284, y: 23.209385, z: 218.20024}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -2679,13 +758,13 @@ MonoBehaviour:
     m_GridAxis: 1
     m_gridOpacity: 0.5
   m_Rotation:
-    m_Target: {x: 0.013050745, y: -0.57109576, z: 0.005962679, w: 0.8216907}
+    m_Target: {x: -0.14367546, y: 0.5839796, z: 0.10354811, w: 0.79320866}
     speed: 2
-    m_Value: {x: 0.013049683, y: -0.5694266, z: 0.005938549, w: 0.8219171}
+    m_Value: {x: -0.14134662, y: 0.5732189, z: 0.09893524, w: 0.8010325}
   m_Size:
     m_Target: 12.764495
     speed: 2
-    m_Value: 12.214828
+    m_Value: 12.764495
   m_Ortho:
     m_Target: 0
     speed: 2
@@ -2710,7 +789,7 @@ MonoBehaviour:
   m_SceneVisActive: 1
   m_LastLockedObject: {fileID: 0}
   m_ViewIsLockedToObject: 0
---- !u!114 &16
+--- !u!114 &15
 MonoBehaviour:
   m_ObjectHideFlags: 52
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2886,7 +965,7 @@ MonoBehaviour:
   m_ShowReferencedBuses: 1
   m_ShowBusConnections: 0
   m_ShowBusConnectionsOfSelection: 0
---- !u!114 &17
+--- !u!114 &16
 MonoBehaviour:
   m_ObjectHideFlags: 52
   m_CorrespondingSourceObject: {fileID: 0}
@@ -3069,7 +1148,7 @@ MonoBehaviour:
   m_CurrentEditor: 1
   m_LayerEditor:
     m_SelectedLayerIndex: 0
---- !u!114 &18
+--- !u!114 &17
 MonoBehaviour:
   m_ObjectHideFlags: 52
   m_CorrespondingSourceObject: {fileID: 0}
@@ -3089,7 +1168,7 @@ MonoBehaviour:
     m_Tooltip: 
   m_Pos:
     serializedVersion: 2
-    x: -31
+    x: 303
     y: 771
     width: 1606
     height: 218
@@ -3123,9 +1202,9 @@ MonoBehaviour:
     m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 315}
-    m_SelectedIDs: 368c0000
-    m_LastClickedID: 35894
-    m_ExpandedIDs: 00000000048c0000068c0000088c00000a8c00000c8c00000e8c0000108c00001a8c00002e8c00005a8c00009ec2000000ca9a3b
+    m_SelectedIDs: 08960000
+    m_LastClickedID: 38408
+    m_ExpandedIDs: 00000000bc950000be950000c0950000c2950000c4950000c6950000c895000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -3153,7 +1232,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 00000000048c0000068c0000088c00000a8c00000c8c00000e8c0000108c0000
+    m_ExpandedIDs: 00000000bc950000be950000c0950000c2950000c4950000c6950000c8950000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -3180,7 +1259,7 @@ MonoBehaviour:
   m_ListAreaState:
     m_SelectedInstanceIDs: 
     m_LastClickedInstanceID: 0
-    m_HadKeyboardFocusLastEvent: 1
+    m_HadKeyboardFocusLastEvent: 0
     m_ExpandedInstanceIDs: c6230000d48f00008c860000de890000be7d00005a800000627d0000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
@@ -3209,7 +1288,7 @@ MonoBehaviour:
     m_GridSize: 64
   m_SkipHiddenPackages: 0
   m_DirectoriesAreaWidth: 149
---- !u!114 &19
+--- !u!114 &18
 MonoBehaviour:
   m_ObjectHideFlags: 52
   m_CorrespondingSourceObject: {fileID: 0}
@@ -3229,15 +1308,15 @@ MonoBehaviour:
     m_Tooltip: 
   m_Pos:
     serializedVersion: 2
-    x: 298
-    y: 782
-    width: 1621
-    height: 217
+    x: 303
+    y: 771
+    width: 1606
+    height: 218
   m_ViewDataDictionary: {fileID: 0}
   m_OverlayCanvas:
     m_LastAppliedPresetName: Default
     m_SaveData: []
---- !u!114 &20
+--- !u!114 &19
 MonoBehaviour:
   m_ObjectHideFlags: 52
   m_CorrespondingSourceObject: {fileID: 0}
@@ -3268,7 +1347,7 @@ MonoBehaviour:
   m_LockTracker:
     m_IsLocked: 0
   m_LastSelectedObjectID: -95104
---- !u!114 &21
+--- !u!114 &20
 MonoBehaviour:
   m_ObjectHideFlags: 52
   m_CorrespondingSourceObject: {fileID: 0}
@@ -3288,7 +1367,7 @@ MonoBehaviour:
     m_Tooltip: 
   m_Pos:
     serializedVersion: 2
-    x: 1275
+    x: 1609
     y: 81
     width: 300
     height: 669
@@ -3309,7 +1388,7 @@ MonoBehaviour:
   m_LockTracker:
     m_IsLocked: 0
   m_PreviewWindow: {fileID: 0}
---- !u!114 &22
+--- !u!114 &21
 MonoBehaviour:
   m_ObjectHideFlags: 52
   m_CorrespondingSourceObject: {fileID: 0}
