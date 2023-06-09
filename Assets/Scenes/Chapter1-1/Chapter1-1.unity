@@ -18864,35 +18864,35 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 0}
+    m_TransformParent: {fileID: 1635196742}
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: c99a6c7fea5de864dae3989cf5035dea, type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: c99a6c7fea5de864dae3989cf5035dea, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.46102336
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: c99a6c7fea5de864dae3989cf5035dea, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.46102336
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: c99a6c7fea5de864dae3989cf5035dea, type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.46102336
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: c99a6c7fea5de864dae3989cf5035dea, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 36.932
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: c99a6c7fea5de864dae3989cf5035dea, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 12.349
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: c99a6c7fea5de864dae3989cf5035dea, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 202.52
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: c99a6c7fea5de864dae3989cf5035dea, type: 3}
       propertyPath: m_LocalRotation.w
@@ -18900,15 +18900,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: c99a6c7fea5de864dae3989cf5035dea, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: c99a6c7fea5de864dae3989cf5035dea, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: c99a6c7fea5de864dae3989cf5035dea, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: c99a6c7fea5de864dae3989cf5035dea, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -18925,6 +18925,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: c99a6c7fea5de864dae3989cf5035dea, type: 3}
       propertyPath: m_Name
       value: ExplosiveBarrel
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: c99a6c7fea5de864dae3989cf5035dea, type: 3}
+      propertyPath: m_TagString
+      value: Barrel
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c99a6c7fea5de864dae3989cf5035dea, type: 3}
@@ -26359,6 +26363,48 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 19
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &622845644 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: c99a6c7fea5de864dae3989cf5035dea, type: 3}
+  m_PrefabInstance: {fileID: 369208089}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &622845645
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 622845644}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62cd20f0393b30f47aef503c6c61790f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  BarsRigidBody: []
+  ExplosionParticles: {fileID: 1516673613}
+  PrisonBars:
+  - {fileID: 648781987}
+  - {fileID: 80007402}
+  - {fileID: 426414259}
+  - {fileID: 1949464119}
+  - {fileID: 279334268}
+  TransitionMaterial: {fileID: 0}
+  barsEffectSource: {fileID: 1539101070}
+  maxRange: 100
+  minRange: 80
+--- !u!65 &622845646
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 622845644}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2, y: 3.1, z: 2}
+  m_Center: {x: 0, y: 1.45, z: 0}
 --- !u!1 &628586201 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8513859187771203891, guid: 1cce1c10ed58ac94f9253c15274bfe0e, type: 3}
@@ -65077,7 +65123,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!199 &1516673614
 ParticleSystemRenderer:
   serializedVersion: 6
@@ -65123,8 +65169,8 @@ ParticleSystemRenderer:
   m_RenderMode: 0
   m_MeshDistribution: 0
   m_SortMode: 1
-  m_MinParticleSize: 0
-  m_MaxParticleSize: 5
+  m_MinParticleSize: 0.5
+  m_MaxParticleSize: 0.5
   m_CameraVelocityScale: 0
   m_VelocityScale: 0
   m_LengthScale: 2
@@ -65141,7 +65187,7 @@ ParticleSystemRenderer:
   m_FreeformStretching: 0
   m_RotateWithStretchDirection: 1
   m_VertexStreams: 0001030408
-  m_Mesh: {fileID: 0}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
   m_Mesh1: {fileID: 0}
   m_Mesh2: {fileID: 0}
   m_Mesh3: {fileID: 0}
@@ -65165,7 +65211,7 @@ ParticleSystem:
   ringBufferMode: 0
   ringBufferLoopRange: {x: 0, y: 1}
   emitterVelocityMode: 1
-  looping: 1
+  looping: 0
   prewarm: 0
   playOnAwake: 1
   useUnscaledTime: 0
@@ -65234,7 +65280,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 3
       scalar: 0.5
-      minScalar: 1
+      minScalar: 0.8
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -65785,7 +65831,7 @@ ParticleSystem:
     radiusThickness: 1
     donutRadius: 0.2
     m_Position: {x: 0, y: 0, z: 0}
-    m_Rotation: {x: 0, y: 0, z: 0}
+    m_Rotation: {x: 90, y: 0, z: 0}
     m_Scale: {x: 1, y: 1, z: 1}
     placementMode: 0
     m_MeshMaterialIndex: 0
@@ -65865,7 +65911,7 @@ ParticleSystem:
     sphericalDirectionAmount: 0
     randomPositionAmount: 0
     radius:
-      value: 0.35
+      value: 0.1
       mode: 0
       spread: 0
       speed:
@@ -65922,7 +65968,7 @@ ParticleSystem:
           m_PostInfinity: 2
           m_RotationOrder: 4
     arc:
-      value: 360
+      value: 180
       mode: 0
       spread: 0
       speed:
@@ -69924,11 +69970,11 @@ Transform:
   m_GameObject: {fileID: 1516673613}
   m_LocalRotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2.1690876, y: 2.1690874, z: 2.1690874}
+  m_LocalScale: {x: 2.169088, y: 2.1690874, z: 2.1690874}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 369208090}
-  m_RootOrder: 2
+  m_Father: {fileID: 1635196742}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
 --- !u!1 &1521289975
 GameObject:
@@ -71414,6 +71460,39 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1632126845}
   m_CullTransparentMesh: 1
+--- !u!1 &1635196741
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1635196742}
+  m_Layer: 0
+  m_Name: Barrel
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1635196742
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1635196741}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 36.932, y: 12.349, z: 202.52}
+  m_LocalScale: {x: 0.46102336, y: 0.46102336, z: 0.46102336}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 369208090}
+  - {fileID: 1516673616}
+  m_Father: {fileID: 0}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1641182138
 GameObject:
   m_ObjectHideFlags: 0

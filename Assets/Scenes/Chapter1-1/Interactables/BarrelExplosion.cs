@@ -4,13 +4,32 @@ using UnityEngine;
 
 public class BarrelExplosion : MonoBehaviour
 {
-    public float minRange = 80f;
-    public float maxRange = 100f;
-    public AudioSource barsEffectSource;
+    public Rigidbody[] BarsRigidBody;
+    public GameObject ExplosionParticles;
 
     public GameObject[] PrisonBars;
-    public Rigidbody[] BarsRigidBody;
     public Material TransitionMaterial;
+    public AudioSource barsEffectSource;
+    public float maxRange = 100f;
+    public float minRange = 80f;
+
+    public void ExplodeBars()
+    {
+        //if (EventTriggered) return;
+        //EventTriggered = true;
+
+        ExplosionParticles.SetActive(true);
+        // ExplosionParticles.GetComponent<ParticleSystem>().Play();
+        for (int i = 0; i < BarsRigidBody.Length; i++)
+        {
+            BarsRigidBody[i].useGravity = true;
+            BarsRigidBody[i].AddForce(Vector3.forward * Random.Range(minRange, maxRange));
+        }
+        barsEffectSource.Play();
+        // StartCoroutine(WaitBeforeDestroy());
+        // fadeOut();
+        Destroy(gameObject);
+    }
 
     private void Awake()
     {
@@ -20,21 +39,5 @@ public class BarrelExplosion : MonoBehaviour
         {
             BarsRigidBody[i] = PrisonBars[i].GetComponent<Rigidbody>();
         }
-    }
-    public void ExplodeBars()
-    {
-        //if (EventTriggered) return;
-        //EventTriggered = true;
-
-        for (int i = 0; i < BarsRigidBody.Length; i++)
-        {
-            BarsRigidBody[i].useGravity = true;
-            BarsRigidBody[i].AddForce(Vector3.forward * Random.Range(minRange, maxRange));
-        }
-        barsEffectSource.Play();
-
-        // StartCoroutine(WaitBeforeDestroy());
-        // fadeOut();
-        Destroy(gameObject);
     }
 }
