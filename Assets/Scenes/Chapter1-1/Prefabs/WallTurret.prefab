@@ -684,6 +684,11 @@ GameObject:
   - component: {fileID: 6244015949163779172}
   - component: {fileID: 6539920257224239933}
   - component: {fileID: 1705015795523515417}
+  - component: {fileID: 3297767381780165065}
+  - component: {fileID: 4936264497832038343}
+  - component: {fileID: 5458601689595746264}
+  - component: {fileID: 2012120591427309833}
+  - component: {fileID: 2630470694584320311}
   m_Layer: 0
   m_Name: TurretBody
   m_TagString: Untagged
@@ -756,6 +761,99 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &3297767381780165065
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6970030839775967414}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e77070b4310adb94a9275743156f18ad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ai: {fileID: 1496532466987033329}
+  firePoint: {fileID: 8260215943973750099}
+  player: {fileID: 0}
+  projectile: {fileID: 0}
+  projectileSpeed: 100
+  shotCooldown: 1
+--- !u!114 &4936264497832038343
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6970030839775967414}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d28c1a0e6e17de489d0eccf87b3aac6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  aiDmgTaken: 0
+  aiHealthHealed: 0
+  aiHealth: 100
+  aiDealtDamage: 0
+--- !u!114 &5458601689595746264
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6970030839775967414}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3df98c8f7b518de468e530a3c437caae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  alwaysUpdateDestination: 0
+  target: {x: 0, y: 0, z: 0}
+  waypoints: []
+--- !u!114 &2012120591427309833
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6970030839775967414}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c4b977a91b529d24493204b27b4f18b0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  angle: 0
+  canSeePlayer: 0
+  obstructionMask:
+    serializedVersion: 2
+    m_Bits: 0
+  playerRef: {fileID: 0}
+  radius: 0
+  targetMask:
+    serializedVersion: 2
+    m_Bits: 0
+--- !u!114 &2630470694584320311
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6970030839775967414}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c192505dafac87d42870dd454aa9307f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  angle: 0
+  canSeePlayer: 0
+  obstructionMask:
+    serializedVersion: 2
+    m_Bits: 0
+  playerRef: {fileID: 0}
+  radius: 0
+  targetMask:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!1 &7936156571922906771
 GameObject:
   m_ObjectHideFlags: 0
