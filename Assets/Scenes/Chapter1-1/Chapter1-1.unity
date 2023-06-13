@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.14198393, g: 0.15809973, b: 0.1894391, a: 1}
+  m_IndirectSpecularColor: {r: 0.1417965, g: 0.15796058, b: 0.18931827, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -7399,6 +7399,37 @@ NavMeshObstacle:
   m_CarveOnlyStationary: 1
   m_Center: {x: 0, y: 0, z: 0}
   m_TimeToStationary: 0.5
+--- !u!1 &1075193068
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1075193069}
+  m_Layer: 8
+  m_Name: FirePoint
+  m_TagString: ProjectileIgnore
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1075193069
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1075193068}
+  m_LocalRotation: {x: 0.70710725, y: -0, z: -0, w: 0.7071063}
+  m_LocalPosition: {x: 1.1559975, y: -0.763, z: -0.098}
+  m_LocalScale: {x: 2.1386929, y: 2.138693, z: 2.138693}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2010047178880919982}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1086338354
 GameObject:
   m_ObjectHideFlags: 0
@@ -7857,7 +7888,7 @@ Transform:
   - {fileID: 1781670473}
   - {fileID: 1876704437}
   m_Father: {fileID: 2010047178880919982}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1174446962
 GameObject:
@@ -16784,7 +16815,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ai: {fileID: 1615326390}
-  firePoint: {fileID: 1159496305}
+  firePoint: {fileID: 1075193069}
   projectile: {fileID: 1159496301}
   projectileSpeed: 100
   shotCooldown: 0.5
@@ -25920,7 +25951,7 @@ GameObject:
   - component: {fileID: 841666937332617921}
   m_Layer: 0
   m_Name: Robot1 (1)
-  m_TagString: Untagged
+  m_TagString: ProjectileIgnore
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -26112,6 +26143,7 @@ Transform:
   m_LocalScale: {x: 0.46757534, y: 0.46757522, z: 0.46757522}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 1075193069}
   - {fileID: 1159496305}
   m_Father: {fileID: 1615326400}
   m_RootOrder: 0
