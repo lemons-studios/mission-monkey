@@ -7,10 +7,10 @@ using UnityEngine.AI;
 public class AIPathfinding : MonoBehaviour
 {
     public bool alwaysUpdateDestination = false;
+    public Vector3 target;
     public Transform[] waypoints;
     NavMeshAgent agent;
     FieldOfView fov;
-    public Vector3 target;
     int waypointIndex;
 
     void IterateWaypointIndex()
@@ -38,7 +38,10 @@ public class AIPathfinding : MonoBehaviour
         }
         UpdateDestination();
         fov = GetComponent<FieldOfView>();
-        if (Vector3.Distance(transform.position, target) > 3 && Vector3.Distance(transform.position, target) < 10)
+        if (
+            Vector3.Distance(transform.position, target) > 1
+            && Vector3.Distance(transform.position, target) < 10
+        )
         {
             agent.speed = 3.5f;
         }
