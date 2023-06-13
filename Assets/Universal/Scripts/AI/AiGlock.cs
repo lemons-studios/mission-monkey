@@ -11,6 +11,9 @@ public class AiGlock : MonoBehaviour
     private Transform firePoint;
 
     [SerializeField]
+    private GameObject player;
+
+    [SerializeField]
     private GameObject projectile;
 
     [SerializeField]
@@ -27,7 +30,11 @@ public class AiGlock : MonoBehaviour
         {
             timeToFire = Time.time + shotCooldown;
 
-            Ray ray = new Ray(transform.position, ai.transform.forward);
+            // Ray ray = new Ray(transform.position, ai.transform.forward);
+            Ray ray = new Ray(
+                transform.position,
+                (player.transform.position - ai.transform.position).normalized
+            );
             RaycastHit hit;
 
             if (Physics.Raycast(ray, out hit))
