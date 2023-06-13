@@ -1,12 +1,10 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class BarrelExplosion : MonoBehaviour
 {
+    public GameObject Barrel;
     public Rigidbody[] BarsRigidBody;
     public GameObject ExplosionParticles;
-
     public GameObject[] PrisonBars;
     public Material TransitionMaterial;
     public AudioSource barsEffectSource;
@@ -20,6 +18,7 @@ public class BarrelExplosion : MonoBehaviour
 
         ExplosionParticles.SetActive(true);
         // ExplosionParticles.GetComponent<ParticleSystem>().Play();
+        Barrel.SetActive(false);
         for (int i = 0; i < BarsRigidBody.Length; i++)
         {
             BarsRigidBody[i].useGravity = true;
@@ -33,7 +32,6 @@ public class BarrelExplosion : MonoBehaviour
 
     private void Awake()
     {
-        // PrisonBars = new GameObject[5];
         BarsRigidBody = new Rigidbody[5];
         for (int i = 0; i < PrisonBars.Length; i++)
         {
