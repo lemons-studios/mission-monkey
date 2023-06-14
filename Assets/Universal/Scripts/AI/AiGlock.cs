@@ -21,6 +21,9 @@ public class AiGlock : MonoBehaviour
     private List<GameObject> projectiles;
 
     [SerializeField]
+    private float damage = 5f;
+
+    [SerializeField]
     private float shotCooldown = 1f;
     private float timeToFire;
 
@@ -42,7 +45,7 @@ public class AiGlock : MonoBehaviour
                 destination = hit.point;
                 if (hit.collider.gameObject.tag == "Player")
                 {
-                    PlayerHealth.damageTaken = 5;
+                    PlayerHealth.damageTaken = damage;
                     PlayerHealth.dealtDamage = true;
                     PlayerHealth.DamagePlayer();
                 }
