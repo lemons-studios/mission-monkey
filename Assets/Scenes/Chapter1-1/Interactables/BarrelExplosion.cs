@@ -12,8 +12,8 @@ public class BarrelExplosion : MonoBehaviour
     public GameObject[] ShootingRangeBars;
     public Material TransitionMaterial;
     public AudioSource barsEffectSource;
-    public float maxRange = 100f;
-    public float minRange = 80f;
+    // public float maxRange = 100f;
+    // public float minRange = 80f;
 
     public void ExplodeBars()
     {
@@ -26,14 +26,14 @@ public class BarrelExplosion : MonoBehaviour
         for (int i = 0; i < BarsRigidBody.Length; i++)
         {
             BarsRigidBody[i].useGravity = true;
-            BarsRigidBody[i].AddForce(Vector3.forward * Random.Range(minRange, maxRange));
+            BarsRigidBody[i].AddForce(Vector3.forward * Random.Range(80, 110));
             //PrisonBarColliders[i].size = new Vector3(0.1f,0.1f,0.1f);
 
         }
         for (int i = 0; i < ShootingRangeRigidBody.Length; i++)
         {
             ShootingRangeRigidBody[i].useGravity = true;
-            ShootingRangeRigidBody[i].AddForce(Vector3.right * Random.Range(100, 150));
+            ShootingRangeRigidBody[i].AddForce(Vector3.right * Random.Range(250, 350));
             //ShootingRangeColliders[i].size = new Vector3(0.1f,0.1f,0.1f);
 
         }
