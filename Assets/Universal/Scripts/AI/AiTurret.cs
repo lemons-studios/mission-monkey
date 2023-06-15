@@ -34,7 +34,11 @@ public class AiTurret : MonoBehaviour
         {
             timeToFire = Time.time + shotCooldown;
 
-            Ray ray = new Ray(transform.position, ai.transform.forward);
+            // Ray ray = new Ray(transform.position, ai.transform.forward);
+            Ray ray = new Ray(
+                transform.position,
+                (player.transform.position - ai.transform.position)
+            );
             RaycastHit hit;
 
             if (Physics.Raycast(ray, out hit))

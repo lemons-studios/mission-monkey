@@ -10,10 +10,13 @@ public class TurretFOV : MonoBehaviour
     [SerializeField]
     private GameObject ai;
 
-    private AiGlock glock;
+    [SerializeField]
+    private bool isSubturret;
 
     [SerializeField]
     private GameObject player;
+
+    private AiTurret turret;
 
     [SerializeField]
     private float turretRange;
@@ -35,7 +38,7 @@ public class TurretFOV : MonoBehaviour
         );
         RaycastHit hit;
 
-        glock = GetComponent<AiGlock>();
+        turret = GetComponent<AiTurret>();
 
         if (canSeePlayer && !PlayerDeathController.isDead)
         {
@@ -43,30 +46,36 @@ public class TurretFOV : MonoBehaviour
                 ai.transform.position - player.transform.position
             ).normalized;
 
-            transform.rotation = Quaternion.RotateTowards(
-                transform.rotation,
-                Quaternion.LookRotation(targetDirection, Vector3.forward),
-                5f
-            );
+            if (!isSubturret)
+            {
+                transform.rotation = Quaternion.RotateTowards(
+                    transform.rotation,
+                    Quaternion.LookRotation(targetDirection, Vector3.forward),
+                    5f
+                );
+            }
 
             if (Application.isPlaying)
             {
                 if (Physics.Raycast(ray, out hit))
                 {
-                    if (hit.collider.gameObject.CompareTag("Player"))
+                    if (hit.collider.gameObject.CompareTag("Player") && isSubturret)
                     {
-                        glock.ShootProjectile();
+                        turret.ShootProjectile();
                     }
                 }
             }
         }
         else
         {
-            transform.rotation = Quaternion.RotateTowards(
-                transform.rotation,
-                Quaternion.Euler(0, 0, 0),
-                5f
-            );
+            if (!isSubturret)
+            {
+                transform.rotation = Quaternion.RotateTowards(
+                    transform.rotation,
+                    Quaternion.Euler(0, 0, 0),
+                    5f
+                );
+            }
         }
     }
 }
