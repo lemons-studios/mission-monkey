@@ -38764,6 +38764,7 @@ GameObject:
   - component: {fileID: 1705015795716801867}
   - component: {fileID: 683922108}
   - component: {fileID: 683922109}
+  - component: {fileID: 6970030838912616933}
   m_Layer: 0
   m_Name: TurretBody
   m_TagString: Untagged
@@ -38771,6 +38772,25 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &6970030838912616933
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6970030838912616932}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8d0d4fff03c83c7418d5726f919b4e3f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ai: {fileID: 6970030838912616932}
+  damage: 1
+  firePoint: {fileID: 1395660301}
+  player: {fileID: 5609224935935144667}
+  projectile: {fileID: 2019292049}
+  projectileSpeed: 100
+  shotCooldown: 0.1
 --- !u!1 &7060881164960016316
 GameObject:
   m_ObjectHideFlags: 0

@@ -46,7 +46,7 @@ public class TurretFOV : MonoBehaviour
             transform.rotation = Quaternion.RotateTowards(
                 transform.rotation,
                 Quaternion.LookRotation(targetDirection, Vector3.forward),
-                1f
+                5f
             );
 
             if (Application.isPlaying)
@@ -65,7 +65,7 @@ public class TurretFOV : MonoBehaviour
             transform.rotation = Quaternion.RotateTowards(
                 transform.rotation,
                 Quaternion.Euler(0, 0, 0),
-                1f
+                5f
             );
         }
     }
