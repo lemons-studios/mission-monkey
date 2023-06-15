@@ -5,6 +5,9 @@ public class AiGlock : MonoBehaviour
 {
     [SerializeField]
     private GameObject ai;
+
+    [SerializeField]
+    private float damage = 5f;
     private Vector3 destination;
 
     [SerializeField]
@@ -21,9 +24,6 @@ public class AiGlock : MonoBehaviour
     private List<GameObject> projectiles;
 
     [SerializeField]
-    private float damage = 5f;
-
-    [SerializeField]
     private float shotCooldown = 1f;
     private float timeToFire;
 
@@ -36,7 +36,7 @@ public class AiGlock : MonoBehaviour
             // Ray ray = new Ray(transform.position, ai.transform.forward);
             Ray ray = new Ray(
                 transform.position,
-                (player.transform.position - ai.transform.position).normalized
+                (player.transform.position - ai.transform.position)
             );
             RaycastHit hit;
 
