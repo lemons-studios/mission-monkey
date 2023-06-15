@@ -43,7 +43,11 @@ public class TurretFOV : MonoBehaviour
                 ai.transform.position - player.transform.position
             ).normalized;
 
-            transform.rotation = Quaternion.LookRotation(targetDirection, Vector3.forward);
+            transform.rotation = Quaternion.RotateTowards(
+                transform.rotation,
+                Quaternion.LookRotation(targetDirection, Vector3.forward),
+                1f
+            );
 
             if (Application.isPlaying)
             {
@@ -55,6 +59,14 @@ public class TurretFOV : MonoBehaviour
                     }
                 }
             }
+        }
+        else
+        {
+            transform.rotation = Quaternion.RotateTowards(
+                transform.rotation,
+                Quaternion.Euler(0, 0, 0),
+                1f
+            );
         }
     }
 }
