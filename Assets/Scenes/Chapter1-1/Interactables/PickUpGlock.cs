@@ -11,4 +11,9 @@ public class PickUpGlock : Interactable
         PickedUpGlock = true;
         gameObject.SetActive(false);
     }
+
+    private void Start()
+    {
+        GlockArm.SetActive(false);
+    }
 }
