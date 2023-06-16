@@ -14,8 +14,11 @@ public class Glock : MonoBehaviour
     private PlayerInput playerInput;
     private float timeToFire;
 
+    public GameObject PickUpGlock;
+
     public void ShootProjectile()
     {
+        if (!PickUpGlock.GetComponent<PickUpGlock>().PickedUpGlock) return;
         if (Time.time >= timeToFire && !PlayerDeathController.isDead)
         {
             timeToFire = Time.time + shotCooldown;
