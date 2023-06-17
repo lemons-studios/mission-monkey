@@ -14,8 +14,11 @@ public class Glock : MonoBehaviour
     private PlayerInput playerInput;
     private float timeToFire;
 
+    public GameObject GlockInHand;
+
     public void ShootProjectile()
     {
+        if (!GlockInHand.activeSelf) return;
         if (Time.time >= timeToFire && !PlayerDeathController.isDead)
         {
             timeToFire = Time.time + shotCooldown;
