@@ -10,6 +10,7 @@ public class NewElevatorEventInteraction : Interactable
     
     protected override void Interact()
     {
+        isEventTriggered = !isEventTriggered;
         NewElevator.GetComponent<Animator>().SetBool("IsInteractedWith", isEventTriggered);
         Player.GetComponent<PlayerMotor>().speed = 0f;
     }
