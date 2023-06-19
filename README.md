@@ -50,3 +50,4 @@ You are on your own. If you want to, you can try and install Wine/DXVK to run th
 
 ## 📃 Credits
 - See [THANKS](https://github.com/funny-unity-game/Mission-Monkey/blob/main/THANKS) for credits
+- Thanks to [@allfax](https://github.com/allfax) for testing the game
