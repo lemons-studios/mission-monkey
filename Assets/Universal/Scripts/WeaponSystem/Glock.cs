@@ -44,6 +44,12 @@ public class Glock : MonoBehaviour
                     GameObject barrel = hit.collider.gameObject;
                     barrel.GetComponent<BarrelExplosion>().ExplodeBars();
                 }
+                if (hit.collider.gameObject.CompareTag("Target"))
+                {
+                    Debug.Log("Target");
+                    GameObject Target = hit.collider.gameObject;
+                    Target.GetComponent<AddToCounterWhenDestroyed>().AddToCounter();
+                }
 
             }
             else

@@ -10,6 +10,7 @@ public class PickUpGlock : Interactable
         GlockArm.SetActive(true);
         PickedUpGlock = true;
         gameObject.SetActive(false);
+        TargetSpawns.hasGunBeenPickedUp = true;
     }
 
     private void Start()
