@@ -33,16 +33,25 @@ public class HealthDisplay : MonoBehaviour
         targetOffset = -369f + PlayerHealth.Health * 3.69f;
         xOffset = HealthBar.GetComponent<RectTransform>().offsetMax.x;
 
-        if (xOffset < targetOffset) {
-            if (targetOffset - xOffset < 10) {
+        if (xOffset < targetOffset)
+        {
+            if (targetOffset - xOffset < 10)
+            {
                 HealthBar.GetComponent<RectTransform>().offsetMax = new Vector2(targetOffset, 0f);
-            } else {
+            }
+            else
+            {
                 HealthBar.GetComponent<RectTransform>().offsetMax = new Vector2(xOffset + 10, 0f);
             }
-        } else if (xOffset > targetOffset) {
-            if (xOffset - targetOffset < 10) {
+        }
+        else if (xOffset > targetOffset)
+        {
+            if (xOffset - targetOffset < 10)
+            {
                 HealthBar.GetComponent<RectTransform>().offsetMax = new Vector2(targetOffset, 0f);
-            } else {
+            }
+            else
+            {
                 HealthBar.GetComponent<RectTransform>().offsetMax = new Vector2(xOffset - 10, 0f);
             }
         }

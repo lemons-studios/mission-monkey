@@ -83,7 +83,7 @@ public class DiscordController : MonoBehaviour
 
             discord.RunCallbacks();
         }
-        else 
+        else
         {
             return;
         }

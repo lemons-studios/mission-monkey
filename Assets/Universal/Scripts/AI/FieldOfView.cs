@@ -72,9 +72,12 @@ public class FieldOfView : MonoBehaviour
 
     public void FixedUpdate()
     {
-        if(canSeePlayer == true) {
+        if (canSeePlayer == true)
+        {
             AiSeePlayer = true;
-        } else {
+        }
+        else
+        {
             AiSeePlayer = false;
         }
     }

@@ -29,8 +29,8 @@ public class TriggerBarsEventDebug : Interactable
     {
         //if (EventTriggered) return;
         //EventTriggered = true;
-        
-        
+
+
         for (int i = 0; i < BarsRigidBody.Length; i++)
         {
             BarsRigidBody[i].useGravity = true;

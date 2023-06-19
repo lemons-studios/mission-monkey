@@ -42,7 +42,8 @@ public class InputManager : MonoBehaviour
         if (PlayerDeathController.isDead)
         {
             OnDisable();
-        } else
+        }
+        else
         {
             OnEnable();
         }

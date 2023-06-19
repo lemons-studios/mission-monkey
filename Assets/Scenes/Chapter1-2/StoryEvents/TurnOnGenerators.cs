@@ -19,7 +19,7 @@ public class TurnOnGenerators : MonoBehaviour
 
     public void EnableGenerators()
     {
-        for(int i = 0; i < FuelRods.Length; i++) 
+        for (int i = 0; i < FuelRods.Length; i++)
         {
             FuelRods[i].SetActive(true);
         }

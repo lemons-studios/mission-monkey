@@ -12,32 +12,43 @@ public class PlayerUI : MonoBehaviour
 
     public void UpdateText(string promptMessage)
     {
-        if (promptMessage == "") {
+        if (promptMessage == "")
+        {
             canUpdatePromptText = false;
             fadeIn = false;
             fadeOut = true;
-        } else {
+        }
+        else
+        {
             canUpdatePromptText = true;
             fadeIn = true;
             fadeOut = false;
         }
-        if (canUpdatePromptText) {
+        if (canUpdatePromptText)
+        {
             promptText.text = promptMessage;
         }
     }
 
     void Update()
     {
-        if (fadeIn) {
-            if (promptTextContainer.alpha < 1) {
+        if (fadeIn)
+        {
+            if (promptTextContainer.alpha < 1)
+            {
                 promptTextContainer.alpha += Time.deltaTime * 4;
                 canUpdatePromptText = true;
             }
-        } else if (fadeOut) {
-            if (promptTextContainer.alpha > 0) {
+        }
+        else if (fadeOut)
+        {
+            if (promptTextContainer.alpha > 0)
+            {
                 promptTextContainer.alpha -= Time.deltaTime * 4;
                 canUpdatePromptText = false;
-            } else {
+            }
+            else
+            {
                 canUpdatePromptText = true;
             }
         }

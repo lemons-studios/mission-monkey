@@ -7,7 +7,7 @@ public class NewElevatorEventInteraction : Interactable
     public GameObject NewElevator;
     public GameObject Player;
     public bool isEventTriggered;
-    
+
     protected override void Interact()
     {
         isEventTriggered = !isEventTriggered;
