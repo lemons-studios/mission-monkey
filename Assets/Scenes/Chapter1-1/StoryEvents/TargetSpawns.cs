@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class TargetSpawns : MonoBehaviour
 {
-    public GameObject TargetSpawnerL, TargetSpawnerC, TargetSpawnerR, Target, Barrel;
-    private float spawnCheck = 0;
+    public GameObject BarrelPortal, Barrel;
+    private float moveCheck = 0;
     public static float NumberOfTargetsDestroyed = 0;
     public static bool hasGunBeenPickedUp = false;
     public bool areAllTargetsDestroyed = false;
@@ -20,9 +20,10 @@ public class TargetSpawns : MonoBehaviour
             areAllTargetsDestroyed = true;
         }
 
-        if (areAllTargetsDestroyed == true & NumberOfTargetsDestroyed >= 3)
+        if (areAllTargetsDestroyed == true & NumberOfTargetsDestroyed >= 3 & moveCheck <= 0)
         {
             Barrel.transform.position = BarrelPortalPos;
+            moveCheck++;
         }
     }
 
