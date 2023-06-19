@@ -10,6 +10,6 @@ public class ObservationDoorOpen : Interactable
     protected override void Interact()
     {
         IsActive = !IsActive;
-        ObvDoorAndSwitch.GetComponent<Animator>().SetBool("IsActive", IsActive);
+        ObvDoorAndSwitch.GetComponent<Animator>().SetBool("SwitchPulled", IsActive);
     }
 }
