@@ -1,1 +1,22 @@
+name: Build
 
+on:
+  workflow_dispatch:
+    inputs:
+      create_release:
+        description: 'Create a new release'
+        required: true
+        type: boolean
+      version:
+        description: 'Version'
+        required: true
+      branch:
+        description: 'Branch to build from'
+        required: true
+
+jobs:
+  windows-il2cpp-release: 
+    runs-on: windows-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
