@@ -10,7 +10,7 @@ public class TurnOnGenerators : MonoBehaviour
 
     private void Awake()
     {
-        for(int i = 0; i < 4; i++)
+        for (int i = 0; i < 4; i++)
         {
             FuelRods[i].SetActive(false);
         }

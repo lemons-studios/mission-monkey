@@ -14,7 +14,7 @@ public class AddToWaveCounter : MonoBehaviour
         EnemyParent.transform.position = HealthpackLocation;
         if (EnemyParent.GetComponent<AiHealth>().aiHealth <= 0)
         {
-            if(PlayerHealth.Health <= 45f)
+            if (PlayerHealth.Health <= 45f)
             {
                 Instantiate(HealthPack, HealthpackLocation, Quaternion.identity);
             }

@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Audio;
 using UnityEngine.Video;
@@ -24,7 +22,7 @@ public class ComputerFocus : Interactable
     }
     public void Update()
     {
-        if(/*CaptchaPlayer.time >= CaptchaPlayer.clip.length*/ EventFinishedDebug == true)
+        if (/*CaptchaPlayer.time >= CaptchaPlayer.clip.length*/ EventFinishedDebug == true)
         {
             ComputerCaptcha.isEventReady = true;
         }
