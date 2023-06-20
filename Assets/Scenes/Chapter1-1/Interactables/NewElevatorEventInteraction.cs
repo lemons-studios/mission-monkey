@@ -13,5 +13,6 @@ public class NewElevatorEventInteraction : Interactable
         isEventTriggered = !isEventTriggered;
         NewElevator.GetComponent<Animator>().SetBool("IsInteractedWith", isEventTriggered);
         Player.GetComponent<PlayerMotor>().speed = 0f;
+        Player.GetComponent<PlayerMotor>().sprintSpeed = 0f;
     }
 }
