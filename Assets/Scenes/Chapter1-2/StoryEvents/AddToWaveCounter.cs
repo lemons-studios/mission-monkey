@@ -11,12 +11,12 @@ public class AddToWaveCounter : MonoBehaviour
 
     public void Update()
     {
-        EnemyParent.transform.position = HealthpackLocation;
+        //EnemyParent.transform.position = HealthpackLocation;
         if (EnemyParent.GetComponent<AiHealth>().aiHealth <= 0)
         {
             if (PlayerHealth.Health <= 45f)
             {
-                Instantiate(HealthPack, HealthpackLocation, Quaternion.identity);
+                //Instantiate(HealthPack, HealthpackLocation, Quaternion.identity);
             }
             ComputerCaptcha.EnemiesClearedOnWave++;
             Destroy(EnemyParent);
