@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Animations;
 
 public class TurnOnGenerators : MonoBehaviour
 {
@@ -8,13 +9,13 @@ public class TurnOnGenerators : MonoBehaviour
     private bool ReactorDoorOpen, TestingChamberDoorOpen;
     private float AreGeneratorsOnEventChecker = 0f;
 
-    private void Awake()
+    /*private void Awake()
     {
         for (int i = 0; i < 4; i++)
         {
             FuelRods[i].SetActive(false);
         }
-    }
+    }*/
     // Update is called once per frame
     void Update()
     {
@@ -29,10 +30,6 @@ public class TurnOnGenerators : MonoBehaviour
         ReactorDoorOpen = !ReactorDoorOpen;
         TestingChamberDoorOpen = !TestingChamberDoorOpen;
 
-        for (int i = 0; i < FuelRods.Length; i++)
-        {
-            FuelRods[i].SetActive(true);
-        }
         //ReactorDoor.GetComponent<Animator>().SetBool("DoorOpen", ReactorDoorOpen);
         //TestingChamberDoor.GetComponent<Animator>().SetBool("DoorOpen", TestingChamberDoorOpen);
     }

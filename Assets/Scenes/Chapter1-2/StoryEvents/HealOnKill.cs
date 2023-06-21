@@ -1,8 +1,8 @@
 using UnityEngine;
 
-public class DropHealthPack : MonoBehaviour
+public class HealOnKill : MonoBehaviour
 {
-    public GameObject Robot, HealthPack;
+    public GameObject Robot;
 
     private void Awake()
     {
@@ -10,10 +10,11 @@ public class DropHealthPack : MonoBehaviour
     }
     void Update()
     {
-        if(Robot.GetComponent<AiHealth>().aiHealth <= 0 & PlayerHealth.Health <= 60)
+        if(Robot.GetComponent<AiHealth>().aiHealth <= 0)
         {
             PlayerHealth.healedHealth = true;
             PlayerHealth.healthHealed = Random.Range(13,17);
+            PlayerHealth.HealPlayer();
         }
     }
 }
