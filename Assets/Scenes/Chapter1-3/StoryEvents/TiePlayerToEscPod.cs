@@ -2,7 +2,8 @@ using UnityEngine;
 
 public class TiePlayerToEscPod : MonoBehaviour
 {
-    public GameObject escPod;
+    private bool InEscapePod;
+    public Transform GlueLocation;
     public GameObject Player;
 
     public void OnTriggerEnter(UnityEngine.Collider other)
@@ -10,7 +11,20 @@ public class TiePlayerToEscPod : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             Debug.Log("it works??!");
-            Player.transform.SetParent(escPod.transform, true);
+            InEscapePod = true;
         }
     }
+    private void Start()
+    {
+
+    }
+
+    private void LateUpdate()
+    {
+        if (InEscapePod == true)
+        {
+            Player.transform.position = GlueLocation.transform.position;
+        }
+    }
+
 }
