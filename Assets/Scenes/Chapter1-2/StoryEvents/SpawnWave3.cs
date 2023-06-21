@@ -32,7 +32,7 @@ public class SpawnWave3 : MonoBehaviour
         }
         if(areAllEnemiesKilled == true)
         {
-            TurnOnGenerators.AreGeneratorsOn = true;
+            OpenTestChamberDoor.isAllowedToOpen = true;
             Destroy(ScriptParent);
         }
     }
