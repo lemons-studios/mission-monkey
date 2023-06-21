@@ -18,13 +18,13 @@ public class ComputerFocus : Interactable
         Destroy(FakeMonitor);
         //MonitorSound.Play();
         //CaptchaPlayer.Play();
-        EventFinishedDebug = true;
+        SpawnWave1.isEventReady = true;
     }
     public void Update()
     {
         if (/*CaptchaPlayer.time >= CaptchaPlayer.clip.length*/ EventFinishedDebug == true)
         {
-            ComputerCaptcha.isEventReady = true;
+            //isEventReady = true;
         }
     }
 }

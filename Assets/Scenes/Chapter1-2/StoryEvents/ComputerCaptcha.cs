@@ -15,6 +15,24 @@ public class ComputerCaptcha : MonoBehaviour
             Wave1();
             HasEventTriggered++;
         }
+        if(EnemiesClearedOnWave == 4 & HasEventTriggered == 1)
+        {
+            Wave2();
+            Debug.Log("Wave 2!");
+            HasEventTriggered++;
+        }
+        if(EnemiesClearedOnWave == 9 & HasEventTriggered == 2)
+        {
+            Wave3();
+            Debug.Log("Wave 3!");
+            HasEventTriggered++;
+        }
+        if(EnemiesClearedOnWave == 15 & HasEventTriggered == 3)
+        {
+            TurnOnGenerators.AreGeneratorsOn = true;
+            Debug.Log("You win!!");
+            HasEventTriggered++;
+        }
     }
 
     private void Wave1()
