@@ -33,7 +33,7 @@ public class TurnOnGenerators : MonoBehaviour
         {
             FuelRods[i].SetActive(true);
         }
-        ReactorDoor.GetComponent<Animator>().SetBool("DoorOpen", ReactorDoorOpen);
-        TestingChamberDoor.GetComponent<Animator>().SetBool("DoorOpen", TestingChamberDoorOpen);
+        //ReactorDoor.GetComponent<Animator>().SetBool("DoorOpen", ReactorDoorOpen);
+        //TestingChamberDoor.GetComponent<Animator>().SetBool("DoorOpen", TestingChamberDoorOpen);
     }
 }

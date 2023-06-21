@@ -3,6 +3,7 @@ using System.Collections;
 using UnityEngine;
 public class FieldOfView : MonoBehaviour
 {
+    //public GameObject Ai;
     [Range(0, 130)]
     public float angle;
     public bool canSeePlayer;
@@ -80,5 +81,9 @@ public class FieldOfView : MonoBehaviour
         {
             AiSeePlayer = false;
         }
+        /*if(Ai.GetComponent<AiHealth>().aiHealth <= 99)
+        {
+            radius = 1000f;
+        }*/
     }
 }

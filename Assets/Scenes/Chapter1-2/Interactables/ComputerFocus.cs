@@ -18,7 +18,7 @@ public class ComputerFocus : Interactable
         Destroy(FakeMonitor);
         //MonitorSound.Play();
         //CaptchaPlayer.Play();
-        SpawnWave1.isEventReady = true;
+        
     }
     public void Update()
     {
