@@ -11701,6 +11701,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   useEvents: 0
   promptMessage: Leave the space station
+  InterctObj: {fileID: 1105424136}
+  EscapePod: {fileID: 919132149146114078}
 --- !u!65 &1105424138
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -11815,7 +11817,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1135420422}
-  - component: {fileID: 1135420421}
   - component: {fileID: 1135420423}
   m_Layer: 0
   m_Name: EscapePodTie
@@ -11824,19 +11825,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!65 &1135420421
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1135420419}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 5, y: 10, z: 5}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!4 &1135420422
 Transform:
   m_ObjectHideFlags: 0
@@ -11845,7 +11833,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1135420419}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 45.37, y: 33.92, z: 183.32}
+  m_LocalPosition: {x: 45.19, y: 33.92, z: 180.53}
   m_LocalScale: {x: 0.6913559, y: 0.4167224, z: 0.055056922}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -11864,7 +11852,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 41a61fed3e8fcae44abc986eb295292c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GlueLocation: {fileID: 0}
+  GlueLocation: {fileID: 662196136}
   Player: {fileID: 286847312}
 --- !u!1 &1167564440
 GameObject:

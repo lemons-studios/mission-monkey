@@ -4,9 +4,11 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 public class TriggerChEndScene : Interactable
 {
+    public GameObject InterctObj, EscapePod;
     protected override void Interact()
     {
-        
-        //SceneManager.LoadScene();
+        TiePlayerToEscPod.InEscapePod = true;
+        EscapePod.GetComponent<Animator>().SetBool("MonkeyInEscapePod", true);
+        Destroy(InterctObj);
     }
 }
