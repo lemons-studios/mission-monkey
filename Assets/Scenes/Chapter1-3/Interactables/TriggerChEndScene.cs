@@ -6,6 +6,7 @@ public class TriggerChEndScene : Interactable
 {
     protected override void Interact()
     {
+        
         //SceneManager.LoadScene();
     }
 }
