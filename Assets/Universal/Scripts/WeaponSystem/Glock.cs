@@ -29,7 +29,7 @@ public class Glock : MonoBehaviour
             if (Physics.Raycast(ray, out hit))
             {
                 destination = hit.point;
-                Debug.Log("hit");
+                //Debug.Log("hit");
                 if (hit.collider.gameObject.CompareTag("Enemy"))
                 {
                     GameObject enemy = hit.collider.gameObject;

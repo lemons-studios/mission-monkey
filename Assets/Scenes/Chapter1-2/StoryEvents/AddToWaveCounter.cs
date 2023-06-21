@@ -5,21 +5,25 @@ using UnityEngine;
 public class AddToWaveCounter : MonoBehaviour
 {
 
-    public GameObject EnemyParent, HealthPack;
+
+    public GameObject HealthPack, Parent;
     public static bool isEnemyDead;
     private Vector3 HealthpackLocation;
+
 
     public void Update()
     {
         //EnemyParent.transform.position = HealthpackLocation;
-        if (EnemyParent.GetComponent<AiHealth>().aiHealth <= 0)
+        if (Parent.GetComponent<AiHealth>().aiHealth <= 0)
         {
             if (PlayerHealth.Health <= 45f)
             {
                 //Instantiate(HealthPack, HealthpackLocation, Quaternion.identity);
             }
+
             ComputerCaptcha.EnemiesClearedOnWave++;
-            Destroy(EnemyParent);
+            Debug.Log("Enemy Killed! Count is now at " + ComputerCaptcha.EnemiesClearedOnWave);
+            Destroy(Parent);
         }
     }
 }
