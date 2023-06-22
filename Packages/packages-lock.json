@@ -236,6 +236,15 @@
       },
       "url": "https://packages.unity.com"
     },
+    "com.unity.recorder": {
+      "version": "4.0.1",
+      "depth": 1,
+      "source": "registry",
+      "dependencies": {
+        "com.unity.timeline": "1.0.0"
+      },
+      "url": "https://packages.unity.com"
+    },
     "com.unity.render-pipelines.core": {
       "version": "15.0.6",
       "depth": 1,
@@ -274,6 +283,12 @@
         "com.unity.render-pipelines.core": "15.0.6"
       }
     },
+    "com.unity.rendering.denoising": {
+      "version": "1.0.0",
+      "depth": 0,
+      "source": "builtin",
+      "dependencies": {}
+    },
     "com.unity.scriptablebuildpipeline": {
       "version": "1.21.5",
       "depth": 2,
@@ -286,6 +301,18 @@
       "depth": 2,
       "source": "registry",
       "dependencies": {},
+      "url": "https://packages.unity.com"
+    },
+    "com.unity.sequences": {
+      "version": "2.1.0",
+      "depth": 0,
+      "source": "registry",
+      "dependencies": {
+        "com.unity.timeline": "1.6.3",
+        "com.unity.recorder": "2.5.5",
+        "com.unity.settings-manager": "1.0.3",
+        "com.unity.ugui": "1.0.0"
+      },
       "url": "https://packages.unity.com"
     },
     "com.unity.settings-manager": {
