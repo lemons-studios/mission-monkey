@@ -27,7 +27,7 @@ public class TriggerChEndScene : Interactable
     }
     private void Update()
     {
-        if(IsAnimationFinished(animator, animationStateName) == true)
+        if(IsAnimationFinished(animator, animationStateName))
         {
             SceneManager.LoadScene(0);
         }
