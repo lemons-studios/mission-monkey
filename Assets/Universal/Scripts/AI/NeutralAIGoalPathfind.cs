@@ -7,9 +7,14 @@ public class NeutralAIGoalPathfind : MonoBehaviour
 {
     public GameObject NeutralAIParent;
     public Transform PathfindingGoal;
+    private NavMeshAgent NeutralAI;
     void Start()
     {
-        NavMeshAgent NeutralAI = NeutralAIParent.GetComponent<NavMeshAgent>();
+        NeutralAI = NeutralAIParent.GetComponent<NavMeshAgent>();
+
+    }
+    private void Update()
+    {
         NeutralAI.destination = PathfindingGoal.position;
     }
 }
