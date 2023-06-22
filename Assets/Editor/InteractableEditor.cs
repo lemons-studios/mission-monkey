@@ -10,7 +10,8 @@ public class InteractableEditor : Editor
         {
             interactable.promptMessage = EditorGUILayout.TextField("Prompt Message", interactable.promptMessage);
             EditorGUILayout.HelpBox("EventOnlyInteract can only use UnityEvents", MessageType.Info);
-            if(interactable.GetComponent<InteractionEvent>() == null ) { 
+            if (interactable.GetComponent<InteractionEvent>() == null)
+            {
                 interactable.useEvents = true;
                 interactable.gameObject.AddComponent<InteractionEvent>();
             }

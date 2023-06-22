@@ -24,7 +24,7 @@ MonoBehaviour:
       m_SchemaId:
         m_Id: With3Levels
     supportVolumetrics: 1
-    supportVolumetricClouds: 0
+    supportVolumetricClouds: 1
     supportLightLayers: 0
     supportDistortion: 1
     supportTransparentBackface: 1
@@ -73,13 +73,13 @@ MonoBehaviour:
       maxEnvLightsOnScreen: 64
       maxDecalsOnScreen: 512
       maxPlanarReflectionOnScreen: 16
-      maxLightsPerClusterCell: 8
-      maxLocalVolumetricFogSize: 32
-      maxLocalVolumetricFogOnScreen: 64
+      maxLightsPerClusterCell: 24
+      maxLocalVolumetricFogSize: 64
+      maxLocalVolumetricFogOnScreen: 128
     hdShadowInitParams:
-      maxShadowRequests: 128
+      maxShadowRequests: 1024
       directionalShadowsDepthBits: 32
-      shadowFilteringQuality: 1
+      shadowFilteringQuality: 2
       punctualLightShadowAtlas:
         shadowAtlasResolution: 4096
         shadowAtlasDepthBits: 32
@@ -105,8 +105,8 @@ MonoBehaviour:
       maxDirectionalShadowMapResolution: 2048
       maxPunctualShadowMapResolution: 2048
       maxAreaShadowMapResolution: 2048
-      supportScreenSpaceShadows: 0
-      maxScreenSpaceShadowSlots: 4
+      supportScreenSpaceShadows: 1
+      maxScreenSpaceShadowSlots: 512
       screenSpaceShadowBufferFormat: 48
     decalSettings:
       drawDistance: 1000
@@ -162,11 +162,11 @@ MonoBehaviour:
       ChromaticAberrationMaxSamples: 03000000060000000c000000
     lightSettings:
       useContactShadow:
-        m_Values: 000001
+        m_Values: 000101
         m_SchemaId:
           m_Id: With3Levels
     maximumLODLevel:
-      m_Values: 000000000000000000000000
+      m_Values: 000000000000000007000000
       m_SchemaId:
         m_Id: With3Levels
     lodBias:
@@ -177,12 +177,12 @@ MonoBehaviour:
       m_SchemaId:
         m_Id: With3Levels
     lightingQualitySettings:
-      AOStepCount: 040000000600000010000000
+      AOStepCount: 040000000600000020000000
       AOFullRes: 000001
-      AOMaximumRadiusPixels: 200000002800000050000000
+      AOMaximumRadiusPixels: 200000002800000000010000
       AOBilateralUpsample: 000101
-      AODirectionCount: 010000000200000004000000
-      ContactShadowSampleCount: 060000000a00000010000000
+      AODirectionCount: 010000000200000006000000
+      ContactShadowSampleCount: 060000000a00000040000000
       SSRMaxRaySteps: 100000002000000040000000
       SSGIRaySteps: 200000004000000080000000
       SSGIDenoise: 010101

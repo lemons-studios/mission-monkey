@@ -9,6 +9,7 @@
 /[Bb]uilds/
 /[Ll]ogs/
 /[Mm]emoryCaptures/
+/[Uu]serSettings/
 
 # Asset meta data should only be ignored when the corresponding asset is also ignored
 !/[Aa]ssets/**/*.meta
@@ -64,9 +65,11 @@ crashlytics-build.properties
 
 # Blender .Blend1 backup files
 *.blend1
+*.blend1.meta
 
 # Notepad++ backup files
 *.bak
 
-# User Layout File
+# Visual studio config file
+.vsconfig
 UserSettings/Layouts/default-2021.dwlt

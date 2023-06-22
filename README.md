@@ -40,11 +40,15 @@ You are on your own. If you want to, you can try and install Wine/DXVK to run th
 
 1. [Unity 2021.3.9f1](https://unity.com/releases/editor/archive#download-archive-2021)
 > **Warning**  
-> You must use this specific version to contribute to this repository. any pull request that contains a version older or newer than 2021.3.9f1 will be closed
+> You must use this specific version to contribute to this repository. any pull request that contains a version older or newer than 2021.3.9f1 will be closed.
 
+> **Note**  
+> This project might be migrated to a newer version of unity at some point in the future, and the requirements to develop will change. make sure to read the README file before developing
 2. [Visual Studio 2022](https://visualstudio.microsoft.com/thank-you-downloading-visual-studio/?sku=Community) with the "Game Development with Unity" workload
 
 3. A somewhat decent Computer (Around 11th Gen Intel/Ryzen 5th gen with a NVIDIA 2000 series/AMD Equivilent GPU)
 
 ## 📃 Credits
 - See [THANKS](https://github.com/funny-unity-game/Mission-Monkey/blob/main/THANKS) for credits
+- Thanks To [NASA](https://on.soundcloud.com/H9XBW) for providing the sound effect for the escape pods in the third level of chapter 1
+- Thanks to [@allfax](https://github.com/allfax) for testing the game

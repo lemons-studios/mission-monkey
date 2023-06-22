@@ -39,9 +39,12 @@ public class PlayerMotor : MonoBehaviour
         moveDirection.x = input.x;
         moveDirection.z = input.y;
 
-        if (moveDirection.x > 0 || moveDirection.z > 0) {
+        if (moveDirection.x > 0 || moveDirection.z > 0)
+        {
             viewbobbing.EnableViewBobbing();
-        } else {
+        }
+        else
+        {
             viewbobbing.DisableViewBobbing();
         }
 

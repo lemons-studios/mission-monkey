@@ -14,8 +14,11 @@ public class Glock : MonoBehaviour
     private PlayerInput playerInput;
     private float timeToFire;
 
+    public GameObject GlockInHand;
+
     public void ShootProjectile()
     {
+        if (!GlockInHand.activeSelf) return;
         if (Time.time >= timeToFire && !PlayerDeathController.isDead)
         {
             timeToFire = Time.time + shotCooldown;
@@ -26,7 +29,8 @@ public class Glock : MonoBehaviour
             if (Physics.Raycast(ray, out hit))
             {
                 destination = hit.point;
-                if (hit.collider.gameObject.tag == "Enemy")
+                //Debug.Log("hit");
+                if (hit.collider.gameObject.CompareTag("Enemy"))
                 {
                     GameObject enemy = hit.collider.gameObject;
                     AiHealth hp = enemy.GetComponent<AiHealth>();
@@ -34,6 +38,19 @@ public class Glock : MonoBehaviour
                     hp.aiDealtDamage = true;
                     hp.DamageEnemy();
                 }
+                if (hit.collider.gameObject.CompareTag("Barrel"))
+                {
+                    Debug.Log("barrel");
+                    GameObject barrel = hit.collider.gameObject;
+                    barrel.GetComponent<BarrelExplosion>().ExplodeBars();
+                }
+                if (hit.collider.gameObject.CompareTag("Target"))
+                {
+                    Debug.Log("Target");
+                    GameObject Target = hit.collider.gameObject;
+                    Target.GetComponent<AddToCounterWhenDestroyed>().AddToCounter();
+                }
+
             }
             else
             {

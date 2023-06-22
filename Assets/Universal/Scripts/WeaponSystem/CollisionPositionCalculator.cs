@@ -9,6 +9,6 @@ public class CollisionPositionCalculator : MonoBehaviour
 
     void Update()
     {
-        
+
     }
 }

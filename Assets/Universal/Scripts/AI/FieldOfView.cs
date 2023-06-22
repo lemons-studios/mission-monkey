@@ -3,9 +3,11 @@ using System.Collections;
 using UnityEngine;
 public class FieldOfView : MonoBehaviour
 {
-    [Range(0, 360)]
+    //public GameObject Ai;
+    [Range(0, 130)]
     public float angle;
     public bool canSeePlayer;
+    public static bool AiSeePlayer;
     public LayerMask obstructionMask;
 
     public GameObject playerRef;
@@ -39,17 +41,20 @@ public class FieldOfView : MonoBehaviour
             {
                 float distanceToTarget = Vector3.Distance(transform.position, target.position);
 
-                if (!Physics.Raycast(transform.position, directionToTarget, distanceToTarget, obstructionMask)) {
+                if (!Physics.Raycast(transform.position, directionToTarget, distanceToTarget, obstructionMask))
+                {
                     targetPos = GetComponent<AIPathfinding>().target;
                     if (Vector3.Distance(transform.position, targetPos) < 10)
                     {
                         canSeePlayer = true;
-                    } else
+                    }
+                    else
                     {
                         canSeePlayer = false;
                     }
                 }
-                else {
+                else
+                {
                     canSeePlayer = false;
                 }
             }
@@ -64,5 +69,21 @@ public class FieldOfView : MonoBehaviour
     {
         playerRef = GameObject.FindGameObjectWithTag("Player");
         StartCoroutine(FOVRoutine());
+    }
+
+    public void FixedUpdate()
+    {
+        if (canSeePlayer == true)
+        {
+            AiSeePlayer = true;
+        }
+        else
+        {
+            AiSeePlayer = false;
+        }
+        /*if(Ai.GetComponent<AiHealth>().aiHealth <= 99)
+        {
+            radius = 1000f;
+        }*/
     }
 }

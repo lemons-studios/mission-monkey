@@ -1,6 +1,5 @@
 using System;
 using UnityEngine;
-
 public class DiscordController : MonoBehaviour
 {
     public Discord.Discord discord;
@@ -84,7 +83,7 @@ public class DiscordController : MonoBehaviour
 
             discord.RunCallbacks();
         }
-        else 
+        else
         {
             return;
         }
