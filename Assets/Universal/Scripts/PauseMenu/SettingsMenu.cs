@@ -20,17 +20,6 @@ public class SettingsMenu : MonoBehaviour
     public static float publicFOV, publicMouseSens, publicVolume;
     int quality, antiAliasingQuality;
 
-    /*    public void FOV(float fov)
-        {
-            // GameObject.Find("OptionsMenu").GetComponent<CameraFOV>().setCameraFOV(fov);
-            PlayerPrefs.SetFloat("CameraFOV", fov);
-            optionMenu.GetComponent<CameraFOV>().setCameraFOV(fov);
-            if (fovSlider.value != fov)
-            {
-                fovSlider.value = fov;
-            }
-        }*/
-
     public void MouseSens(float sens)
     {
         // GameObject.Find("OptionsMenu").GetComponent<PlayerLook>().setMouseSensitivity(sens);
@@ -52,25 +41,25 @@ public class SettingsMenu : MonoBehaviour
     }
     public void SetAntiAliasing(int aaIndex)
     {
-        // for Later
+        Debug.Log("temp");
     }
     public void SetRenderer(int RendererIndex)
     {
         if (RendererIndex == 0)
         {
             Debug.Log("Set to DX11");
-            #if UNITY_EDITOR
-                UnityEditor.PlayerSettings.SetGraphicsAPIs(BuildTarget.StandaloneWindows64, new[] { UnityEngine.Rendering.GraphicsDeviceType.Direct3D11 });
-            #endif
+///            #if UNITY_EDITOR
+///                UnityEditor.PlayerSettings.SetGraphicsAPIs(BuildTarget.StandaloneWindows64, new[] { UnityEngine.Rendering.GraphicsDeviceType.Direct3D11 });
+///            #endif
             UnityEngine.Rendering.GraphicsDeviceType targetAPI = UnityEngine.Rendering.GraphicsDeviceType.Direct3D11;
             ApplyGraphicsAPI(targetAPI);
         }
         else if (RendererIndex == 1)
         {
             Debug.Log("Set to DX12");
-            #if UNITY_EDITOR
-                UnityEditor.PlayerSettings.SetGraphicsAPIs(BuildTarget.StandaloneWindows64, new[] { UnityEngine.Rendering.GraphicsDeviceType.Direct3D12 });
-            #endif
+///            #if UNITY_EDITOR
+///                UnityEditor.PlayerSettings.SetGraphicsAPIs(BuildTarget.StandaloneWindows64, new[] { UnityEngine.Rendering.GraphicsDeviceType.Direct3D12 });
+///            #endif
 
             UnityEngine.Rendering.GraphicsDeviceType targetAPI = UnityEngine.Rendering.GraphicsDeviceType.Direct3D12;
             ApplyGraphicsAPI(targetAPI);
@@ -80,43 +69,48 @@ public class SettingsMenu : MonoBehaviour
     public void EnableRaytracing(bool isEnabled)
     {
         var hDRenderPipelineAsset = GraphicsSettings.currentRenderPipeline as HDRenderPipelineAsset;
-        //Debug.Log(isEnabled);
+        Debug.Log(isEnabled);
 
-        if (hDRenderPipelineAsset != null)
+        if (isEnabled == true)
         {
             RenderPipelineSettings RayTracingSettings = hDRenderPipelineAsset.currentPlatformRenderPipelineSettings;
-            RayTracingSettings.supportRayTracing = isEnabled;
+            RayTracingSettings.supportRayTracing = true;
+            hDRenderPipelineAsset.currentPlatformRenderPipelineSettings = RayTracingSettings;
+        }
+        else if(isEnabled == false)
+        {
+            RenderPipelineSettings RayTracingSettings = hDRenderPipelineAsset.currentPlatformRenderPipelineSettings;
+            RayTracingSettings.supportRayTracing = false;
             hDRenderPipelineAsset.currentPlatformRenderPipelineSettings = RayTracingSettings;
         }
     }
-    public void EnableDLSS(int DLSSIndex)
-    {
-        if(DLSSIndex == 0)
-        {
-            Debug.Log("DLSS ON");
-            mainCamera.allowDynamicResolution = true;
-        }
-        else if(DLSSIndex == 1)
-        {
-            Debug.Log("DLSS OFF");
-            mainCamera.allowDynamicResolution = false;
-        }
-    }
+///    public void EnableDLSS(int DLSSIndex)
+///    {
+///        if(DLSSIndex == 0)
+///        {
+///            Debug.Log("DLSS ON");
+///            mainCamera.allowDynamicResolution = true;
+///        }
+///        else if(DLSSIndex == 1)
+///        {
+///            Debug.Log("DLSS OFF");
+///            mainCamera.allowDynamicResolution = false;
+///        }
+///    }
     public void Volume(float volume)
     {
         audiomixer.SetFloat("Volume", volume * volume * volume / 6400);
-        // audiomixer.SetFloat("Volume", volume * volume * volume * volume / -512000);
         PlayerPrefs.SetFloat("Volume", volume);
         if (volSlider.value != volume)
         {
             volSlider.value = volume;
         }
     }
-    public bool IsGraphicsCardDLSSCompatible()
-    {
-        string GpuName = SystemInfo.graphicsDeviceName;
-        return GpuName.Contains("NVIDIA") && GpuName.Contains("RTX");
-    }
+///    public bool IsGraphicsCardDLSSCompatible()
+///    {
+///        string GpuName = SystemInfo.graphicsDeviceName;
+///        return GpuName.Contains("NVIDIA") && GpuName.Contains("RTX");
+///    }
     void ApplyGraphicsAPI(UnityEngine.Rendering.GraphicsDeviceType targetAPI)
     {
         string buildpath = Application.dataPath.Replace("/Assets", "");
@@ -135,30 +129,27 @@ public class SettingsMenu : MonoBehaviour
     }
     void Start()
     {
-        // fov = PlayerPrefs.GetFloat("CameraFOV", 60);
         mouseSens = PlayerPrefs.GetFloat("MouseSens", 80);
         quality = PlayerPrefs.GetInt("Quality", 4);
         volume = PlayerPrefs.GetFloat("Volume", -5);
 
-
-        // FOV(fov);
         MouseSens(mouseSens);
         Quality(quality);
         Volume(volume);
 
-        Debug.Log("This computer has a NVIDIA Graphics card: " + IsGraphicsCardDLSSCompatible());
+///        Debug.Log("This computer has a NVIDIA Graphics card: " + IsGraphicsCardDLSSCompatible());
 
         string RendererInfo = SystemInfo.graphicsDeviceVersion;
 
         if (!RendererInfo.Contains("Direct3D 12"))
         {
             RendererSelect.interactable = false;
-            DLSSDropdown.interactable = false;
+///            DLSSDropdown.interactable = false;
         }
-        if (IsGraphicsCardDLSSCompatible() == false)
-        {
-            DLSSDropdown.interactable = false;
-        }
+///        if (IsGraphicsCardDLSSCompatible() == false)
+///        {
+///            DLSSDropdown.interactable = false;
+///        }
         if (!SystemInfo.supportsRayTracing)
         {
             DXRToggle.interactable = false;
