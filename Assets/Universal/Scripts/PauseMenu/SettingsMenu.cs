@@ -1,3 +1,5 @@
+// A lot of stuff is grayed out here because I am gonna get back to it later. UI can go die fr
+
 using TMPro;
 using UnityEngine;
 using UnityEngine.Audio;
@@ -5,7 +7,6 @@ using UnityEngine.UI;
 using UnityEditor;
 using UnityEngine.Rendering;
 using UnityEngine.Rendering.HighDefinition;
-using UnityEngine.NVIDIA;
 public class SettingsMenu : MonoBehaviour
 {
     public bool IsOnDX12;
@@ -41,30 +42,29 @@ public class SettingsMenu : MonoBehaviour
     }
     public void SetAntiAliasing(int aaIndex)
     {
-        Debug.Log("temp");
+        ///for later
     }
-    public void SetRenderer(int RendererIndex)
-    {
-        if (RendererIndex == 0)
-        {
-            Debug.Log("Set to DX11");
+/// public void SetRenderer(int RendererIndex)
+/// {
+///     if (RendererIndex == 0)
+///     {
+///         Debug.Log("Set to DX11");
 ///            #if UNITY_EDITOR
 ///                UnityEditor.PlayerSettings.SetGraphicsAPIs(BuildTarget.StandaloneWindows64, new[] { UnityEngine.Rendering.GraphicsDeviceType.Direct3D11 });
 ///            #endif
-            UnityEngine.Rendering.GraphicsDeviceType targetAPI = UnityEngine.Rendering.GraphicsDeviceType.Direct3D11;
-            ApplyGraphicsAPI(targetAPI);
-        }
-        else if (RendererIndex == 1)
-        {
-            Debug.Log("Set to DX12");
+///         UnityEngine.Rendering.GraphicsDeviceType targetAPI = UnityEngine.Rendering.GraphicsDeviceType.Direct3D11;
+///         ApplyGraphicsAPI(targetAPI);
+///     }
+///     else if (RendererIndex == 1)
+///     {
+///         Debug.Log("Set to DX12");
 ///            #if UNITY_EDITOR
 ///                UnityEditor.PlayerSettings.SetGraphicsAPIs(BuildTarget.StandaloneWindows64, new[] { UnityEngine.Rendering.GraphicsDeviceType.Direct3D12 });
 ///            #endif
-
-            UnityEngine.Rendering.GraphicsDeviceType targetAPI = UnityEngine.Rendering.GraphicsDeviceType.Direct3D12;
-            ApplyGraphicsAPI(targetAPI);
-        }
-    }
+///         UnityEngine.Rendering.GraphicsDeviceType targetAPI = UnityEngine.Rendering.GraphicsDeviceType.Direct3D12;
+///         ApplyGraphicsAPI(targetAPI);
+///     }
+/// }
 
     public void EnableRaytracing(bool isEnabled)
     {
@@ -111,22 +111,22 @@ public class SettingsMenu : MonoBehaviour
 ///        string GpuName = SystemInfo.graphicsDeviceName;
 ///        return GpuName.Contains("NVIDIA") && GpuName.Contains("RTX");
 ///    }
-    void ApplyGraphicsAPI(UnityEngine.Rendering.GraphicsDeviceType targetAPI)
-    {
-        string buildpath = Application.dataPath.Replace("/Assets", "");
-        string GraphicsSettingsPath = System.IO.Path.Combine(buildpath, "ProjectSettings/GraphicsSettings.asset");
-        string[] RendererSettings = System.IO.File.ReadAllLines(GraphicsSettingsPath);
-
-        for (int i = 0; i < RendererSettings.Length; i++)
-        {
-            if (RendererSettings[i].StartsWith(" m_API:"))
-            {
-                RendererSettings[i] = " m_API: " + targetAPI;
-                break;
-            }
-        }
-        System.IO.File.WriteAllLines(GraphicsSettingsPath, RendererSettings);
-    }
+///    void ApplyGraphicsAPI(UnityEngine.Rendering.GraphicsDeviceType targetAPI)
+///    {
+///        string buildpath = Application.dataPath.Replace("/Assets", "");
+///        string GraphicsSettingsPath = System.IO.Path.Combine(buildpath, "ProjectSettings/GraphicsSettings.asset");
+///        string[] RendererSettings = System.IO.File.ReadAllLines(GraphicsSettingsPath);
+///
+///        for (int i = 0; i < RendererSettings.Length; i++)
+///        {
+///            if (RendererSettings[i].StartsWith(" m_API:"))
+///            {
+///                RendererSettings[i] = " m_API: " + targetAPI;
+///                break;
+///            }
+///        }
+///        System.IO.File.WriteAllLines(GraphicsSettingsPath, RendererSettings);
+///    }
     void Start()
     {
         mouseSens = PlayerPrefs.GetFloat("MouseSens", 80);

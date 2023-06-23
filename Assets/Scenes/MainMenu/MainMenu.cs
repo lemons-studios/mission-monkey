@@ -2,8 +2,8 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour {
-    public int Chapter1 = 1;
-    public int Mainmenu = 0;
+    private int Chapter1 = 1;
+    private int Mainmenu = 0;
     public void Load(){
 
     }
