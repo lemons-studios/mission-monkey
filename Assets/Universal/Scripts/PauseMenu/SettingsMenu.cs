@@ -3,8 +3,13 @@ using UnityEngine;
 using UnityEngine.Audio;
 using UnityEngine.UI;
 using UnityEditor;
+using UnityEngine.Rendering;
+using UnityEngine.Rendering.HighDefinition;
+using UnityEngine.NVIDIA;
 public class SettingsMenu : MonoBehaviour
 {
+    public bool IsOnDX12;
+    public Toggle DXRToggle;
     public Camera mainCamera;
     public AudioMixer audiomixer;
     public Slider msSlider;
@@ -51,16 +56,33 @@ public class SettingsMenu : MonoBehaviour
     }
     public void SetRenderer(int RendererIndex)
     {
-        if(RendererIndex == 0)
+        if (RendererIndex == 0)
         {
             Debug.Log("Set to DX11");
             UnityEditor.PlayerSettings.SetGraphicsAPIs(BuildTarget.StandaloneWindows64, new[] { UnityEngine.Rendering.GraphicsDeviceType.Direct3D11 });
         }
-        else if(RendererIndex == 1)
+        else if (RendererIndex == 1)
         {
             Debug.Log("Set to DX12");
             UnityEditor.PlayerSettings.SetGraphicsAPIs(BuildTarget.StandaloneWindows64, new[] { UnityEngine.Rendering.GraphicsDeviceType.Direct3D12 });
         }
+    }
+
+    public void EnableRaytracing(bool isEnabled)
+    {
+        var hDRenderPipelineAsset = GraphicsSettings.currentRenderPipeline as HDRenderPipelineAsset;
+        //Debug.Log(isEnabled);
+
+        if (hDRenderPipelineAsset != null)
+        {
+            RenderPipelineSettings RayTracingSettings = hDRenderPipelineAsset.currentPlatformRenderPipelineSettings;
+            RayTracingSettings.supportRayTracing = isEnabled;
+            hDRenderPipelineAsset.currentPlatformRenderPipelineSettings = RayTracingSettings;
+        }
+    }
+    public void EnableDLSS()
+    {
+        
     }
     public void Volume(float volume)
     {
@@ -72,6 +94,11 @@ public class SettingsMenu : MonoBehaviour
             volSlider.value = volume;
         }
     }
+    public bool IsGraphicsCardDLSSCompatible()
+    {
+        string GpuName = SystemInfo.graphicsDeviceName;
+        return GpuName.Contains("NVIDIA") && GpuName.Contains("RTX");
+    }
     void Start()
     {
         // fov = PlayerPrefs.GetFloat("CameraFOV", 60);
@@ -79,9 +106,23 @@ public class SettingsMenu : MonoBehaviour
         quality = PlayerPrefs.GetInt("Quality", 4);
         volume = PlayerPrefs.GetFloat("Volume", -5);
 
+
         // FOV(fov);
         MouseSens(mouseSens);
         Quality(quality);
         Volume(volume);
+
+        Debug.Log("This computer has a NVIDIA Graphics card: " + IsGraphicsCardDLSSCompatible());
+
+        string RendererInfo = SystemInfo.graphicsDeviceVersion;
+
+        if (RendererInfo.Contains("Direct3D 12"))
+        {
+            Debug.Log("DirectX12 is Supported (Hooray!)");
+        }
+        else
+        {
+            Debug.Log("DirectX12 Is Not Supported");
+        }
     }
 }
