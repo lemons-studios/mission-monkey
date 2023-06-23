@@ -2,13 +2,14 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.Audio;
 using UnityEngine.UI;
+using UnityEditor;
 public class SettingsMenu : MonoBehaviour
 {
+    public Camera mainCamera;
     public AudioMixer audiomixer;
     public Slider msSlider;
     public GameObject optionMenu;
-    public TMP_Dropdown qualitySelect;
-    public TMP_Dropdown AASelect;
+    public TMP_Dropdown qualitySelect, AASelect, RendererSelect;
     public Slider volSlider;
     float mouseSens, volume;
     public static float publicFOV, publicMouseSens, publicVolume;
@@ -46,7 +47,20 @@ public class SettingsMenu : MonoBehaviour
     }
     public void SetAntiAliasing(int aaIndex)
     {
-        // For 0.2.1
+        // For 0.2.2
+    }
+    public void SetRenderer(int RendererIndex)
+    {
+        if(RendererIndex == 0)
+        {
+            Debug.Log("Set to DX11");
+            UnityEditor.PlayerSettings.SetGraphicsAPIs(BuildTarget.StandaloneWindows64, new[] { UnityEngine.Rendering.GraphicsDeviceType.Direct3D11 });
+        }
+        else if(RendererIndex == 1)
+        {
+            Debug.Log("Set to DX12");
+            UnityEditor.PlayerSettings.SetGraphicsAPIs(BuildTarget.StandaloneWindows64, new[] { UnityEngine.Rendering.GraphicsDeviceType.Direct3D12 });
+        }
     }
     public void Volume(float volume)
     {
