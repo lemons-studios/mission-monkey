@@ -52,7 +52,7 @@ public class SettingsMenu : MonoBehaviour
     }
     public void SetAntiAliasing(int aaIndex)
     {
-
+        // for Later
     }
     public void SetRenderer(int RendererIndex)
     {
@@ -89,9 +89,18 @@ public class SettingsMenu : MonoBehaviour
             hDRenderPipelineAsset.currentPlatformRenderPipelineSettings = RayTracingSettings;
         }
     }
-    public void EnableDLSS()
+    public void EnableDLSS(int DLSSIndex)
     {
-
+        if(DLSSIndex == 0)
+        {
+            Debug.Log("DLSS ON");
+            mainCamera.allowDynamicResolution = true;
+        }
+        else if(DLSSIndex == 1)
+        {
+            Debug.Log("DLSS OFF");
+            mainCamera.allowDynamicResolution = false;
+        }
     }
     public void Volume(float volume)
     {
