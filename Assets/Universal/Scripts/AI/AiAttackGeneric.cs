@@ -9,7 +9,7 @@ public class AiAttackGeneric : MonoBehaviour
 
     private void Start()
     {
-        Player = AiFoV.Player;
+        Player = AiNavAndFov.Player;
     }
 
     async void FireBulletRays()
@@ -25,7 +25,7 @@ public class AiAttackGeneric : MonoBehaviour
             {
                 GameObject HitObject = hit.collider.gameObject;
                 if (HitObject == Player)
-                { 
+                {
                     while (DistanceFloored != 0)
                     {
                         await Task.Yield();
@@ -40,10 +40,6 @@ public class AiAttackGeneric : MonoBehaviour
                 }
             }
         }
-    }
-    protected virtual void AttackDetails()
-    {
-        // Empty since this will be filled out by the scripts inheriting this script
     }
 
     private void FixedUpdate()

@@ -36418,32 +36418,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 7111674195950594128, guid: af48d07e1fa34a740bb73efe877be916, type: 3}
   m_PrefabInstance: {fileID: 7111674194335991014}
   m_PrefabAsset: {fileID: 0}
---- !u!143 &1615326402
-CharacterController:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1615326390}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Height: 2
-  m_Radius: 0.5000001
-  m_SlopeLimit: 45
-  m_StepOffset: 0.3
-  m_SkinWidth: 0.08
-  m_MinMoveDistance: 0.001
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &1615326403
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -36456,15 +36430,66 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3efd991d82e151c4382d4e5cc9148593, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  angle: 130
   canSeePlayer: 0
   obstructionMask:
     serializedVersion: 2
-    m_Bits: 0
-  radius: 10
-  targetMask:
+    m_Bits: 512
+  PlayerMask:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 256
+  ViewRadius: 10
+  AttackRadius: 3
+  maxDistance: 10
+--- !u!195 &1615326404
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1615326390}
+  m_Enabled: 1
+  m_AgentTypeID: 0
+  m_Radius: 0.5000001
+  m_Speed: 3.5
+  m_Acceleration: 8
+  avoidancePriority: 50
+  m_AngularSpeed: 120
+  m_StoppingDistance: 0
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 2
+  m_BaseOffset: 1
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4
+--- !u!114 &1615326405
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1615326390}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b47af3291d1524244bdb2df85adcc607, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PatrolLocations: []
+  PlayerLocation: {x: 0, y: 0, z: 0}
+  PlayerModel: {fileID: 20600010}
+  AiModel: {fileID: 1615326390}
+--- !u!114 &1615326406
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1615326390}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a59cc662d219d644bec138e75548ef0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1619011408
 GameObject:
   m_ObjectHideFlags: 0
@@ -60743,7 +60768,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7111674195950594087, guid: af48d07e1fa34a740bb73efe877be916, type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7111674195950594087, guid: af48d07e1fa34a740bb73efe877be916, type: 3}
       propertyPath: m_Center.x
@@ -60799,10 +60824,16 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 7111674195950594128, guid: af48d07e1fa34a740bb73efe877be916, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 1615326402}
+      addedObject: {fileID: 1615326403}
     - targetCorrespondingSourceObject: {fileID: 7111674195950594128, guid: af48d07e1fa34a740bb73efe877be916, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 1615326403}
+      addedObject: {fileID: 1615326406}
+    - targetCorrespondingSourceObject: {fileID: 7111674195950594128, guid: af48d07e1fa34a740bb73efe877be916, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1615326405}
+    - targetCorrespondingSourceObject: {fileID: 7111674195950594128, guid: af48d07e1fa34a740bb73efe877be916, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1615326404}
   m_SourcePrefab: {fileID: 100100000, guid: af48d07e1fa34a740bb73efe877be916, type: 3}
 --- !u!23 &7202271454610211482
 MeshRenderer:
