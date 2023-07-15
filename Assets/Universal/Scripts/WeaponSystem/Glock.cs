@@ -1,85 +1,43 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
+using static UnityEngine.InputSystem.PlayerInput;
 
 public class Glock : MonoBehaviour
 {
-    public Camera cam;
-    public Transform firePoint;
-    public PlayerInput.OnFootActions onFoot;
-    public GameObject projectile;
-    public float projectileSpeed = 100f;
-    public float shotCooldown = 1f;
-    public float projectileDamage = 15f;
+    public InputAction Fire;
+    public static float GlockDamage;
+    public GameObject FirePoint;
+    public Animator GlockAnimator;
+    private int Crit;
 
-    private Vector3 destination;
-    private PlayerInput playerInput;
-    private float timeToFire;
-
-    public GameObject GlockInHand;
-
-    public void ShootProjectile()
+    private void Awake()
     {
-        if (!GlockInHand.activeSelf) return;
-        if (Time.time >= timeToFire && !PlayerDeathController.isDead)
+
+    }
+
+    private void Update()
+    {
+        Fire.performed += ctx => FireWeapon();
+    }
+    private void FireWeapon()
+    {
+        DetermineDamage();
+        Debug.Log("clicked");
+    }
+
+    void DetermineDamage()
+    {
+        Crit = Random.Range(1, 20);
+        if(Crit == 20)
         {
-            timeToFire = Time.time + shotCooldown;
-
-            Ray ray = cam.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
-            RaycastHit hit;
-
-            if (Physics.Raycast(ray, out hit))
-            {
-                destination = hit.point;
-                //Debug.Log("hit");
-                if (hit.collider.gameObject.CompareTag("Enemy"))
-                {
-                    GameObject enemy = hit.collider.gameObject;
-                    AiHealth hp = enemy.GetComponent<AiHealth>();
-                    hp.aiDmgTaken = projectileDamage;
-                    hp.aiDealtDamage = true;
-                    hp.DamageEnemy();
-                }
-                if (hit.collider.gameObject.CompareTag("Barrel"))
-                {
-                    Debug.Log("barrel");
-                    GameObject barrel = hit.collider.gameObject;
-                    barrel.GetComponent<BarrelExplosion>().ExplodeBars();
-                }
-                if (hit.collider.gameObject.CompareTag("Target"))
-                {
-                    Debug.Log("Target");
-                    GameObject Target = hit.collider.gameObject;
-                    Target.GetComponent<AddToCounterWhenDestroyed>().AddToCounter();
-                }
-
-            }
-            else
-            {
-                destination = ray.GetPoint(1000);
-            }
-
-            InstantiateProjectile(firePoint);
+            GlockDamage = Random.Range(10, 17) * 2;
+            Debug.Log("Crit!" + GlockDamage);
         }
-    }
-
-    void Awake()
-    {
-        playerInput = new PlayerInput();
-        onFoot = playerInput.OnFoot;
-        onFoot.Enable();
-        onFoot.GunFire.performed += ctx => ShootProjectile();
-    }
-
-    void InstantiateProjectile(Transform point)
-    {
-        var projectileObj =
-            Instantiate(
-                projectile,
-                point.position,
-                Quaternion.FromToRotation(point.position, destination)
-            ) as GameObject;
-        projectileObj.SetActive(true);
-        projectileObj.GetComponent<Rigidbody>().velocity =
-            (destination - point.position).normalized * projectileSpeed;
-        Destroy(projectileObj, 3);
+        else
+        {
+            GlockDamage = Random.Range(10, 17);
+        }
     }
 }

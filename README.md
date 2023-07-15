@@ -24,7 +24,13 @@
 <p align="center"><i>A game for a school project created by 2 grade 10 students</i></p>
 <hr>
 
-## 🚀 Minimum System Requirements:
+## 🚀 Requirements to play:
+1. [Windows](https://www.microsoft.com/windows) 10 or 11
+2. [9th Generation Intel](https://en.wikipedia.org/wiki/Coffee_Lake#Coffee_Lake-S_(Desktop_processors)) Desktop CPU/[AMD Equivilent](https://www.cpu-monkey.com/en/cpu_group-amd_ryzen_3000-14)
+3. A Graphics card that supports DirectX12 (Any computer that was purchased within the last 10 or so years supports this)
+
+> **Note**  
+> These are the recommended system requirements to run this game. You can run this at a lower framerate on a less powerful PC
 
 ## 🐧 Linux Users:
 You are on your own. If you want to, you can try and install Wine/DXVK to run the game. No documentation will be provided
@@ -32,15 +38,24 @@ You are on your own. If you want to, you can try and install Wine/DXVK to run th
 > Any and all Issues that are specific to Non-Windows Operating Systems will automatically be closed, as we do not (and (probably) will not (Until HDRP supports other platforms)) have native Linux Builds
 ## 🛠️ Requirements to Develop
 
-1. [Unity 2023.1.1f1](https://unity.com/releases/editor/archive#download-archive-2023)
+1. [Unity 2023.1.1f1](https://unity.com/releases/editor/archive#download-archive-2021)
 > **Warning**  
-> You must use this specific version to contribute to this repository. any pull request that contains a version older or newer than 2023.1.1f1 will be closed.
+> You must use this specific version to contribute to this repository. any pull request that contains a version older or newer than 2021.3.9f1 will be closed.
 
+> **Note**  
+> This project might be migrated to a newer version of unity at some point in the future, and the requirements to develop will change. make sure to read the README file before developing
 2. [Visual Studio 2022](https://visualstudio.microsoft.com/thank-you-downloading-visual-studio/?sku=Community) with the "Game Development with Unity" workload
 
 3. A somewhat decent Computer (Around 11th Gen Intel/Ryzen 5th gen with a NVIDIA 2000 series/AMD Equivilent GPU)
+### 🌌 Cloning Instructions
+Since this repo uses a submodule, you must also fetch that submodule after cloning:
 
+```ps
+git clone https://github.com/lemons-studios/Mission-Monkey.git/
+cd Mission-Monkey
+git submodule update --init --recursive
+```
 ## 📃 Credits
 - See [THANKS](https://github.com/funny-unity-game/Mission-Monkey/blob/main/THANKS) for credits
 - Thanks To [NASA](https://on.soundcloud.com/H9XBW) for providing the sound effect for the escape pods in the third level of chapter 1
-- Thanks to [@allfax](https://github.com/allfax) for testing the game
+- ~~Thanks to [@allfax](https://github.com/allfax) for testing the game~~
