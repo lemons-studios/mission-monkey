@@ -1,5 +1,7 @@
 using System;
 using UnityEngine;
+using Discord;
+
 public class DiscordController : MonoBehaviour
 {
     public Discord.Discord discord;
@@ -16,9 +18,10 @@ public class DiscordController : MonoBehaviour
         for (int i = 0; i < System.Diagnostics.Process.GetProcesses().Length; i++)
         {
             // checks if current process is discord
-            if (System.Diagnostics.Process.GetProcesses()[i].ToString() == "System.Diagnostics.Process (Discord)")
+            if (System.Diagnostics.Process.GetProcesses()[i].ToString().Contains("Discord"))
             {
                 discordRunning = true;
+                Debug.Log("Discord Found!");
                 break;
             }
         }
