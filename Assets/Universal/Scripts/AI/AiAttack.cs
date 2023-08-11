@@ -1,22 +1,35 @@
+using System.Collections;
 using System.Threading.Tasks;
 using UnityEngine;
 
-public class AiAttackGeneric : MonoBehaviour
+public class AiAttack : MonoBehaviour
 {
-    public GameObject BulletProjectile, Player;
+    public GameObject BulletProjectile;
+    private GameObject Player;
     public GameObject[] FirePoints;
     public float DamageToPlayerMin, DamageToPlayerMax, ProjectileSpeed;
 
     private void Start()
     {
-        Player = AiNavAndFov.Player;
+        Player = GetComponent<AiNavAndFov>().Player;
+        if (Player == null)
+        {
+            Debug.LogError("Player is not referenced on " + gameObject.name);
+        }
+        StartCoroutine(playerRangeCheck());
     }
-
+    private IEnumerator playerRangeCheck()
+    {
+        while (true)
+        {
+            
+        }
+    }
     async void FireBulletRays()
     {
-        for (int i = 0; i < FirePoints.Length; i++)
+        foreach (GameObject i in FirePoints)
         {
-            Ray hitRay = new Ray(FirePoints[i].transform.position, transform.forward);
+            Ray hitRay = new Ray(i.transform.position, transform.forward);
             RaycastHit hit;
             float DistanceToPlayer = Vector3.Distance(BulletProjectile.transform.position, Player.transform.position);
             int DistanceFloored = Mathf.FloorToInt(DistanceToPlayer);
@@ -30,8 +43,6 @@ public class AiAttackGeneric : MonoBehaviour
                     {
                         await Task.Yield();
                     }
-
-
                 }
                 else if (HitObject != Player)
                 {
@@ -39,14 +50,6 @@ public class AiAttackGeneric : MonoBehaviour
                     return;
                 }
             }
-        }
-    }
-
-    private void FixedUpdate()
-    {
-        if (Player == null)
-        {
-            Debug.LogError("Player Not Found! Script is either broken or someone forgot to assign the tag to the player lol");
         }
     }
 }

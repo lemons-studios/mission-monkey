@@ -6,7 +6,7 @@ using UnityEngine.AI;
 public class AiNavAndFov : MonoBehaviour
 {
     private GameObject Ai;
-    public static GameObject Player;
+    public GameObject Player;
     private NavMeshAgent Agent;
     public int SightRadius, DistanceToPlayer, DefAgentSpeed;
     private int CurrentPatrolNav, DistanceToPatrolPos;
@@ -14,7 +14,7 @@ public class AiNavAndFov : MonoBehaviour
     public LayerMask ObstructionMask, PlayerMask;
     public Vector3[] PatrolPositions;
     private Transform PlayerPosition;
-    private string PartialName = "Attack";
+
 
 
     private void Start()
@@ -63,23 +63,6 @@ public class AiNavAndFov : MonoBehaviour
     }
     public void FieldOfViewCheck()
     {
-        RaycastHit hit;
-        if (Physics.SphereCast(Ai.transform.position, SightRadius, transform.forward, out hit, ObstructionMask))
-        {
-            Debug.LogWarning("No Player found");
-            return;
-        }
-
-        if (Physics.SphereCast(Ai.transform.position, SightRadius, transform.forward, out hit, PlayerMask) && DistanceToPlayer != 3.5f)
-        {
-            Debug.Log("Player in sight!");
-            ChasePlayer();
-        }
-        if (Physics.SphereCast(Ai.transform.position, SightRadius, transform.forward, out hit, PlayerMask))
-        {
-            Debug.Log("Player is in attack range!");
-            AttackPlayer();
-        }
 
     }
 }
