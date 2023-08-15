@@ -110,6 +110,7 @@ public class MainMenuFunctions : MonoBehaviour
             RtxSettings.supportRayTracing = true;
             HdrpAsset.currentPlatformRenderPipelineSettings = RtxSettings;
         }
+        PlayerPrefs.SetInt("IsRaytracingOn", RayTracingIndex);
     }
     public void MenuToSettings()
     {
