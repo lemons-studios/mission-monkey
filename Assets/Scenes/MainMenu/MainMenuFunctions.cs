@@ -54,7 +54,7 @@ public class MainMenuFunctions : MonoBehaviour
         // Default values for settings
         PlayerPrefs.SetInt("isFirstLaunch", 1);
         PlayerPrefs.SetInt("MouseSensitivityValue", 55);
-        PlayerPrefs.SetInt("VolumeValue", 100);
+        PlayerPrefs.SetInt("VolumeValue", 75);
 
         // Disable Raytracing by default
         RenderPipelineSettings RtxSettings = HdrpAsset.currentPlatformRenderPipelineSettings;
@@ -66,19 +66,21 @@ public class MainMenuFunctions : MonoBehaviour
     }
     public void QualitySelect(int QualityLevel)
     {
+        QualitySettings.SetQualityLevel(QualityLevel, true);
+        PlayerPrefs.SetInt("QualityMode", QualityLevel);
 
     }
     public void SetVolume(float volume)
     {
-        // ChakornK did the math on the previous script and I stole it because im lazy. will update later if i figure it out
-        // It supposedly changes slider value distribution
+        /// ChakornK did the math on the previous script and I stole it because im lazy. will update later if i figure it out
+        /// It supposedly changes slider value distribution
         MainVolume.SetFloat("Volume", Mathf.Pow(volume, 3) / 6400);
         // Remember what the value was set to so it remains the same between sessions
         PlayerPrefs.SetFloat("Volume", volume);
     }
-    public void SetMouseSensitivty()
+    public void SetMouseSensitivty(float MouseSens)
     {
-
+        PlayerPrefs.SetFloat("MouseSensitivityValue", MouseSens);
     }
     public void SetAntiAliasing(int AntiAliasingIndex)
     {
@@ -96,6 +98,7 @@ public class MainMenuFunctions : MonoBehaviour
         if (HdrpAsset == null)
         {
             Debug.LogError("HdrpAsset Not Found! Something is seriously wrong!!");
+
         }
         // It does stuff
         if (RayTracingIndex == 0)
