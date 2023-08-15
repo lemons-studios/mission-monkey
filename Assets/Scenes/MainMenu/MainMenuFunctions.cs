@@ -71,11 +71,15 @@ public class MainMenuFunctions : MonoBehaviour
     }
     public void MenuToSettings()
     {
-
+        // Disable the main menu gui and show the settings gui
+        MainMenu.SetActive(false);
+        OptionsMenu.SetActive(true);
     }
     public void SettingsToMenu()
     {
-
+        // The reverse of MenuToSettings()
+        OptionsMenu.SetActive(false);
+        MainMenu.SetActive(true);
     }
     public void ShowChapterSelect()
     {
@@ -84,7 +88,7 @@ public class MainMenuFunctions : MonoBehaviour
     }
     public void LoadIntoChapter(int chapter)
     {
-        SceneManager.LoadScene("Chapter " + chapter + "-1");
+        SceneManager.LoadScene("Chapter" + chapter + "-1");
     }
     public void HideChapterSelect()
     {
