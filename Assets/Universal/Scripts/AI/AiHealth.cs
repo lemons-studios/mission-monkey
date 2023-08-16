@@ -16,6 +16,6 @@ public class AiHealth : MonoBehaviour
     }
     public static void DamageAI()
     {
-        AiMaxHealth = AiMaxHealth - Glock.GlockDamage;
+        //AiMaxHealth = AiMaxHealth - Glock.GlockDamage;
     }
 }

@@ -38,7 +38,8 @@ public class PauseMenu : MonoBehaviour
             ResumeGame();
         }
     }
-    void Update()
+    // 9 lines of code caused mass confusion on my part for about 5 hours
+    /*void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
@@ -47,5 +48,5 @@ public class PauseMenu : MonoBehaviour
                 TogglePause();
             }
         }
-    }
+    }*/
 }

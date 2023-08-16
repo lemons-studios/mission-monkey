@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MainMenu2 : MonoBehaviour
+public class WeaponSwitcher : MonoBehaviour
 {
     // Start is called before the first frame update
     void Start()
