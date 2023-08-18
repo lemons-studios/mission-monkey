@@ -11,20 +11,13 @@ public class AiAttack : MonoBehaviour
 
     private void Start()
     {
-        Player = GetComponent<AiNavAndFov>().Player;
+        Player = GetComponent<AiCore>().Player;
         if (Player == null)
         {
             Debug.LogError("Player is not referenced on " + gameObject.name);
         }
-        StartCoroutine(playerRangeCheck());
     }
-    private IEnumerator playerRangeCheck()
-    {
-        while (true)
-        {
-            
-        }
-    }
+
     async void FireBulletRays()
     {
         foreach (GameObject i in FirePoints)
