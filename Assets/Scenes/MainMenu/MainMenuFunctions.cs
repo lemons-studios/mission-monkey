@@ -1,4 +1,3 @@
-using System.IO;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Audio;
@@ -16,9 +15,8 @@ public class MainMenuFunctions : MonoBehaviour
     public GameObject MainMenu, OptionsMenu, ChapterSelectMenu, LoadGameMenu;
     public Camera Camera;
     public int MouseSensitivity;
-    private int AntiAliasingMode, IsRaytracingOn, QualityMode, isFirstLaunch;
+    private int AntiAliasingMode, IsRaytracingOn, QualityMode;
     private float MouseSensitivityValue, VolumeValue, FovValue;
-    private string FirstLaunchCheck = @".\FirstLaunchCheckDoNotDelete";
 
     private bool HasRaytracing()
     {
@@ -32,37 +30,9 @@ public class MainMenuFunctions : MonoBehaviour
         RayTracingDropdown.interactable = false;
         return false;
     }
-    void Awake()
+    private void Awake()
     {
-        string FirstLaunchCheck = @".\FirstLaunch";
-        // Clamp the minimum mouse sensitivity to 30, and the max to 125 (Change if required later)
-        Mathf.Clamp(MouseSensitivity, 30, 125);
-        // If QualityMode is 0, It would be the first launch of the game, set the default quality to "Medium"
-        if (QualityMode == 0)
-        {
-            PlayerPrefs.SetInt("QualityMode", 2);
-            QualitySettings.SetQualityLevel(QualityMode);
-        }
-        if (!File.Exists(FirstLaunchCheck))
-        {
-            SetDefaultValues();
-        }
-    }
-    private void SetDefaultValues()
-    {
-        var HdrpAsset = GraphicsSettings.currentRenderPipeline as HDRenderPipelineAsset;
-        // Default values for settings
-        PlayerPrefs.SetInt("isFirstLaunch", 1);
-        PlayerPrefs.SetInt("MouseSensitivityValue", 55);
-        PlayerPrefs.SetInt("VolumeValue", 75);
-
-        // Disable Raytracing by default
-        RenderPipelineSettings RtxSettings = HdrpAsset.currentPlatformRenderPipelineSettings;
-        RtxSettings.supportRayTracing = false;
-        HdrpAsset.currentPlatformRenderPipelineSettings = RtxSettings;
-
-        // Create the file
-        File.Create(FirstLaunchCheck);
+        HasRaytracing();
     }
     public void QualitySelect(int QualityLevel)
     {
