@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.03542504, g: 0.039478756, b: 0.04729837, a: 1}
+  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -119,7 +119,7 @@ NavMeshSettings:
     preserveTilesOutsideBounds: 0
     debug:
       m_Flags: 0
-  m_NavMeshData: {fileID: 23800000, guid: 130d83149ff004d4d8296e48a200c914, type: 2}
+  m_NavMeshData: {fileID: 0}
 --- !u!1 &20600010
 GameObject:
   m_ObjectHideFlags: 0
@@ -3570,6 +3570,69 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1.9999999, y: 1.9999998, z: 1.9999994}
   m_Center: {x: 0, y: 0.000030517578, z: -0.000030517578}
+--- !u!1 &272371168
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 272371170}
+  - component: {fileID: 272371169}
+  m_Layer: 0
+  m_Name: Navigation
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &272371169
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 272371168}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a5ac11cc976e418e8d13136b07e1f52, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_AgentTypeID: 0
+  m_CollectObjects: 3
+  m_Size: {x: 10, y: 10, z: 10}
+  m_Center: {x: 0, y: 2, z: 0}
+  m_LayerMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_UseGeometry: 0
+  m_DefaultArea: 0
+  m_GenerateLinks: 0
+  m_IgnoreNavMeshAgent: 1
+  m_IgnoreNavMeshObstacle: 1
+  m_OverrideTileSize: 0
+  m_TileSize: 256
+  m_OverrideVoxelSize: 0
+  m_VoxelSize: 0.16666667
+  m_MinRegionArea: 2
+  m_NavMeshData: {fileID: 23800000, guid: 130d83149ff004d4d8296e48a200c914, type: 2}
+  m_BuildHeightMesh: 0
+--- !u!4 &272371170
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 272371168}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &279334268
 GameObject:
   m_ObjectHideFlags: 0
@@ -13234,7 +13297,7 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: d75935aac9e30654ba900fdd150eea66, type: 2}
     - target: {fileID: 2550463727306718371, guid: 1cce1c10ed58ac94f9253c15274bfe0e, type: 3}
       propertyPath: m_StaticEditorFlags
-      value: 10
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2720527894238887399, guid: 1cce1c10ed58ac94f9253c15274bfe0e, type: 3}
       propertyPath: m_Layer
@@ -13461,6 +13524,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 2550463727306718371, guid: 1cce1c10ed58ac94f9253c15274bfe0e, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1817245289}
+    - targetCorrespondingSourceObject: {fileID: 2550463727306718371, guid: 1cce1c10ed58ac94f9253c15274bfe0e, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1817245290}
     - targetCorrespondingSourceObject: {fileID: -1360676714547013086, guid: 1cce1c10ed58ac94f9253c15274bfe0e, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1515637601}
@@ -43473,6 +43539,25 @@ MonoBehaviour:
   m_IgnoreFromBuild: 0
   m_ApplyToChildren: 1
   m_AffectedAgents: ffffffff
+--- !u!114 &1817245290
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1817245283}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e3fdca004f2d45fe8abbed571a8abd5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_OverrideArea: 0
+  m_Area: 0
+  m_OverrideGenerateLinks: 0
+  m_GenerateLinks: 0
+  m_IgnoreFromBuild: 0
+  m_ApplyToChildren: 1
+  m_AffectedAgents: ffffffff
 --- !u!1 &1834058679
 GameObject:
   m_ObjectHideFlags: 0
@@ -55755,3 +55840,4 @@ SceneRoots:
   - {fileID: 1699125175}
   - {fileID: 1482566618}
   - {fileID: 464086042}
+  - {fileID: 272371170}

@@ -8,6 +8,7 @@ using UnityEngine.UI;
 
 public class MainMenuFunctions : MonoBehaviour
 {
+    public HDRenderPipelineAsset RaytracingOnAsset, RaytracingOffAsset;
     public AudioMixer MainVolume;
     public Slider VolumeSlider, MouseSensSlider, FovSlider;
     public TMP_Dropdown QualityDropdown, AntiAliasingDropdown, RayTracingDropdown;
@@ -17,22 +18,24 @@ public class MainMenuFunctions : MonoBehaviour
     public int MouseSensitivity;
     private int AntiAliasingMode, IsRaytracingOn, QualityMode;
     private float MouseSensitivityValue, VolumeValue, FovValue;
+    private bool IsRaytracingSupported;
 
-    private bool HasRaytracing()
-    {
-        if (SystemInfo.graphicsDeviceName.Contains("RTX")) // Checks if the name of the graphics card contains the word "RTX" (Sorry AMD users, I'm a lazy fucker)
-        {
-            Debug.Log("This Computer Supports Raytracing");
-            return true;
-        }
-        else Debug.Log("This Computer DOES NOT Support Raytracing");
-        // If the computer does not support raytracing/has an NVIDIA RTX card, disable the dropdown for raytracing to prevent it from being on. also set raytracing off if for some reason it is on
-        RayTracingDropdown.interactable = false;
-        return false;
-    }
     private void Awake()
     {
-        HasRaytracing();
+        // Cannot beleive I didn't know this function existed
+       /* if (SystemInfo.supportsRayTracing)
+        {
+            Debug.Log("Raytracing is supported on this GPU");
+            IsRaytracingSupported = true;
+            GraphicsSettings.renderPipelineAsset = RaytracingOnAsset;
+        }
+        else
+        {
+            Debug.Log("Raytracing is not supported on this GPU");
+            IsRaytracingSupported = false;
+            RayTracingDropdown.interactable = false;
+            GraphicsSettings.renderPipelineAsset = RaytracingOffAsset;
+        } */
     }
     public void QualitySelect(int QualityLevel)
     {
@@ -58,32 +61,7 @@ public class MainMenuFunctions : MonoBehaviour
     }
     public void SetRaytracing(int RayTracingIndex)
     {
-        Mathf.Clamp(RayTracingIndex, 0, 1); // Clamp the index so the game does not crash 
-        // Just in case the player whos computer does not support raytracing somehow manages to change the dropdown value
-        if (!HasRaytracing())
-        {
-            return;
-        }
-        var HdrpAsset = GraphicsSettings.currentRenderPipeline as HDRenderPipelineAsset;
-        if (HdrpAsset == null)
-        {
-            Debug.LogError("HdrpAsset Not Found! Something is seriously wrong!!");
 
-        }
-        // It does stuff
-        if (RayTracingIndex == 0)
-        {
-            RenderPipelineSettings RtxSettings = HdrpAsset.currentPlatformRenderPipelineSettings;
-            RtxSettings.supportRayTracing = false;
-            HdrpAsset.currentPlatformRenderPipelineSettings = RtxSettings;
-        }
-        else if (RayTracingIndex == 0)
-        {
-            RenderPipelineSettings RtxSettings = HdrpAsset.currentPlatformRenderPipelineSettings;
-            RtxSettings.supportRayTracing = true;
-            HdrpAsset.currentPlatformRenderPipelineSettings = RtxSettings;
-        }
-        PlayerPrefs.SetInt("IsRaytracingOn", RayTracingIndex);
     }
     public void MenuToSettings()
     {
