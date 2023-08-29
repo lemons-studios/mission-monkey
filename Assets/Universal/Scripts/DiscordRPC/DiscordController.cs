@@ -9,16 +9,15 @@ public class DiscordController : MonoBehaviour
     public string sDetails, sState, sLargeImage, sLargeText, sSmallImage, sSmallText;
 
     private long startTime;
-
     bool discordRunning = false;
 
     void Start()
     {
         // loops through open processes
-        for (int i = 0; i < System.Diagnostics.Process.GetProcesses().Length; i++)
+        foreach (System.Diagnostics.Process v in System.Diagnostics.Process.GetProcesses())
         {
             // checks if current process is discord
-            if (System.Diagnostics.Process.GetProcesses()[i].ToString().Contains("Discord"))
+            if (v.ToString().Contains("Discord"))
             {
                 discordRunning = true;
                 Debug.Log("Discord Found!");

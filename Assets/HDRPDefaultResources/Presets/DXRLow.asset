@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0cf1dab834d4ec34195b920ea7bbf9ec, type: 3}
-  m_Name: High
+  m_Name: DXRLow
   m_EditorClassIdentifier: 
   m_RenderPipelineSettings:
     supportShadowMask: 1
-    supportSSR: 1
-    supportSSRTransparent: 1
+    supportSSR: 0
+    supportSSRTransparent: 0
     supportSSAO: 1
     supportSSGI: 1
     supportSubsurfaceScattering: 1
@@ -28,9 +28,9 @@ MonoBehaviour:
       m_SchemaId:
         m_Id: With3Levels
     supportVolumetrics: 1
-    supportVolumetricClouds: 1
-    supportLightLayers: 0
-    renderingLayerMaskBuffer: 0
+    supportVolumetricClouds: 0
+    supportLightLayers: 1
+    renderingLayerMaskBuffer: 1
     supportWater: 0
     waterSimulationResolution: 128
     supportWaterExclusion: 0
@@ -54,11 +54,11 @@ MonoBehaviour:
     customBufferFormat: 8
     supportedLitShaderMode: 2
     planarReflectionResolution:
-      m_Values: 000100000004000000040000
+      m_Values: 000100000004000000080000
       m_SchemaId:
         m_Id: With3Levels
     cubeReflectionResolution:
-      m_Values: 000100000002000000040000
+      m_Values: 800000000001000000020000
       m_SchemaId:
         m_Id: With3Levels
     supportDecals: 1
@@ -68,7 +68,7 @@ MonoBehaviour:
     supportHighQualityLineRendering: 0
     highQualityLineRenderingMemoryBudget: 128
     msaaSampleCount: 1
-    supportMotionVectors: 0
+    supportMotionVectors: 1
     supportScreenSpaceLensFlare: 1
     supportDataDrivenLensFlare: 1
     supportRuntimeAOVAPI: 0
@@ -81,21 +81,21 @@ MonoBehaviour:
     supportProbeVolumeScenarios: 0
     supportProbeVolumeScenarioBlending: 1
     probeVolumeBlendingMemoryBudget: 128
-    supportRayTracing: 0
-    supportVFXRayTracing: 0
-    supportedRayTracingMode: 3
+    supportRayTracing: 1
+    supportVFXRayTracing: 1
+    supportedRayTracingMode: 1
     lightLoopSettings:
       cookieAtlasSize: 8192
       cookieFormat: 74
       cookieAtlasLastValidMip: 0
       cookieTexArraySize: 1
-      planarReflectionAtlasSize: 1024
-      reflectionProbeCacheSize: 64
-      reflectionCubemapSize: 256
-      maxEnvLightsOnScreen: 64
+      planarReflectionAtlasSize: 0
+      reflectionProbeCacheSize: 0
+      reflectionCubemapSize: 0
+      maxEnvLightsOnScreen: 0
       reflectionCacheCompressed: 0
       reflectionProbeFormat: 74
-      reflectionProbeTexCacheSize: 536875008
+      reflectionProbeTexCacheSize: 4096
       reflectionProbeTexLastValidCubeMip: 3
       reflectionProbeTexLastValidPlanarMip: 0
       reflectionProbeDecreaseResToFit: 1
@@ -107,16 +107,16 @@ MonoBehaviour:
       maxDirectionalLightsOnScreen: 16
       maxPunctualLightsOnScreen: 512
       maxAreaLightsOnScreen: 64
-      maxCubeReflectionOnScreen: 48
-      maxPlanarReflectionOnScreen: 16
+      maxCubeReflectionOnScreen: 32
+      maxPlanarReflectionOnScreen: 8
       maxDecalsOnScreen: 512
-      maxLightsPerClusterCell: 24
-      maxLocalVolumetricFogSize: 64
-      maxLocalVolumetricFogOnScreen: 128
+      maxLightsPerClusterCell: 8
+      maxLocalVolumetricFogSize: 0
+      maxLocalVolumetricFogOnScreen: 256
     hdShadowInitParams:
-      maxShadowRequests: 1024
+      maxShadowRequests: 128
       directionalShadowsDepthBits: 32
-      shadowFilteringQuality: 2
+      shadowFilteringQuality: 1
       areaShadowFilteringQuality: 0
       punctualLightShadowAtlas:
         shadowAtlasResolution: 4096
@@ -144,8 +144,8 @@ MonoBehaviour:
       maxDirectionalShadowMapResolution: 2048
       maxPunctualShadowMapResolution: 2048
       maxAreaShadowMapResolution: 2048
-      supportScreenSpaceShadows: 1
-      maxScreenSpaceShadowSlots: 512
+      supportScreenSpaceShadows: 0
+      maxScreenSpaceShadowSlots: 4
       screenSpaceShadowBufferFormat: 48
     decalSettings:
       drawDistance: 1000
@@ -157,10 +157,10 @@ MonoBehaviour:
       lutFormat: 48
       bufferFormat: 74
     dynamicResolutionSettings:
-      enabled: 0
+      enabled: 1
       useMipBias: 0
-      enableDLSS: 0
-      DLSSPerfQualitySetting: 1
+      enableDLSS: 1
+      DLSSPerfQualitySetting: 0
       DLSSInjectionPoint: 0
       DLSSUseOptimalSettings: 1
       DLSSSharpness: 0.5
@@ -182,7 +182,7 @@ MonoBehaviour:
       singlePass: 1
       occlusionMesh: 1
       cameraJitter: 0
-      allowMotionBlur: 1
+      allowMotionBlur: 0
     postProcessQualitySettings:
       NearBlurSampleCount: 030000000500000008000000
       NearBlurMaxRadius:
@@ -205,11 +205,11 @@ MonoBehaviour:
       ChromaticAberrationMaxSamples: 03000000060000000c000000
     lightSettings:
       useContactShadow:
-        m_Values: 000101
+        m_Values: 000001
         m_SchemaId:
           m_Id: With3Levels
     maximumLODLevel:
-      m_Values: 000000000000000007000000
+      m_Values: 000000000000000000000000
       m_SchemaId:
         m_Id: With3Levels
     lodBias:
@@ -220,12 +220,12 @@ MonoBehaviour:
       m_SchemaId:
         m_Id: With3Levels
     lightingQualitySettings:
-      AOStepCount: 040000000600000020000000
+      AOStepCount: 040000000600000010000000
       AOFullRes: 000001
-      AOMaximumRadiusPixels: 200000002800000000010000
+      AOMaximumRadiusPixels: 200000002800000050000000
       AOBilateralUpsample: 000101
-      AODirectionCount: 010000000200000006000000
-      ContactShadowSampleCount: 060000000a00000040000000
+      AODirectionCount: 010000000200000004000000
+      ContactShadowSampleCount: 060000000a00000010000000
       SSRMaxRaySteps: 100000002000000040000000
       SSGIRaySteps: 200000004000000080000000
       SSGIDenoise: 010101
