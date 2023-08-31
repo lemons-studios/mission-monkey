@@ -140,13 +140,11 @@ public class MainMenuFunctions : MonoBehaviour
         Camera.GetComponent<RotateCamera>().enabled = toggled;
     }
 
-    /* Actually might be useless
-    public void LoadIntoChapter(int chapter)
+    public void LoadNewScene(string scene)
     {
-        // Loads into chapter that is selected based off of what chapter int returns (Very stupid line of code right here, but it works for now, will probably rework later)
-        SceneManager.LoadScene("Chapter" + chapter + "-1");
+        SceneManager.LoadScene(scene);
+        if (scene == null) { Debug.LogError("Scene not properly specified on 1 or more objects"); }
     }
-    */
 
     public void QuitGame()
     {
