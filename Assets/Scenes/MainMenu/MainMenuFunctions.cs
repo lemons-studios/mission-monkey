@@ -11,6 +11,7 @@ public class MainMenuFunctions : MonoBehaviour
     public HDRenderPipelineAsset[] QualityProfiles;
     public AudioMixer MainVolume;
     public Slider VolumeSlider, MouseSensSlider, FovSlider;
+    public Toggle SpinCameraToggle;
     public TMP_Dropdown QualityDropdown, AntiAliasingDropdown, DLSSDropdown;
     public TextMeshProUGUI VolumePercentageText, MouseSensText, FovText;
     public GameObject MainMenu, OptionsMenu, ChapterSelectMenu, LoadGameMenu;
@@ -19,6 +20,8 @@ public class MainMenuFunctions : MonoBehaviour
     private int AntiAliasingMode, IsRaytracingOn, QualityMode;
     private float MouseSensitivityValue, VolumeValue, FovValue;
     private bool IsRaytracingSupported;
+
+   
     // private string[] OtherSupportedPlatforms = { "LinuxEditor", "LinuxPlayer", "OSXPlayer", "OSXEditor"}; 
 
     private bool IsDlssSupported()
@@ -63,7 +66,7 @@ public class MainMenuFunctions : MonoBehaviour
         }
         else
         {
-            Application.Quit(); // Serious problem if someone is running this on a platform that isnt Linux, Windows, or MacOS
+            Application.Quit(); // Serious problem if someone is running this on a platform that isnt Linux, Windows, or MacOS, quit immediately
         }
     }
 
@@ -84,7 +87,13 @@ public class MainMenuFunctions : MonoBehaviour
 
     public void SetMouseSensitivty(float MouseSens)
     {
+        // Stolen code from the old SettingsMenu.cs script. It should work
         PlayerPrefs.SetFloat("MouseSensitivityValue", MouseSens);
+        Camera.GetComponent<PlayerLook>().setMouseSensitivity(MouseSens);
+        if(MouseSensSlider.value != MouseSens) 
+        {
+            MouseSensSlider.value = MouseSens;
+        }
     }
 
     public void SetAntiAliasing(int AntiAliasingIndex)
@@ -121,18 +130,23 @@ public class MainMenuFunctions : MonoBehaviour
         // Show chapter select GUI
         ChapterSelectMenu.SetActive(true);
     }
-
-    public void LoadIntoChapter(int chapter)
-    {
-        // Loads into chapter that is selected based off of what chapter int returns
-        SceneManager.LoadScene("Chapter" + chapter + "-1");
-    }
-
     public void HideChapterSelect()
     {
         // Hide the chapter select GUI
         ChapterSelectMenu.SetActive(false);
     }
+    public void ToggleCamSpin(bool toggled)
+    {
+        Camera.GetComponent<RotateCamera>().enabled = toggled;
+    }
+
+    /* Actually might be useless
+    public void LoadIntoChapter(int chapter)
+    {
+        // Loads into chapter that is selected based off of what chapter int returns (Very stupid line of code right here, but it works for now, will probably rework later)
+        SceneManager.LoadScene("Chapter" + chapter + "-1");
+    }
+    */
 
     public void QuitGame()
     {
@@ -147,7 +161,10 @@ public class MainMenuFunctions : MonoBehaviour
         Debug.Log("Loading Credits");
         SceneManager.LoadScene("Credits");
     }
-
+    public void OpenGHPage()
+    {
+        Application.OpenURL("https://github.com/Lemons-Studios/Mission-Monkey");
+    }
     public void OnApplicationQuit()
     {
         // Unlock cursor before game closes
