@@ -37,5 +37,5 @@
 
 ## 📃 Credits
 - See [THANKS](https://github.com/funny-unity-game/Mission-Monkey/blob/main/THANKS) for credits
-- Thanks To [NASA](https://on.soundcloud.com/H9XBW) for providing the sound effect for the escape pods for the Chapter1-3 Scene
+- Thanks To [NASA](https://on.soundcloud.com/H9XBW) for providing the sound effect for the escape pods for the Chapter1-3 Scene (Licensed Under [CC-BY-NC](https://creativecommons.org/licenses/by-nc/3.0/))
 - ~~Thanks to [@allfax](https://github.com/allfax) for testing the game~~
