@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Audio;
@@ -6,7 +7,14 @@ using UnityEngine.Rendering;
 using UnityEngine.Rendering.HighDefinition;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
-
+public static class ObjectExtensions
+{
+    // https://stackoverflow.com/questions/3870263/how-can-i-write-like-x-either-1-or-2-in-a-programming-language 
+    public static bool Either(this object value, params object[] array)
+    {
+        return array.Any(p => Equals(value, p));
+    }
+}
 public class MainMenuFunctions : MonoBehaviour
 {
     private HDAdditionalCameraData hdrpCamData;
@@ -38,6 +46,7 @@ public class MainMenuFunctions : MonoBehaviour
 
     private void Awake()
     {
+        QualityDropdown.value = QualitySettings.GetQualityLevel();
         hdrpCamData = Camera.GetComponent<HDAdditionalCameraData>();
         Debug.Log(Application.platform);
         if (Application.platform.ToString().Contains("Windows"))
@@ -106,13 +115,22 @@ public class MainMenuFunctions : MonoBehaviour
     }
     public void SetQuality()
     {
+        // Quality Mode is based off of how the quality is ordered in the project settings
+        // "Very Low" is 0 and "DXR High" is 6 (As Of 0.3.0)
         QualityMode = QualityDropdown.value;
-        QualitySettings.SetQualityLevel(QualityDropdown.value);
         Debug.Log("Setting Quality to " + QualitySettings.GetQualityLevel());
+        if (!IsRaytracingSupported && QualityDropdown.value.Either(5,6))
+        {
+            // If a player without raytracing-cabable hardware tries to switch to DXR, set to "Ultra" quality instead (might be better to just return instead of doing anything lol)
+            QualitySettings.SetQualityLevel(4) /*4 would be Ultra*/ ;
+            return;
+        }
+        QualitySettings.SetQualityLevel(QualityDropdown.value);
 
     }
     public void SetAntiAliasing()
     {
+        // It Sets the anti aliasing (idk how to describe it in a way for myself to understand in the future)
         AntiAliasingMode = AntiAliasingDropdown.value;
         switch (AntiAliasingMode)
         {
