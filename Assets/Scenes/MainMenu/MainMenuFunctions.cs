@@ -8,7 +8,7 @@ using UnityEngine.UI;
 
 public class MainMenuFunctions : MonoBehaviour
 {
-    public HDRenderPipelineAsset[] QualityProfiles;
+    private HDAdditionalCameraData hdrpCamData;
     public AudioMixer MainVolume;
     public Slider VolumeSlider, MouseSensSlider, FovSlider;
     public Toggle SpinCameraToggle;
@@ -17,11 +17,11 @@ public class MainMenuFunctions : MonoBehaviour
     public GameObject MainMenu, OptionsMenu, ChapterSelectMenu, LoadGameMenu;
     public Camera Camera;
     public int MouseSensitivity;
-    private int AntiAliasingMode, IsRaytracingOn, QualityMode;
+    private int AntiAliasingMode, IsRaytracingOn, QualityMode, DLSSValue;
     private float MouseSensitivityValue, VolumeValue, FovValue;
     private bool IsRaytracingSupported;
 
-   
+
     // private string[] OtherSupportedPlatforms = { "LinuxEditor", "LinuxPlayer", "OSXPlayer", "OSXEditor"}; 
 
     private bool IsDlssSupported()
@@ -37,6 +37,7 @@ public class MainMenuFunctions : MonoBehaviour
 
     private void Awake()
     {
+        hdrpCamData = Camera.GetComponent<HDAdditionalCameraData>();
         Debug.Log(Application.platform);
         if (Application.platform.ToString().Contains("Windows"))
         {
@@ -69,12 +70,19 @@ public class MainMenuFunctions : MonoBehaviour
             Application.Quit(); // Serious problem if someone is running this on a platform that isnt Linux, Windows, or MacOS, quit immediately
         }
     }
-
-    public void SetQuality(int QualityLevel)
+    private void Start()
     {
-        QualitySettings.SetQualityLevel(QualityLevel, true);
-        PlayerPrefs.SetInt("QualityMode", QualityLevel);
+        AntiAliasingDropdown.onValueChanged.AddListener(delegate
+        {
+            SetAntiAliasing();
+        });
+        QualityDropdown.onValueChanged.AddListener(delegate
+        {
+            SetQuality();
+        });
     }
+
+
 
     public void SetVolume(float volume)
     {
@@ -90,23 +98,46 @@ public class MainMenuFunctions : MonoBehaviour
         // Stolen code from the old SettingsMenu.cs script. It should work
         PlayerPrefs.SetFloat("MouseSensitivityValue", MouseSens);
         Camera.GetComponent<PlayerLook>().setMouseSensitivity(MouseSens);
-        if(MouseSensSlider.value != MouseSens) 
+        if (MouseSensSlider.value != MouseSens)
         {
             MouseSensSlider.value = MouseSens;
         }
     }
-
-    public void SetAntiAliasing(int AntiAliasingIndex)
+    public void SetQuality()
     {
+        QualityMode = QualityDropdown.value;
+        switch(QualityMode)
+        {
 
+        }
+    }
+    public void SetAntiAliasing()
+    {
+        AntiAliasingMode = AntiAliasingDropdown.value;
+        switch (AntiAliasingMode)
+        {
+            case 0:
+                hdrpCamData.antialiasing = HDAdditionalCameraData.AntialiasingMode.None;
+                break;
+            case 1:
+                hdrpCamData.antialiasing = HDAdditionalCameraData.AntialiasingMode.FastApproximateAntialiasing;
+                break;
+            case 2:
+                hdrpCamData.antialiasing = HDAdditionalCameraData.AntialiasingMode.TemporalAntialiasing;
+                break;
+            case 3:
+                hdrpCamData.antialiasing = HDAdditionalCameraData.AntialiasingMode.SubpixelMorphologicalAntiAliasing;
+                break;
+        }
+        Debug.Log("Setting AA Mode to " + hdrpCamData.antialiasing);
     }
 
-    public void SetRaytracing(int RayTracingIndex)
+    public void SetRaytracing()
     {
         if (!IsRaytracingSupported) return; // Just in case someone somehow manages to interact with the disabled dropdown menu so nothing happens and their computer does not blow up (probably useless but just in case)
     }
 
-    public void SetDLSS(int DLSSIndex)
+    public void SetDLSS()
     {
         if (!IsDlssSupported()) return; // Literally the exact same reason as above
     }
