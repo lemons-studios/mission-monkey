@@ -2,6 +2,7 @@ using System;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Audio;
+using UnityEngine.Rendering;
 using UnityEngine.Rendering.HighDefinition;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -106,10 +107,9 @@ public class MainMenuFunctions : MonoBehaviour
     public void SetQuality()
     {
         QualityMode = QualityDropdown.value;
-        switch(QualityMode)
-        {
+        QualitySettings.SetQualityLevel(QualityDropdown.value);
+        Debug.Log("Setting Quality to " + QualitySettings.GetQualityLevel());
 
-        }
     }
     public void SetAntiAliasing()
     {
