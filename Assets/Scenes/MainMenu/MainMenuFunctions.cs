@@ -1,12 +1,14 @@
 using System;
 using System.Linq;
 using TMPro;
+using UnityEngine.NVIDIA;
 using UnityEngine;
 using UnityEngine.Audio;
-using UnityEngine.Rendering;
 using UnityEngine.Rendering.HighDefinition;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using UnityEngine.Rendering;
+
 public static class ObjectExtensions
 {
     // https://stackoverflow.com/questions/3870263/how-can-i-write-like-x-either-1-or-2-in-a-programming-language 
@@ -26,7 +28,7 @@ public class MainMenuFunctions : MonoBehaviour
     public GameObject MainMenu, OptionsMenu, ChapterSelectMenu, LoadGameMenu;
     public Camera Camera;
     public int MouseSensitivity;
-    private int AntiAliasingMode, IsRaytracingOn, QualityMode, DLSSValue;
+    private int AntiAliasingMode, QualityMode, DLSSValue;
     private float MouseSensitivityValue, VolumeValue, FovValue;
     private bool IsRaytracingSupported;
 
@@ -90,9 +92,11 @@ public class MainMenuFunctions : MonoBehaviour
         {
             SetQuality();
         });
+        /* DLSSDropdown.onValueChanged.AddListener(delegate 
+        { 
+            SetDLSS(); 
+        }); */
     }
-
-
 
     public void SetVolume(float volume)
     {
@@ -113,21 +117,24 @@ public class MainMenuFunctions : MonoBehaviour
             MouseSensSlider.value = MouseSens;
         }
     }
+
     public void SetQuality()
     {
         // Quality Mode is based off of how the quality is ordered in the project settings
         // "Very Low" is 0 and "DXR High" is 6 (As Of 0.3.0)
         QualityMode = QualityDropdown.value;
-        Debug.Log("Setting Quality to " + QualitySettings.GetQualityLevel());
         if (!IsRaytracingSupported && QualityDropdown.value.Either(5,6))
         {
             // If a player without raytracing-cabable hardware tries to switch to DXR, set to "Ultra" quality instead (might be better to just return instead of doing anything lol)
-            QualitySettings.SetQualityLevel(4) /*4 would be Ultra*/ ;
+            QualityDropdown.value = 4; // The function should just run again because of the listener in Start()
+            Debug.Log("Player without required hardware tried to set quality to DXR Low/High. Switching back to Ultra");
             return;
         }
+        Debug.Log("Setting Quality to " + QualitySettings.GetQualityLevel());
         QualitySettings.SetQualityLevel(QualityDropdown.value);
 
     }
+
     public void SetAntiAliasing()
     {
         // It Sets the anti aliasing (idk how to describe it in a way for myself to understand in the future)
@@ -150,14 +157,22 @@ public class MainMenuFunctions : MonoBehaviour
         Debug.Log("Setting AA Mode to " + hdrpCamData.antialiasing);
     }
 
-    public void SetRaytracing()
-    {
-        if (!IsRaytracingSupported) return; // Just in case someone somehow manages to interact with the disabled dropdown menu so nothing happens and their computer does not blow up (probably useless but just in case)
-    }
-
     public void SetDLSS()
     {
         if (!IsDlssSupported()) return; // Literally the exact same reason as above
+        DLSSValue = DLSSDropdown.value;
+        switch (DLSSValue)
+        {
+            case 0:
+                hdrpCamData.deepLearningSuperSamplingQuality = 0;
+                break;
+            case 1:
+                hdrpCamData.deepLearningSuperSamplingQuality = 1;
+                break;
+            case 2:
+                hdrpCamData.deepLearningSuperSamplingQuality = 2;
+                break;
+        }
     }
 
     public void MenuToSettings()

@@ -6,14 +6,13 @@ public class DiscordController : MonoBehaviour
 {
     public Discord.Discord discord;
 
-    public string sDetails, sState, sLargeImage, sLargeText, sSmallImage, sSmallText;
+    public string Details, State, LargeImage, LargeText, SmallImage, SmallText;
 
     private long startTime;
     bool discordRunning = false;
 
     void Start()
     {
-        // loops through open processes
         foreach (System.Diagnostics.Process v in System.Diagnostics.Process.GetProcesses())
         {
             // checks if current process is discord
@@ -23,7 +22,7 @@ public class DiscordController : MonoBehaviour
                 Debug.Log("Discord Found!");
                 break;
             }
-        }
+        } 
 
         if (discordRunning)
         {
@@ -32,14 +31,14 @@ public class DiscordController : MonoBehaviour
             startTime = DateTimeOffset.Now.ToUnixTimeSeconds();
             var activity = new Discord.Activity
             {
-                Details = sDetails,
-                State = sState,
+                Details = Details,
+                State = State,
                 Assets =
                 {
-                    LargeImage = sLargeImage,
-                    LargeText = sLargeText,
-                    SmallImage = sSmallImage,
-                    SmallText = sSmallText
+                    LargeImage = LargeImage,
+                    LargeText = LargeText,
+                    SmallImage = SmallImage,
+                    SmallText = SmallText
                 },
                 Timestamps =
                 {
@@ -64,14 +63,14 @@ public class DiscordController : MonoBehaviour
             var elapsedTime = DateTimeOffset.Now.ToUnixTimeSeconds() - startTime;
             var activity = new Discord.Activity
             {
-                Details = sDetails,
-                State = sState,
+                Details = Details,
+                State = State,
                 Assets =
                 {
-                    LargeImage = sLargeImage,
-                    LargeText = sLargeText,
-                    SmallImage = sSmallImage,
-                    SmallText = sSmallText
+                    LargeImage = LargeImage,
+                    LargeText = LargeText,
+                    SmallImage = SmallImage,
+                    SmallText = SmallText
                 },
                 Timestamps =
                 {
