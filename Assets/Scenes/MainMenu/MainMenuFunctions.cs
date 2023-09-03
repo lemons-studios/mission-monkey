@@ -28,7 +28,7 @@ public class MainMenuFunctions : MonoBehaviour
     public GameObject MainMenu, OptionsMenu, ChapterSelectMenu, LoadGameMenu;
     public Camera Camera;
     public int MouseSensitivity;
-    private int AntiAliasingMode, QualityMode, DLSSValue;
+    private int AntiAliasingMode, QualityMode, FSR2Value;
     private float MouseSensitivityValue, VolumeValue, FovValue;
     private bool IsRaytracingSupported;
 
@@ -157,22 +157,9 @@ public class MainMenuFunctions : MonoBehaviour
         Debug.Log("Setting AA Mode to " + hdrpCamData.antialiasing);
     }
 
-    public void SetDLSS()
+    public void SetFSR2()
     {
-        if (!IsDlssSupported()) return; // Literally the exact same reason as above
-        DLSSValue = DLSSDropdown.value;
-        switch (DLSSValue)
-        {
-            case 0:
-                hdrpCamData.deepLearningSuperSamplingQuality = 0;
-                break;
-            case 1:
-                hdrpCamData.deepLearningSuperSamplingQuality = 1;
-                break;
-            case 2:
-                hdrpCamData.deepLearningSuperSamplingQuality = 2;
-                break;
-        }
+
     }
 
     public void MenuToSettings()
