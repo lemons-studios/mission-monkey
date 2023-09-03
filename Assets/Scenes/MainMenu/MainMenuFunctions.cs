@@ -99,6 +99,7 @@ public class MainMenuFunctions : MonoBehaviour
     public void SetVolume(float volume)
     {
         int TextDisplayVolume = Mathf.CeilToInt(volume * 100);
+        // "Volume" Is an exposed value in the main audio mixer
         MainVolume.SetFloat("Volume", Mathf.Log10(volume) * 20);
         VolumePercentageText.text = TextDisplayVolume.ToString() + "%";
         ///Debug.Log("Set volume to" + volume * 100);
