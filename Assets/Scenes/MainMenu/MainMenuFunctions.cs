@@ -114,6 +114,15 @@ public class MainMenuFunctions : MonoBehaviour
         {
             MouseSensSlider.value = MouseSens;
         }
+        MouseSensText.text = Mathf.CeilToInt(MouseSens).ToString();
+    }
+
+    public void SetCameraFov(float CameraFov)
+    {
+        int SliderFov = Mathf.CeilToInt(CameraFov);
+        Camera.fieldOfView = SliderFov;
+        FovText.text = SliderFov.ToString();
+        //Debug.Log("Set Fov to" + SliderFov);
     }
 
     public void SetQuality()
