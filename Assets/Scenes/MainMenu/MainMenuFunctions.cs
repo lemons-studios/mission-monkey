@@ -3,6 +3,7 @@ using System.Linq;
 using TMPro;
 using UnityEngine.NVIDIA;
 using UnityEngine;
+using UnityEngine.Animations;
 using UnityEngine.Audio;
 using UnityEngine.Rendering.HighDefinition;
 using UnityEngine.SceneManagement;
@@ -19,16 +20,17 @@ public static class ObjectExtensions
 }
 public class MainMenuFunctions : MonoBehaviour
 {
+    public Animator CameraTransitionAnimator;
     private HDAdditionalCameraData hdrpCamData;
     public AudioMixer MainVolume;
     public Slider VolumeSlider, MouseSensSlider, FovSlider;
     public Toggle SpinCameraToggle;
-    public TMP_Dropdown QualityDropdown, AntiAliasingDropdown, DLSSDropdown;
+    public TMP_Dropdown QualityDropdown, AntiAliasingDropdown, UpscalingDropdown;
     public TextMeshProUGUI VolumePercentageText, MouseSensText, FovText;
     public GameObject MainMenu, OptionsMenu, ChapterSelectMenu, LoadGameMenu;
     public Camera Camera;
     public int MouseSensitivity;
-    private int AntiAliasingMode, QualityMode, FSR2Value;
+    private int AntiAliasingMode, QualityMode, UpscalingValue;
     private float MouseSensitivityValue, VolumeValue, FovValue;
     private bool IsRaytracingSupported;
 
@@ -69,13 +71,13 @@ public class MainMenuFunctions : MonoBehaviour
 
             if (!IsDlssSupported())
             {
-                DLSSDropdown.interactable = false;
+                UpscalingDropdown.interactable = false;
             }
         }
         else if (Array.Exists(new string[] { RuntimePlatform.LinuxPlayer.ToString(), RuntimePlatform.LinuxEditor.ToString(), RuntimePlatform.OSXPlayer.ToString(), RuntimePlatform.OSXEditor.ToString() }, el => el == Application.platform.ToString()))
         {
             Debug.Log("Not on Windows");
-            DLSSDropdown.interactable = false;
+            UpscalingDropdown.interactable = false;
         }
         else
         {
@@ -92,23 +94,19 @@ public class MainMenuFunctions : MonoBehaviour
         {
             SetQuality();
         });
-        /* DLSSDropdown.onValueChanged.AddListener(delegate 
-        { 
-            SetDLSS(); 
-        }); */
     }
 
     public void SetVolume(float volume)
     {
-        /// ChakornK did the math on the previous script and I stole it because im lazy. will update later if i figure it out
-        /// It supposedly changes slider value distribution
-        MainVolume.SetFloat("Volume", Mathf.Pow(volume, 3) / 6400);
-        // Remember what the value was set to so it remains the same between sessions
-        PlayerPrefs.SetFloat("Volume", volume);
+        int TextDisplayVolume = Mathf.CeilToInt(volume * 100);
+        MainVolume.SetFloat("Volume", Mathf.Log10(volume) * 20);
+        VolumePercentageText.text = TextDisplayVolume.ToString() + "%";
+        ///Debug.Log("Set volume to" + volume * 100);
     }
 
     public void SetMouseSensitivty(float MouseSens)
     {
+
         // Stolen code from the old SettingsMenu.cs script. It should work
         PlayerPrefs.SetFloat("MouseSensitivityValue", MouseSens);
         Camera.GetComponent<PlayerLook>().setMouseSensitivity(MouseSens);
@@ -130,7 +128,7 @@ public class MainMenuFunctions : MonoBehaviour
             Debug.Log("Player without required hardware tried to set quality to DXR Low/High. Switching back to Ultra");
             return;
         }
-        Debug.Log("Setting Quality to " + QualitySettings.GetQualityLevel());
+        Debug.Log("Setting Quality to " + QualitySettings.GetQualityLevel().ToString());
         QualitySettings.SetQualityLevel(QualityDropdown.value);
 
     }
@@ -157,9 +155,9 @@ public class MainMenuFunctions : MonoBehaviour
         Debug.Log("Setting AA Mode to " + hdrpCamData.antialiasing);
     }
 
-    public void SetFSR2()
+    public void SetUpscaling()
     {
-
+        // I do not want to bother with upscaling at the moment, at the minimum FSR2 will be added to an update after 0.3.0 (maybe a 0.3.x update or 0.4.0)
     }
 
     public void MenuToSettings()
@@ -189,6 +187,10 @@ public class MainMenuFunctions : MonoBehaviour
     public void ToggleCamSpin(bool toggled)
     {
         Camera.GetComponent<RotateCamera>().enabled = toggled;
+    }
+    public void LoadGame()
+    {
+        // for 0.4.0
     }
 
     public void LoadNewScene(string scene)
