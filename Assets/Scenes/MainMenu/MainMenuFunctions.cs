@@ -1,14 +1,11 @@
 using System;
 using System.Linq;
 using TMPro;
-using UnityEngine.NVIDIA;
 using UnityEngine;
-using UnityEngine.Animations;
 using UnityEngine.Audio;
 using UnityEngine.Rendering.HighDefinition;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
-using UnityEngine.Rendering;
 
 public static class ObjectExtensions
 {
@@ -29,11 +26,10 @@ public class MainMenuFunctions : MonoBehaviour
     public TextMeshProUGUI VolumePercentageText, MouseSensText, FovText;
     public GameObject MainMenu, OptionsMenu, ChapterSelectMenu, LoadGameMenu;
     public Camera Camera;
-    public int MouseSensitivity;
-    private int AntiAliasingMode, QualityMode, UpscalingValue;
+    private int AntiAliasingMode, QualityMode, UpscalingValue, MouseSensitivity;
     private float MouseSensitivityValue, VolumeValue, FovValue;
     private bool IsRaytracingSupported;
-
+    private string VolumeKey, FovKey, MouseSensKey;
 
     // private string[] OtherSupportedPlatforms = { "LinuxEditor", "LinuxPlayer", "OSXPlayer", "OSXEditor"}; 
 
@@ -53,6 +49,7 @@ public class MainMenuFunctions : MonoBehaviour
         QualityDropdown.value = QualitySettings.GetQualityLevel();
         hdrpCamData = Camera.GetComponent<HDAdditionalCameraData>();
         Debug.Log(Application.platform);
+
         if (Application.platform.ToString().Contains("Windows"))
         {
 
@@ -74,16 +71,19 @@ public class MainMenuFunctions : MonoBehaviour
                 UpscalingDropdown.interactable = false;
             }
         }
+
         else if (Array.Exists(new string[] { RuntimePlatform.LinuxPlayer.ToString(), RuntimePlatform.LinuxEditor.ToString(), RuntimePlatform.OSXPlayer.ToString(), RuntimePlatform.OSXEditor.ToString() }, el => el == Application.platform.ToString()))
         {
             Debug.Log("Not on Windows");
             UpscalingDropdown.interactable = false;
         }
+
         else
         {
             Application.Quit(); // Serious problem if someone is running this on a platform that isnt Linux, Windows, or MacOS, quit immediately
         }
     }
+
     private void Start()
     {
         AntiAliasingDropdown.onValueChanged.AddListener(delegate
@@ -94,6 +94,16 @@ public class MainMenuFunctions : MonoBehaviour
         {
             SetQuality();
         });
+
+        if(string.IsNullOrEmpty(VolumeKey)) // Checks If volume key is empty (by default it is), and sets all the playerPrefs Keys to the default values (if one key is null or empty all of them are)
+        {
+            VolumeKey = "0.6"; // 1 = 100% volume
+            MouseSensKey = "75";
+            FovKey = "90";
+        }
+        SetVolume(float.Parse(VolumeKey));
+        SetMouseSensitivty(float.Parse(MouseSensKey));
+        SetCameraFov(float.Parse(FovKey));
     }
 
     public void SetVolume(float volume)
@@ -102,6 +112,7 @@ public class MainMenuFunctions : MonoBehaviour
         // "Volume" Is an exposed value in the main audio mixer
         MainVolume.SetFloat("Volume", Mathf.Log10(volume) * 20);
         VolumePercentageText.text = TextDisplayVolume.ToString() + "%";
+        PlayerPrefs.SetFloat(VolumeKey, volume);
         ///Debug.Log("Set volume to" + volume * 100);
     }
 
@@ -116,6 +127,7 @@ public class MainMenuFunctions : MonoBehaviour
             MouseSensSlider.value = MouseSens;
         }
         MouseSensText.text = Mathf.CeilToInt(MouseSens).ToString();
+        PlayerPrefs.SetFloat(MouseSensKey, MouseSens);
     }
 
     public void SetCameraFov(float CameraFov)
@@ -123,6 +135,7 @@ public class MainMenuFunctions : MonoBehaviour
         int SliderFov = Mathf.CeilToInt(CameraFov);
         Camera.fieldOfView = SliderFov;
         FovText.text = SliderFov.ToString();
+        PlayerPrefs.SetFloat(FovKey, SliderFov);
         //Debug.Log("Set Fov to" + SliderFov);
     }
 
@@ -131,7 +144,7 @@ public class MainMenuFunctions : MonoBehaviour
         // Quality Mode is based off of how the quality is ordered in the project settings
         // "Very Low" is 0 and "DXR High" is 6 (As Of 0.3.0)
         QualityMode = QualityDropdown.value;
-        if (!IsRaytracingSupported && QualityDropdown.value.Either(5,6))
+        if (!IsRaytracingSupported && QualityDropdown.value.Either(5, 6))
         {
             // If a player without raytracing-cabable hardware tries to switch to DXR, set to "Ultra" quality instead (might be better to just return instead of doing anything lol)
             QualityDropdown.value = 4; // The function should just run again because of the listener in Start()
@@ -165,11 +178,6 @@ public class MainMenuFunctions : MonoBehaviour
         Debug.Log("Setting AA Mode to " + hdrpCamData.antialiasing);
     }
 
-    public void SetUpscaling()
-    {
-        // I do not want to bother with upscaling at the moment, at the minimum FSR2 will be added to an update after 0.3.0 (maybe a 0.3.x update or 0.4.0)
-    }
-
     public void MenuToSettings()
     {
         // Hide the main menu gui and show the settings gui
@@ -189,15 +197,18 @@ public class MainMenuFunctions : MonoBehaviour
         // Show chapter select GUI
         ChapterSelectMenu.SetActive(true);
     }
+
     public void HideChapterSelect()
     {
         // Hide the chapter select GUI
         ChapterSelectMenu.SetActive(false);
     }
+
     public void ToggleCamSpin(bool toggled)
     {
         Camera.GetComponent<RotateCamera>().enabled = toggled;
     }
+
     public void LoadGame()
     {
         // for 0.4.0
@@ -222,13 +233,16 @@ public class MainMenuFunctions : MonoBehaviour
         Debug.Log("Loading Credits");
         SceneManager.LoadScene("Credits");
     }
+
     public void OpenGHPage()
     {
         Application.OpenURL("https://github.com/Lemons-Studios/Mission-Monkey");
     }
+
     public void OnApplicationQuit()
     {
         // Unlock cursor before game closes
         Cursor.lockState = CursorLockMode.None;
     }
+
 }
