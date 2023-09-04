@@ -94,7 +94,7 @@ LightmapSettings:
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
-  m_LightingDataAsset: {fileID: 0}
+  m_LightingDataAsset: {fileID: 112000000, guid: 532d7496d4e866747b1241938e673a6a, type: 2}
   m_LightingSettings: {fileID: 0}
 --- !u!196 &4
 NavMeshSettings:
@@ -4444,7 +4444,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6851a3bae319bc14baa9731e22c94567, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CameraTransitionAnimator: {fileID: 0}
   MainVolume: {fileID: 24100000, guid: 3a5200ccdd38f3e4f95028236fab6f11, type: 2}
   VolumeSlider: {fileID: 700839377}
   MouseSensSlider: {fileID: 1318936625}
@@ -4453,6 +4452,7 @@ MonoBehaviour:
   QualityDropdown: {fileID: 322502499}
   AntiAliasingDropdown: {fileID: 1842753512}
   UpscalingDropdown: {fileID: 0}
+  CaptionsDropdown: {fileID: 0}
   VolumePercentageText: {fileID: 924770109}
   MouseSensText: {fileID: 123527564}
   FovText: {fileID: 968042739}
@@ -4460,7 +4460,9 @@ MonoBehaviour:
   OptionsMenu: {fileID: 359615936}
   ChapterSelectMenu: {fileID: 1279167794}
   LoadGameMenu: {fileID: 1982426819}
+  QuitOptions: {fileID: 0}
   Camera: {fileID: 359812285}
+  playerLook: {fileID: 0}
 --- !u!1 &585183822
 GameObject:
   m_ObjectHideFlags: 0

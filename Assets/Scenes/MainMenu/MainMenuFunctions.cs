@@ -152,7 +152,7 @@ public class MainMenuFunctions : MonoBehaviour
 
     public void SetUpscaling()
     {
-        // For 0.4.0, currently upscaling should in theory just automatically be on when setting a DXR profile, and should fall back to FSR 1.0 if DLSS is not supported 
+        // For 0.4.0. currently upscaling should in theory just automatically be on when setting a DXR profile, and should fall back to FSR 1.0 if DLSS is not supported 
     }
 
     public void SetAntiAliasing()

@@ -27,6 +27,7 @@ public class PlayerHealth : MonoBehaviour
             // Debug.Log("dealt Damage!");
             Health = Health - damageTaken;
             dealtDamage = false;
+            PlayerPrefs.SetFloat("CurrentHealth", Health);
         }
     }
     public static void HealPlayer()
@@ -41,6 +42,7 @@ public class PlayerHealth : MonoBehaviour
             // Debug.Log("Healed Health!");
             Health = Health + healthHealed;
             healedHealth = false;
+            PlayerPrefs.SetFloat("CurrentHealth", Health);
         }
     }
     private void KillPlayer()
@@ -77,9 +79,13 @@ public class PlayerHealth : MonoBehaviour
             KillPlayer();
         }
     }
-    private void Start()
+    private void Awake()
     {
         Health = 100f;
         player.GetComponent<Animator>().enabled = false;
+    }
+    private void OnApplicationQuit()
+    {
+
     }
 }

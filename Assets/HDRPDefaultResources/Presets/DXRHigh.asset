@@ -28,7 +28,7 @@ MonoBehaviour:
       m_SchemaId:
         m_Id: With3Levels
     supportVolumetrics: 1
-    supportVolumetricClouds: 0
+    supportVolumetricClouds: 1
     supportLightLayers: 1
     renderingLayerMaskBuffer: 1
     supportWater: 0
@@ -114,10 +114,10 @@ MonoBehaviour:
       maxLocalVolumetricFogSize: 0
       maxLocalVolumetricFogOnScreen: 256
     hdShadowInitParams:
-      maxShadowRequests: 128
+      maxShadowRequests: 2048
       directionalShadowsDepthBits: 32
       shadowFilteringQuality: 2
-      areaShadowFilteringQuality: 1
+      areaShadowFilteringQuality: 0
       punctualLightShadowAtlas:
         shadowAtlasResolution: 4096
         shadowAtlasDepthBits: 32
@@ -144,8 +144,8 @@ MonoBehaviour:
       maxDirectionalShadowMapResolution: 2048
       maxPunctualShadowMapResolution: 2048
       maxAreaShadowMapResolution: 2048
-      supportScreenSpaceShadows: 0
-      maxScreenSpaceShadowSlots: 4
+      supportScreenSpaceShadows: 1
+      maxScreenSpaceShadowSlots: 12
       screenSpaceShadowBufferFormat: 48
     decalSettings:
       drawDistance: 1000
