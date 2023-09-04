@@ -29,20 +29,6 @@ public class MainMenuFunctions : MonoBehaviour
     private int AntiAliasingMode, QualityMode, UpscalingValue, MouseSensitivity;
     private float MouseSensitivityValue, VolumeValue, FovValue;
     private bool IsRaytracingSupported;
-    private string VolumeKey, FovKey, MouseSensKey;
-
-    // private string[] OtherSupportedPlatforms = { "LinuxEditor", "LinuxPlayer", "OSXPlayer", "OSXEditor"}; 
-
-    private bool IsDlssSupported()
-    {
-        if (SystemInfo.graphicsDeviceName.ToString().Contains("RTX"))
-        {
-            // All RTX Gpus have DLSS. Yes i know about the 16 series also having DLSS 1 but i'm too lazy to check for them so GTX 16 series users should use FSR instead
-            Debug.Log("This Computer Supports DLSS");
-            return true;
-        }
-        else return false;
-    }
 
     private void Awake()
     {
@@ -65,19 +51,12 @@ public class MainMenuFunctions : MonoBehaviour
                 Debug.Log("Raytracing is not supported on this GPU");
                 IsRaytracingSupported = false;
             }
-
-            if (!IsDlssSupported())
-            {
-                UpscalingDropdown.interactable = false;
-            }
         }
-
         else if (Array.Exists(new string[] { RuntimePlatform.LinuxPlayer.ToString(), RuntimePlatform.LinuxEditor.ToString(), RuntimePlatform.OSXPlayer.ToString(), RuntimePlatform.OSXEditor.ToString() }, el => el == Application.platform.ToString()))
         {
             Debug.Log("Not on Windows");
             UpscalingDropdown.interactable = false;
         }
-
         else
         {
             Application.Quit(); // Serious problem if someone is running this on a platform that isnt Linux, Windows, or MacOS, quit immediately
@@ -94,49 +73,59 @@ public class MainMenuFunctions : MonoBehaviour
         {
             SetQuality();
         });
+        LoadSettingsValues();
+    }
 
-        if(string.IsNullOrEmpty(VolumeKey)) // Checks If volume key is empty (by default it is), and sets all the playerPrefs Keys to the default values (if one key is null or empty all of them are)
-        {
-            VolumeKey = "0.6"; // 1 = 100% volume
-            MouseSensKey = "75";
-            FovKey = "90";
-        }
-        SetVolume(float.Parse(VolumeKey));
-        SetMouseSensitivty(float.Parse(MouseSensKey));
-        SetCameraFov(float.Parse(FovKey));
+    private void LoadSettingsValues()
+    {
+        // Load volume value from a previous session
+        VolumeSlider.value = PlayerPrefs.GetFloat("Volume");
+        SetVolume(VolumeSlider.value);
+
+        // Load Mouse Sensitivity from a previous session
+        MouseSensSlider.value = PlayerPrefs.GetFloat("MouseSensitivityValue");
+        SetMouseSensitivty(MouseSensSlider.value);
+
+        // Load FOV from a previous session
+        FovSlider.value = PlayerPrefs.GetFloat("Fov");
+        SetCameraFov(FovSlider.value);
+
+        // Load Quality Mode from a previous session
+        QualityDropdown.value = PlayerPrefs.GetInt("QualityLevel");
+        SetQuality();
+
+        // Load Anti-Aliasing mode from a previous session
+        AntiAliasingDropdown.value = PlayerPrefs.GetInt("AntiAliasing");
+        SetAntiAliasing();
     }
 
     public void SetVolume(float volume)
     {
-        int TextDisplayVolume = Mathf.CeilToInt(volume * 100);
+        int TextDisplayVolume = Mathf.FloorToInt(volume * 100);
         // "Volume" Is an exposed value in the main audio mixer
         MainVolume.SetFloat("Volume", Mathf.Log10(volume) * 20);
         VolumePercentageText.text = TextDisplayVolume.ToString() + "%";
-        PlayerPrefs.SetFloat(VolumeKey, volume);
+        PlayerPrefs.SetFloat("Volume", volume);
         ///Debug.Log("Set volume to" + volume * 100);
     }
 
     public void SetMouseSensitivty(float MouseSens)
     {
-
         // Stolen code from the old SettingsMenu.cs script. It should work
-        PlayerPrefs.SetFloat("MouseSensitivityValue", MouseSens);
         Camera.GetComponent<PlayerLook>().setMouseSensitivity(MouseSens);
         if (MouseSensSlider.value != MouseSens)
         {
             MouseSensSlider.value = MouseSens;
         }
         MouseSensText.text = Mathf.CeilToInt(MouseSens).ToString();
-        PlayerPrefs.SetFloat(MouseSensKey, MouseSens);
+        PlayerPrefs.SetFloat("MouseSensitivityValue", MouseSens);
     }
 
     public void SetCameraFov(float CameraFov)
     {
-        int SliderFov = Mathf.CeilToInt(CameraFov);
-        Camera.fieldOfView = SliderFov;
-        FovText.text = SliderFov.ToString();
-        PlayerPrefs.SetFloat(FovKey, SliderFov);
-        //Debug.Log("Set Fov to" + SliderFov);
+        Camera.fieldOfView = CameraFov;
+        FovText.text = Mathf.FloorToInt(CameraFov).ToString();
+        PlayerPrefs.SetFloat("Fov", CameraFov);
     }
 
     public void SetQuality()
@@ -153,7 +142,17 @@ public class MainMenuFunctions : MonoBehaviour
         }
         Debug.Log("Setting Quality to " + QualitySettings.GetQualityLevel().ToString());
         QualitySettings.SetQualityLevel(QualityDropdown.value);
+        PlayerPrefs.SetInt("QualityLevel", QualityMode);
+    }
 
+    public void SetCaptions()
+    {
+        // For 0.4.0
+    }
+
+    public void SetUpscaling()
+    {
+        // For 0.4.0, currently upscaling should in theory just automatically be on when setting a DXR profile, and should fall back to FSR 1.0 if DLSS is not supported 
     }
 
     public void SetAntiAliasing()
@@ -176,6 +175,22 @@ public class MainMenuFunctions : MonoBehaviour
                 break;
         }
         Debug.Log("Setting AA Mode to " + hdrpCamData.antialiasing);
+        PlayerPrefs.SetInt("AntiAliasing", AntiAliasingMode);
+    }
+    public void LoadGame()
+    {
+        // for 0.4.0
+    }
+
+    public void LoadNewScene(string scene)
+    {
+        SceneManager.LoadScene(scene);
+        if (scene == null) { Debug.LogError("Scene not properly specified on 1 or more objects"); }
+    }
+
+    public void ToggleCamSpin(bool toggled)
+    {
+        Camera.GetComponent<RotateCamera>().enabled = toggled;
     }
 
     public void MenuToSettings()
@@ -202,22 +217,6 @@ public class MainMenuFunctions : MonoBehaviour
     {
         // Hide the chapter select GUI
         ChapterSelectMenu.SetActive(false);
-    }
-
-    public void ToggleCamSpin(bool toggled)
-    {
-        Camera.GetComponent<RotateCamera>().enabled = toggled;
-    }
-
-    public void LoadGame()
-    {
-        // for 0.4.0
-    }
-
-    public void LoadNewScene(string scene)
-    {
-        SceneManager.LoadScene(scene);
-        if (scene == null) { Debug.LogError("Scene not properly specified on 1 or more objects"); }
     }
 
     public void QuitGame()
