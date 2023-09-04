@@ -107,6 +107,15 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""PauseGame"",
+                    ""type"": ""Button"",
+                    ""id"": ""efc87a77-7618-4c41-b4a0-8afccfe6f94f"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -426,6 +435,28 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""GunReload"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""7331f176-fb2b-47cf-91e3-df57a926a33e"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""PauseGame"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""d4f690f5-e178-4d01-9d7b-be804c32d1af"",
+                    ""path"": ""<Gamepad>/start"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""PauseGame"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -961,6 +992,7 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         m_OnFoot_GunSwitch = m_OnFoot.FindAction("GunSwitch", throwIfNotFound: true);
         m_OnFoot_GunFire = m_OnFoot.FindAction("GunFire", throwIfNotFound: true);
         m_OnFoot_GunReload = m_OnFoot.FindAction("GunReload", throwIfNotFound: true);
+        m_OnFoot_PauseGame = m_OnFoot.FindAction("PauseGame", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Navigate = m_UI.FindAction("Navigate", throwIfNotFound: true);
@@ -1043,6 +1075,7 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
     private readonly InputAction m_OnFoot_GunSwitch;
     private readonly InputAction m_OnFoot_GunFire;
     private readonly InputAction m_OnFoot_GunReload;
+    private readonly InputAction m_OnFoot_PauseGame;
     public struct OnFootActions
     {
         private @PlayerInput m_Wrapper;
@@ -1056,6 +1089,7 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         public InputAction @GunSwitch => m_Wrapper.m_OnFoot_GunSwitch;
         public InputAction @GunFire => m_Wrapper.m_OnFoot_GunFire;
         public InputAction @GunReload => m_Wrapper.m_OnFoot_GunReload;
+        public InputAction @PauseGame => m_Wrapper.m_OnFoot_PauseGame;
         public InputActionMap Get() { return m_Wrapper.m_OnFoot; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -1092,6 +1126,9 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
             @GunReload.started += instance.OnGunReload;
             @GunReload.performed += instance.OnGunReload;
             @GunReload.canceled += instance.OnGunReload;
+            @PauseGame.started += instance.OnPauseGame;
+            @PauseGame.performed += instance.OnPauseGame;
+            @PauseGame.canceled += instance.OnPauseGame;
         }
 
         private void UnregisterCallbacks(IOnFootActions instance)
@@ -1123,6 +1160,9 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
             @GunReload.started -= instance.OnGunReload;
             @GunReload.performed -= instance.OnGunReload;
             @GunReload.canceled -= instance.OnGunReload;
+            @PauseGame.started -= instance.OnPauseGame;
+            @PauseGame.performed -= instance.OnPauseGame;
+            @PauseGame.canceled -= instance.OnPauseGame;
         }
 
         public void RemoveCallbacks(IOnFootActions instance)
@@ -1269,6 +1309,7 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         void OnGunSwitch(InputAction.CallbackContext context);
         void OnGunFire(InputAction.CallbackContext context);
         void OnGunReload(InputAction.CallbackContext context);
+        void OnPauseGame(InputAction.CallbackContext context);
     }
     public interface IUIActions
     {

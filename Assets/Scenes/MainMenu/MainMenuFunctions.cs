@@ -17,15 +17,15 @@ public static class ObjectExtensions
 }
 public class MainMenuFunctions : MonoBehaviour
 {
-    public Animator CameraTransitionAnimator;
     private HDAdditionalCameraData hdrpCamData;
     public AudioMixer MainVolume;
     public Slider VolumeSlider, MouseSensSlider, FovSlider;
     public Toggle SpinCameraToggle;
-    public TMP_Dropdown QualityDropdown, AntiAliasingDropdown, UpscalingDropdown;
+    public TMP_Dropdown QualityDropdown, AntiAliasingDropdown, UpscalingDropdown, CaptionsDropdown;
     public TextMeshProUGUI VolumePercentageText, MouseSensText, FovText;
-    public GameObject MainMenu, OptionsMenu, ChapterSelectMenu, LoadGameMenu;
+    public GameObject MainMenu, OptionsMenu, ChapterSelectMenu, LoadGameMenu, QuitOptions;
     public Camera Camera;
+    public PlayerLook playerLook;
     private int AntiAliasingMode, QualityMode, UpscalingValue, MouseSensitivity;
     private float MouseSensitivityValue, VolumeValue, FovValue;
     private bool IsRaytracingSupported;
@@ -76,7 +76,7 @@ public class MainMenuFunctions : MonoBehaviour
         LoadSettingsValues();
     }
 
-    private void LoadSettingsValues()
+    public void LoadSettingsValues()
     {
         // Load volume value from a previous session
         VolumeSlider.value = PlayerPrefs.GetFloat("Volume");
@@ -112,7 +112,7 @@ public class MainMenuFunctions : MonoBehaviour
     public void SetMouseSensitivty(float MouseSens)
     {
         // Stolen code from the old SettingsMenu.cs script. It should work
-        Camera.GetComponent<PlayerLook>().setMouseSensitivity(MouseSens);
+        playerLook.setMouseSensitivity(MouseSens);
         if (MouseSensSlider.value != MouseSens)
         {
             MouseSensSlider.value = MouseSens;
@@ -184,6 +184,7 @@ public class MainMenuFunctions : MonoBehaviour
 
     public void LoadNewScene(string scene)
     {
+        if(Time.timeScale != 1) { Time.timeScale = 1; } // For when the function is called from the pause menu
         SceneManager.LoadScene(scene);
         if (scene == null) { Debug.LogError("Scene not properly specified on 1 or more objects"); }
     }
@@ -217,6 +218,20 @@ public class MainMenuFunctions : MonoBehaviour
     {
         // Hide the chapter select GUI
         ChapterSelectMenu.SetActive(false);
+    }
+    // Pause Menu Functions
+    public void ShowQuitOptions()
+    {
+        QuitOptions.SetActive(true);
+    }
+    public void HideQuitOptions()
+    {
+        QuitOptions.SetActive(false);
+    }
+    public void LoadToMainMenu()
+    {
+        Time.timeScale = 1;
+        SceneManager.LoadScene("MainMenu");
     }
 
     public void QuitGame()
