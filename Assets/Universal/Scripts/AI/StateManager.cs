@@ -5,18 +5,19 @@ using UnityEngine;
 public class StateManager : MonoBehaviour
 {
     public State currentState;
-  CircleState circleState;
+  public  EnemyPatrol enemyPatrol;
 
     private void Start()
     {
-        circleState = GetComponentInChildren<CircleState>();
+       
     }
 
     // Update is called once per frame
     void Update()
     {
         RunStateMachine();
-        currentState = circleState;
+        currentState = enemyPatrol;
+       
     }
 
     private void RunStateMachine()
