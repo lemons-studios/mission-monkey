@@ -21,7 +21,7 @@
     <img src="https://img.shields.io/badge/Windows-0078D6?style=for-the-badge&logo=windows&logoColor=white">
   </a>
 </p>
-<p align="center"><i>A game for a school project created by 2 grade 10 students</i></p>
+<p align="center"><i>One Of The Games Of All Time</i></p>
 <hr>
 
 ## 🚀 Recommended PC Specs to play:
