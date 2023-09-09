@@ -8,7 +8,13 @@ public class EnemyPatrol : State
     public NavMeshAgent agent;
     public Transform[] wayPoints;
     public int currentPoint = 0;
-    public bool switchRoute;
+    public bool switchRoute = true;
+    float wait;
+
+    private void Start()
+    {
+        switchRoute = true;
+    }
     public override State RunCurrentState()
     {
 
@@ -18,25 +24,33 @@ public class EnemyPatrol : State
         }
         else
         {
-            if(currentPoint !> wayPoints.Length && switchRoute == true)
-            {
+            wait += Time.deltaTime;
 
-                currentPoint = currentPoint + 1;
-
-            }
-            else if(currentPoint > wayPoints.Length && switchRoute == true)
+            if(currentPoint ==  wayPoints.Length  - 1)
             {
                 switchRoute = false;
+
             }
 
-            if(currentPoint > wayPoints.Length && switchRoute == false)
-            {
-                currentPoint = currentPoint - 1;
-            }
-            else if(currentPoint < 0 && switchRoute == false)
+            if(currentPoint == 0)
             {
                 switchRoute = true;
             }
+            if (wait > 5)
+            {
+                if (switchRoute == true)
+                {
+                    currentPoint = currentPoint + 1;
+                    wait = 0;
+                }
+
+                if(switchRoute == false)
+                {
+                    currentPoint = currentPoint - 1;
+                    wait = 0;
+                }
+            }
+           
             
                
         }
