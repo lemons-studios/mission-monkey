@@ -21,7 +21,7 @@
     <img src="https://img.shields.io/badge/Windows-0078D6?style=for-the-badge&logo=windows&logoColor=white">
   </a>
 </p>
-<p align="center"><i>One Of The Games Of All Time</i></p>
+<p align="center"><i>Mission: Monkey is the first game Created by Lemon Studios. It is one of the games of all time</i></p>
 <hr>
 
 ## 🚀 Recommended PC Specs to play:
