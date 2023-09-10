@@ -4,66 +4,57 @@ using UnityEngine;
 
 public class EnemyEyeSight : MonoBehaviour
 {
-    public float coneAngle = 45f;
-    public float coneDistance = 5f;
-    public float verticalOffset = 1f; // Vertical offset for the cone
-    public int rayCount = 30;
-    public LayerMask obstacleLayer;
-    public string playerTag = "Player"; // Set this to the tag of your player object.
+    public GameObject player;
+    public LayerMask obstructionMask;
+    public float detectionRange = 10f;
+    public float fieldOfViewAngle = 60f;
+    private Transform enemyTransform;
 
-    private void OnDrawGizmos()
+    void Start()
     {
-        DrawConeOutline();
+        enemyTransform = transform;
+        player = GameObject.FindGameObjectWithTag("Player");
     }
 
-    private void DrawConeOutline()
+    void Update()
     {
-        // ... (Same code for drawing the cone outline)
-    }
+        Vector3 directionToPlayer = player.transform.position - enemyTransform.position;
+        float distanceToPlayer = directionToPlayer.magnitude;
 
-    private void Update()
-    {
-        // Check for hits with the specified tag during gameplay
-        Vector3 origin = transform.position;
-        Quaternion rotation = transform.rotation;
+        // Limit the detection range based on the distance to the player
+        float effectiveDetectionRange = Mathf.Min(detectionRange, distanceToPlayer);
 
-        // Apply the vertical offset to the origin
-        origin += Vector3.up * verticalOffset;
-
-        float halfAngle = coneAngle * 0.5f;
-        float angleIncrement = coneAngle / (rayCount - 1);
-
-        for (int i = 0; i < rayCount; i++)
+        // Check if the player is within the effective detection range
+        if (distanceToPlayer <= effectiveDetectionRange)
         {
-            float currentAngle = -halfAngle + (i * angleIncrement);
-            Vector3 direction = rotation * Quaternion.Euler(0, currentAngle, 0) * Vector3.forward;
+            // Check if the player is within the field of view angle
+            float angleToPlayer = Vector3.Angle(enemyTransform.forward, directionToPlayer);
 
-            RaycastHit hit;
-
-            // Raycast
-            if (Physics.Raycast(origin, direction, out hit, coneDistance, obstacleLayer))
+            if (angleToPlayer <= fieldOfViewAngle * 0.5f)
             {
-                // Check if the hit object has the specified tag
-                if (hit.collider.CompareTag(playerTag))
+                // Cast a ray from the enemy to the player to check for obstructions
+                Ray ray = new Ray(enemyTransform.position, directionToPlayer.normalized);
+                RaycastHit hit;
+
+                // Check for obstructions between the enemy and player
+                if (Physics.Raycast(ray, out hit, effectiveDetectionRange, obstructionMask))
                 {
-                    Debug.Log("Hit Player in Update");
+                    // There is an obstruction between the enemy and player
+                    if (hit.transform != player.transform)
+                    {
+                        Debug.DrawLine(ray.origin, hit.point, Color.red);
+                        // Enemy can't see the player due to an obstruction
+                    }
+                }
+                else
+                {
+                    // No obstructions between the enemy and player
+                    Debug.DrawLine(ray.origin, player.transform.position, Color.green);
+                    Debug.Log("The enemy can see the player");
+                    // Handle what the enemy does when it sees the player
                 }
             }
         }
-
-        // Check for hits with the specified tag above the cone
-        Vector3 aboveOrigin = origin + Vector3.up * verticalOffset;
-        RaycastHit aboveHit;
-
-        if (Physics.Raycast(aboveOrigin, Vector3.down, out aboveHit, verticalOffset, obstacleLayer))
-        {
-            if (aboveHit.collider.CompareTag(playerTag))
-            {
-                Debug.Log("Player Above Cone");
-            }
-        }
-
-        // Add your other runtime logic here
     }
 }
 
