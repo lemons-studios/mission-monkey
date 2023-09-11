@@ -21,6 +21,7 @@ public class EnemyEyeSight : MonoBehaviour
         Vector3 directionToPlayer = player.transform.position - enemyTransform.position;
         float distanceToPlayer = directionToPlayer.magnitude;
 
+       
         // Limit the detection range based on the distance to the player
         float effectiveDetectionRange = Mathf.Min(detectionRange, distanceToPlayer);
 
