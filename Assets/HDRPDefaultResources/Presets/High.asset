@@ -31,7 +31,7 @@ MonoBehaviour:
     supportVolumetricClouds: 1
     supportLightLayers: 0
     renderingLayerMaskBuffer: 0
-    supportWater: 0
+    supportWater: 1
     waterSimulationResolution: 128
     supportWaterExclusion: 0
     supportWaterDeformation: 0
@@ -52,7 +52,7 @@ MonoBehaviour:
     colorBufferFormat: 74
     supportCustomPass: 1
     customBufferFormat: 8
-    supportedLitShaderMode: 2
+    supportedLitShaderMode: 3
     planarReflectionResolution:
       m_Values: 000100000004000000040000
       m_SchemaId:
@@ -85,7 +85,7 @@ MonoBehaviour:
     supportVFXRayTracing: 0
     supportedRayTracingMode: 3
     lightLoopSettings:
-      cookieAtlasSize: 8192
+      cookieAtlasSize: 2048
       cookieFormat: 74
       cookieAtlasLastValidMip: 0
       cookieTexArraySize: 1
@@ -95,7 +95,7 @@ MonoBehaviour:
       maxEnvLightsOnScreen: 64
       reflectionCacheCompressed: 0
       reflectionProbeFormat: 74
-      reflectionProbeTexCacheSize: 536875008
+      reflectionProbeTexCacheSize: 134218752
       reflectionProbeTexLastValidCubeMip: 3
       reflectionProbeTexLastValidPlanarMip: 0
       reflectionProbeDecreaseResToFit: 1
@@ -112,9 +112,9 @@ MonoBehaviour:
       maxDecalsOnScreen: 512
       maxLightsPerClusterCell: 24
       maxLocalVolumetricFogSize: 64
-      maxLocalVolumetricFogOnScreen: 1
+      maxLocalVolumetricFogOnScreen: 128
     hdShadowInitParams:
-      maxShadowRequests: 1024
+      maxShadowRequests: 512
       directionalShadowsDepthBits: 32
       shadowFilteringQuality: 2
       areaShadowFilteringQuality: 0
@@ -145,7 +145,7 @@ MonoBehaviour:
       maxPunctualShadowMapResolution: 2048
       maxAreaShadowMapResolution: 2048
       supportScreenSpaceShadows: 1
-      maxScreenSpaceShadowSlots: 4
+      maxScreenSpaceShadowSlots: 10
       screenSpaceShadowBufferFormat: 48
     decalSettings:
       drawDistance: 1000

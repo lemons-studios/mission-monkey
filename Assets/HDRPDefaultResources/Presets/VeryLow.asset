@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0cf1dab834d4ec34195b920ea7bbf9ec, type: 3}
-  m_Name: Low
+  m_Name: VeryLow
   m_EditorClassIdentifier: 
   m_RenderPipelineSettings:
     supportShadowMask: 0
@@ -31,7 +31,7 @@ MonoBehaviour:
     supportVolumetricClouds: 0
     supportLightLayers: 0
     renderingLayerMaskBuffer: 0
-    supportWater: 1
+    supportWater: 0
     waterSimulationResolution: 64
     supportWaterExclusion: 0
     supportWaterDeformation: 0
@@ -54,11 +54,11 @@ MonoBehaviour:
     customBufferFormat: 8
     supportedLitShaderMode: 2
     planarReflectionResolution:
-      m_Values: 800000000001000000020000
+      m_Values: 400000004000000040000000
       m_SchemaId:
         m_Id: With3Levels
     cubeReflectionResolution:
-      m_Values: 800000000001000000020000
+      m_Values: 800000008000000080000000
       m_SchemaId:
         m_Id: With3Levels
     supportDecals: 1
@@ -85,7 +85,7 @@ MonoBehaviour:
     supportVFXRayTracing: 0
     supportedRayTracingMode: 3
     lightLoopSettings:
-      cookieAtlasSize: 512
+      cookieAtlasSize: 64
       cookieFormat: 74
       cookieAtlasLastValidMip: 0
       cookieTexArraySize: 1
@@ -107,14 +107,14 @@ MonoBehaviour:
       maxDirectionalLightsOnScreen: 2
       maxPunctualLightsOnScreen: 4
       maxAreaLightsOnScreen: 32
-      maxCubeReflectionOnScreen: 48
+      maxCubeReflectionOnScreen: 24
       maxPlanarReflectionOnScreen: 16
       maxDecalsOnScreen: 512
       maxLightsPerClusterCell: 1
       maxLocalVolumetricFogSize: 32
       maxLocalVolumetricFogOnScreen: 1
     hdShadowInitParams:
-      maxShadowRequests: 128
+      maxShadowRequests: 64
       directionalShadowsDepthBits: 32
       shadowFilteringQuality: 0
       areaShadowFilteringQuality: 0

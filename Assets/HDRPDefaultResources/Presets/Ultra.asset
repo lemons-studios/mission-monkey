@@ -10,29 +10,29 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0cf1dab834d4ec34195b920ea7bbf9ec, type: 3}
-  m_Name: Low
+  m_Name: Ultra
   m_EditorClassIdentifier: 
   m_RenderPipelineSettings:
-    supportShadowMask: 0
-    supportSSR: 0
-    supportSSRTransparent: 0
-    supportSSAO: 0
-    supportSSGI: 0
+    supportShadowMask: 1
+    supportSSR: 1
+    supportSSRTransparent: 1
+    supportSSAO: 1
+    supportSSGI: 1
     supportSubsurfaceScattering: 1
     sssSampleBudget:
-      m_Values: 040000002800000050000000
+      m_Values: 140000002800000050000000
       m_SchemaId:
         m_Id: With3Levels
     sssDownsampleSteps:
       m_Values: 000000000000000000000000
       m_SchemaId:
         m_Id: With3Levels
-    supportVolumetrics: 0
-    supportVolumetricClouds: 0
-    supportLightLayers: 0
-    renderingLayerMaskBuffer: 0
+    supportVolumetrics: 1
+    supportVolumetricClouds: 1
+    supportLightLayers: 1
+    renderingLayerMaskBuffer: 1
     supportWater: 1
-    waterSimulationResolution: 64
+    waterSimulationResolution: 256
     supportWaterExclusion: 0
     supportWaterDeformation: 0
     deformationAtlasSize: 512
@@ -46,33 +46,33 @@ MonoBehaviour:
       serializedVersion: 2
       m_Bits: 0
     supportDistortion: 1
-    supportTransparentBackface: 0
-    supportTransparentDepthPrepass: 0
-    supportTransparentDepthPostpass: 0
+    supportTransparentBackface: 1
+    supportTransparentDepthPrepass: 1
+    supportTransparentDepthPostpass: 1
     colorBufferFormat: 74
     supportCustomPass: 1
     customBufferFormat: 8
-    supportedLitShaderMode: 2
+    supportedLitShaderMode: 3
     planarReflectionResolution:
-      m_Values: 800000000001000000020000
+      m_Values: 000200000004000000040000
       m_SchemaId:
         m_Id: With3Levels
     cubeReflectionResolution:
-      m_Values: 800000000001000000020000
+      m_Values: 000200000004000000080000
       m_SchemaId:
         m_Id: With3Levels
     supportDecals: 1
     supportDecalLayers: 0
     supportSurfaceGradient: 1
     decalNormalBufferHP: 0
-    supportHighQualityLineRendering: 0
-    highQualityLineRenderingMemoryBudget: 128
+    supportHighQualityLineRendering: 1
+    highQualityLineRenderingMemoryBudget: 256
     msaaSampleCount: 1
     supportMotionVectors: 0
     supportScreenSpaceLensFlare: 1
     supportDataDrivenLensFlare: 1
     supportRuntimeAOVAPI: 0
-    supportDitheringCrossFade: 0
+    supportDitheringCrossFade: 1
     supportTerrainHole: 0
     lightProbeSystem: 0
     probeVolumeMemoryBudget: 1024
@@ -85,7 +85,7 @@ MonoBehaviour:
     supportVFXRayTracing: 0
     supportedRayTracingMode: 3
     lightLoopSettings:
-      cookieAtlasSize: 512
+      cookieAtlasSize: 4096
       cookieFormat: 74
       cookieAtlasLastValidMip: 0
       cookieTexArraySize: 1
@@ -95,56 +95,56 @@ MonoBehaviour:
       maxEnvLightsOnScreen: 64
       reflectionCacheCompressed: 0
       reflectionProbeFormat: 74
-      reflectionProbeTexCacheSize: 512
+      reflectionProbeTexCacheSize: 4096
       reflectionProbeTexLastValidCubeMip: 3
       reflectionProbeTexLastValidPlanarMip: 0
       reflectionProbeDecreaseResToFit: 1
-      skyReflectionSize: 128
+      skyReflectionSize: 1024
       skyLightingOverrideLayerMask:
         serializedVersion: 2
         m_Bits: 0
       supportFabricConvolution: 0
-      maxDirectionalLightsOnScreen: 2
-      maxPunctualLightsOnScreen: 4
-      maxAreaLightsOnScreen: 32
+      maxDirectionalLightsOnScreen: 16
+      maxPunctualLightsOnScreen: 512
+      maxAreaLightsOnScreen: 64
       maxCubeReflectionOnScreen: 48
       maxPlanarReflectionOnScreen: 16
       maxDecalsOnScreen: 512
-      maxLightsPerClusterCell: 1
-      maxLocalVolumetricFogSize: 32
-      maxLocalVolumetricFogOnScreen: 1
+      maxLightsPerClusterCell: 24
+      maxLocalVolumetricFogSize: 64
+      maxLocalVolumetricFogOnScreen: 256
     hdShadowInitParams:
-      maxShadowRequests: 128
+      maxShadowRequests: 1024
       directionalShadowsDepthBits: 32
-      shadowFilteringQuality: 0
-      areaShadowFilteringQuality: 0
+      shadowFilteringQuality: 2
+      areaShadowFilteringQuality: 1
       punctualLightShadowAtlas:
-        shadowAtlasResolution: 512
+        shadowAtlasResolution: 4096
         shadowAtlasDepthBits: 32
         useDynamicViewportRescale: 1
       areaLightShadowAtlas:
-        shadowAtlasResolution: 512
+        shadowAtlasResolution: 4096
         shadowAtlasDepthBits: 32
-        useDynamicViewportRescale: 0
-      cachedPunctualLightShadowAtlas: 256
-      cachedAreaLightShadowAtlas: 256
+        useDynamicViewportRescale: 1
+      cachedPunctualLightShadowAtlas: 2048
+      cachedAreaLightShadowAtlas: 1024
       allowDirectionalMixedCachedShadows: 0
       shadowResolutionDirectional:
-        m_Values: 01000000000200000004000000080000
+        m_Values: 00010000000200000004000000080000
         m_SchemaId:
           m_Id: With4Levels
       shadowResolutionPunctual:
-        m_Values: 01000000000200000004000000080000
+        m_Values: 00010000000200000004000000080000
         m_SchemaId:
           m_Id: With4Levels
       shadowResolutionArea:
-        m_Values: 01000000000200000004000000080000
+        m_Values: 00010000000200000004000000080000
         m_SchemaId:
           m_Id: With4Levels
       maxDirectionalShadowMapResolution: 2048
       maxPunctualShadowMapResolution: 2048
       maxAreaShadowMapResolution: 2048
-      supportScreenSpaceShadows: 0
+      supportScreenSpaceShadows: 1
       maxScreenSpaceShadowSlots: 4
       screenSpaceShadowBufferFormat: 48
     decalSettings:
@@ -153,7 +153,7 @@ MonoBehaviour:
       atlasHeight: 4096
       perChannelMask: 0
     postProcessSettings:
-      m_LutSize: 16
+      m_LutSize: 32
       lutFormat: 48
       bufferFormat: 74
     dynamicResolutionSettings:
@@ -199,17 +199,17 @@ MonoBehaviour:
       DoFPhysicallyBased: 000000
       LimitManualRangeNearBlur: 000000
       MotionBlurSampleCount: 04000000080000000c000000
-      BloomRes: 040000000400000002000000
+      BloomRes: 040000000200000002000000
       BloomHighQualityFiltering: 000101
       BloomHighQualityPrefiltering: 000001
       ChromaticAberrationMaxSamples: 03000000060000000c000000
     lightSettings:
       useContactShadow:
-        m_Values: 000001
+        m_Values: 010101
         m_SchemaId:
           m_Id: With3Levels
     maximumLODLevel:
-      m_Values: 000000000000000000000000
+      m_Values: 000000000000000007000000
       m_SchemaId:
         m_Id: With3Levels
     lodBias:
@@ -220,21 +220,21 @@ MonoBehaviour:
       m_SchemaId:
         m_Id: With3Levels
     lightingQualitySettings:
-      AOStepCount: 020000000600000010000000
+      AOStepCount: 040000000600000020000000
       AOFullRes: 000001
-      AOMaximumRadiusPixels: 100000002800000050000000
+      AOMaximumRadiusPixels: 200000002800000000010000
       AOBilateralUpsample: 000101
-      AODirectionCount: 010000000200000004000000
-      ContactShadowSampleCount: 040000000a00000010000000
-      SSRMaxRaySteps: 010000002000000040000000
-      SSGIRaySteps: 000000004000000080000000
-      SSGIDenoise: 000101
+      AODirectionCount: 010000000200000006000000
+      ContactShadowSampleCount: 060000000a00000040000000
+      SSRMaxRaySteps: 100000002000000040000000
+      SSGIRaySteps: 200000004000000080000000
+      SSGIDenoise: 010101
       SSGIHalfResDenoise: 010000
       SSGIDenoiserRadius:
-      - 0
+      - 0.75
       - 0.5
       - 0.5
-      SSGISecondDenoise: 000101
+      SSGISecondDenoise: 010101
       RTAORayLength:
       - 0.5
       - 3
@@ -285,11 +285,11 @@ MonoBehaviour:
       RTRSmoothDenoising: 010000
       Fog_ControlMode: 000000000000000000000000
       Fog_Budget:
-      - 0.07
+      - 0.166
       - 0.33
       - 0.666
       Fog_DepthRatio:
-      - 0.2
+      - 0.666
       - 0.666
       - 0.5
     m_ObsoleteLightLayerName0: 
@@ -312,7 +312,7 @@ MonoBehaviour:
   allowShaderVariantStripping: 1
   enableSRPBatcher: 1
   availableMaterialQualityLevels: -1
-  m_DefaultMaterialQualityLevel: 1
+  m_DefaultMaterialQualityLevel: 4
   diffusionProfileSettings: {fileID: 0}
   virtualTexturingSettings:
     streamingCpuCacheSizeInMegaBytes: 256
