@@ -18,4 +18,10 @@ public class PlayerDeathController : MonoBehaviour
     {
         isDead = false;
     }
+    public void LoadToMainMenu()
+    {
+        isDead = false;
+        Time.timeScale = 1;
+        SceneManager.LoadScene(0);
+    }
 }

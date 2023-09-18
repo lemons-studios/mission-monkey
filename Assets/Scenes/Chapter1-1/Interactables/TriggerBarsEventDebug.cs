@@ -4,7 +4,6 @@ using System.Collections;
 
 public class TriggerBarsEventDebug : Interactable
 {
-    private bool EventTriggered = false;
     public float minRange = 80f;
     public float maxRange = 100f;
     public AudioSource barsEffectSource;
@@ -12,8 +11,7 @@ public class TriggerBarsEventDebug : Interactable
     public GameObject[] PrisonBars;
     public Rigidbody[] BarsRigidBody;
     public Material TransitionMaterial;
-    private float DestroyTransitionTime = 2.5f;
-    private bool DisplayDistroyTransition = false;
+    // private float DestroyTransitionTime = 2.5f;
 
     private void Awake()
     {
@@ -27,17 +25,18 @@ public class TriggerBarsEventDebug : Interactable
 
     protected override void Interact()
     {
-        //if (EventTriggered) return;
-        //EventTriggered = true;
-
-
-        for (int i = 0; i < BarsRigidBody.Length; i++)
+        /* for (int i = 0; i < BarsRigidBody.Length; i++)
         {
             BarsRigidBody[i].useGravity = true;
             BarsRigidBody[i].AddForce(Vector3.forward * Random.Range(minRange, maxRange));
+        } 
+        */
+        foreach(Rigidbody rb in BarsRigidBody)
+        {
+            rb.useGravity = true;
+            rb.AddForce(Vector3.forward * Random.Range(minRange, maxRange));
         }
         barsEffectSource.Play();
-        DisplayDistroyTransition = true;
 
         // StartCoroutine(WaitBeforeDestroy());
         // fadeOut();

@@ -109,6 +109,15 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
+                    ""name"": ""SpecialAttack"",
+                    ""type"": ""Button"",
+                    ""id"": ""7dcec9f4-eee8-4fb9-993e-4b79f3a6de94"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
                     ""name"": ""PauseGame"",
                     ""type"": ""Button"",
                     ""id"": ""efc87a77-7618-4c41-b4a0-8afccfe6f94f"",
@@ -374,39 +383,6 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""01c76b50-db5f-419d-8d5f-38ea96560169"",
-                    ""path"": ""<Mouse>/rightButton"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Attack"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""332e51ce-0bdc-44c0-8d7e-5ab5d4c7e5c3"",
-                    ""path"": ""<Gamepad>/rightTrigger"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Attack"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""cde30ad8-8cd7-4ae0-bfd5-18fd33214c7d"",
-                    ""path"": ""<Gamepad>/rightShoulder"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Attack"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
                     ""id"": ""7331f176-fb2b-47cf-91e3-df57a926a33e"",
                     ""path"": ""<Keyboard>/escape"",
                     ""interactions"": """",
@@ -435,6 +411,39 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""GunSwitchPC"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""01c76b50-db5f-419d-8d5f-38ea96560169"",
+                    ""path"": ""<Mouse>/rightButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""SpecialAttack"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""df1b72fe-4c2f-461f-8f27-3c82881cd5c3"",
+                    ""path"": ""<Gamepad>/leftTrigger"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""SpecialAttack"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""cde30ad8-8cd7-4ae0-bfd5-18fd33214c7d"",
+                    ""path"": ""<Gamepad>/rightTrigger"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Attack"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -970,6 +979,7 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         m_OnFoot_GunSwitchPC = m_OnFoot.FindAction("GunSwitchPC", throwIfNotFound: true);
         m_OnFoot_GunSwitchControllers = m_OnFoot.FindAction("GunSwitchControllers", throwIfNotFound: true);
         m_OnFoot_Attack = m_OnFoot.FindAction("Attack", throwIfNotFound: true);
+        m_OnFoot_SpecialAttack = m_OnFoot.FindAction("SpecialAttack", throwIfNotFound: true);
         m_OnFoot_PauseGame = m_OnFoot.FindAction("PauseGame", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
@@ -1053,6 +1063,7 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
     private readonly InputAction m_OnFoot_GunSwitchPC;
     private readonly InputAction m_OnFoot_GunSwitchControllers;
     private readonly InputAction m_OnFoot_Attack;
+    private readonly InputAction m_OnFoot_SpecialAttack;
     private readonly InputAction m_OnFoot_PauseGame;
     public struct OnFootActions
     {
@@ -1067,6 +1078,7 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         public InputAction @GunSwitchPC => m_Wrapper.m_OnFoot_GunSwitchPC;
         public InputAction @GunSwitchControllers => m_Wrapper.m_OnFoot_GunSwitchControllers;
         public InputAction @Attack => m_Wrapper.m_OnFoot_Attack;
+        public InputAction @SpecialAttack => m_Wrapper.m_OnFoot_SpecialAttack;
         public InputAction @PauseGame => m_Wrapper.m_OnFoot_PauseGame;
         public InputActionMap Get() { return m_Wrapper.m_OnFoot; }
         public void Enable() { Get().Enable(); }
@@ -1104,6 +1116,9 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
             @Attack.started += instance.OnAttack;
             @Attack.performed += instance.OnAttack;
             @Attack.canceled += instance.OnAttack;
+            @SpecialAttack.started += instance.OnSpecialAttack;
+            @SpecialAttack.performed += instance.OnSpecialAttack;
+            @SpecialAttack.canceled += instance.OnSpecialAttack;
             @PauseGame.started += instance.OnPauseGame;
             @PauseGame.performed += instance.OnPauseGame;
             @PauseGame.canceled += instance.OnPauseGame;
@@ -1138,6 +1153,9 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
             @Attack.started -= instance.OnAttack;
             @Attack.performed -= instance.OnAttack;
             @Attack.canceled -= instance.OnAttack;
+            @SpecialAttack.started -= instance.OnSpecialAttack;
+            @SpecialAttack.performed -= instance.OnSpecialAttack;
+            @SpecialAttack.canceled -= instance.OnSpecialAttack;
             @PauseGame.started -= instance.OnPauseGame;
             @PauseGame.performed -= instance.OnPauseGame;
             @PauseGame.canceled -= instance.OnPauseGame;
@@ -1287,6 +1305,7 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         void OnGunSwitchPC(InputAction.CallbackContext context);
         void OnGunSwitchControllers(InputAction.CallbackContext context);
         void OnAttack(InputAction.CallbackContext context);
+        void OnSpecialAttack(InputAction.CallbackContext context);
         void OnPauseGame(InputAction.CallbackContext context);
     }
     public interface IUIActions

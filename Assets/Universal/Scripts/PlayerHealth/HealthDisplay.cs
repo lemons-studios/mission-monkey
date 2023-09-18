@@ -6,7 +6,7 @@ public class HealthDisplay : MonoBehaviour
 {
     public GameObject HealthBar;
     public TextMeshProUGUI HealthText;
-    private float TransitionTime = 0.5f;
+    // private float TransitionTime = 0.5f;
     private Color fullHealthColour = new Color(0.37f, 0.73f, 0.36f);
     private Color HalfHealthColor = new Color(0.74f, 0.68f, 0.18f);
     private Color LowHealthColor = new Color(0.95f, 0.40f, 0.24f);
