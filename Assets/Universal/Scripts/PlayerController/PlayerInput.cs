@@ -450,6 +450,54 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
             ]
         },
         {
+            ""name"": ""DevTools"",
+            ""id"": ""4b1c549c-9405-4211-8f41-d8dc1ee2947c"",
+            ""actions"": [
+                {
+                    ""name"": ""SceneSwitchForward"",
+                    ""type"": ""Button"",
+                    ""id"": ""e3988249-ca92-4bd6-b002-f26a7277d03f"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""SceneSwitchBackward"",
+                    ""type"": ""Button"",
+                    ""id"": ""30ffd5f7-3225-4755-b50d-c6afb8d17c0c"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""ac7d4663-d875-4f13-be59-0d838824e2a2"",
+                    ""path"": ""<Keyboard>/e"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""SceneSwitchForward"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""83a3bf67-9ac9-4045-bbbd-8495056831d9"",
+                    ""path"": ""<Keyboard>/q"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""SceneSwitchBackward"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
+        },
+        {
             ""name"": ""UI"",
             ""id"": ""2d2fbbff-5752-49a2-b163-00d3fbbc2b67"",
             ""actions"": [
@@ -981,6 +1029,10 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         m_OnFoot_Attack = m_OnFoot.FindAction("Attack", throwIfNotFound: true);
         m_OnFoot_SpecialAttack = m_OnFoot.FindAction("SpecialAttack", throwIfNotFound: true);
         m_OnFoot_PauseGame = m_OnFoot.FindAction("PauseGame", throwIfNotFound: true);
+        // DevTools
+        m_DevTools = asset.FindActionMap("DevTools", throwIfNotFound: true);
+        m_DevTools_SceneSwitchForward = m_DevTools.FindAction("SceneSwitchForward", throwIfNotFound: true);
+        m_DevTools_SceneSwitchBackward = m_DevTools.FindAction("SceneSwitchBackward", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Navigate = m_UI.FindAction("Navigate", throwIfNotFound: true);
@@ -1177,6 +1229,60 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
     }
     public OnFootActions @OnFoot => new OnFootActions(this);
 
+    // DevTools
+    private readonly InputActionMap m_DevTools;
+    private List<IDevToolsActions> m_DevToolsActionsCallbackInterfaces = new List<IDevToolsActions>();
+    private readonly InputAction m_DevTools_SceneSwitchForward;
+    private readonly InputAction m_DevTools_SceneSwitchBackward;
+    public struct DevToolsActions
+    {
+        private @PlayerInput m_Wrapper;
+        public DevToolsActions(@PlayerInput wrapper) { m_Wrapper = wrapper; }
+        public InputAction @SceneSwitchForward => m_Wrapper.m_DevTools_SceneSwitchForward;
+        public InputAction @SceneSwitchBackward => m_Wrapper.m_DevTools_SceneSwitchBackward;
+        public InputActionMap Get() { return m_Wrapper.m_DevTools; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(DevToolsActions set) { return set.Get(); }
+        public void AddCallbacks(IDevToolsActions instance)
+        {
+            if (instance == null || m_Wrapper.m_DevToolsActionsCallbackInterfaces.Contains(instance)) return;
+            m_Wrapper.m_DevToolsActionsCallbackInterfaces.Add(instance);
+            @SceneSwitchForward.started += instance.OnSceneSwitchForward;
+            @SceneSwitchForward.performed += instance.OnSceneSwitchForward;
+            @SceneSwitchForward.canceled += instance.OnSceneSwitchForward;
+            @SceneSwitchBackward.started += instance.OnSceneSwitchBackward;
+            @SceneSwitchBackward.performed += instance.OnSceneSwitchBackward;
+            @SceneSwitchBackward.canceled += instance.OnSceneSwitchBackward;
+        }
+
+        private void UnregisterCallbacks(IDevToolsActions instance)
+        {
+            @SceneSwitchForward.started -= instance.OnSceneSwitchForward;
+            @SceneSwitchForward.performed -= instance.OnSceneSwitchForward;
+            @SceneSwitchForward.canceled -= instance.OnSceneSwitchForward;
+            @SceneSwitchBackward.started -= instance.OnSceneSwitchBackward;
+            @SceneSwitchBackward.performed -= instance.OnSceneSwitchBackward;
+            @SceneSwitchBackward.canceled -= instance.OnSceneSwitchBackward;
+        }
+
+        public void RemoveCallbacks(IDevToolsActions instance)
+        {
+            if (m_Wrapper.m_DevToolsActionsCallbackInterfaces.Remove(instance))
+                UnregisterCallbacks(instance);
+        }
+
+        public void SetCallbacks(IDevToolsActions instance)
+        {
+            foreach (var item in m_Wrapper.m_DevToolsActionsCallbackInterfaces)
+                UnregisterCallbacks(item);
+            m_Wrapper.m_DevToolsActionsCallbackInterfaces.Clear();
+            AddCallbacks(instance);
+        }
+    }
+    public DevToolsActions @DevTools => new DevToolsActions(this);
+
     // UI
     private readonly InputActionMap m_UI;
     private List<IUIActions> m_UIActionsCallbackInterfaces = new List<IUIActions>();
@@ -1307,6 +1413,11 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         void OnAttack(InputAction.CallbackContext context);
         void OnSpecialAttack(InputAction.CallbackContext context);
         void OnPauseGame(InputAction.CallbackContext context);
+    }
+    public interface IDevToolsActions
+    {
+        void OnSceneSwitchForward(InputAction.CallbackContext context);
+        void OnSceneSwitchBackward(InputAction.CallbackContext context);
     }
     public interface IUIActions
     {

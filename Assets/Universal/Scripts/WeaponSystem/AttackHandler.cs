@@ -9,8 +9,8 @@ public abstract class AttackHandler : MonoBehaviour
     public LayerMask EnemyMask;
     public GameObject FirePoint, BulletProjectile;
     public PlayerInput Input;
-    public Animation AttackAnim, SpecialAttackAnim;
-
+    // public Animation AttackAnim, SpecialAttackAnim; /// For 0.4.0 
+    
     public Coroutine clickHeldRoutine;
 
     public void Start()

@@ -1,4 +1,3 @@
-using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class Glock : AttackHandler
@@ -7,17 +6,16 @@ public class Glock : AttackHandler
     {
 
     }
-
     protected override void Attack()
     {
         base.Attack();
         InstantiateBulletProjectile();
-        AttackAnim.Play();
+        // AttackAnim.Play();
     }
 
     protected override void AlternateAttack(InputAction.CallbackContext context)
     {
         base.AlternateAttack(context);
-        SpecialAttackAnim.Play();
+        // SpecialAttackAnim.Play();
     }
 }
