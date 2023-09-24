@@ -9,12 +9,14 @@ public class EnemyEyeSight : MonoBehaviour
     public float detectionRange = 10f;
     public float fieldOfViewAngle = 60f;
     private Transform enemyTransform;
+    public bool seePlayer = false;
 
     void Start()
     {
         enemyTransform = transform;
         player = GameObject.FindGameObjectWithTag("Player");
-    }
+          seePlayer = false;
+}
 
     void Update()
     {
@@ -51,7 +53,8 @@ public class EnemyEyeSight : MonoBehaviour
                 {
                     // No obstructions between the enemy and player
                     Debug.DrawLine(ray.origin, player.transform.position, Color.green);
-                    Debug.Log("The enemy can see the player");
+                   
+                    seePlayer = true;
                     // Handle what the enemy does when it sees the player
                 }
             }
