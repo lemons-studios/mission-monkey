@@ -25,11 +25,12 @@ public class EnemyController : MonoBehaviour
         if(enemyEyeSight.seePlayer == true)
         {
             stateManager.currentState = follow;
+            follow.Search();
 
         }
         else
         {
-            stateManager.currentState = enemyPatrol;
+         
         }
     }
 }

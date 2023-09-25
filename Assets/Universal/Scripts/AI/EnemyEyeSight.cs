@@ -47,6 +47,7 @@ public class EnemyEyeSight : MonoBehaviour
                     {
                         Debug.DrawLine(ray.origin, hit.point, Color.red);
                         // Enemy can't see the player due to an obstruction
+                        seePlayer = false;
                     }
                 }
                 else

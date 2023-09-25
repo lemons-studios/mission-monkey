@@ -6311,6 +6311,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   navMeshAgent: {fileID: 1921145953}
   player: {fileID: 20600030}
+  playerHealth: {fileID: 7874428295488156810}
+  searching: {fileID: 1388132369}
 --- !u!1 &470188246
 GameObject:
   m_ObjectHideFlags: 0
@@ -17499,6 +17501,25 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1382503828}
   m_CullTransparentMesh: 1
+--- !u!1 &1388132367 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3952789743203491533, guid: f0a0d9cdaa43780409790e8fe23a4b8b, type: 3}
+  m_PrefabInstance: {fileID: 1970801516}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1388132369
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1388132367}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 506c36cd26d568f448d42b3af434f9d9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  follow: {fileID: 463869613}
+  enemyPatrol: {fileID: 965734979}
 --- !u!64 &1398296780
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -24404,6 +24425,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 5134879864951881372, guid: f0a0d9cdaa43780409790e8fe23a4b8b, type: 3}
       insertIndex: -1
       addedObject: {fileID: 965734979}
+    - targetCorrespondingSourceObject: {fileID: 3952789743203491533, guid: f0a0d9cdaa43780409790e8fe23a4b8b, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1388132369}
     - targetCorrespondingSourceObject: {fileID: 9078257645085134782, guid: f0a0d9cdaa43780409790e8fe23a4b8b, type: 3}
       insertIndex: -1
       addedObject: {fileID: 463869613}
