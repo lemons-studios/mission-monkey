@@ -5,22 +5,29 @@ public class OpenPauseMenu : MonoBehaviour
 {
     public GameObject[] GameUiElements;
     public GameObject[] PauseMenuElements;
-    public GameObject PauseMenu, StartUI;
+    public GameObject PauseMenu, StartUI; // StartUI is the main pause menu stuff
+    public PlayerInput Input;
     private int IsOnPauseMenu = 0;
-    private void Update()
+
+    private void Start()
     {
-        if ((Keyboard.current != null && Keyboard.current.escapeKey.wasPressedThisFrame) || (Gamepad.current != null && Gamepad.current.startButton.wasPressedThisFrame))
+        Input = new PlayerInput();
+        Input.OnFoot.PauseGame.performed += PauseHandler;
+        Input.Enable();
+    }
+
+    private void PauseHandler(InputAction.CallbackContext context)
+    {
+        switch(IsOnPauseMenu)
         {
-            if (IsOnPauseMenu == 0)
-            {
+            case 0:
                 PauseGame();
                 IsOnPauseMenu++;
-            }
-            else if (IsOnPauseMenu == 1)
-            {
+                break;
+            case 1:
                 ResumeGame();
                 IsOnPauseMenu--;
-            }
+                break;
         }
     }
 
@@ -31,7 +38,7 @@ public class OpenPauseMenu : MonoBehaviour
             UIElements.SetActive(false);
         }
         Cursor.lockState = CursorLockMode.None;
-        Time.timeScale = 0;
+        Time.timeScale = 0.001f;
         PauseMenu.SetActive(true);
     }
     private void ResumeGame()
@@ -40,11 +47,12 @@ public class OpenPauseMenu : MonoBehaviour
         {
             UIElements.SetActive(true);
         }
+        
         foreach(GameObject PauseUIElements in PauseMenuElements)
         {
             PauseUIElements.SetActive(false);
         }
-        StartUI.SetActive(true);
+        StartUI.SetActive(true); // The previous foreach statement disabled all of the Pause menu UI elements, and pausing again would result in not seeing anything. Re-Enable the Main Pause Menu GUI (Should have named it better but whatever)
         PauseMenu.SetActive(false);
         
         Time.timeScale = 1;

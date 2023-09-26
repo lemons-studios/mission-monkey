@@ -15,6 +15,7 @@ public static class ObjectExtensions
         return array.Any(p => Equals(value, p));
     }
 }
+
 public class MainMenuFunctions : MonoBehaviour
 {
     private HDAdditionalCameraData hdrpCamData;
