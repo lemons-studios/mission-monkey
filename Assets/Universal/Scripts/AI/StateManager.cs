@@ -16,7 +16,7 @@ public class StateManager : MonoBehaviour
     void Update()
     {
         RunStateMachine();
-        currentState = enemyPatrol;
+       
        
     }
 
