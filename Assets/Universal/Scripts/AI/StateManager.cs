@@ -1,23 +1,21 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class StateManager : MonoBehaviour
 {
     public State currentState;
-  public  EnemyPatrol enemyPatrol;
+    public EnemyPatrol enemyPatrol;
 
     private void Start()
     {
-       
+
     }
 
     // Update is called once per frame
     void Update()
     {
         RunStateMachine();
-       
-       
+
+
     }
 
     private void RunStateMachine()
@@ -27,8 +25,6 @@ public class StateManager : MonoBehaviour
         {
             SwitchToTheNextState(nextState);
         }
-
-
     }
     private void SwitchToTheNextState(State nextState)
     {
