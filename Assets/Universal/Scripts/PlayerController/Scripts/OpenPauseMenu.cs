@@ -37,7 +37,7 @@ public class OpenPauseMenu : MonoBehaviour
         {
             UIElements.SetActive(false);
         }
-        Cursor.lockState = CursorLockMode.None;
+        Cursor.lockState = CursorLockMode.Confined;
         Time.timeScale = 0.001f;
         PauseMenu.SetActive(true);
     }
