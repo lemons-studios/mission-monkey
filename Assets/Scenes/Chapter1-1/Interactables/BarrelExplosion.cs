@@ -2,22 +2,23 @@ using UnityEngine;
 
 public class BarrelExplosion : WeaponInteract
 {
-
-
-    /*public GameObject ExplosionParticles ,ShootingRangeObject;*/
     public Rigidbody[] PrisonBarsRigidbody;
-    // public Rigidbody ShootingRangeObjectRigidbody;
-    // private BoxCollider ShootingRangeObjectBoxCollider;
     public Material TransitionMaterial;
-    public AudioSource barsEffectSource;
+    private AudioSource BarsEffectSource;
     public float ExplosionForce, MinExplodeRange, MaxExplodeRange;
+
+    private void Start()
+    {
+        BarsEffectSource = GetComponent<AudioSource>();
+    }
 
     public override void TriggerInteract()
     {
         base.TriggerInteract();
         //ExplosionParticles.SetActive(true);
-        gameObject.SetActive(false);
-        // barsEffectSource.Play();
+
+        BarsEffectSource.Play();
+
 
         foreach (Rigidbody PrisonRigidBody in PrisonBarsRigidbody)
         {
