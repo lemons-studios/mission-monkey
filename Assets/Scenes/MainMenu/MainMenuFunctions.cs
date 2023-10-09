@@ -24,7 +24,7 @@ public class MainMenuFunctions : MonoBehaviour
     public TMP_Dropdown QualityDropdown, AntiAliasingDropdown, UpscalingDropdown, CaptionsDropdown;
     public TextMeshProUGUI VolumePercentageText, MouseSensText, FovText;
 
-    public GameObject MainMenu, OptionsMenu, ChapterSelectMenu, LoadGameMenu, QuitOptions;
+    public GameObject MainMenu, OptionsMenu, ChapterSelectMenu, LoadGameMenu, QuitOptions, SaveGameMenu;
     public Camera Camera;
     private HDAdditionalCameraData hdrpCamData;
     public PlayerLook playerLook;
@@ -200,8 +200,26 @@ public class MainMenuFunctions : MonoBehaviour
     }
     public void LoadGame()
     {
-        // for 0.4.0
+        // actual code for 0.4.0 for now, show GUI that says that the feature is under construction
+        LoadGameMenu.SetActive(true);
     }
+
+    public void HideLoadGameGUI()
+    {
+        LoadGameMenu.SetActive(false);
+    }
+
+    public void SaveGame()
+    {
+        // Like LoadGame(), Actual code will be implemented in 0.4.0, but for now, only the GUI will show
+        SaveGameMenu.SetActive(true);
+    }
+
+    public void HideOtherGUI(GameObject GUI)
+    {
+        GUI.SetActive(false);
+    }
+
 
     public void LoadNewScene(string scene)
     {

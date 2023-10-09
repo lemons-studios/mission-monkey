@@ -1,5 +1,5 @@
-using UnityEngine;
 using TMPro;
+using UnityEngine;
 using UnityEngine.UI;
 
 public class HealthDisplay : MonoBehaviour
@@ -14,23 +14,33 @@ public class HealthDisplay : MonoBehaviour
     private float targetOffset;
     private float xOffset;
 
-    void Update()
+    private PlayerHealth Health;
+
+    private void Start()
     {
-        HealthText.text = PlayerHealth.Health.ToString();
-        if (PlayerHealth.Health >= 65f)
+#pragma warning disable CS0618 // Type or member is obsolete
+        Health = Object.FindObjectOfType<PlayerHealth>();
+#pragma warning restore CS0618 // Type or member is obsolete
+    }
+
+    public void Update()
+    {
+        Debug.Log(Health.Health);
+        HealthText.text = Health.Health.ToString();
+        if (Health.Health >= 65)
         {
             HealthBar.GetComponent<Image>().color = fullHealthColour;
         }
-        if (PlayerHealth.Health >= 31f && PlayerHealth.Health <= 64f)
+        if (Health.Health >= 31 && Health.Health <= 64)
         {
             HealthBar.GetComponent<Image>().color = HalfHealthColor;
         }
-        if (PlayerHealth.Health >= 1f && PlayerHealth.Health <= 30f)
+        if (Health.Health >= 1 && Health.Health <= 30)
         {
             HealthBar.GetComponent<Image>().color = LowHealthColor;
         }
 
-        targetOffset = -369f + PlayerHealth.Health * 3.69f;
+        targetOffset = -400 + Health.Health * 4;
         xOffset = HealthBar.GetComponent<RectTransform>().offsetMax.x;
 
         if (xOffset < targetOffset)
@@ -41,18 +51,18 @@ public class HealthDisplay : MonoBehaviour
             }
             else
             {
-                HealthBar.GetComponent<RectTransform>().offsetMax = new Vector2(xOffset + 10, 0f);
+                HealthBar.GetComponent<RectTransform>().offsetMax = new Vector2(xOffset + 10, 0);
             }
         }
         else if (xOffset > targetOffset)
         {
             if (xOffset - targetOffset < 10)
             {
-                HealthBar.GetComponent<RectTransform>().offsetMax = new Vector2(targetOffset, 0f);
+                HealthBar.GetComponent<RectTransform>().offsetMax = new Vector2(targetOffset, 0);
             }
             else
             {
-                HealthBar.GetComponent<RectTransform>().offsetMax = new Vector2(xOffset - 10, 0f);
+                HealthBar.GetComponent<RectTransform>().offsetMax = new Vector2(xOffset - 10, 0);
             }
         }
         // HealthBar.GetComponent<RectTransform>().offsetMax = new Vector2(-369f + PlayerHealth.Health * 3.69f, 0f);
