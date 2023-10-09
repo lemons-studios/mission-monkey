@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -15,9 +13,9 @@ public class Follow : State
 
     private void Awake()
     {
-        eyeSight  = GetComponentInParent< EnemyEyeSight>();
+        eyeSight = GetComponentInParent<EnemyEyeSight>();
         player = FindAnyObjectByType<PlayerMotor>();
-        navMeshAgent = GetComponentInParent< NavMeshAgent>();
+        navMeshAgent = GetComponentInParent<NavMeshAgent>();
         playerHealth = FindAnyObjectByType<PlayerHealth>();
     }
 
@@ -28,13 +26,13 @@ public class Follow : State
             InvokeRepeating("FindPlayer", 1, 1);
         }
     }
-    
-    
+
+
     public override State RunCurrentState()
     {
-       
-            navMeshAgent.SetDestination(targetPosition);
-            navMeshAgent.stoppingDistance = 5;
+
+        navMeshAgent.SetDestination(targetPosition);
+        navMeshAgent.stoppingDistance = 5;
 
         if (eyeSight.seePlayer == false)
         {
@@ -44,15 +42,15 @@ public class Follow : State
 
         }
 
-            Attack();
+        Attack();
 
         return this;
     }
-    
+
 
     void Attack()
     {
-        PlayerHealth.Health--;
+        playerHealth.DamagePlayer(5);
         //shoot stuff
     }
 

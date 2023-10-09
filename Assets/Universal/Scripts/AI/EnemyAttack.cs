@@ -31,7 +31,7 @@ public class EnemyAttack : State
 
     void Attack()
     {
-        PlayerHealth.Health--;
+        playerHealth.DamagePlayer(5);
         //shoot stuff
     }
 }
