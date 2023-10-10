@@ -1,3 +1,4 @@
+using UnityEngine;
 public class DebugWeaponInteraction : WeaponInteract
 {
 
