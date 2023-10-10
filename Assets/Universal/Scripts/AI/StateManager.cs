@@ -7,7 +7,7 @@ public class StateManager : MonoBehaviour
 
     private void Start()
     {
-
+        currentState = enemyPatrol;
     }
 
     // Update is called once per frame

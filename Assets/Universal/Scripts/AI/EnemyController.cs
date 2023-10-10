@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class EnemyController : MonoBehaviour
@@ -15,13 +13,13 @@ public class EnemyController : MonoBehaviour
         stateManager = GetComponent<StateManager>();
         enemyPatrol = GetComponentInChildren<EnemyPatrol>();
         follow = GetComponentInChildren<Follow>();
-        enemyEyeSight = GetComponent<EnemyEyeSight>();
+        enemyEyeSight = GetComponentInChildren<EnemyEyeSight>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(enemyEyeSight.seePlayer == true)
+        if (enemyEyeSight.seePlayer == true)
         {
             stateManager.currentState = follow;
             follow.Search();
@@ -29,7 +27,7 @@ public class EnemyController : MonoBehaviour
         }
         else
         {
-         
+
         }
     }
 }
