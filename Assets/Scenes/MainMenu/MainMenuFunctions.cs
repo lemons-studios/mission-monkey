@@ -80,7 +80,7 @@ public class MainMenuFunctions : MonoBehaviour
 
         LoadSettingsValues();
 
-        if(SceneManager.GetActiveScene().buildIndex == 0)
+        if (SceneManager.GetActiveScene().buildIndex == 0)
         {
             Cursor.lockState = CursorLockMode.Confined;
         }
@@ -88,7 +88,7 @@ public class MainMenuFunctions : MonoBehaviour
         {
             Cursor.lockState = CursorLockMode.Locked;
         }
-        
+
     }
 
     public void LoadSettingsValues()

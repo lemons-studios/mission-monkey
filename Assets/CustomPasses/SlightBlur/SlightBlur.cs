@@ -1,25 +1,24 @@
 ﻿using UnityEngine;
-using UnityEngine.Rendering.HighDefinition;
-using UnityEngine.Rendering;
 using UnityEngine.Experimental.Rendering;
-using UnityEngine.Profiling;
+using UnityEngine.Rendering;
+using UnityEngine.Rendering.HighDefinition;
 
 class SlightBlur : CustomPass
 {
     [Range(0, 16)]
-    public float        radius = 4;
-    public bool         useMask = false;
-    public LayerMask    maskLayer = 0;
-    public bool         invertMask = false;
+    public float radius = 4;
+    public bool useMask = false;
+    public LayerMask maskLayer = 0;
+    public bool invertMask = false;
 
-    Material        compositeMaterial;
-    Material        whiteRenderersMaterial;
-    RTHandle        downSampleBuffer;
-    RTHandle        blurBuffer;
-    RTHandle        maskBuffer;
-    RTHandle        maskDepthBuffer;
-    RTHandle        colorCopy;
-    ShaderTagId[]   shaderTags;
+    Material compositeMaterial;
+    Material whiteRenderersMaterial;
+    RTHandle downSampleBuffer;
+    RTHandle blurBuffer;
+    RTHandle maskBuffer;
+    RTHandle maskDepthBuffer;
+    RTHandle colorCopy;
+    ShaderTagId[] shaderTags;
 
     // Trick to always include these shaders in build
     [SerializeField, HideInInspector]
@@ -61,7 +60,7 @@ class SlightBlur : CustomPass
             colorFormat: GraphicsFormat.B10G11R11_UFloatPack32, // We don't need alpha in the blur
             useDynamicScale: true, name: "DownSampleBuffer"
         );
-        
+
         blurBuffer = RTHandles.Alloc(
             Vector2.one * 0.5f, TextureXR.slices, dimension: TextureXR.dimension,
             colorFormat: GraphicsFormat.B10G11R11_UFloatPack32, // We don't need alpha in the blur
@@ -120,7 +119,7 @@ class SlightBlur : CustomPass
             if (useMask)
             {
                 CoreUtils.SetRenderTarget(ctx.cmd, maskBuffer, maskDepthBuffer, ClearFlag.All);
-                CustomPassUtils.DrawRenderers(ctx, maskLayer, overrideRenderState: new RenderStateBlock(RenderStateMask.Depth){ depthState = new DepthState(true, CompareFunction.LessEqual)});
+                CustomPassUtils.DrawRenderers(ctx, maskLayer, overrideRenderState: new RenderStateBlock(RenderStateMask.Depth) { depthState = new DepthState(true, CompareFunction.LessEqual) });
                 // DrawMaskObjects(renderContext, cmd, hdCamera, cullingResult);
             }
 
@@ -153,7 +152,7 @@ class SlightBlur : CustomPass
             }
         }
 
-        var targetBuffer = (useMask) ? downSampleBuffer : source; 
+        var targetBuffer = (useMask) ? downSampleBuffer : source;
         CustomPassUtils.GaussianBlur(ctx, source, targetBuffer, blurBuffer, radius: radius);
 
         if (useMask)

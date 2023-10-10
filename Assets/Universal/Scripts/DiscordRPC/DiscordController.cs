@@ -1,6 +1,5 @@
 using System;
 using UnityEngine;
-using Discord;
 
 public class DiscordController : MonoBehaviour
 {
@@ -22,7 +21,7 @@ public class DiscordController : MonoBehaviour
                 Debug.Log("Discord Found!");
                 break;
             }
-        } 
+        }
 
         if (discordRunning)
         {

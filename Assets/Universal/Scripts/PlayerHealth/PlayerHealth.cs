@@ -36,7 +36,7 @@ public class PlayerHealth : MonoBehaviour
         {
             Health = 100;
         }
-        
+
     }
 
     private void KillPlayer()

@@ -12,7 +12,7 @@ public class TogglePhonographAudio : Interactable
         DiskSpin = GetComponent<Animator>();
     }
 
-    
+
     protected override void Interact()
     {
         base.Interact();

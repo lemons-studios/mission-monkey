@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class EnemyEyeSight : MonoBehaviour
@@ -15,15 +13,15 @@ public class EnemyEyeSight : MonoBehaviour
     {
         enemyTransform = transform;
         player = GameObject.FindGameObjectWithTag("Player");
-          seePlayer = false;
-}
+        seePlayer = false;
+    }
 
     void Update()
     {
         Vector3 directionToPlayer = player.transform.position - enemyTransform.position;
         float distanceToPlayer = directionToPlayer.magnitude;
 
-       
+
         // Limit the detection range based on the distance to the player
         float effectiveDetectionRange = Mathf.Min(detectionRange, distanceToPlayer);
 
@@ -48,6 +46,7 @@ public class EnemyEyeSight : MonoBehaviour
                         Debug.DrawLine(ray.origin, hit.point, Color.red);
                         // Enemy can't see the player due to an obstruction
                         seePlayer = false;
+                      
                     }
                 }
                 else
@@ -59,6 +58,10 @@ public class EnemyEyeSight : MonoBehaviour
                     // Handle what the enemy does when it sees the player
                 }
             }
+        }
+        else
+        {
+            seePlayer = false;
         }
     }
 }
