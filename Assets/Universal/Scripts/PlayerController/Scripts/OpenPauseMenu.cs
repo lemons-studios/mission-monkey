@@ -51,7 +51,7 @@ public class OpenPauseMenu : MonoBehaviour
         }
 
         Cursor.lockState = CursorLockMode.Confined;
-        Time.timeScale = 0.001f;
+        Time.timeScale = 0;
         PauseMenu.SetActive(true);
     }
     private void ResumeGame()

@@ -8,11 +8,6 @@ public class Glock : AttackHandler
         base.Attack();
     }
 
-    public void InstantiateGlockProjectile()
-    {
-
-    }
-
     protected override void AlternateAttack(InputAction.CallbackContext context)
     {
         base.AlternateAttack(context);

@@ -62,9 +62,4 @@ public class PlayerHealth : MonoBehaviour
     {
         player.GetComponent<Animator>().enabled = false;
     }
-
-    private void OnApplicationQuit()
-    {
-        PlayerPrefs.DeleteKey("CurrentHealth");
-    }
 }

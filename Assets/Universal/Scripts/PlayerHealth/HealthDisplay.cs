@@ -25,7 +25,7 @@ public class HealthDisplay : MonoBehaviour
 
     public void Update()
     {
-        Debug.Log(Health.Health);
+        // Debug.Log(Health.Health);
         HealthText.text = Health.Health.ToString();
         if (Health.Health >= 65)
         {

@@ -76,11 +76,12 @@ public abstract class AttackHandler : MonoBehaviour
 
             if (Physics.Raycast(BulletRay, out hit))
             {
-                //Debug.Log(hit.collider.gameObject.name);
+                
+
                 Debug.DrawRay(Camera.transform.position, transform.forward * 15, Color.red);
 
 
-                if (hit.collider.gameObject.CompareTag("WeaponInteractable"))
+                if (hit.collider.CompareTag("WeaponInteractable"))
                 {
                     // Debug.Log("Hit a weapon interactable!");
 
