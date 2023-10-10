@@ -19,6 +19,6 @@ public class ToggleElevator : Interactable
         yield return new WaitForSeconds(3.25f);
         PlayerMotor.enabled = true;
         yield return new WaitForSeconds(5.5f);
-        SceneManager.LoadScene("Chapter1-2");
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 }
