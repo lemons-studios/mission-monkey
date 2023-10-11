@@ -6,6 +6,7 @@ public class EnemyAttack : State
     EnemyEyeSight eyeSight;
     public NavMeshAgent navMeshAgent;
     public PlayerMotor player;
+    public int DamageToPlayer;
     public PlayerHealth playerHealth;
     private Ray AttackRay;
     public GameObject FirePoint;
@@ -38,8 +39,7 @@ public class EnemyAttack : State
             if (hit.collider.gameObject.CompareTag("Player"))
             {
                 var PlayerHealth = hit.collider.gameObject.GetComponent<PlayerHealth>();
-                PlayerHealth.DamagePlayer(25); // 25 can be changed to whatever int you would like, it is just used as a default thing in this example 
-                                               //shoot stuff
+                PlayerHealth.DamagePlayer(DamageToPlayer + (Mathf.RoundToInt(DamageToPlayer * Random.Range(0.5f, 2.0f))));
             }
         }
     }

@@ -8,17 +8,9 @@ public class ToggleElevator : Interactable
     protected override void Interact()
     {
         base.Interact();
-        gameObject.GetComponent<Animator>().SetBool("PlayerInElevator", true);
+        gameObject.GetComponentInParent<Animator>().SetBool("PlayerInElevator", true);
         gameObject.layer = LayerMask.NameToLayer("Default");
-        PlayerMotor.enabled = false;
-    }
-
-    IEnumerator WaitUntilLoadScene()
-    {
-        
-        yield return new WaitForSeconds(3.25f);
-        PlayerMotor.enabled = true;
-        yield return new WaitForSeconds(5.5f);
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        PlayerMotor.sprintSpeed = 0;
+        PlayerMotor.speed = 0;
     }
 }

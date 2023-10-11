@@ -19,9 +19,13 @@ public class EnemyPatrol : State
 
         if (transform.position.x != wayPoints[currentPoint].position.x && transform.position.z != wayPoints[currentPoint].position.z)
         {
-            agent.SetDestination(wayPoints[currentPoint].position);
-            agent.stoppingDistance = 0;
+            if (wayPoints != null)
+            {
+                agent.SetDestination(wayPoints[currentPoint].position);
+                agent.stoppingDistance = 0;
+            }
         }
+
         else
         {
             wait += Time.deltaTime;

@@ -7,12 +7,16 @@ public class OpenPauseMenu : MonoBehaviour
     public GameObject[] PauseMenuElements;
     public GameObject PauseMenu, StartUI; // StartUI is the main pause menu stuff
     public PlayerInput Input;
+    private AttackHandler[] Weapons;
     private int IsOnPauseMenu = 0;
     private AudioSource[] AudioInScene;
 
+    
 
     private void Start()
     {
+        Weapons = GetComponents<AttackHandler>();
+
         Input = new PlayerInput();
         Input.OnFoot.PauseGame.performed += PauseHandler;
         Input.Enable();
@@ -50,6 +54,11 @@ public class OpenPauseMenu : MonoBehaviour
             GameAudio.Pause();
         }
 
+        foreach (AttackHandler Weapon in Weapons)
+        {
+            Weapon.enabled = false;
+        }
+
         Cursor.lockState = CursorLockMode.Confined;
         Time.timeScale = 0;
         PauseMenu.SetActive(true);
@@ -71,6 +80,7 @@ public class OpenPauseMenu : MonoBehaviour
         {
             PauseUIElements.SetActive(false);
         }
+
         StartUI.SetActive(true); // The previous foreach statement disabled all of the Pause menu UI elements, and pausing again would result in not seeing anything. Re-Enable the Main Pause Menu GUI (Should have named it better but whatever)
         PauseMenu.SetActive(false);
 

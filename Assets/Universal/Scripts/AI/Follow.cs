@@ -15,6 +15,7 @@ public class Follow : State
     public bool isAttacking = false;
     float rotationSpeed = 10f;
     public bool rotate;
+    public int DamageToPlayer = 1;
 
     private void Awake()
     {
@@ -79,9 +80,7 @@ public class Follow : State
             if (hit.collider.gameObject.CompareTag("Player"))
             {
                 var PlayerHealth = hit.collider.gameObject.GetComponent<PlayerHealth>();
-                PlayerHealth.DamagePlayer(25);
-             // 25 can be changed to whatever int you would like, it is just used as a default thing in this example 
-                                //shoot stuff
+                PlayerHealth.DamagePlayer(DamageToPlayer + (Mathf.RoundToInt(DamageToPlayer * Random.Range(0.5f, 2.0f))));
             }
         }
     }
