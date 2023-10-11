@@ -15,50 +15,49 @@ public class EnemyPatrol : State
     }
     public override State RunCurrentState()
     {
-        agent.updateRotation = true;
-
-        if (transform.position.x != wayPoints[currentPoint].position.x && transform.position.z != wayPoints[currentPoint].position.z)
+        if (wayPoints.Length != 0)
         {
-            if (wayPoints != null)
+
+
+            agent.updateRotation = true;
+
+            if (transform.position.x != wayPoints[currentPoint].position.x && transform.position.z != wayPoints[currentPoint].position.z)
             {
                 agent.SetDestination(wayPoints[currentPoint].position);
                 agent.stoppingDistance = 0;
             }
-        }
 
-        else
-        {
-            wait += Time.deltaTime;
-
-            if (currentPoint == wayPoints.Length - 1)
+            else
             {
-                switchRoute = false;
+                wait += Time.deltaTime;
 
-            }
-
-            if (currentPoint == 0)
-            {
-                switchRoute = true;
-            }
-            if (wait > 5)
-            {
-                if (switchRoute == true)
+                if (currentPoint == wayPoints.Length - 1)
                 {
-                    currentPoint = currentPoint + 1;
-                    wait = 0;
+                    switchRoute = false;
+
                 }
 
-                if (switchRoute == false)
+                if (currentPoint == 0)
                 {
-                    currentPoint = currentPoint - 1;
-                    wait = 0;
+                    switchRoute = true;
+                }
+
+                if (wait > 5)
+                {
+                    if (switchRoute == true)
+                    {
+                        currentPoint = currentPoint + 1;
+                        wait = 0;
+                    }
+
+                    if (switchRoute == false)
+                    {
+                        currentPoint = currentPoint - 1;
+                        wait = 0;
+                    }
                 }
             }
-
-
-
         }
-
 
         return this;
     }
