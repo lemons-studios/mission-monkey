@@ -1,38 +1,32 @@
-using System.Collections;
+using System.Linq;
 using UnityEngine;
 
 public abstract class EnemyWaves : MonoBehaviour
 {
     public GameObject[] WaveGroups; // Would be a parent of all the enemies in the wave
     public float TimeBetweenWaveClearCheck = 0.15f;
-    private int WaveCount;
+    private int WaveCount, LastWave;
 
-    private void Start()
-    {
-        Mathf.Clamp(WaveCount, 0, WaveGroups.Length); 
-    }
+    private bool IsPastFinalWave = false;
 
     public void StartWaves()
     {
         WaveGroups[0].SetActive(true);
-        StartCoroutine(CheckEnemiesInWave());
     }
 
-    private IEnumerator CheckEnemiesInWave()
+    private void Update()
     {
-        yield return new WaitForSeconds(TimeBetweenWaveClearCheck);
-
-        if (WaveGroups[WaveCount].transform.childCount == 0)
+        if (WaveCount != WaveGroups.Length)
         {
-            WaveCount++;
-            WaveGroups[WaveCount].SetActive(true);
+            if (WaveGroups[WaveCount].transform.childCount == 0) // There will be one error after the last wave has been cleared and that's just because I suck at programming
+            {
+                WaveCount++;
+                Debug.Log("Spawning Next Wave");
+                WaveGroups[WaveCount].SetActive(true);
+            }
+            return;
         }
-
-        if(WaveCount == WaveGroups.Length)
-        {
-            OnFinalWaveComplete();
-            StopCoroutine(CheckEnemiesInWave());
-        }
+        else OnFinalWaveComplete();
     }
 
     protected virtual void OnFinalWaveComplete()
