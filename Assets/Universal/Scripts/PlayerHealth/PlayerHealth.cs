@@ -5,8 +5,7 @@ public class PlayerHealth : MonoBehaviour
 {
     // private Animation DeathAnim;
     private HealthDisplay HealthUI;
-    private bool EnforceMaxHealth;
-    public int Health = 100;
+    private int Health = 100;
 
     public GameObject player;
     public GameObject playerGui;
@@ -17,26 +16,21 @@ public class PlayerHealth : MonoBehaviour
 #pragma warning disable CS0618 // Type or member is obsolete
         HealthUI = Object.FindObjectOfType<HealthDisplay>();
 #pragma warning restore CS0618 // Type or member is obsolete
+        Mathf.Clamp(Health,0,100);
     }
 
     public void DamagePlayer(int DamageDealt)
     {
-        Health = Health - DamageDealt;
+        Health -= DamageDealt;
+
         if (Health <= 0)
         {
             KillPlayer();
         }
-
-
     }
     public void HealPlayer(int HealthHealed)
     {
-        Health = Health + HealthHealed;
-        if (EnforceMaxHealth == true && Health >= 101)
-        {
-            Health = 100;
-        }
-
+        Health += HealthHealed;
     }
 
     private void KillPlayer()
