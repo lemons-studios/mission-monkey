@@ -169,11 +169,6 @@ public class MainMenuFunctions : MonoBehaviour
         // For 0.4.0
     }
 
-    public void SetUpscaling()
-    {
-        // For 0.4.0. I'm pretty sure DLSS upscaling should turn itself on when DXR Low/High is set as the quality
-    }
-
     public void SetAntiAliasing()
     {
         // Using a switch case (the value of which is decided through the Anti-Aliasing Dropdown), the Anti Aliasing gets set to either Off, FXAA, TAA, or SMAA
