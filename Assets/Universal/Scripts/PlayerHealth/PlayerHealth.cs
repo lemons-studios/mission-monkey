@@ -5,7 +5,7 @@ public class PlayerHealth : MonoBehaviour
 {
     // private Animation DeathAnim;
     private HealthDisplay HealthUI;
-    private int Health = 100;
+    public int Health = 100;
 
     public GameObject player;
     public GameObject playerGui;
