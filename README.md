@@ -21,34 +21,22 @@
     <img src="https://img.shields.io/badge/Windows-0078D6?style=for-the-badge&logo=windows&logoColor=white">
   </a>
 </p>
-<p align="center"><i>A game for a school project created by 2 grade 10 students</i></p>
+<p align="center"><i>Mission: Monkey is the first game Created by Lemon Studios. It is one of the games of all time</i></p>
 <hr>
 
-## 🚀 Requirements to play:
+## 🚀 Recommended PC Specs to play:
 1. [Windows](https://www.microsoft.com/windows) 10 or 11
 2. [9th Generation Intel](https://en.wikipedia.org/wiki/Coffee_Lake#Coffee_Lake-S_(Desktop_processors)) Desktop CPU/[AMD Equivilent](https://www.cpu-monkey.com/en/cpu_group-amd_ryzen_3000-14)
-3. A Graphics card that supports DirectX11 (Unless your computer is 20 years old, you have this)
+3. A Graphics card that supports DirectX12 (Any computer that was purchased within the last 10 or so years supports this)
 
-> **Note**  
-> These are the recommended system requirements to run this game. You can run this at a lower framerate on a less powerful PC
-
-## 🐧 Linux Users:
-You are on your own. If you want to, you can try and install Wine/DXVK to run the game. No documentation will be provided
-> **Warning**  
-> Any and all Issues that are specific to Non-Windows Operating Systems will automatically be closed, as we do not (and (probably) will not (Until HDRP supports other platforms)) have native Linux Builds
 ## 🛠️ Requirements to Develop
 
-1. [Unity 2021.3.9f1](https://unity.com/releases/editor/archive#download-archive-2021)
-> **Warning**  
-> You must use this specific version to contribute to this repository. any pull request that contains a version older or newer than 2021.3.9f1 will be closed.
-
-> **Note**  
-> This project might be migrated to a newer version of unity at some point in the future, and the requirements to develop will change. make sure to read the README file before developing
-2. [Visual Studio 2022](https://visualstudio.microsoft.com/thank-you-downloading-visual-studio/?sku=Community) with the "Game Development with Unity" workload
-
-3. A somewhat decent Computer (Around 11th Gen Intel/Ryzen 5th gen with a NVIDIA 2000 series/AMD Equivilent GPU)
+1. [Unity 2023.1.8f1](https://unity.com/releases/editor/archive#download-archive-2023)
+2. [Blender 3+](https://www.blender.org/download/) ([Or Download From Steam](https://store.steampowered.com/app/365670/Blender/))
+3. [Visual Studio 2022](https://visualstudio.microsoft.com/thank-you-downloading-visual-studio/?sku=Community) With the "Desktop Development with C++" module installed
+4. A good computer
 
 ## 📃 Credits
 - See [THANKS](https://github.com/funny-unity-game/Mission-Monkey/blob/main/THANKS) for credits
-- Thanks To [NASA](https://on.soundcloud.com/H9XBW) for providing the sound effect for the escape pods in the third level of chapter 1
-- Thanks to [@allfax](https://github.com/allfax) for testing the game
+- Thanks To [NASA](https://on.soundcloud.com/H9XBW) for providing the sound effect for the escape pods for the Chapter1-3 Scene (Licensed Under [CC-BY-NC](https://creativecommons.org/licenses/by-nc/3.0/))
+- ~~Thanks to [@allfax](https://github.com/allfax) for testing the game~~

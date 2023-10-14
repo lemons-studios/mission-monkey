@@ -1,4 +1,5 @@
 trackSelection = true
+refreshSearchWindowsInPlayMode = false
 fetchPreview = true
 defaultFlags = 0
 keepOpen = false
@@ -16,6 +17,14 @@ scopes = {
 	"last_search.DD5CDDE4" = ""
 	"OpenInspectorPreview.DD5CDDE4" = "0"
 	"currentGroup.DD5CDDE4" = "scene"
+	"picker_window_position_offset.0B486DF2" = "1;17;320;550"
+	"picker_search_text.0B486DF2" = ""
+	"last_search.0B486DF2" = ""
+	"OpenInspectorPreview.0B486DF2" = "0"
+	"currentGroup.0B486DF2" = null
+	"last_search.251BD555" = "in:MainMenu"
+	"OpenInspectorPreview.251BD555" = "0"
+	"currentGroup.251BD555" = "asset"
 }
 providers = {
 	adb = {
@@ -68,18 +77,42 @@ providers = {
 		priority = 100
 		defaultAction = null
 	}
+	journal = {
+		active = true
+		priority = 2500
+		defaultAction = null
+	}
+	archetype = {
+		active = true
+		priority = 2500
+		defaultAction = null
+	}
+	profilermarkers = {
+		active = false
+		priority = 100
+		defaultAction = null
+	}
+	presets_provider = {
+		active = false
+		priority = -10
+		defaultAction = null
+	}
 }
 objectSelectors = {
 }
 recentSearches = [
+	"in:MainMenu"
 ]
 searchItemFavorites = [
 ]
 savedSearchesSortOrder = 0
 showSavedSearchPanel = false
+hideTabs = false
 expandedQueries = [
 ]
 queryBuilder = false
 ignoredProperties = "id;name;classname;imagecontentshash"
 helperWidgetCurrentArea = "all"
 disabledIndexers = ""
+minIndexVariations = 2
+findProviderIndexHelper = true

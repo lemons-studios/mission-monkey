@@ -60,7 +60,16 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "GunSwitch",
+                    "name": "GunSwitchPC",
+                    "type": "Value",
+                    "id": "9885c3ff-07c7-40e5-bd80-7669ffa80687",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "GunSwitchControllers",
                     "type": "Button",
                     "id": "e612ad6f-2c13-4ffa-9d37-d63d91432056",
                     "expectedControlType": "Button",
@@ -69,7 +78,7 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "GunFire",
+                    "name": "Attack",
                     "type": "Button",
                     "id": "d927c16e-4d91-4b5b-914f-f6baeed5840d",
                     "expectedControlType": "Button",
@@ -78,9 +87,18 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "GunReload",
+                    "name": "SpecialAttack",
                     "type": "Button",
-                    "id": "1e55c127-c50b-4f89-a04c-1da05f05f248",
+                    "id": "7dcec9f4-eee8-4fb9-993e-4b79f3a6de94",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "PauseGame",
+                    "type": "Button",
+                    "id": "efc87a77-7618-4c41-b4a0-8afccfe6f94f",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -310,34 +328,12 @@
                 },
                 {
                     "name": "",
-                    "id": "e1241d14-40d9-433e-af71-43f0fb508365",
-                    "path": "<Keyboard>/1",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "GunSwitch",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "874709aa-baa8-47ff-813e-383ec8e30401",
-                    "path": "<Keyboard>/2",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "GunSwitch",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
                     "id": "82dae069-b60b-4716-97c0-6e6b1eee396c",
                     "path": "<Gamepad>/leftShoulder",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "GunSwitch",
+                    "action": "GunSwitchControllers",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -348,7 +344,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "GunSwitch",
+                    "action": "GunSwitchControllers",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -359,40 +355,73 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "GunFire",
+                    "action": "Attack",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
                 {
                     "name": "",
-                    "id": "332e51ce-0bdc-44c0-8d7e-5ab5d4c7e5c3",
+                    "id": "7331f176-fb2b-47cf-91e3-df57a926a33e",
+                    "path": "<Keyboard>/escape",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "PauseGame",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "d4f690f5-e178-4d01-9d7b-be804c32d1af",
+                    "path": "<Gamepad>/start",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "PauseGame",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "49c6d659-a067-483f-98eb-388d7d5ea506",
+                    "path": "<Mouse>/scroll",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "GunSwitchPC",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "01c76b50-db5f-419d-8d5f-38ea96560169",
+                    "path": "<Mouse>/rightButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "SpecialAttack",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "df1b72fe-4c2f-461f-8f27-3c82881cd5c3",
+                    "path": "<Gamepad>/leftTrigger",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "SpecialAttack",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "cde30ad8-8cd7-4ae0-bfd5-18fd33214c7d",
                     "path": "<Gamepad>/rightTrigger",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "GunFire",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "d51d0499-c3f4-42a1-b11d-a70d929f79a3",
-                    "path": "<Keyboard>/r",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "GunReload",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "4e066915-e9cc-41af-80cd-f3557d1cdfb7",
-                    "path": "<Gamepad>/buttonEast",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "GunReload",
+                    "action": "Attack",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

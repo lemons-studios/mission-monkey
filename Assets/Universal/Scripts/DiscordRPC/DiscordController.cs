@@ -1,24 +1,24 @@
 using System;
 using UnityEngine;
+
 public class DiscordController : MonoBehaviour
 {
     public Discord.Discord discord;
 
-    public string sDetails, sState, sLargeImage, sLargeText, sSmallImage, sSmallText;
+    public string Details, State, LargeImage, LargeText, SmallImage, SmallText;
 
     private long startTime;
-
     bool discordRunning = false;
 
     void Start()
     {
-        // loops through open processes
-        for (int i = 0; i < System.Diagnostics.Process.GetProcesses().Length; i++)
+        foreach (System.Diagnostics.Process v in System.Diagnostics.Process.GetProcesses())
         {
             // checks if current process is discord
-            if (System.Diagnostics.Process.GetProcesses()[i].ToString() == "System.Diagnostics.Process (Discord)")
+            if (v.ToString().Contains("Discord"))
             {
                 discordRunning = true;
+                Debug.Log("Discord Found!");
                 break;
             }
         }
@@ -30,14 +30,14 @@ public class DiscordController : MonoBehaviour
             startTime = DateTimeOffset.Now.ToUnixTimeSeconds();
             var activity = new Discord.Activity
             {
-                Details = sDetails,
-                State = sState,
+                Details = Details,
+                State = State,
                 Assets =
                 {
-                    LargeImage = sLargeImage,
-                    LargeText = sLargeText,
-                    SmallImage = sSmallImage,
-                    SmallText = sSmallText
+                    LargeImage = LargeImage,
+                    LargeText = LargeText,
+                    SmallImage = SmallImage,
+                    SmallText = SmallText
                 },
                 Timestamps =
                 {
@@ -62,14 +62,14 @@ public class DiscordController : MonoBehaviour
             var elapsedTime = DateTimeOffset.Now.ToUnixTimeSeconds() - startTime;
             var activity = new Discord.Activity
             {
-                Details = sDetails,
-                State = sState,
+                Details = Details,
+                State = State,
                 Assets =
                 {
-                    LargeImage = sLargeImage,
-                    LargeText = sLargeText,
-                    SmallImage = sSmallImage,
-                    SmallText = sSmallText
+                    LargeImage = LargeImage,
+                    LargeText = LargeText,
+                    SmallImage = SmallImage,
+                    SmallText = SmallText
                 },
                 Timestamps =
                 {

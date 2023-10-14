@@ -38,7 +38,7 @@ MonoBehaviour:
     m_OverrideState: 1
     m_Value: 1
   tracing:
-    m_OverrideState: 0
+    m_OverrideState: 1
     m_Value: 1
   m_MinSmoothness:
     m_OverrideState: 1
@@ -57,13 +57,34 @@ MonoBehaviour:
     m_Value: 1
   screenFadeDistance:
     m_OverrideState: 1
-    m_Value: 0.069
+    m_Value: 0.075
   accumulationFactor:
     m_OverrideState: 0
     m_Value: 0.75
+  biasFactor:
+    m_OverrideState: 0
+    m_Value: 0.5
+  speedRejectionParam:
+    m_OverrideState: 0
+    m_Value: 0.5
+  speedRejectionScalerFactor:
+    m_OverrideState: 0
+    m_Value: 0.2
+  speedSmoothReject:
+    m_OverrideState: 0
+    m_Value: 0
+  speedSurfaceOnly:
+    m_OverrideState: 0
+    m_Value: 1
+  speedTargetOnly:
+    m_OverrideState: 0
+    m_Value: 1
+  enableWorldSpeedRejection:
+    m_OverrideState: 0
+    m_Value: 0
   m_RayMaxIterations:
     m_OverrideState: 1
-    m_Value: 420
+    m_Value: 250
   rayMiss:
     m_OverrideState: 0
     m_Value: 3
@@ -132,10 +153,10 @@ MonoBehaviour:
     m_Value: 1.56
   intensity:
     m_OverrideState: 1
-    m_Value: 0.42069
+    m_Value: 0.4
   scatter:
     m_OverrideState: 1
-    m_Value: 0.069
+    m_Value: 0.8
   tint:
     m_OverrideState: 0
     m_Value: {r: 1, g: 1, b: 1, a: 1}
