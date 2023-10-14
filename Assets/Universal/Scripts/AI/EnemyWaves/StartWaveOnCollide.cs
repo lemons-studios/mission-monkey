@@ -12,7 +12,7 @@ public class StartWaveOnCollide : EnemyWaves
     protected override void OnFinalWaveComplete()
     {
         base.OnFinalWaveComplete();
-        if(Chapter1_2WaveClearAnimator != null)
+        if (Chapter1_2WaveClearAnimator != null)
         {
             Chapter1_2WaveClearAnimator.SetBool("IsWaveCleared", true);
         }
