@@ -15,9 +15,9 @@ public class EnemySpawner : MonoBehaviour
     {
         while (WaveCount < WavesDuringCountdown.Length)
         {
-            yield return new WaitForSeconds(25);
             WavesDuringCountdown[WaveCount].SetActive(true);
             WaveCount += 1;
+            yield return new WaitForSeconds(25);
         }
     }
 }
