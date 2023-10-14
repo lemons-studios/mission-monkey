@@ -17,6 +17,7 @@ public class TriggerCountdown : Interactable
         StartCoroutine(CountdownDisplayUpdate());
         MonkeyEscape.TriggerEscapeCoroutine();
         promptMessage = string.Empty;
+        CountdownUGUI.gameObject.SetActive(true);
         gameObject.GetComponent<BoxCollider>().enabled = false;
     }
 
@@ -25,7 +26,7 @@ public class TriggerCountdown : Interactable
         while (CountdownTime >= 0)
         {
             TimeSpan timeSpan = TimeSpan.FromSeconds(CountdownTime);
-            string CountdownTimeToString = timeSpan.ToString(@"mm/ss");
+            string CountdownTimeToString = timeSpan.ToString(@"mm\:ss");
             CountdownUGUI.text = "Time until all monkeys board escape pods: " + CountdownTimeToString;
             CountdownTime -= 1;
             yield return new WaitForSeconds(1);
@@ -33,6 +34,7 @@ public class TriggerCountdown : Interactable
         while (CountdownTime == 0)
         {
             CountdownUGUI.text = "All other monkeys have escaped! board your escape pod now!";
+            EscapePodSeatInteractable.GetComponent<BoxCollider>().enabled = true;
         }
     }
 }
