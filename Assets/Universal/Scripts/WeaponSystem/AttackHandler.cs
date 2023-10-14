@@ -76,7 +76,7 @@ public abstract class AttackHandler : MonoBehaviour
 
             if (Physics.Raycast(BulletRay, out hit))
             {
-                
+
 
                 Debug.DrawRay(Camera.transform.position, transform.forward * 15, Color.red);
 

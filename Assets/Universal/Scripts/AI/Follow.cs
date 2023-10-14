@@ -11,9 +11,11 @@ public class Follow : State
     public static Vector3 targetPosition;
     bool isSearching = false;
     private Ray AttackRay;
-    public GameObject FirePoint;
+    public Transform FirePoint;
+    public GameObject BulletProjectile;
     public bool isAttacking = false;
     float rotationSpeed = 10f;
+    public float BulletSpeed;
     public bool rotate;
     public int DamageToPlayer = 1;
 
@@ -76,15 +78,22 @@ public class Follow : State
 
         if (Physics.Raycast(AttackRay, out hit))
         {
-         
             if (hit.collider.gameObject.CompareTag("Player"))
             {
+                InstatiateEnemyProjectile(FirePoint);
                 var PlayerHealth = hit.collider.gameObject.GetComponent<PlayerHealth>();
                 PlayerHealth.DamagePlayer(DamageToPlayer + (Mathf.RoundToInt(DamageToPlayer * Random.Range(0.5f, 2.0f))));
             }
         }
     }
 
+    public void InstatiateEnemyProjectile(Transform point)
+    {
+        var CurrentProjectile = Instantiate(BulletProjectile, point.position, FirePoint.transform.rotation) as GameObject;
+
+        CurrentProjectile.SetActive(true);
+        CurrentProjectile.GetComponent<Rigidbody>().velocity = point.transform.forward * BulletSpeed;
+    }
 
     void FindPlayer()
     {
@@ -101,7 +110,6 @@ public class Follow : State
 
     void LookAtPlayer()
     {
-        Debug.Log("afejio");
         Vector3 direction = (player.transform.position - transform.position).normalized;
         Quaternion lookRotation = Quaternion.LookRotation(direction);
         transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * rotationSpeed);
