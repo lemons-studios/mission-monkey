@@ -64,7 +64,7 @@ public abstract class AttackHandler : MonoBehaviour
 
     protected virtual void Attack()
     {
-        if (!PlayerDeathController.isDead && Time.timeScale >= 1)
+        if (gameObject.GetComponentInParent<PlayerHealth>().Health >= 1 && Time.timeScale >= 1)
         {
             if (BulletProjectile != null)
             {

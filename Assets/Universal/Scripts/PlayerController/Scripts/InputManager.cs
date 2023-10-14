@@ -39,7 +39,7 @@ public class InputManager : MonoBehaviour
     }
     private void Update()
     {
-        if (PlayerDeathController.isDead)
+        if (gameObject.GetComponent<PlayerHealth>().Health <= 0)
         {
             OnDisable();
         }

@@ -7,9 +7,8 @@ public class PlayerHealth : MonoBehaviour
     private HealthDisplay HealthUI;
     public int Health = 100;
 
-    public GameObject player;
-    public GameObject playerGui;
-    public GameObject playerDeathScreen;
+    public GameObject player, playerGui, playerDeathScreen;
+    public PlayerDeathController playerDeathController;
 
     private void Start()
     {
@@ -25,7 +24,7 @@ public class PlayerHealth : MonoBehaviour
 
         if (Health <= 0)
         {
-            KillPlayer();
+            playerDeathController.KillPlayer();
         }
     }
     public void HealPlayer(int HealthHealed)
@@ -33,24 +32,15 @@ public class PlayerHealth : MonoBehaviour
         Health += HealthHealed;
     }
 
-    private void KillPlayer()
+    private void Update()
     {
-        // Unlock Cursor and Load the main menu scene
-        // Also set the health float value back to 100 to prevent infinite death loops upon loading into the scene
-        // There is probably a better way to do this
-
-        Cursor.lockState = CursorLockMode.Confined;
-        //Time.timeScale = 0.0001f;
-        Health = 100;
-        playerGui.SetActive(false);
-        playerDeathScreen.SetActive(true);
-        playerDeathScreen.GetComponent<Animator>().SetBool("Died", true);
-        player.GetComponent<Animator>().enabled = true;
-        player.GetComponent<Animator>().SetBool("Died", true);
-        PlayerDeathController.PlayerDeath();
-
-        // SceneManager.LoadScene("MainMenu");
+        if(Health >= 101)
+        {
+            Health = 100;
+        }
     }
+
+
 
     private void Awake()
     {
