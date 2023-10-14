@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class TriggerCountdown : Interactable
 {
-    private int CountdownTime = 150;
+    private float CountdownTime = 150f;
     public TextMeshProUGUI CountdownUGUI;
     public MonkeyEscape MonkeyEscape;
     public EnemySpawner Chapter1_3EnemySpawner;
