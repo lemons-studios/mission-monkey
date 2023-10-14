@@ -15,7 +15,7 @@ public class PlayerHealth : MonoBehaviour
 #pragma warning disable CS0618 // Type or member is obsolete
         HealthUI = Object.FindObjectOfType<HealthDisplay>();
 #pragma warning restore CS0618 // Type or member is obsolete
-        Mathf.Clamp(Health,0,100);
+        Mathf.Clamp(Health, 0, 100);
     }
 
     public void DamagePlayer(int DamageDealt)
@@ -34,7 +34,7 @@ public class PlayerHealth : MonoBehaviour
 
     private void Update()
     {
-        if(Health >= 101)
+        if (Health >= 101)
         {
             Health = 100;
         }
