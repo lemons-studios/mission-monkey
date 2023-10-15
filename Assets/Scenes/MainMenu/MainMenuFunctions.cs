@@ -1,8 +1,8 @@
-using System;
 using System.Linq;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Audio;
+using UnityEngine.Rendering.Universal;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
@@ -20,50 +20,17 @@ public class MainMenuFunctions : MonoBehaviour
     public AudioMixer MainVolume;
     public Slider VolumeSlider, MouseSensSlider, FovSlider;
     public Toggle SpinCameraToggle;
-    public TMP_Dropdown QualityDropdown, AntiAliasingDropdown, UpscalingDropdown, CaptionsDropdown;
+    public TMP_Dropdown QualityDropdown, AntiAliasingDropdown, CaptionsDropdown;
     public TextMeshProUGUI VolumePercentageText, MouseSensText, FovText;
 
     public GameObject MainMenu, OptionsMenu, ChapterSelectMenu, LoadGameMenu, QuitOptions, SaveGameMenu;
     public Camera Camera;
-    // private HDAdditionalCameraData hdrpCamData;
     public PlayerLook playerLook;
+    public UniversalAdditionalCameraData URPCamData;
+    public UniversalRenderPipelineAsset URPAsset;
 
-    private int AntiAliasingMode, QualityMode, UpscalingValue, MouseSensitivity;
+    private int AntiAliasingMode, QualityMode, MsaaValue, MouseSensitivity, QualityGroup;
     private float MouseSensitivityValue, VolumeValue, FovValue;
-    private bool IsRaytracingSupported;
-
-    private void Awake()
-    {
-        QualityDropdown.value = QualitySettings.GetQualityLevel();
-        // hdrpCamData = Camera.GetComponent<HDAdditionalCameraData>();
-        // Debug.Log(Application.platform);
-
-        if (Application.platform.ToString().Contains("Windows"))
-        {
-
-            // Cannot beleive I didn't know this function existed
-            if (SystemInfo.supportsRayTracing)
-            {
-                // Debug.Log("Raytracing is supported on this GPU");
-                IsRaytracingSupported = true;
-            }
-
-            else
-            {
-                // Debug.Log("Raytracing is not supported on this GPU");
-                IsRaytracingSupported = false;
-            }
-        }
-        else if (Array.Exists(new string[] { RuntimePlatform.LinuxPlayer.ToString(), RuntimePlatform.LinuxEditor.ToString(), RuntimePlatform.OSXPlayer.ToString(), RuntimePlatform.OSXEditor.ToString() }, el => el == Application.platform.ToString()))
-        {
-            // Debug.Log("Not on Windows");
-            UpscalingDropdown.interactable = false;
-        }
-        else
-        {
-            Application.Quit(); // Serious problem if someone is running this on a platform that isnt Linux, Windows, or MacOS, quit immediately
-        }
-    }
 
     private void Start()
     {
@@ -147,25 +114,24 @@ public class MainMenuFunctions : MonoBehaviour
     public void SetQuality()
     {
         // Quality Mode is based off of how the quality is ordered in the project settings
-        // "Very Low" is 0 and "DXR High" is 6 (As Of 0.3.0)
 
         QualityMode = QualityDropdown.value;
-        if (!IsRaytracingSupported && QualityDropdown.value.Either(5, 6))
-        {
-            // If a player without raytracing-cabable hardware tries to switch to DXR, set to "Ultra" quality instead (might be better to just return instead of doing anything lol)
-            QualityDropdown.value = 4; // The function should just run again because of the listener in Start()
-            // Debug.Log("Player without required hardware tried to set quality to DXR Low/High. Switching back to Ultra");
-            return;
-        }
         // Debug.Log("Setting Quality to " + QualitySettings.GetQualityLevel().ToString());
 
         QualitySettings.SetQualityLevel(QualityDropdown.value);
         PlayerPrefs.SetInt("QualityLevel", QualityMode);
+
+        if (AntiAliasingMode == 3)
+        {
+            DetermineQualityGroup();
+            SetAntiAliasingQuality();
+        }
     }
 
     public void SetCaptions()
     {
         // For 0.4.0
+
     }
 
     public void SetAntiAliasing()
@@ -175,23 +141,56 @@ public class MainMenuFunctions : MonoBehaviour
         switch (AntiAliasingMode)
         {
             case 0:
-                //hdrpCamData.antialiasing = HDAdditionalCameraData.AntialiasingMode.None;
+                URPCamData.antialiasing = AntialiasingMode.None;
                 break;
             case 1:
-               //hdrpCamData.antialiasing = HDAdditionalCameraData.AntialiasingMode.FastApproximateAntialiasing;
+                URPCamData.antialiasing = AntialiasingMode.FastApproximateAntialiasing;
                 break;
             case 2:
-                //hdrpCamData.antialiasing = HDAdditionalCameraData.AntialiasingMode.TemporalAntialiasing;
+                URPCamData.antialiasing = AntialiasingMode.TemporalAntiAliasing;
                 break;
             case 3:
-                //hdrpCamData.antialiasing = HDAdditionalCameraData.AntialiasingMode.SubpixelMorphologicalAntiAliasing;
+                URPCamData.antialiasing = AntialiasingMode.SubpixelMorphologicalAntiAliasing;
                 break;
         }
-
-        // Debug.Log("Setting AA Mode to " + hdrpCamData.antialiasing);
+        Debug.Log("Setting Anti Aliasing to" + URPCamData.antialiasing);
 
         PlayerPrefs.SetInt("AntiAliasing", AntiAliasingMode);
     }
+
+    private void SetAntiAliasingQuality()
+    {
+        switch (QualityGroup)
+        {
+            case 1:
+                URPCamData.antialiasingQuality = AntialiasingQuality.Low;
+                break;
+            case 2:
+                URPCamData.antialiasingQuality = AntialiasingQuality.Medium;
+                break;
+            case 3:
+                URPCamData.antialiasingQuality = AntialiasingQuality.High;
+                break;
+        }
+        PlayerPrefs.SetInt("AntiAliasingQuality", QualityGroup);
+    }
+
+    private void DetermineQualityGroup()
+    {
+        if (QualityMode <= 1) // Very low and low quality profiles
+        {
+            QualityGroup = 1;
+        }
+        else if (QualityMode <= 3) // Medium and high quality profiles
+        {
+            QualityGroup = 2;
+        }
+        else if (QualityMode >= 4) // Ultra quality profiles
+        {
+            QualityGroup = 3;
+        }
+    }
+
     public void LoadGame()
     {
         // actual code for 0.4.0 for now, show GUI that says that the feature is under construction
