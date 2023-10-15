@@ -3,7 +3,6 @@ using System.Linq;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Audio;
-using UnityEngine.Rendering.HighDefinition;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
@@ -26,7 +25,7 @@ public class MainMenuFunctions : MonoBehaviour
 
     public GameObject MainMenu, OptionsMenu, ChapterSelectMenu, LoadGameMenu, QuitOptions, SaveGameMenu;
     public Camera Camera;
-    private HDAdditionalCameraData hdrpCamData;
+    // private HDAdditionalCameraData hdrpCamData;
     public PlayerLook playerLook;
 
     private int AntiAliasingMode, QualityMode, UpscalingValue, MouseSensitivity;
@@ -36,7 +35,7 @@ public class MainMenuFunctions : MonoBehaviour
     private void Awake()
     {
         QualityDropdown.value = QualitySettings.GetQualityLevel();
-        hdrpCamData = Camera.GetComponent<HDAdditionalCameraData>();
+        // hdrpCamData = Camera.GetComponent<HDAdditionalCameraData>();
         // Debug.Log(Application.platform);
 
         if (Application.platform.ToString().Contains("Windows"))
@@ -176,16 +175,16 @@ public class MainMenuFunctions : MonoBehaviour
         switch (AntiAliasingMode)
         {
             case 0:
-                hdrpCamData.antialiasing = HDAdditionalCameraData.AntialiasingMode.None;
+                //hdrpCamData.antialiasing = HDAdditionalCameraData.AntialiasingMode.None;
                 break;
             case 1:
-                hdrpCamData.antialiasing = HDAdditionalCameraData.AntialiasingMode.FastApproximateAntialiasing;
+               //hdrpCamData.antialiasing = HDAdditionalCameraData.AntialiasingMode.FastApproximateAntialiasing;
                 break;
             case 2:
-                hdrpCamData.antialiasing = HDAdditionalCameraData.AntialiasingMode.TemporalAntialiasing;
+                //hdrpCamData.antialiasing = HDAdditionalCameraData.AntialiasingMode.TemporalAntialiasing;
                 break;
             case 3:
-                hdrpCamData.antialiasing = HDAdditionalCameraData.AntialiasingMode.SubpixelMorphologicalAntiAliasing;
+                //hdrpCamData.antialiasing = HDAdditionalCameraData.AntialiasingMode.SubpixelMorphologicalAntiAliasing;
                 break;
         }
 
