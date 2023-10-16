@@ -19,7 +19,6 @@ public class MainMenuFunctions : MonoBehaviour
 {
     public AudioMixer MainVolume;
     public Slider VolumeSlider, MouseSensSlider, FovSlider;
-    public Toggle SpinCameraToggle;
     public TMP_Dropdown QualityDropdown, AntiAliasingDropdown, CaptionsDropdown;
     public TextMeshProUGUI VolumePercentageText, MouseSensText, FovText;
 
