@@ -105,7 +105,7 @@ public abstract class AttackHandler : MonoBehaviour
                         int RoundedDamage = Mathf.RoundToInt(UnroundedDamage);
                         HitEnemyHealth.HitPoints = HitEnemyHealth.HitPoints - RoundedDamage;
 
-                        Debug.Log("Damage Dealt: " + RoundedDamage);
+                        // Debug.Log("Damage Dealt: " + RoundedDamage);
                         if (HitEnemyHealth.HitPoints >= 0)
                         {
                             Debug.Log("Health Remaining: " + HitEnemyHealth.HitPoints);
