@@ -3,54 +3,75 @@ using UnityEngine;
 
 public class DiscordRichPresenceController : MonoBehaviour
 {
-    Discord.Discord discord;
+    Discord.Discord RichPresence;
     private long ClientId = 1090862646993096745;
     private long StartTime;
-    private string State = "Playing Mission: Monkey";
-    public string LargeImage, SmallImage, Description, LargeImageText, SmallImageText;
-
+    private string Description = "Playing Mission: Monkey";
+    private string LargeImageText;
+    public string LargeImage, SmallImage, State, SmallImageText;
 
     private void Start()
     {
-        discord = new Discord.Discord(ClientId, (UInt64)Discord.CreateFlags.NoRequireDiscord);
+        RichPresence = new Discord.Discord(ClientId, (UInt64)Discord.CreateFlags.NoRequireDiscord);
+        StartTime = System.DateTimeOffset.Now.ToUnixTimeMilliseconds();
+        SetStatus();
+        LargeImageText = "Playing on Verssion " + Application.version;
     }
 
     private void Update()
     {
-        StartTime = (int)DateTime.UtcNow.Subtract(new DateTime(1970, 1, 1)).TotalSeconds;
-        if (discord != null)
+        try
         {
-            Debug.Log("Discord RPC should be loaded!");
+            RichPresence.RunCallbacks();
+        }
+        catch
+        {
+            gameObject.GetComponent<DiscordRichPresenceController>().enabled = false;
+        }
+    }
+    private void LateUpdate()
+    {
+        SetStatus();
+    }
 
-            var ActivityManager = discord.GetActivityManager();
+    private void OnApplicationQuit()
+    {
+        RichPresence.Dispose();
+    }
+
+    private void SetStatus()
+    {
+        try
+        {
+            var ActivityManager = RichPresence.GetActivityManager();
             var Activity = new Discord.Activity
             {
                 State = State,
                 Details = Description,
-                Timestamps =
-                {
-                    Start = StartTime
-                },
                 Assets =
-                {
-                    LargeImage = LargeImage,
-                    SmallImage = SmallImage,
-                    LargeText = LargeImageText,
-                    SmallText = SmallImageText,
-                }
-            };
-
-            ActivityManager.UpdateActivity(Activity, (result) =>
             {
-                if (result == Discord.Result.Ok)
+                LargeImage = LargeImage,
+                SmallImage = SmallImage,
+                LargeText = LargeImageText,
+                SmallText = SmallImageText
+            },
+                Timestamps =
+            {
+                Start = StartTime
+            }
+            };
+            ActivityManager.UpdateActivity(Activity, (res) =>
+            {
+                if (res == Discord.Result.Ok)
                 {
                     Debug.Log("Connected to Discord!");
                 }
-                else
-                {
-                    Debug.Log("Failed to Connect to Discord! :(");
-                }
+                else Debug.LogWarning("Failed to connect to Discord!");
             });
+        }
+        catch
+        {
+            gameObject.GetComponent<DiscordRichPresenceController>().enabled = false;
         }
     }
 }

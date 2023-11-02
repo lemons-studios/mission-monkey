@@ -17,17 +17,23 @@ public static class ObjectExtensions
 
 public class MainMenuFunctions : MonoBehaviour
 {
-    public AudioMixer MainVolume;
+
+    [Space]
     public Slider VolumeSlider, MouseSensSlider, FovSlider;
     public TMP_Dropdown QualityDropdown, AntiAliasingDropdown, CaptionsDropdown;
     public TextMeshProUGUI VolumePercentageText, MouseSensText, FovText;
 
+    [Space]
     public GameObject MainMenu, OptionsMenu, ChapterSelectMenu, LoadGameMenu, QuitOptions, SaveGameMenu;
     public Camera Camera;
     public PlayerLook playerLook;
+
+    [Space]
     public UniversalAdditionalCameraData URPCamData;
     public UniversalRenderPipelineAsset URPAsset;
+    public AudioMixer MainVolume;
 
+    [Space]
     private int AntiAliasingMode, QualityMode, MsaaValue, MouseSensitivity, QualityGroup;
     private float MouseSensitivityValue, VolumeValue, FovValue;
 

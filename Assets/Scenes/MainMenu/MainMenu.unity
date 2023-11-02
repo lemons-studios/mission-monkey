@@ -815,6 +815,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -1051949925729095209, guid: e2099c4cf79d5a24b9a4d3f523da23da, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 29.526
+      objectReference: {fileID: 0}
     - target: {fileID: -628957954272530498, guid: e2099c4cf79d5a24b9a4d3f523da23da, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
@@ -1144,7 +1148,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6851a3bae319bc14baa9731e22c94567, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MainVolume: {fileID: 24100000, guid: 3a5200ccdd38f3e4f95028236fab6f11, type: 2}
   VolumeSlider: {fileID: 574598814001926089}
   MouseSensSlider: {fileID: 543065962949487282}
   FovSlider: {fileID: 4411329704564217142}
@@ -1164,6 +1167,7 @@ MonoBehaviour:
   playerLook: {fileID: 1355164707}
   URPCamData: {fileID: 1355164708}
   URPAsset: {fileID: 11400000, guid: 52f06529af9a8674e96f19b1c7486f5b, type: 2}
+  MainVolume: {fileID: 24100000, guid: 3a5200ccdd38f3e4f95028236fab6f11, type: 2}
 --- !u!1 &1354446141
 GameObject:
   m_ObjectHideFlags: 0
@@ -12402,7 +12406,7 @@ RectTransform:
   m_GameObject: {fileID: 3211126598843351122}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: -3}
-  m_LocalScale: {x: 2.2, y: 2.8, z: 1}
+  m_LocalScale: {x: 2.2, y: 1.39, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 416490252090967410}
@@ -12924,6 +12928,7 @@ GameObject:
   - component: {fileID: 6752480300372624030}
   - component: {fileID: 6052440036109576016}
   - component: {fileID: 3159659665303687635}
+  - component: {fileID: 9156873834068047366}
   m_Layer: 5
   m_Name: BuildInfo
   m_TagString: Untagged
@@ -12931,6 +12936,19 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &9156873834068047366
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9156873834068047365}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 453ae08f22f21454a93e4bda6552ba73, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  BuildInfoText: {fileID: 6052440036109576016}
 --- !u!114 &9157310586874456515
 MonoBehaviour:
   m_ObjectHideFlags: 0
