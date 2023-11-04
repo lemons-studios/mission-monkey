@@ -400,14 +400,8 @@ MonoBehaviour:
   VolumePercentageText: {fileID: 2391585471821651562}
   MouseSensText: {fileID: 2725214610581070736}
   FovText: {fileID: 7454956233573179824}
-  MainMenu: {fileID: 3889879857649582472}
-  OptionsMenu: {fileID: 2578663659659952378}
-  ChapterSelectMenu: {fileID: 1215098207265704384}
-  LoadGameMenu: {fileID: 8774733196119199879}
-  QuitOptions: {fileID: 1872847217044708407}
-  SaveGameMenu: {fileID: 8774733196119199879}
   Camera: {fileID: 8755767558901802577}
-  playerLook: {fileID: 384200576640101453}
+  PlayerLook: {fileID: 0}
   URPCamData: {fileID: 1284890568395805555}
   URPAsset: {fileID: 0}
   MainVolume: {fileID: 24100000, guid: 3a5200ccdd38f3e4f95028236fab6f11, type: 2}
@@ -515,11 +509,23 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 7234933611986575152}
         m_TargetAssemblyTypeName: MainMenuFunctions, Assembly-CSharp
-        m_MethodName: MenuToSettings
-        m_Mode: 1
+        m_MethodName: HideGUI
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 3889879857649582472}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 7234933611986575152}
+        m_TargetAssemblyTypeName: MainMenuFunctions, Assembly-CSharp
+        m_MethodName: ShowGUI
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 2578663659659952378}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -1317,11 +1323,23 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 7234933611986575152}
         m_TargetAssemblyTypeName: MainMenuFunctions, Assembly-CSharp
-        m_MethodName: SettingsToMenu
-        m_Mode: 1
+        m_MethodName: HideGUI
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 2578663659659952378}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 7234933611986575152}
+        m_TargetAssemblyTypeName: MainMenuFunctions, Assembly-CSharp
+        m_MethodName: ShowGUI
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 3889879857649582472}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -2521,11 +2539,11 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 7234933611986575152}
         m_TargetAssemblyTypeName: MainMenuFunctions, Assembly-CSharp
-        m_MethodName: ShowQuitOptions
-        m_Mode: 1
+        m_MethodName: ShowGUI
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 1872847217044708407}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -3589,11 +3607,11 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 7234933611986575152}
         m_TargetAssemblyTypeName: MainMenuFunctions, Assembly-CSharp
-        m_MethodName: HideQuitOptions
-        m_Mode: 1
+        m_MethodName: HideGUI
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 1872847217044708407}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -4416,7 +4434,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 7234933611986575152}
         m_TargetAssemblyTypeName: MainMenuFunctions, Assembly-CSharp
-        m_MethodName: HideOtherGUI
+        m_MethodName: HideGUI
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 8774733196119199879}
@@ -4698,11 +4716,11 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 7234933611986575152}
         m_TargetAssemblyTypeName: MainMenuFunctions, Assembly-CSharp
-        m_MethodName: ShowChapterSelect
-        m_Mode: 1
+        m_MethodName: ShowGUI
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 1215098207265704384}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -5504,11 +5522,11 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 7234933611986575152}
         m_TargetAssemblyTypeName: MainMenuFunctions, Assembly-CSharp
-        m_MethodName: LoadGame
-        m_Mode: 1
+        m_MethodName: ShowGUI
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 8774733196119199879}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -7491,7 +7509,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.16037738, g: 0.16037738, b: 0.16037738, a: 1}
+  m_Color: {r: 0.14150941, g: 0.14150941, b: 0.14150941, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -9259,11 +9277,11 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 7234933611986575152}
         m_TargetAssemblyTypeName: MainMenuFunctions, Assembly-CSharp
-        m_MethodName: HideChapterSelect
-        m_Mode: 1
+        m_MethodName: HideGUI
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 1215098207265704384}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -9451,14 +9469,14 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 7234933611986575152}
         m_TargetAssemblyTypeName: MainMenuFunctions, Assembly-CSharp
-        m_MethodName: OpenGHPage
-        m_Mode: 1
+        m_MethodName: OpenLink
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: https://github.com/lemons-studios/mission-monkey
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &1142942841742510596
@@ -12558,11 +12576,11 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 7234933611986575152}
         m_TargetAssemblyTypeName: MainMenuFunctions, Assembly-CSharp
-        m_MethodName: LoadGame
-        m_Mode: 1
+        m_MethodName: ShowGUI
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 8774733196119199879}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 

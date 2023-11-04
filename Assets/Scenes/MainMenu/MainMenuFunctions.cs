@@ -1,4 +1,3 @@
-using System.Linq;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Audio;
@@ -6,33 +5,19 @@ using UnityEngine.Rendering.Universal;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public static class ObjectExtensions
-{
-    // https://stackoverflow.com/questions/3870263/how-can-i-write-like-x-either-1-or-2-in-a-programming-language 
-    public static bool Either(this object value, params object[] array)
-    {
-        return array.Any(p => Equals(value, p));
-    }
-}
-
 public class MainMenuFunctions : MonoBehaviour
 {
-
     [Space]
     public Slider VolumeSlider, MouseSensSlider, FovSlider;
     public TMP_Dropdown QualityDropdown, AntiAliasingDropdown, CaptionsDropdown;
     public TextMeshProUGUI VolumePercentageText, MouseSensText, FovText;
-
     [Space]
-    public GameObject MainMenu, OptionsMenu, ChapterSelectMenu, LoadGameMenu, QuitOptions, SaveGameMenu;
     public Camera Camera;
-    public PlayerLook playerLook;
-
+    public PlayerLook PlayerLook;
     [Space]
     public UniversalAdditionalCameraData URPCamData;
     public UniversalRenderPipelineAsset URPAsset;
     public AudioMixer MainVolume;
-
     [Space]
     private int AntiAliasingMode, QualityMode, MsaaValue, MouseSensitivity, QualityGroup;
     private float MouseSensitivityValue, VolumeValue, FovValue;
@@ -48,18 +33,7 @@ public class MainMenuFunctions : MonoBehaviour
         {
             SetQuality();
         });
-
         LoadSettingsValues();
-
-        if (SceneManager.GetActiveScene().buildIndex == 0)
-        {
-            Cursor.lockState = CursorLockMode.Confined;
-        }
-        else
-        {
-            Cursor.lockState = CursorLockMode.Locked;
-        }
-
     }
 
     public void LoadSettingsValues()
@@ -99,7 +73,7 @@ public class MainMenuFunctions : MonoBehaviour
     public void SetMouseSensitivty(float MouseSens)
     {
         // Stolen code from the old SettingsMenu.cs script. It should work
-        playerLook.setMouseSensitivity(MouseSens);
+        PlayerLook.setMouseSensitivity(MouseSens);
         if (MouseSensSlider.value != MouseSens)
         {
             MouseSensSlider.value = MouseSens;
@@ -125,18 +99,11 @@ public class MainMenuFunctions : MonoBehaviour
 
         QualitySettings.SetQualityLevel(QualityDropdown.value);
         PlayerPrefs.SetInt("QualityLevel", QualityMode);
-
-        if (AntiAliasingMode == 3)
-        {
-            DetermineQualityGroup();
-            SetAntiAliasingQuality();
-        }
     }
 
     public void SetCaptions()
     {
-        // For 0.4.0
-
+        // For 0.4
     }
 
     public void SetAntiAliasing()
@@ -180,98 +147,24 @@ public class MainMenuFunctions : MonoBehaviour
         PlayerPrefs.SetInt("AntiAliasingQuality", QualityGroup);
     }
 
-    private void DetermineQualityGroup()
+    public void ShowGUI(GameObject GuiToShow)
     {
-        if (QualityMode <= 1) // Very low and low quality profiles
-        {
-            QualityGroup = 1;
-        }
-        else if (QualityMode <= 3) // Medium and high quality profiles
-        {
-            QualityGroup = 2;
-        }
-        else if (QualityMode >= 4) // Ultra quality profiles
-        {
-            QualityGroup = 3;
-        }
+        GuiToShow.SetActive(true);
     }
 
-    public void LoadGame()
+    public void HideGUI(GameObject GuiToHide)
     {
-        // actual code for 0.4.0 for now, show GUI that says that the feature is under construction
-        LoadGameMenu.SetActive(true);
+        GuiToHide.SetActive(false);
     }
-
-    public void HideLoadGameGUI()
-    {
-        LoadGameMenu.SetActive(false);
-    }
-
-    public void SaveGame()
-    {
-        // Like LoadGame(), Actual code will be implemented in 0.4.0, but for now, only the GUI will show
-        SaveGameMenu.SetActive(true);
-    }
-
-    public void HideOtherGUI(GameObject GUI)
-    {
-        GUI.SetActive(false);
-    }
-
 
     public void LoadNewScene(string scene)
     {
-        if (Time.timeScale != 1) { Time.timeScale = 1; } // For when the function is called from the pause menu
+        if (Time.timeScale != 1) // For when the method is called from the pause menu
+        {
+            Time.timeScale = 1;
+        }
         SceneManager.LoadScene(scene);
         if (scene == null) { Debug.LogError("Scene not properly specified on 1 or more objects"); }
-    }
-
-    public void ToggleCamSpin(bool toggled)
-    {
-        Camera.GetComponent<RotateCamera>().enabled = toggled; // This might get removed in the future
-    }
-
-    public void MenuToSettings()
-    {
-        // Hide the main menu gui and show the settings gui
-        MainMenu.SetActive(false);
-        OptionsMenu.SetActive(true);
-    }
-
-    public void SettingsToMenu()
-    {
-        // Reverse of MenuToSettings()
-        OptionsMenu.SetActive(false);
-        MainMenu.SetActive(true);
-    }
-
-    public void ShowChapterSelect()
-    {
-        // Show chapter select GUI
-        ChapterSelectMenu.SetActive(true);
-    }
-
-    public void HideChapterSelect()
-    {
-        // Hide the chapter select GUI
-        ChapterSelectMenu.SetActive(false);
-    }
-
-    // Pause Menu Functions
-    public void ShowQuitOptions()
-    {
-        QuitOptions.SetActive(true);
-    }
-
-    public void HideQuitOptions()
-    {
-        QuitOptions.SetActive(false);
-    }
-
-    public void LoadToMainMenu()
-    {
-        Time.timeScale = 1;
-        SceneManager.LoadScene("MainMenu");
     }
 
     public void QuitGame()
@@ -290,9 +183,9 @@ public class MainMenuFunctions : MonoBehaviour
         SceneManager.LoadScene("Credits");
     }
 
-    public void OpenGHPage()
+    public void OpenLink(string Link)
     {
-        Application.OpenURL("https://github.com/Lemons-Studios/Mission-Monkey");
+        Application.OpenURL(Link);
     }
 
     public void OnApplicationQuit()
