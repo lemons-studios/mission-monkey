@@ -19,21 +19,11 @@ public class MainMenuFunctions : MonoBehaviour
     public UniversalRenderPipelineAsset URPAsset;
     public AudioMixer MainVolume;
     [Space]
-    private int AntiAliasingMode, QualityMode, MsaaValue, MouseSensitivity, QualityGroup;
     private float MouseSensitivityValue, VolumeValue, FovValue;
 
     private void Start()
     {
-        AntiAliasingDropdown.onValueChanged.AddListener(delegate
-        {
-            SetAntiAliasing();
-        });
-
-        QualityDropdown.onValueChanged.AddListener(delegate
-        {
-            SetQuality();
-        });
-        LoadSettingsValues();
+        //DeleteAllKeys();
     }
 
     public void LoadSettingsValues()
@@ -52,17 +42,23 @@ public class MainMenuFunctions : MonoBehaviour
 
         // Load Quality Mode from a previous session
         QualityDropdown.value = PlayerPrefs.GetInt("QualityLevel");
-        SetQuality();
+        SetQuality(QualityDropdown.value);
 
         // Load Anti-Aliasing mode from a previous session
         AntiAliasingDropdown.value = PlayerPrefs.GetInt("AntiAliasing");
-        SetAntiAliasing();
+        SetAntiAliasing(AntiAliasingDropdown.value);
+    }
+
+    private void DeleteAllKeys()
+    {
+        PlayerPrefs.DeleteAll();
+        Debug.Log("Deleted all keys!");
     }
 
     public void SetVolume(float volume)
     {
         int TextDisplayVolume = Mathf.FloorToInt(volume * 100);
-        // "Volume" Is an exposed value in the main audio mixer
+        // I have no idea how this script calculates volume percentage but it works so i do not care
         MainVolume.SetFloat("Volume", Mathf.Log10(volume) * 20);
         VolumePercentageText.text = TextDisplayVolume.ToString() + "%";
         PlayerPrefs.SetFloat("Volume", volume);
@@ -90,15 +86,13 @@ public class MainMenuFunctions : MonoBehaviour
         PlayerPrefs.SetFloat("Fov", CameraFov);
     }
 
-    public void SetQuality()
+    public void SetQuality(int QualityPreset)
     {
         // Quality Mode is based off of how the quality is ordered in the project settings
-
-        QualityMode = QualityDropdown.value;
-        // Debug.Log("Setting Quality to " + QualitySettings.GetQualityLevel().ToString());
-
-        QualitySettings.SetQualityLevel(QualityDropdown.value);
-        PlayerPrefs.SetInt("QualityLevel", QualityMode);
+        // QualityPreset = QualityDropdown.value;
+        QualitySettings.SetQualityLevel(QualityPreset);
+        PlayerPrefs.SetInt("QualityLevel", QualityPreset);
+        Debug.Log("Set Quality to: " + QualitySettings.GetQualityLevel().ToString());
     }
 
     public void SetCaptions()
@@ -106,11 +100,11 @@ public class MainMenuFunctions : MonoBehaviour
         // For 0.4
     }
 
-    public void SetAntiAliasing()
+    public void SetAntiAliasing(int AntiAliasingValue)
     {
         // Using a switch case (the value of which is decided through the Anti-Aliasing Dropdown), the Anti Aliasing gets set to either Off, FXAA, TAA, or SMAA
-        AntiAliasingMode = AntiAliasingDropdown.value;
-        switch (AntiAliasingMode)
+        // AntiAliasingValue = AntiAliasingDropdown.value;
+        switch (AntiAliasingValue)
         {
             case 0:
                 URPCamData.antialiasing = AntialiasingMode.None;
@@ -125,26 +119,9 @@ public class MainMenuFunctions : MonoBehaviour
                 URPCamData.antialiasing = AntialiasingMode.SubpixelMorphologicalAntiAliasing;
                 break;
         }
-        Debug.Log("Setting Anti Aliasing to" + URPCamData.antialiasing);
+        // Debug.Log("Setting Anti Aliasing to" + URPCamData.antialiasing);
 
-        PlayerPrefs.SetInt("AntiAliasing", AntiAliasingMode);
-    }
-
-    private void SetAntiAliasingQuality()
-    {
-        switch (QualityGroup)
-        {
-            case 1:
-                URPCamData.antialiasingQuality = AntialiasingQuality.Low;
-                break;
-            case 2:
-                URPCamData.antialiasingQuality = AntialiasingQuality.Medium;
-                break;
-            case 3:
-                URPCamData.antialiasingQuality = AntialiasingQuality.High;
-                break;
-        }
-        PlayerPrefs.SetInt("AntiAliasingQuality", QualityGroup);
+        PlayerPrefs.SetInt("AntiAliasing", AntiAliasingValue);
     }
 
     public void ShowGUI(GameObject GuiToShow)

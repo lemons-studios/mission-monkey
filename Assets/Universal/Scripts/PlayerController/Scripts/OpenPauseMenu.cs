@@ -23,15 +23,6 @@ public class OpenPauseMenu : MonoBehaviour
 #pragma warning disable CS0618 // Type or member is obsolete
         AudioInScene = Object.FindObjectsOfType<AudioSource>();
 #pragma warning restore CS0618 // Type or member is obsolete
-
-        if(Application.platform == RuntimePlatform.Android || Application.platform == RuntimePlatform.IPhonePlayer)
-        {
-            PauseButton.SetActive(true);
-        }
-        else
-        {
-            PauseButton.SetActive(false);
-        }
     }
 
     private void PauseHandler(InputAction.CallbackContext context)

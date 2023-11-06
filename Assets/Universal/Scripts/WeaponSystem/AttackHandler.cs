@@ -108,7 +108,7 @@ public abstract class AttackHandler : MonoBehaviour
                         // Debug.Log("Damage Dealt: " + RoundedDamage);
                         if (HitEnemyHealth.HitPoints >= 0)
                         {
-                            Debug.Log("Health Remaining: " + HitEnemyHealth.HitPoints);
+                            // Debug.Log("Health Remaining: " + HitEnemyHealth.HitPoints);
                         }
                     }
                 }

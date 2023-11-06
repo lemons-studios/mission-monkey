@@ -64,7 +64,8 @@ public class DiscordRichPresenceController : MonoBehaviour
             {
                 if (res == Discord.Result.Ok)
                 {
-                    Debug.Log("Connected to Discord!");
+                    // Debug.Log("Connected to Discord!");
+                    return;
                 }
                 else Debug.LogWarning("Failed to connect to Discord!");
             });
