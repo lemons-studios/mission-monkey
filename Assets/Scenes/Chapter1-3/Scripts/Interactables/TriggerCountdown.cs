@@ -42,7 +42,7 @@ public class TriggerCountdown : Interactable
         {
             TimeSpan timeSpan = TimeSpan.FromSeconds(CountdownTime);
             string CountdownTimeToString = timeSpan.ToString(@"mm\:ss");
-            CountdownUGUI.text = "Time until all monkeys board escape pods: " + CountdownTimeToString;
+            CountdownUGUI.text = "Time until all monkeys board escape pods " + CountdownTimeToString;
             CountdownTime -= 1;
             yield return new WaitForSeconds(1);
         }
