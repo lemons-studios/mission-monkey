@@ -32,9 +32,8 @@
 ## 🛠️ Requirements to Develop
 
 1. [Unity 2023.1.16f1](https://unity.com/releases/editor/archive#download-archive-2023)
-2. [Blender 3+](https://www.blender.org/download/) ([Or Download From Steam](https://store.steampowered.com/app/365670/Blender/))
+2. [Blender 4.0+](https://www.blender.org/download/) ([Or Download From Steam](https://store.steampowered.com/app/365670/Blender/))
 3. [Visual Studio 2022](https://visualstudio.microsoft.com/thank-you-downloading-visual-studio/?sku=Community). Install the "Desktop Development With C++" and "Game Development With Unity" modules, and add at least one Windows 10/11 SDK
 
 ## 📃 Credits
-- See [THANKS](https://github.com/funny-unity-game/Mission-Monkey/blob/main/THANKS) for credits
 - Thanks To [NASA](https://on.soundcloud.com/H9XBW) for providing the sound effect for the escape pods for the Chapter1-3 Scene (Licensed Under [CC-BY-NC](https://creativecommons.org/licenses/by-nc/3.0/))
