@@ -26,8 +26,8 @@
 
 ## 🚀 Recommended PC Specs to play:
 1. [Windows](https://www.microsoft.com/windows) 10 or 11
-2. [9th Generation Intel](https://en.wikipedia.org/wiki/Coffee_Lake#Coffee_Lake-S_(Desktop_processors)) Desktop CPU/[AMD Equivilent](https://www.cpu-monkey.com/en/cpu_group-amd_ryzen_3000-14)
-3. A Graphics card that supports DirectX12 (Any computer that was purchased within the last 10 or so years supports this)
+2. A decent CPU
+3. A graphics card that supports DirectX12 (Any computer that was purchased within the last 10 or so years supports this)
 
 ## 🛠️ Requirements to Develop
 
