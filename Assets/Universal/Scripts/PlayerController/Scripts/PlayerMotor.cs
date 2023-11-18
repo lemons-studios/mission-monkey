@@ -13,6 +13,7 @@ public class PlayerMotor : MonoBehaviour
     public float sprintSpeed = 10f;
     public float jumpHeight = 1f;
     public float jumpCap = 1f;
+    
 
     // Start is called before the first frame update
     void Start()
@@ -57,6 +58,8 @@ public class PlayerMotor : MonoBehaviour
             playerVelocity.y = -2f;
 
         controller.Move(playerVelocity * Time.deltaTime);
+
+
     }
 
     public void Jump()
