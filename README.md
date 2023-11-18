@@ -31,7 +31,7 @@
 
 ## ⚙️ Requirements to Develop
 1. Windows or Linux (MacOS might be possible but good luck pal)
-2. [Unity 2023.1.16f1](https://unity.com/releases/editor/archive#download-archive-2023)
+2. [Unity 2023.2.0f1](https://unity.com/releases/editor/archive#download-archive-2023)
 3. [Blender 4.0+](https://www.blender.org/download/) ([Or Download From Steam](https://store.steampowered.com/app/365670/Blender/))
 4. [Visual Studio 2022](https://visualstudio.microsoft.com/thank-you-downloading-visual-studio/?sku=Community). Install the "Desktop Development With C++" and "Game Development With Unity" modules, and add at least one Windows 10/11 SDK
 5. ~22GB of storage to clone the source code and download all the packages required for the project
