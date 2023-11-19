@@ -49,7 +49,7 @@ public class PlayerMotor : MonoBehaviour
             viewbobbing.DisableViewBobbing();
         }
 
-        float currentSpeed = isSprinting ? sprintSpeed : speed;
+        float currentSpeed = isSprinting ? sprintSpeed : speed; 
         controller.Move(transform.TransformDirection(moveDirection) * currentSpeed * Time.deltaTime);
 
         playerVelocity.y += gravity * Time.deltaTime;
