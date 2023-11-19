@@ -23,7 +23,7 @@ public class MainMenuFunctions : MonoBehaviour
 
     private void Start()
     {
-        //DeleteAllKeys();
+        LoadSettingsValues();
     }
 
     public void LoadSettingsValues()
@@ -52,7 +52,7 @@ public class MainMenuFunctions : MonoBehaviour
     private void DeleteAllKeys()
     {
         PlayerPrefs.DeleteAll();
-        Debug.Log("Deleted all keys!");
+        // Debug.Log("Deleted all keys!");
     }
 
     public void SetVolume(float volume)
@@ -152,12 +152,6 @@ public class MainMenuFunctions : MonoBehaviour
         UnityEditor.EditorApplication.isPlaying = false;
 #endif
         Application.Quit();
-    }
-
-    public void LoadCredits()
-    {
-        // Debug.Log("Loading Credits");
-        SceneManager.LoadScene("Credits");
     }
 
     public void OpenLink(string Link)
