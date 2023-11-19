@@ -17150,7 +17150,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 5366333786085728961}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3711782026034794655}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d1998980afc34e74eab39421117dc999, type: 3}
   m_Name: 
@@ -17446,6 +17446,17 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 3978682377046133196, guid: ef94ba60218e5794482ab3c6fa51c13e, type: 3}
   m_PrefabInstance: {fileID: 5366333786085728961}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &3711782026034794665 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 384200576640101453, guid: ef94ba60218e5794482ab3c6fa51c13e, type: 3}
+  m_PrefabInstance: {fileID: 5366333786085728961}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3711782026034794655}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c9c767b6d7578104183d862eb72b5204, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &3745622626793092734
 Transform:
   m_ObjectHideFlags: 0
@@ -17695,6 +17706,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.x
       value: 0.000019633
       objectReference: {fileID: 0}
+    - target: {fileID: 4118740219849957407, guid: ef94ba60218e5794482ab3c6fa51c13e, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5765056826156142265, guid: ef94ba60218e5794482ab3c6fa51c13e, type: 3}
       propertyPath: m_Name
       value: Player
@@ -17707,9 +17722,13 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: 131
       objectReference: {fileID: 0}
+    - target: {fileID: 7234933611986575152, guid: ef94ba60218e5794482ab3c6fa51c13e, type: 3}
+      propertyPath: PlayerLook
+      value: 
+      objectReference: {fileID: 3711782026034794665}
     - target: {fileID: 8264143635785686995, guid: ef94ba60218e5794482ab3c6fa51c13e, type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9003872494562088501, guid: ef94ba60218e5794482ab3c6fa51c13e, type: 3}
       propertyPath: m_IsActive
@@ -17717,7 +17736,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9148906351111264464, guid: ef94ba60218e5794482ab3c6fa51c13e, type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 5513197280745807016, guid: ef94ba60218e5794482ab3c6fa51c13e, type: 3}
