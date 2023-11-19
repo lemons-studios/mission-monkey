@@ -4,10 +4,10 @@ using UnityEngine.InputSystem;
 public class PlayerMotor : MonoBehaviour
 {
     private InputAction spaceAction;
-    private CharacterController controller;
+    public CharacterController controller;
     private ViewBobbing viewbobbing;
     private Vector3 playerVelocity;
-    private bool isGrounded;
+    public bool isGrounded;
     public float gravity = -20f;
     public float speed = 5f;
     public float sprintSpeed = 10f;
@@ -64,8 +64,10 @@ public class PlayerMotor : MonoBehaviour
 
     public void Jump()
     {
+       
         if (isGrounded)
         {
+            Debug.Log("haallo");
             spaceAction.Enable();
             playerVelocity.y = Mathf.Sqrt(jumpHeight * -3.0f * gravity);
         }

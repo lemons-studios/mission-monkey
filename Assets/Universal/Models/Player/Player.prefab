@@ -1786,7 +1786,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   background: {fileID: 4589690784825734200}
   knob: {fileID: 6750354492593720944}
-  cameraMove: {fileID: 5718412478717827114}
+  cameraMove: {fileID: 1543216791348560060}
 --- !u!1 &1052873386143414936
 GameObject:
   m_ObjectHideFlags: 0
@@ -2012,7 +2012,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   holdTimeThreshold: 1
-  cameraMove: {fileID: 5718412478717827114}
+  cameraMove: {fileID: 1543216791348560060}
 --- !u!1 &1096885850424888403
 GameObject:
   m_ObjectHideFlags: 0
@@ -5039,9 +5039,10 @@ GameObject:
   - component: {fileID: 5302567022567886405}
   - component: {fileID: 8755767558901802577}
   - component: {fileID: 1284890568395805555}
+  - component: {fileID: 1543216791348560060}
   m_Layer: 0
   m_Name: Camera
-  m_TagString: Untagged
+  m_TagString: MainCamera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5166,6 +5167,22 @@ MonoBehaviour:
     mipBias: 0
     varianceClampScale: 0.9
     contrastAdaptiveSharpening: 0
+--- !u!114 &1543216791348560060
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2606550537961342238}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e988892b97e004d4ba0fc247f8a81436, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rotationSpeed: 2
+  minXAngle: -90
+  maxXAngle: 90
+  ignoreTouch: 0
 --- !u!1 &2796687445286635919
 GameObject:
   m_ObjectHideFlags: 0
@@ -6916,7 +6933,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   holdTimeThreshold: 1
   playerMotor: {fileID: 8264143635785686995}
-  cameraMove: {fileID: 5718412478717827114}
+  cameraMove: {fileID: 1543216791348560060}
 --- !u!1 &3889879857649582472
 GameObject:
   m_ObjectHideFlags: 0
@@ -6982,6 +6999,7 @@ GameObject:
   - component: {fileID: 2755003881876265951}
   - component: {fileID: 8663228194049673236}
   - component: {fileID: 8201561734350332279}
+  - component: {fileID: 5479688529536489022}
   m_Layer: 0
   m_Name: PlayerModel
   m_TagString: Player
@@ -7257,6 +7275,20 @@ MonoBehaviour:
   PauseMenu: {fileID: 4478754665473827900}
   StartUI: {fileID: 3889879857649582472}
   PauseButton: {fileID: 0}
+--- !u!114 &5479688529536489022
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3978682377046133196}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d8187fc975d36dd4085e8f7c9aae1c37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 5
+  touchJoystick: {fileID: 3020167455052349472}
 --- !u!1 &4103720579549808586
 GameObject:
   m_ObjectHideFlags: 0
@@ -10436,7 +10468,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   holdTimeThreshold: 1
-  cameraMove: {fileID: 5718412478717827114}
+  cameraMove: {fileID: 1543216791348560060}
 --- !u!1 &5765056826156142265
 GameObject:
   m_ObjectHideFlags: 0
@@ -10666,14 +10698,13 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6118997745442249174}
-  - component: {fileID: 5718412478717827114}
   m_Layer: 5
   m_Name: MobileUI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &6118997745442249174
 RectTransform:
   m_ObjectHideFlags: 0
@@ -10697,23 +10728,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: -115.6}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &5718412478717827114
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5978670789171776103}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e988892b97e004d4ba0fc247f8a81436, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  rotationSpeed: 2
-  validTouch: 0
-  minXAngle: -90
-  maxXAngle: 90
-  ignoreTouch: 0
 --- !u!1 &6196385721139834496
 GameObject:
   m_ObjectHideFlags: 0

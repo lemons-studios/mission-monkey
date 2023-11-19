@@ -6,7 +6,7 @@ public class CameraMove : MonoBehaviour
 {  // Adjust this sensitivity to control the rotation speed
     public float rotationSpeed = 2.0f;
   
-    public bool validTouch;
+  
     // Set the maximum and minimum angles for rotation on the x-axis
     public float minXAngle = -90f;
     public float maxXAngle = 90f;
