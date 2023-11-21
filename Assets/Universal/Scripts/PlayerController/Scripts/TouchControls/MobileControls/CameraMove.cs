@@ -35,7 +35,7 @@ public class CameraMove : MonoBehaviour
         if (Input.touchCount > 0)
 
         {
-
+            Debug.Log("it's working");
            
             if (Input.touchCount > ignoreTouch) 
             { 
