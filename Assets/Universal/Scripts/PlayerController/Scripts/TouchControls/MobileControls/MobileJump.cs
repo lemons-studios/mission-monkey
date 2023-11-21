@@ -7,7 +7,7 @@ public class MobileJump : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 {
     public float holdTimeThreshold = 1.0f; // Set the time threshold for holding the button
     public PlayerMotor playerMotor;
-    private bool isHolding = false;
+    
     public CameraMove cameraMove;
 
     void Awake()
@@ -27,14 +27,14 @@ public class MobileJump : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
     public void OnPointerDown(PointerEventData eventData)
     {
         
-        isHolding = true;
+        
         cameraMove.ignoreTouch++;
         playerMotor.Jump();
     }
     public void OnPointerUp(PointerEventData eventData)
     {
         
-        isHolding = false;
+       
         cameraMove.ignoreTouch--;
     }
 
