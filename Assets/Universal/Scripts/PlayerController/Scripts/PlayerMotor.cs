@@ -13,7 +13,8 @@ public class PlayerMotor : MonoBehaviour
     public float sprintSpeed = 10f;
     public float jumpHeight = 1f;
     public float jumpCap = 1f;
-    
+    public JoyStick touchJoystick;
+    public bool mobileControl;
 
     // Start is called before the first frame update
     void Start()
@@ -37,6 +38,7 @@ public class PlayerMotor : MonoBehaviour
     public void ProcessMove(Vector2 input, bool isSprinting)
     {
         Vector3 moveDirection = Vector3.zero;
+       
         moveDirection.x = input.x;
         moveDirection.z = input.y;
 

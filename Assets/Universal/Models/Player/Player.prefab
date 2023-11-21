@@ -7013,7 +7013,6 @@ GameObject:
   - component: {fileID: 2755003881876265951}
   - component: {fileID: 8663228194049673236}
   - component: {fileID: 8201561734350332279}
-  - component: {fileID: 5479688529536489022}
   m_Layer: 0
   m_Name: PlayerModel
   m_TagString: Player
@@ -7127,11 +7126,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1998980afc34e74eab39421117dc999, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  controller: {fileID: 0}
+  isGrounded: 0
   gravity: -30
   speed: 5
   sprintSpeed: 10
   jumpHeight: 1
   jumpCap: 1
+  touchJoystick: {fileID: 3020167455052349472}
+  mobileControl: 0
 --- !u!114 &384200576640101453
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7159,6 +7162,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   JumpCapCheck: 0
+  touchJoystick: {fileID: 3020167455052349472}
+  mobileControl: 1
 --- !u!95 &6275851800969237276
 Animator:
   serializedVersion: 7
@@ -7289,20 +7294,6 @@ MonoBehaviour:
   PauseMenu: {fileID: 4478754665473827900}
   StartUI: {fileID: 3889879857649582472}
   PauseButton: {fileID: 0}
---- !u!114 &5479688529536489022
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3978682377046133196}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d8187fc975d36dd4085e8f7c9aae1c37, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 5
-  touchJoystick: {fileID: 3020167455052349472}
 --- !u!1 &4103720579549808586
 GameObject:
   m_ObjectHideFlags: 0
