@@ -7,8 +7,6 @@ public abstract class EnemyWaves : MonoBehaviour
     public float TimeBetweenWaveClearCheck = 0.15f;
     private int WaveCount, LastWave;
 
-    private bool IsPastFinalWave = false;
-
     public void StartWaves()
     {
         WaveGroups[0].SetActive(true);

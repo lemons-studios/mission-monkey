@@ -1,3 +1,4 @@
+
 using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -33,8 +34,9 @@ public abstract class AttackHandler : MonoBehaviour
     public void OnAttackStarted(InputAction.CallbackContext context)
     {
         IsInputHeld = true;
-        // Debug.Log("Attack action started");
+        Attack(); // The idea behind this is that spam clicking would result in a faster bullet fire rate if the cooldown for hold clicks is longer than needing to spam click
 
+        // Debug.Log("Attack action started");
         if (clickHeldRoutine == null)
         {
             clickHeldRoutine = StartCoroutine(ClickHeldRoutine());
@@ -105,10 +107,10 @@ public abstract class AttackHandler : MonoBehaviour
                         int RoundedDamage = Mathf.RoundToInt(UnroundedDamage);
                         HitEnemyHealth.HitPoints = HitEnemyHealth.HitPoints - RoundedDamage;
 
-                        Debug.Log("Damage Dealt: " + RoundedDamage);
+                        // Debug.Log("Damage Dealt: " + RoundedDamage);
                         if (HitEnemyHealth.HitPoints >= 0)
                         {
-                            Debug.Log("Health Remaining: " + HitEnemyHealth.HitPoints);
+                            // Debug.Log("Health Remaining: " + HitEnemyHealth.HitPoints);
                         }
                     }
                 }

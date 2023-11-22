@@ -4,30 +4,34 @@ using UnityEngine.SceneManagement;
 
 public class EscapePodLeave : Interactable
 {
-    public GameObject Player, EscapePodSeat;
+    public GameObject EscapePodSeat, escapePodCam;
+    public GameObject[] ObjectsToDisable;
+
     public Animator EscapePodAnimator;
     private bool Interacted = false;
     protected override void Interact()
     {
         base.Interact();
-        Interacted = true;
-        EscapePodAnimator.SetBool("MonkeyInEscapePod", true);
-        promptMessage = string.Empty;
         gameObject.GetComponent<BoxCollider>().enabled = false;
+        promptMessage = string.Empty;
+        PrepareEndScene();
     }
 
-    private void Update()
+    private void PrepareEndScene()
     {
-        if (Interacted)
+        escapePodCam.SetActive(true);
+        foreach (GameObject obj in ObjectsToDisable)
         {
-            Player.transform.position = EscapePodSeat.transform.position;
-            StartCoroutine(WaituntilSceneLoad());
+            obj.SetActive(false);
         }
+        
+        EscapePodAnimator.SetBool("MonkeyInEscapePod", true);
+        StartCoroutine(WaituntilSceneLoad());
     }
 
     private IEnumerator WaituntilSceneLoad()
     {
         yield return new WaitForSeconds(15);
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        SceneManager.LoadScene("Credits");
     }
 }

@@ -10,7 +10,7 @@ public class OpenPauseMenu : MonoBehaviour
     private AttackHandler[] Weapons;
     private int IsOnPauseMenu = 0;
     private AudioSource[] AudioInScene;
-
+    public GameObject PauseButton;
     
 
     private void Start()
@@ -23,7 +23,6 @@ public class OpenPauseMenu : MonoBehaviour
 #pragma warning disable CS0618 // Type or member is obsolete
         AudioInScene = Object.FindObjectsOfType<AudioSource>();
 #pragma warning restore CS0618 // Type or member is obsolete
-
     }
 
     private void PauseHandler(InputAction.CallbackContext context)
@@ -41,7 +40,7 @@ public class OpenPauseMenu : MonoBehaviour
         }
     }
 
-    private void PauseGame()
+    public void PauseGame()
     {
 
         foreach (GameObject UIElements in GameUiElements)
@@ -63,7 +62,7 @@ public class OpenPauseMenu : MonoBehaviour
         Time.timeScale = 0;
         PauseMenu.SetActive(true);
     }
-    private void ResumeGame()
+    public void ResumeGame()
     {
         foreach (GameObject UIElements in GameUiElements)
         {
