@@ -4,17 +4,15 @@ using UnityEngine.InputSystem;
 public class PlayerMotor : MonoBehaviour
 {
     private InputAction spaceAction;
-    public CharacterController controller;
+    private CharacterController controller;
     private ViewBobbing viewbobbing;
     private Vector3 playerVelocity;
-    public bool isGrounded;
+    private bool isGrounded;
     public float gravity = -20f;
     public float speed = 5f;
     public float sprintSpeed = 10f;
     public float jumpHeight = 1f;
     public float jumpCap = 1f;
-    public JoyStick touchJoystick;
-    public bool mobileControl;
 
     // Start is called before the first frame update
     void Start()
@@ -38,7 +36,6 @@ public class PlayerMotor : MonoBehaviour
     public void ProcessMove(Vector2 input, bool isSprinting)
     {
         Vector3 moveDirection = Vector3.zero;
-       
         moveDirection.x = input.x;
         moveDirection.z = input.y;
 
@@ -51,7 +48,7 @@ public class PlayerMotor : MonoBehaviour
             viewbobbing.DisableViewBobbing();
         }
 
-        float currentSpeed = isSprinting ? sprintSpeed : speed; 
+        float currentSpeed = isSprinting ? sprintSpeed : speed;
         controller.Move(transform.TransformDirection(moveDirection) * currentSpeed * Time.deltaTime);
 
         playerVelocity.y += gravity * Time.deltaTime;
@@ -60,16 +57,12 @@ public class PlayerMotor : MonoBehaviour
             playerVelocity.y = -2f;
 
         controller.Move(playerVelocity * Time.deltaTime);
-
-
     }
 
     public void Jump()
     {
-       
         if (isGrounded)
         {
-            Debug.Log("haallo");
             spaceAction.Enable();
             playerVelocity.y = Mathf.Sqrt(jumpHeight * -3.0f * gravity);
         }
