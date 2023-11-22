@@ -1,8 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
-using Unity.Android.Gradle.Manifest;
 using UnityEngine;
-using UnityEngine.EventSystems;
 
 public class MobileMovement : MonoBehaviour
 {
@@ -24,7 +20,7 @@ public class MobileMovement : MonoBehaviour
     {
         isGrounded = characterController.isGrounded;
         Vector2 input = touchJoystick.GetInputVector();
-        
+
         Vector3 movement = Vector3.zero;
         movement.x = input.x;
         movement.z = input.y;
@@ -40,7 +36,7 @@ public class MobileMovement : MonoBehaviour
         movement = Camera.main.transform.TransformDirection(movement);
         // Keep the character level with the ground
 
-    
+
         characterController.Move(transform.TransformDirection(movement) * speed * Time.deltaTime);
 
         playerVelocity.y += gravity * Time.deltaTime;

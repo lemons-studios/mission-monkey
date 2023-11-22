@@ -1,16 +1,17 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class CHeck : MonoBehaviour
 {
-
-    // Update is called once per frame
-    void Update()
+    PlayerInput input = new PlayerInput();
+    private void Start()
     {
-        if(Input.touchCount > 0)
-        {
-            Debug.Log("hooray");
-        }
+        input.UI.Click.performed += LogInput;
+        input.Enable();
+    }
+
+    private void LogInput(InputAction.CallbackContext context)
+    {
+        Debug.Log("Input received");
     }
 }

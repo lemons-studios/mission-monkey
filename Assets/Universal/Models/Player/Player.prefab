@@ -5196,7 +5196,9 @@ MonoBehaviour:
   rotationSpeed: 2
   minXAngle: -90
   maxXAngle: 90
+  touchDelta: {x: 0, y: 0}
   ignoreTouch: 0
+  canLook: 0
 --- !u!1 &2796687445286635919
 GameObject:
   m_ObjectHideFlags: 0
@@ -7162,6 +7164,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   JumpCapCheck: 0
+  cameraMove: {fileID: 0}
   touchJoystick: {fileID: 3020167455052349472}
   mobileControl: 1
 --- !u!95 &6275851800969237276
@@ -10709,7 +10712,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &6118997745442249174
 RectTransform:
   m_ObjectHideFlags: 0
