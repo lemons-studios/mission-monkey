@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2013/05/nuspec.xsd">
+  <metadata minClientVersion="2.12">
+    <id>Newtonsoft.Json.Schema</id>
+    <version>3.0.15</version>
+    <title>Json.NET Schema</title>
+    <authors>Newtonsoft</authors>
+    <requireLicenseAcceptance>true</requireLicenseAcceptance>
+    <license type="file">LICENSE.md</license>
+    <licenseUrl>https://aka.ms/deprecateLicenseUrl</licenseUrl>
+    <icon>packageIcon.png</icon>
+    <projectUrl>https://www.newtonsoft.com/jsonschema</projectUrl>
+    <description>Json.NET Schema is a complete and easy-to-use JSON Schema framework for .NET</description>
+    <copyright>Copyright © Newtonsoft 2014</copyright>
+    <tags>json schema jsonschema</tags>
+    <repository type="git" url="https://github.com/JamesNK/Newtonsoft.Json.Schema" commit="c7bfcd00d468b1aa20e85f1dd3b60c1364467192" />
+    <dependencies>
+      <group targetFramework=".NETFramework3.5">
+        <dependency id="Newtonsoft.Json" version="13.0.3" exclude="Build,Analyzers" />
+      </group>
+      <group targetFramework=".NETFramework4.0">
+        <dependency id="Newtonsoft.Json" version="13.0.3" exclude="Build,Analyzers" />
+      </group>
+      <group targetFramework=".NETFramework4.5">
+        <dependency id="Newtonsoft.Json" version="13.0.3" exclude="Build,Analyzers" />
+      </group>
+      <group targetFramework=".NETStandard1.3">
+        <dependency id="NETStandard.Library" version="1.6.1" exclude="Build,Analyzers" />
+        <dependency id="Newtonsoft.Json" version="13.0.3" exclude="Build,Analyzers" />
+        <dependency id="System.Net.Requests" version="4.3.0" exclude="Build,Analyzers" />
+      </group>
+      <group targetFramework=".NETStandard2.0">
+        <dependency id="Newtonsoft.Json" version="13.0.3" exclude="Build,Analyzers" />
+      </group>
+    </dependencies>
+  </metadata>
+</package>

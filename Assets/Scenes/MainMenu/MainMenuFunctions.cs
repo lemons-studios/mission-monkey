@@ -92,7 +92,7 @@ public class MainMenuFunctions : MonoBehaviour
         // QualityPreset = QualityDropdown.value;
         QualitySettings.SetQualityLevel(QualityPreset);
         PlayerPrefs.SetInt("QualityLevel", QualityPreset);
-        Debug.Log("Set Quality to: " + QualitySettings.GetQualityLevel().ToString());
+        // Debug.Log("Set Quality to: " + QualitySettings.GetQualityLevel().ToString());
     }
 
     public void SetCaptions()

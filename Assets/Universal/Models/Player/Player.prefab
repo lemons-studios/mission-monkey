@@ -7114,15 +7114,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1998980afc34e74eab39421117dc999, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  controller: {fileID: 0}
-  isGrounded: 0
   gravity: -30
   speed: 5
   sprintSpeed: 10
   jumpHeight: 1
   jumpCap: 1
-  touchJoystick: {fileID: 3020167455052349472}
-  mobileControl: 0
 --- !u!114 &384200576640101453
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7150,9 +7146,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   JumpCapCheck: 0
-  cameraMove: {fileID: 0}
-  touchJoystick: {fileID: 3020167455052349472}
-  mobileControl: 1
 --- !u!95 &6275851800969237276
 Animator:
   serializedVersion: 7
@@ -8086,7 +8079,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &7882234656227400819
 RectTransform:
   m_ObjectHideFlags: 0
@@ -9636,14 +9629,14 @@ RectTransform:
   m_GameObject: {fileID: 5347774873854329911}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.55, y: 0.55, z: 0.55}
+  m_LocalScale: {x: 0.6, y: 0.6, z: 0.6}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 1380315863451448083}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: -272.2, y: -190}
+  m_AnchoredPosition: {x: -245, y: -190}
   m_SizeDelta: {x: 252.09995, y: 150}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6580921627596664699
@@ -9708,7 +9701,7 @@ MonoBehaviour:
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_HorizontalAlignment: 2
+  m_HorizontalAlignment: 1
   m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
