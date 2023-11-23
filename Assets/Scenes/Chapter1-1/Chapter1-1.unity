@@ -16917,6 +16917,11 @@ MonoBehaviour:
   m_IgnoreFromBuild: 0
   m_ApplyToChildren: 1
   m_AffectedAgents: ffffffff
+--- !u!224 &1521459155 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 2007705475918912906, guid: ef94ba60218e5794482ab3c6fa51c13e, type: 3}
+  m_PrefabInstance: {fileID: 5366333786085728961}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1534849473
 GameObject:
   m_ObjectHideFlags: 0
@@ -22759,9 +22764,21 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1543216791348560060, guid: ef94ba60218e5794482ab3c6fa51c13e, type: 3}
+      propertyPath: buttonMasks
+      value: 
+      objectReference: {fileID: 5366333786085728962}
+    - target: {fileID: 1543216791348560060, guid: ef94ba60218e5794482ab3c6fa51c13e, type: 3}
+      propertyPath: joyStickMask
+      value: 
+      objectReference: {fileID: 1521459155}
+    - target: {fileID: 1543216791348560060, guid: ef94ba60218e5794482ab3c6fa51c13e, type: 3}
       propertyPath: rotationSpeed
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 1543216791348560060, guid: ef94ba60218e5794482ab3c6fa51c13e, type: 3}
+      propertyPath: uiMaskRectTransform
+      value: 
+      objectReference: {fileID: 1521459155}
     - target: {fileID: 2185851842723849112, guid: ef94ba60218e5794482ab3c6fa51c13e, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -22785,6 +22802,14 @@ PrefabInstance:
     - target: {fileID: 3444044620731463330, guid: ef94ba60218e5794482ab3c6fa51c13e, type: 3}
       propertyPath: m_MinMoveDistance
       value: 0.0001
+      objectReference: {fileID: 0}
+    - target: {fileID: 3574352763817035754, guid: ef94ba60218e5794482ab3c6fa51c13e, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -411
+      objectReference: {fileID: 0}
+    - target: {fileID: 3574352763817035754, guid: ef94ba60218e5794482ab3c6fa51c13e, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -486
       objectReference: {fileID: 0}
     - target: {fileID: 3649726230516319943, guid: ef94ba60218e5794482ab3c6fa51c13e, type: 3}
       propertyPath: cameraMove
@@ -22826,6 +22851,10 @@ PrefabInstance:
       propertyPath: m_AnchorMin.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5192151303339410434, guid: ef94ba60218e5794482ab3c6fa51c13e, type: 3}
+      propertyPath: m_Name
+      value: JoyStickMask
+      objectReference: {fileID: 0}
     - target: {fileID: 5350530333422230851, guid: ef94ba60218e5794482ab3c6fa51c13e, type: 3}
       propertyPath: cameraMove
       value: 
@@ -22852,7 +22881,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5978670789171776103, guid: ef94ba60218e5794482ab3c6fa51c13e, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6311698481958860303, guid: ef94ba60218e5794482ab3c6fa51c13e, type: 3}
       propertyPath: cameraMove
@@ -22936,6 +22965,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ef94ba60218e5794482ab3c6fa51c13e, type: 3}
+--- !u!224 &5366333786085728962 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 7998419681940173122, guid: ef94ba60218e5794482ab3c6fa51c13e, type: 3}
+  m_PrefabInstance: {fileID: 5366333786085728961}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &6645823806309765313
 Transform:
   m_ObjectHideFlags: 0
