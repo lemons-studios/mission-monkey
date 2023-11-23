@@ -1,89 +1,83 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
+using UnityEngine.InputSystem.EnhancedTouch;
 
 
 public class CameraMove : MonoBehaviour
 {  // Adjust this sensitivity to control the rotation speed
+
     public float rotationSpeed = 2.0f;
-    private Vector2 lastTouchPos;
-
-
-    // Set the maximum and minimum angles for rotation on the x-axis
     public float minXAngle = -90f;
     public float maxXAngle = 90f;
-    public Vector2 touchDelta;
-    private Vector2 touchStartPos;
-    private float rotationX = 0f;
+    public Vector2 touchDelta = Vector2.zero;
+    public RectTransform joyStickMask; // Assign this in the Inspector
+    public RectTransform buttonMasks;
     public int ignoreTouch = 0;
-    public bool canLook = false;
-    int camTouch = 0;
-    private void Awake()
+    private float rotationX = 0f;
+
+    private void OnEnable()
     {
-        
+        // Enable EnhancedTouch to use Unity's new Input System for touch
+        EnhancedTouchSupport.Enable();
     }
-    private void Start()
+
+    private void OnDisable()
     {
-       touchDelta = Vector2.zero;
+        // Disable EnhancedTouch when the script is disabled
+        EnhancedTouchSupport.Disable();
     }
+
     void Update()
     {
+        UnityEngine.InputSystem.EnhancedTouch.Touch? touch = null;
+        foreach (var activeTouch in UnityEngine.InputSystem.EnhancedTouch.Touch.activeTouches)
+        {
+            touch = activeTouch;
+            break;
+        }
+
+        // If there is no touch, set deltaPos to zero
+        Vector2 deltaPos = touch.HasValue ? touch.Value.delta : Vector2.zero;
        
 
-
-        // Check for touch input
-        if (Input.touchCount > 0)
-
+        // Convert touch position to local coordinates of the UI mask
+        if (touch.HasValue)
         {
-            Debug.Log("it's working");
-           
-            if (Input.touchCount > ignoreTouch) 
-            { 
-               
-            }
-            else
+            Vector2 touchPos = touch.Value.screenPosition;
+            Vector2 localTouchPos;
+            if (RectTransformUtility.ScreenPointToLocalPointInRectangle(joyStickMask, touchPos, null, out localTouchPos))
             {
-                camTouch = Input.touchCount - 1;
+                // Check if the touch is inside the UI mask before skipping rotation
+                if (joyStickMask.rect.Contains(localTouchPos))
+                {
+                    deltaPos = Vector2.zero; // Set deltaPos to zero
+                    
+                }
             }
-           
-          
-                Touch touch = Input.GetTouch(Input.touchCount-1);
-
-                // Check for the start of the touch
-                if (touch.phase == TouchPhase.Began)
-                {
-                    touchStartPos = touch.position;
-                }
-                // Check for the end of the touch
-                else if (touch.phase == TouchPhase.Moved)
-                {
-                    if (Input.touchCount > ignoreTouch)
-                    {
-                    touch = Input.GetTouch(camTouch);
-                        // Calculate the touch delta position
-                        Vector2 deltaPos = touch.position - touchStartPos;
-                        touchDelta = deltaPos;
-                        // Rotate the camera based on touch delta
-                        rotationX -= deltaPos.y * rotationSpeed * Time.deltaTime;
-                        rotationX = Mathf.Clamp(rotationX, minXAngle, maxXAngle);
-
-                        float rotationY = deltaPos.x * rotationSpeed * Time.deltaTime;
-
-                        // Apply the rotation to the camera
-                        transform.localRotation = Quaternion.Euler(rotationX, transform.localRotation.eulerAngles.y + rotationY, 0);
-
-                        // Save the current touch position for the next frame
-                        touchStartPos = touch.position;
-
-                    }
-                }
-            else
+            if (RectTransformUtility.ScreenPointToLocalPointInRectangle(buttonMasks, touchPos, null, out localTouchPos))
             {
-                touchDelta = Vector2.zero;
+                // Check if the touch is inside the UI mask before skipping rotation
+                if (buttonMasks.rect.Contains(localTouchPos))
+                {
+                    deltaPos = Vector2.zero; // Set deltaPos to zero
+
+                }
             }
-            
         }
-    }
+        touchDelta = deltaPos;
+        // Rotate the camera based on touch delta
+        rotationX -= deltaPos.y * rotationSpeed * Time.deltaTime;
+        rotationX = Mathf.Clamp(rotationX, minXAngle, maxXAngle);
 
+        float rotationY = deltaPos.x * rotationSpeed * Time.deltaTime;
+
+        // Apply the rotation to the camera
+        transform.localRotation = Quaternion.Euler(rotationX, transform.localRotation.eulerAngles.y + rotationY, 0);
+       
+    }
 }
+
+
 
