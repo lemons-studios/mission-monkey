@@ -34,7 +34,7 @@
 2. [Unity 2023.2.0](https://unity.com/releases/editor/archive#download-archive-2023)
 3. [Blender 4.0+](https://www.blender.org/download/) ([Or Download From Steam](https://store.steampowered.com/app/365670/Blender/))
 4. [Visual Studio 2022](https://visualstudio.microsoft.com/thank-you-downloading-visual-studio/?sku=Community). Install the "Desktop Development With C++" and "Game Development With Unity" modules, and add at least one Windows 10/11 SDK
-5. ~22GB of storage to clone the source code and download all the packages required for the project
+5. ~5-10GB of storage to clone the source code and download all the packages required for the project
 
 After meeting the above requirements, clone the repoository with git (or use GitHub Desktop):
 ```sh
@@ -43,7 +43,7 @@ git clone https://github.com/Lemons-Studios/Mission-Monkey.git
 Add the project to the Unity Hub, and you are good to launch the game!
 
 ## 🏗️ Build From Source
-To build from source, you must have all of the software mentioned in **Requirements to Develop** installed, as well as the ~22GB of storage required to have the project on your computer
+To build from source, you must have all of the software mentioned in **Requirements to Develop** installed, as well as an additional 15-20GB of storage (Just in case)
 Follow the exact same steps provided on how to open the project in **Requirements to Develop**. Once you have the project open, navigate to the ["build settings" tab](https://cdn.discordapp.com/attachments/888136140564095007/1174972604847771739/image.png?ex=65698982&is=65571482&hm=216d691f61f592c5fe6c86d884b92a40366e25f26158b118bdf07426ac5f4c96&), and select your build options from there.
 
 > **Note**
