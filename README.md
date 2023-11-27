@@ -33,8 +33,15 @@
 1. Windows or Linux (MacOS might be possible but good luck pal)
 2. [Unity 2023.2.0](https://unity.com/releases/editor/archive#download-archive-2023)
 3. [Blender 4.0+](https://www.blender.org/download/) ([Or Download From Steam](https://store.steampowered.com/app/365670/Blender/))
-4. [Visual Studio 2022](https://visualstudio.microsoft.com/thank-you-downloading-visual-studio/?sku=Community). Install the "Desktop Development With C++" and "Game Development With Unity" modules, and add at least one Windows 10/11 SDK
+4. A C++ compiler (See compiler instructions below)
 5. ~30GB of storage to clone the source code and download all the packages required for the project
+
+### C++ Compiler
+Windows 10/11: Use [Visual Studio 2022](https://visualstudio.microsoft.com/thank-you-downloading-visual-studio/?sku=Community). Install the "Desktop Development With C++" and "Game Development With Unity" modules, and add at least one Windows 10/11 SDK
+
+MacOS: Install the [XCode C++ Compiler](https://www.cs.rhodes.edu/~kirlinp/courses/cs2/s17/installing-clion/xcode.html)
+
+Linux: A C++ Compiler should be installed by default, you can check this by running ```cpp --version``` or ```c++ --version```. If you do not have a C++ compiler installed, Google: "Install C++ Compiler [Distribution Name]"
 
 After meeting the above requirements, clone the repoository with git (or use GitHub Desktop):
 ```sh
