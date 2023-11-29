@@ -3,6 +3,7 @@ using System.IO;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 public class SaveData : MonoBehaviour
 {
@@ -14,27 +15,46 @@ public class SaveData : MonoBehaviour
     private string fileName = "missionMonkeyData.json";
     private string fileDir;
 
+    public bool doesSaveDataExist()
+    {
+        if(File.Exists(fileDir))
+        {
+            return true;
+        }
+        else return false;
+    }
+
     private void Start()
     {
         currentActiveScene = SceneManager.GetActiveScene().name;
         persistentData = Application.persistentDataPath;
         fileDir = Path.Combine(persistentData, fileName);
-
-        if (!File.Exists(fileDir))
-        {
-            generateSaveData();
-        }
     }
 
     public void generateSaveData()
     {
-        string jsonDataToWrite = jsonData.jsonDataToString(currentActiveScene, new Vector3(-85, 0.5f, -11.75f));
-        File.WriteAllText(fileDir, jsonDataToWrite);
+        if (File.Exists(fileDir))
+        {
+            File.Delete(fileDir);
+        }
+
+        string defaultData = jsonData.jsonDataToString(currentActiveScene, new Vector3(-85, 0.5f, -11.75f));
+        File.WriteAllText(fileDir, defaultData);
     }
 
     public void loadSaveData()
     {
+        JObject jsonLoad = JObject.Parse(fileDir);
+        string savedLoadedScene = jsonLoad["currentScene"].ToString();
+        SceneManager.LoadScene(savedLoadedScene);
+        
+    }
 
+    public void writeSaveData()
+    {
+        File.Delete(fileDir);
+        string updatedData = jsonData.jsonDataToString(currentActiveScene, Player.transform.position);
+        File.WriteAllText(fileDir, updatedData);
     }
 
     public void deleteSaveData()
@@ -45,12 +65,11 @@ public class SaveData : MonoBehaviour
         float tempMsHolder = PlayerPrefs.GetFloat("MouseSensitivityValue");
         int tempAntiAliasingHolder = PlayerPrefs.GetInt("AntiAliasing");
         int tempQualityHolder = PlayerPrefs.GetInt("QualityLevel");
-
         PlayerPrefs.DeleteAll();
 
         // Regenerate save data JSON after wiping
+        File.Delete(fileDir);
         generateSaveData();
-
 
         resetSettingsKeyValues(tempVolHolder, tempFovHolder, tempMsHolder, tempAntiAliasingHolder, tempQualityHolder);
     }
@@ -64,6 +83,7 @@ public class SaveData : MonoBehaviour
         PlayerPrefs.SetInt("AntiAliasing", antiAliasing);
     }
 }
+
 
 [Serializable]
 class JsonData

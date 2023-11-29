@@ -1,3 +1,4 @@
+using System.Collections;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Audio;
@@ -7,6 +8,9 @@ using UnityEngine.UI;
 
 public class MainMenuFunctions : MonoBehaviour
 {
+    public OpenPauseMenu pauseMenuMethods;
+    public SaveData saveData;
+    public GameObject gameSavedPopup;
     [Space]
     public Slider VolumeSlider, MouseSensSlider, FovSlider;
     public TMP_Dropdown QualityDropdown, AntiAliasingDropdown, CaptionsDropdown;
@@ -133,8 +137,32 @@ public class MainMenuFunctions : MonoBehaviour
     {
         GuiToHide.SetActive(false);
     }
+    public void newGame(string sceneName)
+    {
+        if (saveData.doesSaveDataExist())
+        {
+            saveData.deleteSaveData();
+            LoadNewScene(sceneName);
+        }
+        else LoadNewScene(sceneName);
+    }
 
-    public void LoadNewScene(string scene)
+    public void writeSaveData()
+    {
+        saveData.writeSaveData();
+        pauseMenuMethods.ResumeGame();
+        pauseMenuMethods.IsOnPauseMenu--; // I gotta clean up the pause menu code later
+        ShowGUI(gameSavedPopup);
+        StartCoroutine(waitUntilHideGUI(3.5f));
+    }
+
+    private IEnumerator waitUntilHideGUI(float waitTime)
+    {
+        yield return new WaitForSeconds(waitTime);
+        HideGUI(gameSavedPopup);
+    }
+
+    private void LoadNewScene(string scene)
     {
         if (Time.timeScale != 1) // For when the method is called from the pause menu
         {

@@ -26,7 +26,7 @@ RenderSettings:
   m_AmbientIntensity: 1
   m_AmbientMode: 0
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
-  m_SkyboxMaterial: {fileID: 2100000, guid: d9433928c3d13f649a40f69e3a1d5f6e, type: 2}
+  m_SkyboxMaterial: {fileID: 2100000, guid: d99f97fd3a11da342984714087023741, type: 2}
   m_HaloStrength: 0.5
   m_FlareStrength: 1
   m_FlareFadeSpeed: 3
@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
+  m_IndirectSpecularColor: {r: 0.01748194, g: 0.020960892, b: 0.027733069, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -93,8 +93,8 @@ LightmapSettings:
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
-  m_LightingDataAsset: {fileID: 112000000, guid: 3f2ab638920a2724fa8877d53f769b57, type: 2}
-  m_LightingSettings: {fileID: 4890085278179872738, guid: bed78b3b5362366439f0e948f85a6e23, type: 2}
+  m_LightingDataAsset: {fileID: 112000000, guid: 0e6bee7a3c78d5e4ab65f81c045cc37b, type: 2}
+  m_LightingSettings: {fileID: 4890085278179872738, guid: 8a940ae175df0bb4c8461e51d64c6e1c, type: 2}
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -1778,6 +1778,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6851a3bae319bc14baa9731e22c94567, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  saveData: {fileID: 6901915530519089809}
   VolumeSlider: {fileID: 574598814001926089}
   MouseSensSlider: {fileID: 543065962949487282}
   FovSlider: {fileID: 4411329704564217142}
@@ -9499,6 +9500,7 @@ GameObject:
   - component: {fileID: 4557713447315474763}
   - component: {fileID: 1239076912}
   - component: {fileID: 6901915530519089808}
+  - component: {fileID: 6901915530519089809}
   m_Layer: 5
   m_Name: MainMenuUI
   m_TagString: Untagged
@@ -11702,6 +11704,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2f3846630b9a574d93a35231f1989d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &6901915530519089809
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5387563437683829418}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f52ddbfb235574349b67230e5601dcfc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Player: {fileID: 0}
 --- !u!222 &6904446570017897604
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -13108,7 +13123,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1239076912}
         m_TargetAssemblyTypeName: MainMenuFunctions, Assembly-CSharp
-        m_MethodName: LoadNewScene
+        m_MethodName: newGame
         m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

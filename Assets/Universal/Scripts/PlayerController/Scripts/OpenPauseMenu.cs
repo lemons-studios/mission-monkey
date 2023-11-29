@@ -8,7 +8,7 @@ public class OpenPauseMenu : MonoBehaviour
     public GameObject PauseMenu, StartUI; // StartUI is the main pause menu stuff
     public PlayerInput Input;
     private AttackHandler[] Weapons;
-    private int IsOnPauseMenu = 0;
+    public int IsOnPauseMenu = 0;
     private AudioSource[] AudioInScene;
     public GameObject PauseButton;
     
