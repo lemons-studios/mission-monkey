@@ -1,87 +1,57 @@
-using Newtonsoft.Json;
 using System;
 using System.IO;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using Newtonsoft.Json;
 
 public class SaveData : MonoBehaviour
 {
-    public string saveFile;
-    private string saveName = "missionMonkeyData.json";
-    public static Vector3 playerLoadPos; // Will keep null unless there is a value to be loaded
+    JsonData jsonData = new JsonData();
+    public GameObject Player;
 
-    private bool isEditor()
+    private string currentActiveScene;
+    private string persistentData;
+    private string fileName = "missionMonkeyData.json";
+    private string fileDir;
+
+    private void Start()
     {
-        // Checks the runtime environment of the script
-        if (Application.platform == RuntimePlatform.WindowsEditor || Application.platform == RuntimePlatform.LinuxEditor || Application.platform == RuntimePlatform.OSXEditor)
-        {
-            return true;
-        }
-        else return false;
-    }
+        currentActiveScene = SceneManager.GetActiveScene().name;
+        persistentData = Application.persistentDataPath;
+        fileDir = Path.Combine(persistentData, fileName);
 
-    public SaveData()
-    {
-        // Application.persistentDataPath is supported on all platforms Mission Monkey targets
-        // By the way, switch cases are awesome
-        switch (isEditor())
+        if (!File.Exists(fileDir))
         {
-            case true:
-                saveFile = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, saveName);
-                break;
-            case false:
-                saveFile = Path.Combine(Application.persistentDataPath, saveName);
-                break;
-        }
-
-        if (!File.Exists(saveFile))
-        {
-            generateSaveData(saveFile);
+            generateSaveData();
         }
     }
 
-    public void generateSaveData(string saveDir)
+    public void generateSaveData()
     {
-        // The Newtonsoft Docs said I should do it like this so I did
-        SaveDataFile saveDataFile = new SaveDataFile
-        {
-            savedScene = 0,
-            savedPosition = new Vector3() // Generate Empty
-        };
-        string jsonData = JsonConvert.SerializeObject(saveDataFile, Formatting.Indented); // Convert all of the data in the saveDataFile instatiated class to a valid JSON file
-        File.WriteAllText(jsonData, saveDir); // Write the converted JSON to the save directory specified by whatever is calling the method 
+        string jsonDataToWrite = jsonData.jsonDataToString(currentActiveScene, new Vector3(-85, 0.5f, -11.75f));
+        File.WriteAllText(fileDir, jsonDataToWrite);
     }
 
     public void loadSaveData()
     {
-        string jsonDataToText = File.ReadAllText(saveFile);
-        SaveDataFile saveDataFile = JsonConvert.DeserializeObject<SaveDataFile>(jsonDataToText);
 
-        playerLoadPos = saveDataFile.savedPosition;
-        SceneManager.LoadScene(saveDataFile.savedScene);
     }
 
     public void deleteSaveData()
     {
-        // Add any extra settings keys here when they are added (This should be a list sometimes in the future)
+        // Add any extra settings keys here when they are added (These will probably be replaced with a json file too later)
         float tempVolHolder = PlayerPrefs.GetFloat("Volume");
         float tempFovHolder = PlayerPrefs.GetFloat("Fov");
         float tempMsHolder = PlayerPrefs.GetFloat("MouseSensitivityValue");
         int tempAntiAliasingHolder = PlayerPrefs.GetInt("AntiAliasing");
         int tempQualityHolder = PlayerPrefs.GetInt("QualityLevel");
 
-        File.Delete(saveFile);
         PlayerPrefs.DeleteAll();
 
         // Regenerate save data JSON after wiping
-        if (isEditor())
-        {
-            generateSaveData(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, saveName));
-        }
-        else
-        {
-            generateSaveData(saveFile);
-        }
+        generateSaveData();
+
+
         resetSettingsKeyValues(tempVolHolder, tempFovHolder, tempMsHolder, tempAntiAliasingHolder, tempQualityHolder);
     }
 
@@ -95,10 +65,17 @@ public class SaveData : MonoBehaviour
     }
 }
 
-
-class SaveDataFile
+[Serializable]
+class JsonData
 {
-    // More will probably be added here in the future
-    public int savedScene { get; set; }
-    public Vector3 savedPosition { get; set; }
+    public string currentScene;
+    public Vector3 playerPosition;
+
+    public string jsonDataToString(string scene, Vector3 position)
+    {
+        currentScene = scene;
+        playerPosition = position;
+
+        return JsonUtility.ToJson(this);
+    }
 }
