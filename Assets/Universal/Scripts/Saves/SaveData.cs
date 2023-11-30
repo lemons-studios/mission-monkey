@@ -1,23 +1,24 @@
+using Newtonsoft.Json.Linq;
 using System;
 using System.IO;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
 
 public class SaveData : MonoBehaviour
 {
     JsonData jsonData = new JsonData();
     public GameObject Player;
-
+    public MonoBehaviour[] playerController;
     private string currentActiveScene;
     private string persistentData;
     private string fileName = "missionMonkeyData.json";
     private string fileDir;
 
+    private static bool isSceneLoadedFromSaveData = false;
+
     public bool doesSaveDataExist()
     {
-        if(File.Exists(fileDir))
+        if (File.Exists(fileDir))
         {
             return true;
         }
@@ -29,6 +30,28 @@ public class SaveData : MonoBehaviour
         currentActiveScene = SceneManager.GetActiveScene().name;
         persistentData = Application.persistentDataPath;
         fileDir = Path.Combine(persistentData, fileName);
+
+        if(currentActiveScene != "MainMenu" && isSceneLoadedFromSaveData)
+        {
+            string jsonFilePath = Path.Combine(Application.persistentDataPath, "missionMonkeyData.json");
+            string jsonData = File.ReadAllText(jsonFilePath);
+
+            JObject json = JObject.Parse(jsonData);
+
+            // Get coordinates of x, y, and z from json 
+            float posX = json.SelectToken("playerPosition.x").Value<float>();
+            float posY = json.SelectToken("playerPosition.y").Value<float>();
+            float posZ = json.SelectToken("playerPosition.z").Value<float>();
+
+            // Assign the values found in the save data JSON to a new Vector3
+            Player.transform.position = new Vector3(posX, posY, posZ);
+
+            foreach(MonoBehaviour playerController in playerController)
+            {
+                playerController.enabled = true;
+                isSceneLoadedFromSaveData = false;
+            }
+        }
     }
 
     public void generateSaveData()
@@ -47,7 +70,7 @@ public class SaveData : MonoBehaviour
         JObject jsonLoad = JObject.Parse(fileDir);
         string savedLoadedScene = jsonLoad["currentScene"].ToString();
         SceneManager.LoadScene(savedLoadedScene);
-        
+        isSceneLoadedFromSaveData = true;
     }
 
     public void writeSaveData()

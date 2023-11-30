@@ -53,12 +53,6 @@ public class MainMenuFunctions : MonoBehaviour
         SetAntiAliasing(AntiAliasingDropdown.value);
     }
 
-    private void DeleteAllKeys()
-    {
-        PlayerPrefs.DeleteAll();
-        // Debug.Log("Deleted all keys!");
-    }
-
     public void SetVolume(float volume)
     {
         int TextDisplayVolume = Mathf.FloorToInt(volume * 100);
@@ -128,15 +122,7 @@ public class MainMenuFunctions : MonoBehaviour
         PlayerPrefs.SetInt("AntiAliasing", AntiAliasingValue);
     }
 
-    public void ShowGUI(GameObject GuiToShow)
-    {
-        GuiToShow.SetActive(true);
-    }
 
-    public void HideGUI(GameObject GuiToHide)
-    {
-        GuiToHide.SetActive(false);
-    }
     public void newGame(string sceneName)
     {
         if (saveData.doesSaveDataExist())
@@ -156,12 +142,6 @@ public class MainMenuFunctions : MonoBehaviour
         StartCoroutine(waitUntilHideGUI(3.5f));
     }
 
-    private IEnumerator waitUntilHideGUI(float waitTime)
-    {
-        yield return new WaitForSeconds(waitTime);
-        HideGUI(gameSavedPopup);
-    }
-
     private void LoadNewScene(string scene)
     {
         if (Time.timeScale != 1) // For when the method is called from the pause menu
@@ -172,6 +152,26 @@ public class MainMenuFunctions : MonoBehaviour
         if (scene == null) { Debug.LogError("Scene not properly specified on 1 or more objects"); }
     }
 
+    private IEnumerator waitUntilHideGUI(float waitTime)
+    {
+        yield return new WaitForSeconds(waitTime);
+        HideGUI(gameSavedPopup);
+    }
+
+    public void ShowGUI(GameObject GuiToShow)
+    {
+        GuiToShow.SetActive(true);
+    }
+
+    public void HideGUI(GameObject GuiToHide)
+    {
+        GuiToHide.SetActive(false);
+    }
+    public void OpenLink(string Link)
+    {
+        Application.OpenURL(Link);
+    }
+
     public void QuitGame()
     {
         Cursor.lockState = CursorLockMode.None;
@@ -180,11 +180,6 @@ public class MainMenuFunctions : MonoBehaviour
         UnityEditor.EditorApplication.isPlaying = false;
 #endif
         Application.Quit();
-    }
-
-    public void OpenLink(string Link)
-    {
-        Application.OpenURL(Link);
     }
 
     public void OnApplicationQuit()
