@@ -1,13 +1,12 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
 public class Interact : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 {
-
     public float holdTimeThreshold = 1.0f; // Set the time threshold for holding the button
-   
+
+
+#pragma warning disable CS0414
     private bool isHolding = false;
     public CameraMove cameraMove;
 
@@ -31,7 +30,7 @@ public class Interact : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
         //add Interact logic
         isHolding = true;
         cameraMove.ignoreTouch++;
-        
+
     }
     public void OnPointerUp(PointerEventData eventData)
     {

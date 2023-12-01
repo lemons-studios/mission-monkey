@@ -126,7 +126,7 @@ public class MainMenuFunctions : MonoBehaviour
     {
         if (saveData.doesSaveDataExist())
         {
-            saveData.deleteSaveData();
+            saveData.DeleteSaveData();
             LoadNewScene(sceneName);
         }
         else LoadNewScene(sceneName);
@@ -134,7 +134,7 @@ public class MainMenuFunctions : MonoBehaviour
 
     public void writeSaveData()
     {
-        saveData.writeSaveData();
+        saveData.WriteSaveData();
         pauseMenuMethods.ResumeGame();
         pauseMenuMethods.IsOnPauseMenu--; // I gotta clean up the pause menu code later
         ShowGUI(gameSavedPopup);

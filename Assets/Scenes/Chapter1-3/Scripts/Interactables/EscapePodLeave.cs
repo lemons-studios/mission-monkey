@@ -8,7 +8,7 @@ public class EscapePodLeave : Interactable
     public GameObject[] ObjectsToDisable;
 
     public Animator EscapePodAnimator;
-    private bool Interacted = false;
+    
     protected override void Interact()
     {
         base.Interact();
