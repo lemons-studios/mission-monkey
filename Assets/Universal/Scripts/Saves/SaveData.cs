@@ -7,12 +7,16 @@ using UnityEngine.SceneManagement;
 public class SaveData : MonoBehaviour
 {
     JsonData jsonData = new JsonData();
+
     public GameObject Player;
-    public MonoBehaviour[] playerController;
+    private CharacterController playerController;
+
     private string currentActiveScene;
     private string persistentData;
+
     private string fileName = "missionMonkeyData.json";
     private string fileDir;
+
 
     private static bool isSceneLoadedFromSaveData = false;
 
@@ -27,12 +31,23 @@ public class SaveData : MonoBehaviour
 
     private void Start()
     {
+        playerController = Player.GetComponent<CharacterController>();
+
+
         currentActiveScene = SceneManager.GetActiveScene().name;
         persistentData = Application.persistentDataPath;
         fileDir = Path.Combine(persistentData, fileName);
 
-        if(currentActiveScene != "MainMenu" && isSceneLoadedFromSaveData)
+        //Debug.Log(fileDir);
+
+        if (!File.Exists(fileDir))
         {
+            generateSaveData();
+        }
+
+        if (currentActiveScene != "MainMenu" && isSceneLoadedFromSaveData)
+        {
+            playerController.enabled = false;
             string jsonFilePath = Path.Combine(Application.persistentDataPath, "missionMonkeyData.json");
             string jsonData = File.ReadAllText(jsonFilePath);
 
@@ -45,12 +60,8 @@ public class SaveData : MonoBehaviour
 
             // Assign the values found in the save data JSON to a new Vector3
             Player.transform.position = new Vector3(posX, posY, posZ);
-
-            foreach(MonoBehaviour playerController in playerController)
-            {
-                playerController.enabled = true;
-                isSceneLoadedFromSaveData = false;
-            }
+            playerController.enabled = true;
+            isSceneLoadedFromSaveData = false;
         }
     }
 
@@ -67,10 +78,19 @@ public class SaveData : MonoBehaviour
 
     public void loadSaveData()
     {
-        JObject jsonLoad = JObject.Parse(fileDir);
-        string savedLoadedScene = jsonLoad["currentScene"].ToString();
+        string jsonData = File.ReadAllText(fileDir);
+        var jsonObject = JObject.Parse(jsonData);
+        var savedLoadedScene = jsonObject.Value<string>("currentScene");
+        
+        Debug.Log(savedLoadedScene);
+
         SceneManager.LoadScene(savedLoadedScene);
         isSceneLoadedFromSaveData = true;
+
+        if(Time.timeScale < 1)
+        {
+            Time.timeScale = 1;
+        }
     }
 
     public void writeSaveData()

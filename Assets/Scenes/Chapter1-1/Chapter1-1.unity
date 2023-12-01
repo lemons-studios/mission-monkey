@@ -334,38 +334,6 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -7387706064836869012, guid: ffe534f87b1012c45a4f778fca940d5a, type: 3}
---- !u!1 &44075870
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 44075871}
-  m_Layer: 0
-  m_Name: playerParent
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &44075871
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 44075870}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -85.57798, y: 0.53899956, z: -12.367002}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 365618935529355566}
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &49520208 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 06fc6d23859ac364380341530978f468, type: 3}
@@ -19130,7 +19098,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Player: {fileID: 9029174849043442445}
-  playerController: []
+  playerController: {fileID: 0}
 --- !u!64 &1775357360
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -22483,12 +22451,12 @@ Transform:
   m_GameObject: {fileID: 9029174849043442445}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -1, z: -0, w: 0.0000015795229}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -85.57798, y: 0.53899956, z: -12.367002}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5619072349894765373}
-  m_Father: {fileID: 44075871}
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
 --- !u!224 &369836532381305303
 RectTransform:
@@ -24032,13 +24000,13 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 3323280409649708529}
-        m_TargetAssemblyTypeName: MainMenuFunctions, Assembly-CSharp
-        m_MethodName: ShowGUI
-        m_Mode: 2
+      - m_Target: {fileID: 1816915640340259610}
+        m_TargetAssemblyTypeName: SaveData, Assembly-CSharp
+        m_MethodName: loadSaveData
+        m_Mode: 1
         m_Arguments:
-          m_ObjectArgument: {fileID: 3728718243046781510}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -25354,8 +25322,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f52ddbfb235574349b67230e5601dcfc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Player: {fileID: 44075870}
-  playerController: []
+  Player: {fileID: 9029174849043442445}
+  playerController: {fileID: 7328122337689736291}
 --- !u!222 &1837164460635849879
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -28839,7 +28807,6 @@ MonoBehaviour:
   Camera: {fileID: 3745781102517290128}
   PlayerLook: {fileID: 5705489286589255308}
   URPCamData: {fileID: 6606170490596389298}
-  URPAsset: {fileID: 0}
   MainVolume: {fileID: 24100000, guid: 3a5200ccdd38f3e4f95028236fab6f11, type: 2}
 --- !u!1 &3338495810750279687
 GameObject:
@@ -39874,7 +39841,7 @@ SceneRoots:
   m_Roots:
   - {fileID: 1032090246}
   - {fileID: 1822230394}
-  - {fileID: 44075871}
+  - {fileID: 365618935529355566}
   - {fileID: 4618845499188227521}
   - {fileID: 1036227209}
   - {fileID: 1515142134}

@@ -20,7 +20,6 @@ public class MainMenuFunctions : MonoBehaviour
     public PlayerLook PlayerLook;
     [Space]
     public UniversalAdditionalCameraData URPCamData;
-    public UniversalRenderPipelineAsset URPAsset;
     public AudioMixer MainVolume;
     [Space]
     private float MouseSensitivityValue, VolumeValue, FovValue;
