@@ -1,9 +1,7 @@
-using Discord;
 using Newtonsoft.Json.Linq;
 using System;
 using System.IO;
 using System.Security.Cryptography;
-using System.Text;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
