@@ -32,7 +32,7 @@ public class MobileMovement : MonoBehaviour
         {
             viewbobbing.DisableViewBobbing();
         }
-        // Make sure the movement is relative to the camera's forward direction
+        // Make sure the movement is relative to the playerCamera's forward direction
         movement = Camera.main.transform.TransformDirection(movement);
         // Keep the character level with the ground
 

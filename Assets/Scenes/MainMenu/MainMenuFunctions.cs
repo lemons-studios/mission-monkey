@@ -1,3 +1,4 @@
+using LemonStudios.CsExtensions;
 using System.Collections;
 using TMPro;
 using UnityEngine;
@@ -8,21 +9,22 @@ using UnityEngine.UI;
 
 public class MainMenuFunctions : MonoBehaviour
 {
-    public OpenPauseMenu pauseMenuMethods;
     public SaveData saveData;
+    [Tooltip("Only assign on game scenes, not main menu")]
     public GameObject gameSavedPopup;
+    [Tooltip("Only assign on game scenes, not main menu")]
+    public OpenPauseMenu pauseMenuMethods;
+
     [Space]
-    public Slider VolumeSlider, MouseSensSlider, FovSlider;
-    public TMP_Dropdown QualityDropdown, AntiAliasingDropdown, CaptionsDropdown;
-    public TextMeshProUGUI VolumePercentageText, MouseSensText, FovText;
+    public Slider volumeSlider, mouseSensitivitySlider, fieldOfViewSlider;
+    public TMP_Dropdown qualityDropdown, antiAliasingDropdown, subtitlesDropdown;
+    public TextMeshProUGUI volumePercentageText, mouseSensitivityText, fieldOfViewText;
     [Space]
-    public Camera Camera;
+    public Camera playerCamera;
     public PlayerLook PlayerLook;
     [Space]
-    public UniversalAdditionalCameraData URPCamData;
-    public AudioMixer MainVolume;
-    [Space]
-    private float MouseSensitivityValue, VolumeValue, FovValue;
+    public UniversalAdditionalCameraData urpAdditionalCameraData;
+    public AudioMixer mainVolume;
 
     private void Start()
     {
@@ -32,32 +34,32 @@ public class MainMenuFunctions : MonoBehaviour
     public void LoadSettingsValues()
     {
         // Load volume value from a previous session
-        VolumeSlider.value = PlayerPrefs.GetFloat("Volume");
-        SetVolume(VolumeSlider.value);
+        volumeSlider.value = PlayerPrefs.GetFloat("Volume");
+        SetVolume(volumeSlider.value);
 
         // Load Mouse Sensitivity from a previous session
-        MouseSensSlider.value = PlayerPrefs.GetFloat("MouseSensitivityValue");
-        SetMouseSensitivty(MouseSensSlider.value);
+        mouseSensitivitySlider.value = PlayerPrefs.GetFloat("MouseSensitivityValue");
+        SetMouseSensitivty(mouseSensitivitySlider.value);
 
         // Load FOV from a previous session
-        FovSlider.value = PlayerPrefs.GetFloat("Fov");
-        SetCameraFov(FovSlider.value);
+        fieldOfViewSlider.value = PlayerPrefs.GetFloat("Fov");
+        SetCameraFov(fieldOfViewSlider.value);
 
         // Load Quality Mode from a previous session
-        QualityDropdown.value = PlayerPrefs.GetInt("QualityLevel");
-        SetQuality(QualityDropdown.value);
+        qualityDropdown.value = PlayerPrefs.GetInt("QualityLevel");
+        SetQuality(qualityDropdown.value);
 
         // Load Anti-Aliasing mode from a previous session
-        AntiAliasingDropdown.value = PlayerPrefs.GetInt("AntiAliasing");
-        SetAntiAliasing(AntiAliasingDropdown.value);
+        antiAliasingDropdown.value = PlayerPrefs.GetInt("AntiAliasing");
+        SetAntiAliasing(antiAliasingDropdown.value);
     }
 
     public void SetVolume(float volume)
     {
         int TextDisplayVolume = Mathf.FloorToInt(volume * 100);
         // I have no idea how this script calculates volume percentage but it works so i do not care
-        MainVolume.SetFloat("Volume", Mathf.Log10(volume) * 20);
-        VolumePercentageText.text = TextDisplayVolume.ToString() + "%";
+        mainVolume.SetFloat("Volume", Mathf.Log10(volume) * 20);
+        volumePercentageText.text = TextDisplayVolume.ToString() + "%";
         PlayerPrefs.SetFloat("Volume", volume);
 
         ///Debug.Log("Set volume to" + volume * 100);
@@ -67,32 +69,32 @@ public class MainMenuFunctions : MonoBehaviour
     {
         // Stolen code from the old SettingsMenu.cs script. It should work
         PlayerLook.setMouseSensitivity(MouseSens);
-        if (MouseSensSlider.value != MouseSens)
+        if (mouseSensitivitySlider.value != MouseSens)
         {
-            MouseSensSlider.value = MouseSens;
+            mouseSensitivitySlider.value = MouseSens;
         }
 
-        MouseSensText.text = Mathf.CeilToInt(MouseSens).ToString();
+        mouseSensitivityText.text = Mathf.CeilToInt(MouseSens).ToString();
         PlayerPrefs.SetFloat("MouseSensitivityValue", MouseSens);
     }
 
     public void SetCameraFov(float CameraFov)
     {
-        Camera.fieldOfView = CameraFov;
-        FovText.text = Mathf.FloorToInt(CameraFov).ToString();
+        playerCamera.fieldOfView = CameraFov;
+        fieldOfViewText.text = Mathf.FloorToInt(CameraFov).ToString();
         PlayerPrefs.SetFloat("Fov", CameraFov);
     }
 
     public void SetQuality(int QualityPreset)
     {
         // Quality Mode is based off of how the quality is ordered in the project settings
-        // QualityPreset = QualityDropdown.value;
+        // QualityPreset = qualityDropdown.value;
         QualitySettings.SetQualityLevel(QualityPreset);
         PlayerPrefs.SetInt("QualityLevel", QualityPreset);
         // Debug.Log("Set Quality to: " + QualitySettings.GetQualityLevel().ToString());
     }
 
-    public void SetCaptions()
+    private void SetCaptions()
     {
         // For 0.4
     }
@@ -100,23 +102,23 @@ public class MainMenuFunctions : MonoBehaviour
     public void SetAntiAliasing(int AntiAliasingValue)
     {
         // Using a switch case (the value of which is decided through the Anti-Aliasing Dropdown), the Anti Aliasing gets set to either Off, FXAA, TAA, or SMAA
-        // AntiAliasingValue = AntiAliasingDropdown.value;
+        // AntiAliasingValue = antiAliasingDropdown.value;
         switch (AntiAliasingValue)
         {
             case 0:
-                URPCamData.antialiasing = AntialiasingMode.None;
+                urpAdditionalCameraData.antialiasing = AntialiasingMode.None;
                 break;
             case 1:
-                URPCamData.antialiasing = AntialiasingMode.FastApproximateAntialiasing;
+                urpAdditionalCameraData.antialiasing = AntialiasingMode.FastApproximateAntialiasing;
                 break;
             case 2:
-                URPCamData.antialiasing = AntialiasingMode.TemporalAntiAliasing;
+                urpAdditionalCameraData.antialiasing = AntialiasingMode.TemporalAntiAliasing;
                 break;
             case 3:
-                URPCamData.antialiasing = AntialiasingMode.SubpixelMorphologicalAntiAliasing;
+                urpAdditionalCameraData.antialiasing = AntialiasingMode.SubpixelMorphologicalAntiAliasing;
                 break;
         }
-        // Debug.Log("Setting Anti Aliasing to" + URPCamData.antialiasing);
+        // Debug.Log("Setting Anti Aliasing to" + urpAdditionalCameraData.antialiasing);
 
         PlayerPrefs.SetInt("AntiAliasing", AntiAliasingValue);
     }
@@ -124,7 +126,7 @@ public class MainMenuFunctions : MonoBehaviour
 
     public void newGame(string sceneName)
     {
-        if (saveData.doesSaveDataExist())
+        if (LemonStudiosCsExtensions.DoesFileExist(saveData.GetSaveDataLocation()))
         {
             saveData.DeleteSaveData();
             LoadNewScene(sceneName);
@@ -132,16 +134,16 @@ public class MainMenuFunctions : MonoBehaviour
         else LoadNewScene(sceneName);
     }
 
-    public void writeSaveData()
+    public void WriteToSaveData()
     {
         saveData.WriteSaveData();
         pauseMenuMethods.ResumeGame();
-        pauseMenuMethods.IsOnPauseMenu--; // I gotta clean up the pause menu code later
+        pauseMenuMethods.IsOnPauseMenu -= 1; // I gotta clean up the pause menu code later
         ShowGUI(gameSavedPopup);
         StartCoroutine(waitUntilHideGUI(3.5f));
     }
 
-    private void LoadNewScene(string scene)
+    public void LoadNewScene(string scene)
     {
         if (Time.timeScale != 1) // For when the method is called from the pause menu
         {
@@ -166,6 +168,7 @@ public class MainMenuFunctions : MonoBehaviour
     {
         GuiToHide.SetActive(false);
     }
+
     public void OpenLink(string Link)
     {
         Application.OpenURL(Link);
@@ -181,7 +184,7 @@ public class MainMenuFunctions : MonoBehaviour
         Application.Quit();
     }
 
-    public void OnApplicationQuit()
+    private void OnApplicationQuit()
     {
         // Unlock cursor before game closes
         Cursor.lockState = CursorLockMode.None;

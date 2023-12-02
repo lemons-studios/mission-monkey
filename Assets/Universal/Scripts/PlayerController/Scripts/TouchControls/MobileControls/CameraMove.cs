@@ -63,13 +63,13 @@ public class CameraMove : MonoBehaviour
                         // Calculate the touch delta position
                         Vector2 deltaPos = touch.position - touchStartPos;
                         touchDelta = deltaPos;
-                        // Rotate the camera based on touch delta
+                        // Rotate the playerCamera based on touch delta
                         rotationX -= deltaPos.y * rotationSpeed * Time.deltaTime;
                         rotationX = Mathf.Clamp(rotationX, minXAngle, maxXAngle);
 
                         float rotationY = deltaPos.x * rotationSpeed * Time.deltaTime;
 
-                        // Apply the rotation to the camera
+                        // Apply the rotation to the playerCamera
                         transform.localRotation = Quaternion.Euler(rotationX, transform.localRotation.eulerAngles.y + rotationY, 0);
 
                         // Save the current touch position for the next frame

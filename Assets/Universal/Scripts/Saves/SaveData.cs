@@ -1,13 +1,14 @@
+using LemonStudios.CsExtensions;
 using Newtonsoft.Json.Linq;
 using System;
 using System.IO;
-using System.Security.Cryptography;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+#pragma warning disable CS0414 // The private field 'field' is assigned but its value is never used
 public class SaveData : MonoBehaviour
 {
-    JsonData jsonData = new JsonData();
+    private JsonData jsonData = new JsonData();
 
     private GameObject Player;
     private CharacterController playerController;
@@ -20,30 +21,17 @@ public class SaveData : MonoBehaviour
     private static bool isSceneLoadedFromSaveData = false;
 
     // Encryption/Decryption key
-    private readonly string decryptionKey = "@_MbFO6g;Zg=4P@f5;tpdViNJ9j_}~xQa96')VOwC4SFhp6E#I"; // Literally don't care if you use this to decrypt the save file, go right ahead lmao
-
-    public bool doesSaveDataExist()
-    {
-        if (File.Exists(fileDir))
-        {
-            return true;
-        }
-        else return false;
-    }
+    
 
     private void Start()
     {
-        // Resume game in the case that the game is loaded from the game pause menu
-        if (Time.timeScale < 1)
-        {
-            Time.timeScale = 1;
-        }
-
-
         currentActiveScene = SceneManager.GetActiveScene().name;
         persistentData = Application.persistentDataPath; // Read up on the Unity docs on what the persistent data path is on different operating systems
-        fileDir = Path.Combine(persistentData, fileName); 
-        // Debug.Log(fileDir);
+        fileDir = Path.Combine(persistentData, fileName);
+
+        // Resume game in the case that the game is loaded from the game pause menu
+        Time.timeScale = 1;
+
 
         // Player does not exist in the MainMenu scene, only look for it outside of that scene to prevent an error
         if (currentActiveScene != "MainMenu")
@@ -53,12 +41,11 @@ public class SaveData : MonoBehaviour
         }
 
         // Generate save data if the file could not be found in the proper location
-        if (!doesSaveDataExist())
+        if (!LemonStudiosCsExtensions.DoesFileExist(fileDir))
         {
             GenerateSaveData();
         }
 
-        
         if (currentActiveScene != "MainMenu" && isSceneLoadedFromSaveData)
         {
             // The player controller must be disabled before the script is able to move the player model anywhere
@@ -78,16 +65,22 @@ public class SaveData : MonoBehaviour
         }
     }
 
+    public string GetSaveDataLocation()
+    {
+        return fileDir;
+    }
+
     public void GenerateSaveData()
     {
         // New game = delete save file and regenerate
-        if (File.Exists(fileDir))
+        if (LemonStudiosCsExtensions.DoesFileExist(fileDir))
         {
             File.Delete(fileDir);
         }
-
         string defaultData = jsonData.JsonDataToString(currentActiveScene, new Vector3(-85, 0.5f, -11.75f)); // The coordinates are the default position the player spawns in in the first game scene
         File.WriteAllText(fileDir, defaultData);
+        
+
         /// File.WriteAllText(fileDir, EncryptSaveData(defaultData)); // For Later
     }
 
@@ -95,7 +88,7 @@ public class SaveData : MonoBehaviour
     {
         string jsonData = File.ReadAllText(fileDir);
         var jsonObject = JObject.Parse(jsonData);
-        var savedLoadedScene = jsonObject.Value<string>("currentScene"); 
+        var savedLoadedScene = jsonObject.Value<string>("currentScene");
         // Debug.Log(savedLoadedScene);
 
         SceneManager.LoadScene(savedLoadedScene);
@@ -134,31 +127,7 @@ public class SaveData : MonoBehaviour
         PlayerPrefs.SetInt("QualityLevel", qualityPreset);
         PlayerPrefs.SetInt("AntiAliasing", antiAliasing);
     }
-
-    private string EncryptSaveData(string inputData)
-    {
-        if (File.Exists(fileDir))
-        {
-            string output = "";
-            for(int i = 0; i < inputData.Length; i++)
-            {
-                output += (char)(inputData[i] ^ decryptionKey[i % decryptionKey.Length]);
-            }
-            return output;
-        }
-        else
-        {
-            return File.ReadAllText(fileDir);
-        }
-        
-    }
-
-    private string DecryptSaveData()
-    {
-        return ""; // Temporary value
-    }
 }
-
 
 [Serializable]
 class JsonData
