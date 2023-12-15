@@ -43,7 +43,7 @@ public class PlayerCamera : MonoBehaviour
         currentPitch = Mathf.Clamp(currentPitch + rotationY, minPitch, maxPitch);
         rotationY = currentPitch;
 
-        // Do some math I really don't understand at the moment for the rotation to work
+        // From what I understand of this math, it converts the rotation to something that can be used in transform.Rotate (Quaternion)
         playerCamera.transform.localRotation = Quaternion.Euler(rotationY, 0, 0);
         transform.Rotate(0, rotationX, 0);
 

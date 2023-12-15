@@ -119,98 +119,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1 &572441201
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 572441204}
-  - component: {fileID: 572441203}
-  - component: {fileID: 572441202}
-  m_Layer: 0
-  m_Name: Main Camera
-  m_TagString: MainCamera
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!81 &572441202
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 572441201}
-  m_Enabled: 1
---- !u!20 &572441203
-Camera:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 572441201}
-  m_Enabled: 1
-  serializedVersion: 2
-  m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
-  m_projectionMatrixMode: 1
-  m_GateFitMode: 2
-  m_FOVAxisMode: 0
-  m_Iso: 200
-  m_ShutterSpeed: 0.005
-  m_Aperture: 16
-  m_FocusDistance: 10
-  m_FocalLength: 50
-  m_BladeCount: 5
-  m_Curvature: {x: 2, y: 11}
-  m_BarrelClipping: 0.25
-  m_Anamorphism: 0
-  m_SensorSize: {x: 36, y: 24}
-  m_LensShift: {x: 0, y: 0}
-  m_NormalizedViewPortRect:
-    serializedVersion: 2
-    x: 0
-    y: 0
-    width: 1
-    height: 1
-  near clip plane: 0.3
-  far clip plane: 1000
-  field of view: 60
-  orthographic: 0
-  orthographic size: 5
-  m_Depth: -1
-  m_CullingMask:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_RenderingPath: -1
-  m_TargetTexture: {fileID: 0}
-  m_TargetDisplay: 0
-  m_TargetEye: 3
-  m_HDR: 1
-  m_AllowMSAA: 1
-  m_AllowDynamicResolution: 0
-  m_ForceIntoRT: 0
-  m_OcclusionCulling: 1
-  m_StereoConvergence: 10
-  m_StereoSeparation: 0.022
---- !u!4 &572441204
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 572441201}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: -10}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &765926798
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -418,9 +326,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6fb952a098571f643aeb8542f1781dd6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  LargeImage: Chapter1
+  LargeImage: missionmonkey1024x1024
   SmallImage: 
-  State: In Chapter 1
+  State: Developing 0.4
   SmallImageText: 
 --- !u!114 &929192972
 MonoBehaviour:
@@ -3028,7 +2936,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 145041433175728474}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: MainMenuFunctions, Assembly-CSharp
         m_MethodName: LoadToMainMenu
         m_Mode: 1
@@ -6497,6 +6405,8 @@ GameObject:
   - component: {fileID: 3238980990474127559}
   - component: {fileID: 2837139816774977304}
   - component: {fileID: 3459851930493492621}
+  - component: {fileID: 3459851930493492623}
+  - component: {fileID: 3459851930493492622}
   m_Layer: 0
   m_Name: PlayerModel
   m_TagString: Player
@@ -6530,6 +6440,32 @@ CharacterController:
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &3459851930493492622
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3459851930493492617}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b22aaf73a18776c4fb779acfc681206a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sprintSpeedMultiplier: 2
+  gravity: 7.8
+--- !u!114 &3459851930493492623
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3459851930493492617}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c3ba5e9dc7dbc554cbab803588c54896, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!222 &3469303658543869440
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -11108,7 +11044,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 145041433175728474}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: MainMenuFunctions, Assembly-CSharp
         m_MethodName: QuitGame
         m_Mode: 1
@@ -16149,7 +16085,6 @@ GameObject:
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
-  - {fileID: 572441204}
   - {fileID: 1783059755}
   - {fileID: 929192973}
   - {fileID: 1724392168}
