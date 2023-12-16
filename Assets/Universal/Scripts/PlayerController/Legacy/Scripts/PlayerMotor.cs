@@ -1,3 +1,4 @@
+using UnityEditor.Rendering;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -10,7 +11,7 @@ public class PlayerMotor : MonoBehaviour
     private bool isGrounded;
     public float gravity = -20f;
     public float speed = 5f;
-    public float sprintSpeed = 10f;
+    public float sprintSpeed;
     public float jumpHeight = 1f;
     public float jumpCap = 1f;
 
@@ -22,7 +23,7 @@ public class PlayerMotor : MonoBehaviour
         spaceAction = new InputAction("disableSpacebar", InputActionType.Button, "<Keyboard>/space");
         // spaceAction.performed += ctx => Debug.Log("Spacebar Disabled");
         // spaceAction.canceled += ctx => Debug.Log("Spacebar enabled");
-
+        sprintSpeed = speed * 2;
     }
 
     // Update is called once per frame
