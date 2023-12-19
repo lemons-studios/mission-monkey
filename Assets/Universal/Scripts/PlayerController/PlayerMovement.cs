@@ -4,69 +4,80 @@ using UnityEngine.InputSystem;
 [RequireComponent(typeof(CharacterController))]
 public class PlayerMovement : MonoBehaviour
 {
-    private PlayerInput playerInput;
-    private CharacterController playerController;
-    private Vector2 movementInput;
-    public Transform Player;
-
-    public float moveSpeed;
+    public float moveSpeed, gravity, jumpHeight;
     public float sprintSpeedMultiplier = 2.0f;
 
+    private PlayerInput playerInput;
+    private CharacterController playerController;
+    private Vector3 movementInput3d;
+    private bool isPlayerGrounded;
+    
     private void Start()
     {
-        // If the movement speed is never set, set it to the default move speed
+        playerInput = new PlayerInput();
+        SetDefaultMovementValues();
+        playerController = GetComponent<CharacterController>();
+
+        playerInput.OnFoot.Sprint.started += OnSprintStarted;
+        playerInput.OnFoot.Sprint.canceled += OnSprintEnded;
+        playerInput.Enable();
+    }
+
+    private void Update()
+    {
+        isPlayerGrounded = playerController.isGrounded;
+
+        Vector2 movementInput = playerInput.OnFoot.Movement.ReadValue<Vector2>();
+
+        // Check if PlayerInput is instantiated or has been referenced
+        if (playerInput == null)
+        {
+            Debug.LogError("Player Input Not instantiated/referenced");
+            return;
+        }
+
+        // Only run if there is actually movement
+        if (movementInput.x != 0 || movementInput.y != 0)
+        {
+            movementInput3d = new Vector3(movementInput.x, 0, movementInput.y);
+            OnMove(movementInput3d);
+        }
+    }
+
+    private void OnMove(Vector3 movement)
+    {
+        // Something something world space movement
+        Vector3 worldSpaceMovement = transform.TransformDirection(movement);
+
+        // Move the player controller
+        playerController.Move(worldSpaceMovement * moveSpeed * Time.deltaTime);
+    }
+
+    private void OnSprintStarted(InputAction.CallbackContext context)
+    {
+        Debug.Log("Started Sprinting");
+        moveSpeed *= sprintSpeedMultiplier;
+    }
+    private void OnSprintEnded(InputAction.CallbackContext context)
+    {
+        Debug.Log("Stopped Sprinting");
+        moveSpeed /= sprintSpeedMultiplier;
+    }
+    private void SetDefaultMovementValues()
+    {
+        /// Only sets anything if any of the values are less than or equal to zero
+        /// Gravity does not have to be set as zero-gravity environments are a real thing
+        /// Fun fact: because of me forgetting to specify a movespeed for the player, it took me 3 days to realize what I did wrong
+        /// Never gonna make that mistake again
+
         if (moveSpeed <= 0)
         {
             moveSpeed = 5f;
         }
 
-        playerInput = new PlayerInput();
-        playerController = GetComponent<CharacterController>();
-
-        playerInput.OnFoot.Sprint.started += OnSprintStarted;
-        playerInput.OnFoot.Sprint.canceled += OnSprintEnded;
-
-        playerInput.Enable();
-    }
-
-    // A LOT of this code was stolen from the old input system, but is now just better because it's slightly more cleaned up
-
-    private void Update()
-    {
-        Vector2 movementThisFrame = playerInput.OnFoot.Movement.ReadValue<Vector2>();
-        if (playerInput == null)
+        if (jumpHeight <= 0)
         {
-            Debug.LogError("Player Input Not Instantiated or referenced!");
-            return;
+            jumpHeight = 1f;
         }
-
-        // Only run if there is actually movement
-        if (movementThisFrame.x != 0 || movementThisFrame.y != 0)
-        {
-            Debug.Log("Movement Found! " + movementThisFrame.ToString());
-
-            // Convert the movement value (Vector2) to a Vector3
-            Vector3 threeDimensionalMovementThisFrame = new Vector3(movementThisFrame.x, 0f, movementThisFrame.y);
-
-            // Something something world space movement
-            Vector3 worldSpaceMovement = transform.TransformDirection(threeDimensionalMovementThisFrame);
-
-            // Move the player controller
-            playerController.Move(worldSpaceMovement * moveSpeed * Time.deltaTime);
-            return;
-        }
-
-        return;
-    }
-
-    private void OnSprintStarted(InputAction.CallbackContext ctx)
-    {
-        Debug.Log("Started Sprinting");
-        moveSpeed *= sprintSpeedMultiplier;
-    }
-    private void OnSprintEnded(InputAction.CallbackContext ctx)
-    {
-        Debug.Log("Stopped Sprinting");
-        moveSpeed /= sprintSpeedMultiplier;
     }
 }

@@ -11,7 +11,7 @@ public class PlayerCamera : MonoBehaviour
     private float rotationSpeedX = 1.0f;
     private float rotationSpeedY = 1.0f;
 
-    private float maxPitch = 80.0f;
+    private float maxPitch = 85.0f;
     private float minPitch = -80.0f;
 
     private float currentPitch = 0.0f;
@@ -21,7 +21,7 @@ public class PlayerCamera : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
 
         playerInput = new PlayerInput();
-        // Unless changed later, the camera is a child of the player model
+        // Unless changed later, the camera will be a child of the player model
         playerCamera = GetComponentInChildren<Camera>();
         playerInput.Enable();
     }
