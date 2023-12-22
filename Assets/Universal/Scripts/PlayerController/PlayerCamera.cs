@@ -52,7 +52,7 @@ public class PlayerCamera : MonoBehaviour
     }
 
     // The next two methods are for the main menu to work, not much else has to be said about it
-    public void SetRotationSpeed(float newRotationSpeed)
+    public void SetSensitivity(float newRotationSpeed)
     {
         rotationSpeedX = newRotationSpeed;
         rotationSpeedY = newRotationSpeed;

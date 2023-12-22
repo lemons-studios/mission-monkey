@@ -7,6 +7,8 @@ using UnityEngine.Rendering.Universal;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
+// TODO: Value updater method, fix all the settings affected by the new player controller
+
 public class MainMenuFunctions : MonoBehaviour
 {
     public SaveData saveData;
@@ -20,8 +22,8 @@ public class MainMenuFunctions : MonoBehaviour
     public TMP_Dropdown qualityDropdown, antiAliasingDropdown, subtitlesDropdown;
     public TextMeshProUGUI volumePercentageText, mouseSensitivityText, fieldOfViewText;
     [Space]
-    public Camera playerCamera;
-    public PlayerLook PlayerLook;
+    public Camera mainCamera;
+    public PlayerCamera playerCamera;
     [Space]
     public UniversalAdditionalCameraData urpAdditionalCameraData;
     public AudioMixer mainVolume;
@@ -68,19 +70,19 @@ public class MainMenuFunctions : MonoBehaviour
     public void SetMouseSensitivty(float MouseSens)
     {
         // Stolen code from the old SettingsMenu.cs script. It should work
-        PlayerLook.setMouseSensitivity(MouseSens);
+        playerCamera.SetSensitivity(MouseSens);
+
         if (mouseSensitivitySlider.value != MouseSens)
         {
             mouseSensitivitySlider.value = MouseSens;
         }
-
-        mouseSensitivityText.text = Mathf.CeilToInt(MouseSens).ToString();
+        mouseSensitivityText.text = Mathf.RoundToInt(MouseSens).ToString();
         PlayerPrefs.SetFloat("MouseSensitivityValue", MouseSens);
     }
 
     public void SetCameraFov(float CameraFov)
     {
-        playerCamera.fieldOfView = CameraFov;
+        mainCamera.fieldOfView = CameraFov;
         fieldOfViewText.text = Mathf.FloorToInt(CameraFov).ToString();
         PlayerPrefs.SetFloat("Fov", CameraFov);
     }
@@ -151,6 +153,11 @@ public class MainMenuFunctions : MonoBehaviour
         }
         SceneManager.LoadScene(scene);
         if (scene == null) { Debug.LogError("Scene not properly specified on 1 or more objects"); }
+    }
+
+    private string UpdateSliderValue(TextMeshProUGUI sliderValueUGUI, string newValue, bool percentage)
+    {
+        return "";
     }
 
     private IEnumerator waitUntilHideGUI(float waitTime)
