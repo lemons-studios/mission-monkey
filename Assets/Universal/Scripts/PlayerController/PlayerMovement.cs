@@ -4,44 +4,75 @@ using UnityEngine.InputSystem;
 [RequireComponent(typeof(CharacterController))]
 public class PlayerMovement : MonoBehaviour
 {
-    public float moveSpeed, gravity, jumpHeight;
+    public float moveSpeed, jumpHeight;
+    public float gravity;
+
     public float sprintSpeedMultiplier = 2.0f;
 
     private PlayerInput playerInput;
     private CharacterController playerController;
-    private Vector3 movementInput3d;
-    private bool isPlayerGrounded;
-    
+    private Vector3 playerVelocity;
+    private bool isPlayerGrounded, isJumpPerformed;
+
     private void Start()
     {
+        // Only sets anything if any of the values are less than or equal to zero
+        // Fun fact: because of me forgetting to specify a movespeed for the player, it took me 3 days to realize what I did wrong
+        // Never gonna make that mistake again
+
+        if (moveSpeed <= 0)
+        {
+            moveSpeed = 5f;
+        }
+
+        if (jumpHeight <= 0)
+        {
+            jumpHeight = 1f;
+        }
+
+        if (gravity <= 0)
+        {
+            Debug.LogWarning("Invalid gravity value detected. Make sure that the 'gravity' variable is greater than 0. this script will use the default gravity value (9.8 m/s)");
+            gravity = 9.8f;
+        }
+
         playerInput = new PlayerInput();
-        SetDefaultMovementValues();
         playerController = GetComponent<CharacterController>();
 
-        playerInput.OnFoot.Sprint.started += OnSprintStarted;
-        playerInput.OnFoot.Sprint.canceled += OnSprintEnded;
+        var playerControllerInput = playerInput.OnFoot;
+        playerControllerInput.Sprint.started += OnSprintStarted;
+        playerControllerInput.Sprint.canceled += OnSprintEnded;
+        playerControllerInput.Jump.performed += OnJump;
         playerInput.Enable();
     }
 
     private void Update()
     {
-        isPlayerGrounded = playerController.isGrounded;
 
-        Vector2 movementInput = playerInput.OnFoot.Movement.ReadValue<Vector2>();
+        if (playerInput != null)
+        {
+            isPlayerGrounded = playerController.isGrounded;
+            Vector2 movementInput = playerInput.OnFoot.Movement.ReadValue<Vector2>();
 
-        // Check if PlayerInput is instantiated or has been referenced
-        if (playerInput == null)
+            // Check if PlayerInput is instantiated or has been referenced
+
+            Vector3 surfaceMovement = new Vector3(movementInput.x, 0, movementInput.y);
+            OnMove(surfaceMovement);
+
+            // Stol- I mean borrowed from the old player motor script
+            playerVelocity.y += -gravity * Time.deltaTime;
+
+            if (isPlayerGrounded && playerVelocity.y < 0)
+            {
+                playerVelocity.y = -2f;
+            }
+            playerController.Move(playerVelocity * Time.deltaTime);
+        }
+        else
         {
             Debug.LogError("Player Input Not instantiated/referenced");
-            return;
         }
 
-        // Only run if there is actually movement
-        if (movementInput.x != 0 || movementInput.y != 0)
-        {
-            movementInput3d = new Vector3(movementInput.x, 0, movementInput.y);
-            OnMove(movementInput3d);
-        }
     }
 
     private void OnMove(Vector3 movement)
@@ -53,31 +84,29 @@ public class PlayerMovement : MonoBehaviour
         playerController.Move(worldSpaceMovement * moveSpeed * Time.deltaTime);
     }
 
+    private void OnJump(InputAction.CallbackContext context)
+    {
+        // Once again stolen from playerMotor. too good to not have in this script.
+        // Only reason this is being refactored in the first place is because i want to expand it more easily later down the line lol
+
+        if (isPlayerGrounded)
+        {
+            playerVelocity.y = Mathf.Sqrt(jumpHeight * -3.0f * -gravity);
+        }
+        else return;
+    }
+
     private void OnSprintStarted(InputAction.CallbackContext context)
     {
-        Debug.Log("Started Sprinting");
+        // Might make the sprinting math different later but this works for now
+        // Debug.Log("Started Sprinting");
+
         moveSpeed *= sprintSpeedMultiplier;
     }
     private void OnSprintEnded(InputAction.CallbackContext context)
     {
-        Debug.Log("Stopped Sprinting");
+        // Debug.Log("Stopped Sprinting");
+
         moveSpeed /= sprintSpeedMultiplier;
-    }
-    private void SetDefaultMovementValues()
-    {
-        /// Only sets anything if any of the values are less than or equal to zero
-        /// Gravity does not have to be set as zero-gravity environments are a real thing
-        /// Fun fact: because of me forgetting to specify a movespeed for the player, it took me 3 days to realize what I did wrong
-        /// Never gonna make that mistake again
-
-        if (moveSpeed <= 0)
-        {
-            moveSpeed = 5f;
-        }
-
-        if (jumpHeight <= 0)
-        {
-            jumpHeight = 1f;
-        }
     }
 }
