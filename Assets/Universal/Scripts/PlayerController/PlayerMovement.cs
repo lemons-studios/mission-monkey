@@ -20,16 +20,6 @@ public class PlayerMovement : MonoBehaviour
         // Fun fact: because of me forgetting to specify a movespeed for the player, it took me 3 days to realize what I did wrong
         // Never gonna make that mistake again
 
-        if (moveSpeed <= 0)
-        {
-            moveSpeed = 5f;
-        }
-
-        if (jumpHeight <= 0)
-        {
-            jumpHeight = 1f;
-        }
-
         if (gravity <= 0)
         {
             Debug.LogWarning("Invalid gravity value detected. Make sure that the 'gravity' variable is greater than 0. this script will use the default gravity value (9.8 m/s)");
@@ -99,14 +89,10 @@ public class PlayerMovement : MonoBehaviour
     private void OnSprintStarted(InputAction.CallbackContext context)
     {
         // Might make the sprinting math different later but this works for now
-        // Debug.Log("Started Sprinting");
-
         moveSpeed *= sprintSpeedMultiplier;
     }
     private void OnSprintEnded(InputAction.CallbackContext context)
     {
-        // Debug.Log("Stopped Sprinting");
-
         moveSpeed /= sprintSpeedMultiplier;
     }
 }

@@ -7,7 +7,7 @@ using UnityEngine.Rendering.Universal;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-// TODO: Value updater method, fix all the settings affected by the new player controller
+// TODO: Fix all the settings affected by the new player controller
 
 public class MainMenuFunctions : MonoBehaviour
 {
@@ -58,32 +58,31 @@ public class MainMenuFunctions : MonoBehaviour
 
     public void SetVolume(float volume)
     {
+        // I have no idea how this script calculates volume percentage but it works so I do not care
+
         int TextDisplayVolume = Mathf.FloorToInt(volume * 100);
-        // I have no idea how this script calculates volume percentage but it works so i do not care
         mainVolume.SetFloat("Volume", Mathf.Log10(volume) * 20);
-        volumePercentageText.text = TextDisplayVolume.ToString() + "%";
+        volumePercentageText.text = UpdateSliderValue(TextDisplayVolume.ToString(), true);
         PlayerPrefs.SetFloat("Volume", volume);
 
-        ///Debug.Log("Set volume to" + volume * 100);
     }
 
     public void SetMouseSensitivty(float MouseSens)
     {
-        // Stolen code from the old SettingsMenu.cs script. It should work
         playerCamera.SetSensitivity(MouseSens);
 
         if (mouseSensitivitySlider.value != MouseSens)
         {
             mouseSensitivitySlider.value = MouseSens;
         }
-        mouseSensitivityText.text = Mathf.RoundToInt(MouseSens).ToString();
+        mouseSensitivityText.text = UpdateSliderValue(Mathf.RoundToInt(MouseSens).ToString(), false);
         PlayerPrefs.SetFloat("MouseSensitivityValue", MouseSens);
     }
 
     public void SetCameraFov(float CameraFov)
     {
         mainCamera.fieldOfView = CameraFov;
-        fieldOfViewText.text = Mathf.FloorToInt(CameraFov).ToString();
+        fieldOfViewText.text = UpdateSliderValue(Mathf.RoundToInt(CameraFov).ToString(), false);
         PlayerPrefs.SetFloat("Fov", CameraFov);
     }
 
@@ -155,9 +154,15 @@ public class MainMenuFunctions : MonoBehaviour
         if (scene == null) { Debug.LogError("Scene not properly specified on 1 or more objects"); }
     }
 
-    private string UpdateSliderValue(TextMeshProUGUI sliderValueUGUI, string newValue, bool percentage)
+    private string UpdateSliderValue(string newValue, bool percentage)
     {
-        return "";
+        string newPercentage = newValue;
+        if(percentage)
+        {
+            newPercentage = newPercentage + "%";
+        }
+
+        return newPercentage;
     }
 
     private IEnumerator waitUntilHideGUI(float waitTime)
@@ -184,16 +189,9 @@ public class MainMenuFunctions : MonoBehaviour
     public void QuitGame()
     {
         Cursor.lockState = CursorLockMode.None;
-
 #if UNITY_EDITOR
         UnityEditor.EditorApplication.isPlaying = false;
 #endif
         Application.Quit();
-    }
-
-    private void OnApplicationQuit()
-    {
-        // Unlock cursor before game closes
-        Cursor.lockState = CursorLockMode.None;
     }
 }

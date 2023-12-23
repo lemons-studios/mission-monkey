@@ -13,12 +13,11 @@ public abstract class AttackHandler : MonoBehaviour
     public GameObject BulletProjectile;
     public Transform FirePoint;
     public PlayerInput Input;
-    // public Animation AttackAnim, SpecialAttackAnim; /*(For 0.4.0)*/ 
+    // public Animation AttackAnim, SpecialAttackAnim; /* (For 0.4.0) */ 
 
     private Camera Camera;
     private Ray BulletRay;
     private Coroutine clickHeldRoutine;
-    private Vector3 BulletDestination;
 
     public void Start()
     {
@@ -59,6 +58,7 @@ public abstract class AttackHandler : MonoBehaviour
     {
         while (IsInputHeld)
         {
+            // Attack after a specified wait time that is decided upon in the scripts that inheirt this class
             Attack();
             yield return new WaitForSeconds(AttackCooldown);
         }
@@ -72,27 +72,20 @@ public abstract class AttackHandler : MonoBehaviour
             {
                 InstantiateBulletProjectile(FirePoint);
             }
+            else Debug.LogError("GameObject 'BulletProjectile' is null!");
 
             RaycastHit hit;
             BulletRay = Camera.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
-
             if (Physics.Raycast(BulletRay, out hit))
             {
-
-
-                Debug.DrawRay(Camera.transform.position, transform.forward * 15, Color.red);
-
-
+                // Debug.DrawRay(Camera.transform.position, transform.forward * 15, Color.red);
                 if (hit.collider.CompareTag("WeaponInteractable"))
                 {
-                    // Debug.Log("Hit a weapon interactable!");
-
                     // Create a variable for the GameObject the projectile hit
                     var WeaponInteractObject = hit.collider.gameObject;
 
                     // Get the Weapon Interaction comonent inside of the weapon interactable
                     WeaponInteract Interaction = WeaponInteractObject.GetComponent<WeaponInteract>();
-
                     Interaction.TriggerInteract();
                 }
 
@@ -120,8 +113,9 @@ public abstract class AttackHandler : MonoBehaviour
 
     private void InstantiateBulletProjectile(Transform point)
     {
-        // Stolen code from 0.2.0 (it works good enough)
+        // Stolen code from 0.2 (it works good enough)
 
+        // Creates a copy of the BulletProjectile GameObject and then adds a force to the rigidbody component after creating the copy (Again, all of these variables would be set by the classes that inherit this script)
         var CurrentProjectile = Instantiate(BulletProjectile, point.position, FirePoint.transform.rotation) as GameObject;
 
         CurrentProjectile.SetActive(true);
@@ -130,6 +124,6 @@ public abstract class AttackHandler : MonoBehaviour
 
     protected virtual void AlternateAttack(InputAction.CallbackContext context)
     {
-
+        // Empty since no base alternate attack stuff is in here yet (most likely to change once I get to programming this in for 0.4)
     }
 }
