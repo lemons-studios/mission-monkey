@@ -157,9 +157,9 @@ public class MainMenuFunctions : MonoBehaviour
     {
         if(percentage)
         {
-            inputValue = inputValue + "%";
+            return inputValue + "%";
         }
-        return inputValue;
+        else return inputValue;
     }
 
     private IEnumerator waitUntilHideGUI(float waitTime)
