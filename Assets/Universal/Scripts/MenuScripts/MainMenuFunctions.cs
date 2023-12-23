@@ -6,7 +6,6 @@ using UnityEngine.Audio;
 using UnityEngine.Rendering.Universal;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
-
 // TODO: Fix all the settings affected by the new player controller
 
 public class MainMenuFunctions : MonoBehaviour
@@ -154,15 +153,13 @@ public class MainMenuFunctions : MonoBehaviour
         if (scene == null) { Debug.LogError("Scene not properly specified on 1 or more objects"); }
     }
 
-    private string UpdateSliderValue(string newValue, bool percentage)
+    private string UpdateSliderValue(string inputValue, bool percentage)
     {
-        string newPercentage = newValue;
         if(percentage)
         {
-            newPercentage = newPercentage + "%";
+            inputValue = inputValue + "%";
         }
-
-        return newPercentage;
+        return inputValue;
     }
 
     private IEnumerator waitUntilHideGUI(float waitTime)
