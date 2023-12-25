@@ -4,50 +4,44 @@ using UnityEngine.InputSystem;
 [RequireComponent(typeof(CharacterController))]
 public class PlayerMovement : MonoBehaviour
 {
-    public float moveSpeed, jumpHeight;
-    public float gravity;
-
-    public float sprintSpeedMultiplier = 2.0f;
+    public GameObject firePoint;
 
     private PlayerInput playerInput;
+    private VaultOntoObject vaultOntoObject;
     private CharacterController playerController;
     private Vector3 playerVelocity;
-    private bool isPlayerGrounded, isJumpPerformed;
-
+    [Space]
+    public float moveSpeed, jumpHeight, gravity;
+    public float sprintSpeedMultiplier = 2.0f;
+    private bool isPlayerGrounded;
     private void Start()
     {
-        // Only sets anything if any of the values are less than or equal to zero
-        // Fun fact: because of me forgetting to specify a movespeed for the player, it took me 3 days to realize what I did wrong
-        // Never gonna make that mistake again
+        if(firePoint == null)
+            firePoint = GameObject.FindGameObjectWithTag("Player");
 
-        if (gravity <= 0)
-        {
-            Debug.LogWarning("Invalid gravity value detected. Make sure that the 'gravity' variable is greater than 0. this script will use the default gravity value (9.8 m/s)");
-            gravity = 9.8f;
-        }
+        playerController = GetComponent<CharacterController>();
+        vaultOntoObject = new VaultOntoObject();
 
         playerInput = new PlayerInput();
-        playerController = GetComponent<CharacterController>();
-
-        var playerControllerInput = playerInput.OnFoot;
+        var playerControllerInput = playerInput.OnFoot; // Easier to call methods when inputs are performed
         playerControllerInput.Sprint.started += OnSprintStarted;
         playerControllerInput.Sprint.canceled += OnSprintEnded;
-        playerControllerInput.Jump.performed += OnJump;
+        playerControllerInput.Jump.performed += JumpActions;
+
         playerInput.Enable();
+
+        // Locks cursor the moment the script starts
+        Cursor.lockState = CursorLockMode.Locked;
     }
 
     private void Update()
     {
+        var playerControllerInput = playerInput.OnFoot;
+        isPlayerGrounded = playerController.isGrounded;
 
         if (playerInput != null)
         {
-            isPlayerGrounded = playerController.isGrounded;
-            Vector2 movementInput = playerInput.OnFoot.Movement.ReadValue<Vector2>();
-
-            // Check if PlayerInput is instantiated or has been referenced
-
-            Vector3 surfaceMovement = new Vector3(movementInput.x, 0, movementInput.y);
-            OnMove(surfaceMovement);
+            OnPlayerMove(playerControllerInput.Movement.ReadValue<Vector2>());
 
             // Stol- I mean borrowed from the old player motor script
             playerVelocity.y += -gravity * Time.deltaTime;
@@ -62,28 +56,29 @@ public class PlayerMovement : MonoBehaviour
         {
             Debug.LogError("Player Input Not instantiated/referenced");
         }
-
     }
 
-    private void OnMove(Vector3 movement)
+    private void OnPlayerMove(Vector2 movementInput)
     {
         // Something something world space movement
-        Vector3 worldSpaceMovement = transform.TransformDirection(movement);
+        Vector3 worldSpaceMovement = transform.TransformDirection(new Vector3(movementInput.x, 0, movementInput.y));
 
         // Move the player controller
         playerController.Move(worldSpaceMovement * moveSpeed * Time.deltaTime);
     }
 
-    private void OnJump(InputAction.CallbackContext context)
+    private void JumpActions(InputAction.CallbackContext context)
     {
-        // Once again stolen from playerMotor. too good to not have in this script.
-        // Only reason this is being refactored in the first place is because i want to expand it more easily later down the line lol
-
         if (isPlayerGrounded)
         {
+            // Once again stolen from playerMotor. too good to not have in this script.
+            // Only reason this is being refactored in the first place is because i want to expand it more easily later down the line lol
             playerVelocity.y = Mathf.Sqrt(jumpHeight * -3.0f * -gravity);
         }
-        else return;
+        else
+        {
+            vaultOntoObject.Vault(2, firePoint);
+        }
     }
 
     private void OnSprintStarted(InputAction.CallbackContext context)
@@ -96,3 +91,4 @@ public class PlayerMovement : MonoBehaviour
         moveSpeed /= sprintSpeedMultiplier;
     }
 }
+ 

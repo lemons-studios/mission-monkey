@@ -18,8 +18,6 @@ public class PlayerCamera : MonoBehaviour
 
     private void Start()
     {
-        Cursor.lockState = CursorLockMode.Locked;
-
         playerInput = new PlayerInput();
         // Unless changed later, the camera will be a child of the player model
         playerCamera = GetComponentInChildren<Camera>();
@@ -28,13 +26,18 @@ public class PlayerCamera : MonoBehaviour
 
     private void Update()
     {
-        // Thanks to Phind AI for doing the Quaternion stuff because I can't wrap my head around it yet
+        
 
         // Reads information being fed through the Look action in PlayerInput and assigns it to mouseDelta 
         // OnFoot.Look() is a pass through value 
         // This works on any input device (i.e. Mouse, Controller, Fire TV Stick, etc)
 
-        mouseDelta = playerInput.OnFoot.Look.ReadValue<Vector2>();
+        OnPlayerLook(playerInput.OnFoot.Look.ReadValue<Vector2>());
+    }
+
+    private void OnPlayerLook(Vector2 mouseDelta)
+    {   
+        // Thanks to Phind AI (GPT) for doing the Quaternion stuff because I can't wrap my head around it yet
 
         float rotationX = mouseDelta.x * rotationSpeedX;
         float rotationY = -mouseDelta.y * rotationSpeedY;
@@ -54,8 +57,9 @@ public class PlayerCamera : MonoBehaviour
     // The next two methods are for the main menu to work, not much else has to be said about it
     public void SetSensitivity(float newRotationSpeed)
     {
-        rotationSpeedX = newRotationSpeed/100;
-        rotationSpeedY = newRotationSpeed/100;
+        // I have no clue but if I don't divide the new rotation speed by 100 then it will make the sensitivity so high that the game becomes unplayable
+        rotationSpeedX = newRotationSpeed / 100;
+        rotationSpeedY = newRotationSpeed / 100;
     }
 
     public void SetFieldOfView(int newFieldOfView)
