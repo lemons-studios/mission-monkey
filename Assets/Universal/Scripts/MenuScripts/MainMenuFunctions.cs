@@ -13,8 +13,8 @@ public class MainMenuFunctions : MonoBehaviour
     public SaveData saveData;
     [Tooltip("Only assign on game scenes, not main menu")]
     public GameObject gameSavedPopup;
-    [Tooltip("Only assign on game scenes, not main menu")]
-    public OpenPauseMenu pauseMenuMethods;
+    //[Tooltip("Only assign on game scenes, not main menu")]
+    // public OpenPauseMenu pauseMenuMethods;
 
     [Space]
     public Slider volumeSlider, mouseSensitivitySlider, fieldOfViewSlider;
@@ -137,8 +137,8 @@ public class MainMenuFunctions : MonoBehaviour
     public void WriteToSaveData()
     {
         saveData.WriteSaveData();
-        pauseMenuMethods.ResumeGame();
-        pauseMenuMethods.IsOnPauseMenu -= 1; // I gotta clean up the pause menu code later
+        // pauseMenuMethods.ResumeGame();
+        // pauseMenuMethods.IsOnPauseMenu -= 1; // I gotta clean up the pause menu code later
         ShowGUI(gameSavedPopup);
         StartCoroutine(waitUntilHideGUI(3.5f));
     }

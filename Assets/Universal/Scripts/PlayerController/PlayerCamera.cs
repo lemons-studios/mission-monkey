@@ -26,7 +26,7 @@ public class PlayerCamera : MonoBehaviour
 
     private void Update()
     {
-        
+
 
         // Reads information being fed through the Look action in PlayerInput and assigns it to mouseDelta 
         // OnFoot.Look() is a pass through value 
@@ -36,9 +36,8 @@ public class PlayerCamera : MonoBehaviour
     }
 
     private void OnPlayerLook(Vector2 mouseDelta)
-    {   
+    {
         // Thanks to Phind AI (GPT) for doing the Quaternion stuff because I can't wrap my head around it yet
-
         float rotationX = mouseDelta.x * rotationSpeedX;
         float rotationY = -mouseDelta.y * rotationSpeedY;
 

@@ -24,7 +24,6 @@ public abstract class AttackHandler : MonoBehaviour
         Input = new PlayerInput();
         Input.OnFoot.Attack.started += OnAttackStarted;
         Input.OnFoot.Attack.canceled += OnAttackCanceled;
-        Input.OnFoot.SpecialAttack.performed += AlternateAttack;
 
         Input.Enable();
         Camera = GetComponentInParent<Camera>();
@@ -92,19 +91,11 @@ public abstract class AttackHandler : MonoBehaviour
                 else if (hit.collider.gameObject.CompareTag("Enemy"))
                 {
                     // Debug.Log("Hit an Enemy!");
-                    if (hit.collider.GetComponentInParent<AIHealth>() != null)
+                    if (hit.collider.GetComponentInParent<EnemyAIHealth>() != null)
                     {
-                        var HitEnemyHealth = hit.collider.gameObject.GetComponentInParent<AIHealth>();
-                        float UnroundedDamage = WeaponDamage * Random.Range(0.5f, 2.0f);
-
-                        int RoundedDamage = Mathf.RoundToInt(UnroundedDamage);
-                        HitEnemyHealth.HitPoints = HitEnemyHealth.HitPoints - RoundedDamage;
-
-                        // Debug.Log("Damage Dealt: " + RoundedDamage);
-                        if (HitEnemyHealth.HitPoints >= 0)
-                        {
-                            // Debug.Log("Health Remaining: " + HitEnemyHealth.HitPoints);
-                        }
+                        var HitEnemyHealth = hit.collider.gameObject.GetComponentInParent<EnemyAIHealth>();
+                        HitEnemyHealth.DamageAI(WeaponDamage);
+                        Debug.Log("Health remaining on enemy: " + HitEnemyHealth.GetAIHealth());
                     }
                 }
             }

@@ -4,7 +4,7 @@ using UnityEngine.InputSystem;
 [RequireComponent(typeof(CharacterController))]
 public class PlayerMovement : MonoBehaviour
 {
-    public GameObject firePoint;
+    public GameObject vaultableFirePoint;
 
     private PlayerInput playerInput;
     private VaultOntoObject vaultOntoObject;
@@ -16,8 +16,9 @@ public class PlayerMovement : MonoBehaviour
     private bool isPlayerGrounded;
     private void Start()
     {
-        if(firePoint == null)
-            firePoint = GameObject.FindGameObjectWithTag("Player");
+        // Default to the player GameObject if the vaultableFirePoint is not assigned in the editor
+        if (vaultableFirePoint == null)
+            vaultableFirePoint = GameObject.FindGameObjectWithTag("Player"); 
 
         playerController = GetComponent<CharacterController>();
         vaultOntoObject = new VaultOntoObject();
@@ -77,7 +78,7 @@ public class PlayerMovement : MonoBehaviour
         }
         else
         {
-            vaultOntoObject.Vault(2, firePoint);
+            vaultOntoObject.Vault(2, vaultableFirePoint);
         }
     }
 
@@ -91,4 +92,3 @@ public class PlayerMovement : MonoBehaviour
         moveSpeed /= sprintSpeedMultiplier;
     }
 }
- 
