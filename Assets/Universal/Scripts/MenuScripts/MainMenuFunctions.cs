@@ -6,22 +6,23 @@ using UnityEngine.Audio;
 using UnityEngine.Rendering.Universal;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+// TODO: Fix all the settings affected by the new player controller
 
 public class MainMenuFunctions : MonoBehaviour
 {
     public SaveData saveData;
     [Tooltip("Only assign on game scenes, not main menu")]
     public GameObject gameSavedPopup;
-    [Tooltip("Only assign on game scenes, not main menu")]
-    public OpenPauseMenu pauseMenuMethods;
+    //[Tooltip("Only assign on game scenes, not main menu")]
+    // public OpenPauseMenu pauseMenuMethods;
 
     [Space]
     public Slider volumeSlider, mouseSensitivitySlider, fieldOfViewSlider;
     public TMP_Dropdown qualityDropdown, antiAliasingDropdown, subtitlesDropdown;
     public TextMeshProUGUI volumePercentageText, mouseSensitivityText, fieldOfViewText;
     [Space]
-    public Camera playerCamera;
-    public PlayerLook PlayerLook;
+    public Camera mainCamera;
+    public PlayerCamera playerCamera;
     [Space]
     public UniversalAdditionalCameraData urpAdditionalCameraData;
     public AudioMixer mainVolume;
@@ -56,32 +57,31 @@ public class MainMenuFunctions : MonoBehaviour
 
     public void SetVolume(float volume)
     {
+        // I have no idea how this script calculates volume percentage but it works so I do not care
+
         int TextDisplayVolume = Mathf.FloorToInt(volume * 100);
-        // I have no idea how this script calculates volume percentage but it works so i do not care
         mainVolume.SetFloat("Volume", Mathf.Log10(volume) * 20);
-        volumePercentageText.text = TextDisplayVolume.ToString() + "%";
+        volumePercentageText.text = UpdateSliderValue(TextDisplayVolume.ToString(), true);
         PlayerPrefs.SetFloat("Volume", volume);
 
-        ///Debug.Log("Set volume to" + volume * 100);
     }
 
     public void SetMouseSensitivty(float MouseSens)
     {
-        // Stolen code from the old SettingsMenu.cs script. It should work
-        PlayerLook.setMouseSensitivity(MouseSens);
+        playerCamera.SetSensitivity(MouseSens);
+
         if (mouseSensitivitySlider.value != MouseSens)
         {
             mouseSensitivitySlider.value = MouseSens;
         }
-
-        mouseSensitivityText.text = Mathf.CeilToInt(MouseSens).ToString();
+        mouseSensitivityText.text = UpdateSliderValue(Mathf.RoundToInt(MouseSens).ToString(), false);
         PlayerPrefs.SetFloat("MouseSensitivityValue", MouseSens);
     }
 
     public void SetCameraFov(float CameraFov)
     {
-        playerCamera.fieldOfView = CameraFov;
-        fieldOfViewText.text = Mathf.FloorToInt(CameraFov).ToString();
+        mainCamera.fieldOfView = CameraFov;
+        fieldOfViewText.text = UpdateSliderValue(Mathf.RoundToInt(CameraFov).ToString(), false);
         PlayerPrefs.SetFloat("Fov", CameraFov);
     }
 
@@ -137,8 +137,8 @@ public class MainMenuFunctions : MonoBehaviour
     public void WriteToSaveData()
     {
         saveData.WriteSaveData();
-        pauseMenuMethods.ResumeGame();
-        pauseMenuMethods.IsOnPauseMenu -= 1; // I gotta clean up the pause menu code later
+        // pauseMenuMethods.ResumeGame();
+        // pauseMenuMethods.IsOnPauseMenu -= 1; // I gotta clean up the pause menu code later
         ShowGUI(gameSavedPopup);
         StartCoroutine(waitUntilHideGUI(3.5f));
     }
@@ -151,6 +151,15 @@ public class MainMenuFunctions : MonoBehaviour
         }
         SceneManager.LoadScene(scene);
         if (scene == null) { Debug.LogError("Scene not properly specified on 1 or more objects"); }
+    }
+
+    private string UpdateSliderValue(string inputValue, bool percentage)
+    {
+        if(percentage)
+        {
+            return inputValue + "%";
+        }
+        else return inputValue;
     }
 
     private IEnumerator waitUntilHideGUI(float waitTime)
@@ -177,16 +186,9 @@ public class MainMenuFunctions : MonoBehaviour
     public void QuitGame()
     {
         Cursor.lockState = CursorLockMode.None;
-
 #if UNITY_EDITOR
         UnityEditor.EditorApplication.isPlaying = false;
 #endif
         Application.Quit();
-    }
-
-    private void OnApplicationQuit()
-    {
-        // Unlock cursor before game closes
-        Cursor.lockState = CursorLockMode.None;
     }
 }

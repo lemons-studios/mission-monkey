@@ -11,31 +11,31 @@ public class PlayerCamera : MonoBehaviour
     private float rotationSpeedX = 1.0f;
     private float rotationSpeedY = 1.0f;
 
-    private float maxPitch = 80.0f;
+    private float maxPitch = 85.0f;
     private float minPitch = -80.0f;
 
     private float currentPitch = 0.0f;
 
     private void Start()
     {
-        Cursor.lockState = CursorLockMode.Locked;
-
         playerInput = new PlayerInput();
-        // Unless changed later, the camera is a child of the player model
+        // Unless changed later, the camera will be a child of the player model
         playerCamera = GetComponentInChildren<Camera>();
         playerInput.Enable();
     }
 
     private void Update()
-    {
-        // Thanks to Phind AI for doing the Quaternion stuff because I can't wrap my head around it yet
-
+    { 
         // Reads information being fed through the Look action in PlayerInput and assigns it to mouseDelta 
         // OnFoot.Look() is a pass through value 
         // This works on any input device (i.e. Mouse, Controller, Fire TV Stick, etc)
 
-        mouseDelta = playerInput.OnFoot.Look.ReadValue<Vector2>();
+        OnPlayerLook(playerInput.OnFoot.Look.ReadValue<Vector2>());
+    }
 
+    private void OnPlayerLook(Vector2 mouseDelta)
+    {
+        // Thanks to Phind AI (GPT) for doing the Quaternion stuff because I can't wrap my head around it yet
         float rotationX = mouseDelta.x * rotationSpeedX;
         float rotationY = -mouseDelta.y * rotationSpeedY;
 
@@ -43,7 +43,7 @@ public class PlayerCamera : MonoBehaviour
         currentPitch = Mathf.Clamp(currentPitch + rotationY, minPitch, maxPitch);
         rotationY = currentPitch;
 
-        // Do some math I really don't understand at the moment for the rotation to work
+        // From what I understand of this math, it converts the rotation to something that can be used in transform.Rotate (Quaternion)
         playerCamera.transform.localRotation = Quaternion.Euler(rotationY, 0, 0);
         transform.Rotate(0, rotationX, 0);
 
@@ -52,10 +52,11 @@ public class PlayerCamera : MonoBehaviour
     }
 
     // The next two methods are for the main menu to work, not much else has to be said about it
-    public void SetRotationSpeed(float newRotationSpeed)
+    public void SetSensitivity(float newRotationSpeed)
     {
-        rotationSpeedX = newRotationSpeed;
-        rotationSpeedY = newRotationSpeed;
+        // I have no clue but if I don't divide the new rotation speed by 100 then it will make the sensitivity so high that the game becomes unplayable
+        rotationSpeedX = newRotationSpeed / 100;
+        rotationSpeedY = newRotationSpeed / 100;
     }
 
     public void SetFieldOfView(int newFieldOfView)

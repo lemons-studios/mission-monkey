@@ -25,46 +25,49 @@ public class HealthDisplay : MonoBehaviour
 
     public void Update()
     {
-        // Debug.Log(Health.Health);
-        HealthText.text = Health.Health.ToString();
-        if (Health.Health >= 65)
+        if (Health != null)
         {
-            HealthBar.GetComponent<Image>().color = fullHealthColour;
-        }
-        if (Health.Health >= 31 && Health.Health <= 64)
-        {
-            HealthBar.GetComponent<Image>().color = HalfHealthColor;
-        }
-        if (Health.Health >= 1 && Health.Health <= 30)
-        {
-            HealthBar.GetComponent<Image>().color = LowHealthColor;
-        }
+            // Debug.Log(Health.Health);
+            HealthText.text = Health.Health.ToString();
+            if (Health.Health >= 65)
+            {
+                HealthBar.GetComponent<Image>().color = fullHealthColour;
+            }
+            if (Health.Health >= 31 && Health.Health <= 64)
+            {
+                HealthBar.GetComponent<Image>().color = HalfHealthColor;
+            }
+            if (Health.Health >= 1 && Health.Health <= 30)
+            {
+                HealthBar.GetComponent<Image>().color = LowHealthColor;
+            }
 
-        targetOffset = -400 + Health.Health * 4;
-        xOffset = HealthBar.GetComponent<RectTransform>().offsetMax.x;
+            targetOffset = -400 + Health.Health * 4;
+            xOffset = HealthBar.GetComponent<RectTransform>().offsetMax.x;
 
-        if (xOffset < targetOffset)
-        {
-            if (targetOffset - xOffset < 10)
+            if (xOffset < targetOffset)
             {
-                HealthBar.GetComponent<RectTransform>().offsetMax = new Vector2(targetOffset, 0f);
+                if (targetOffset - xOffset < 10)
+                {
+                    HealthBar.GetComponent<RectTransform>().offsetMax = new Vector2(targetOffset, 0f);
+                }
+                else
+                {
+                    HealthBar.GetComponent<RectTransform>().offsetMax = new Vector2(xOffset + 10, 0);
+                }
             }
-            else
+            else if (xOffset > targetOffset)
             {
-                HealthBar.GetComponent<RectTransform>().offsetMax = new Vector2(xOffset + 10, 0);
+                if (xOffset - targetOffset < 10)
+                {
+                    HealthBar.GetComponent<RectTransform>().offsetMax = new Vector2(targetOffset, 0);
+                }
+                else
+                {
+                    HealthBar.GetComponent<RectTransform>().offsetMax = new Vector2(xOffset - 10, 0);
+                }
             }
+            // HealthBar.GetComponent<RectTransform>().offsetMax = new Vector2(-369f + PlayerHealth.Health * 3.69f, 0f);
         }
-        else if (xOffset > targetOffset)
-        {
-            if (xOffset - targetOffset < 10)
-            {
-                HealthBar.GetComponent<RectTransform>().offsetMax = new Vector2(targetOffset, 0);
-            }
-            else
-            {
-                HealthBar.GetComponent<RectTransform>().offsetMax = new Vector2(xOffset - 10, 0);
-            }
-        }
-        // HealthBar.GetComponent<RectTransform>().offsetMax = new Vector2(-369f + PlayerHealth.Health * 3.69f, 0f);
     }
 }
