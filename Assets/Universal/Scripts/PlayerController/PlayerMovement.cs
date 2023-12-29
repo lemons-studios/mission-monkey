@@ -10,7 +10,6 @@ public class PlayerMovement : MonoBehaviour
     private VaultOntoObject vaultOntoObject;
     private CharacterController playerController;
     private Vector3 playerVelocity;
-    [Space]
     public float moveSpeed, jumpHeight, gravity;
     public float sprintSpeedMultiplier = 2.0f;
     private bool isPlayerGrounded;
@@ -31,20 +30,21 @@ public class PlayerMovement : MonoBehaviour
 
         playerInput.Enable();
 
-        // Locks cursor the moment the script starts
+        // Locks cursor in the center of the screen the moment the script starts
         Cursor.lockState = CursorLockMode.Locked;
     }
 
+    // Update() runs once per game frame
     private void Update()
     {
-        var playerControllerInput = playerInput.OnFoot;
+        var playerControllerInput = playerInput.OnFoot; // just makes everyhing slightly more simple on line 46
         isPlayerGrounded = playerController.isGrounded;
 
         if (playerInput != null)
         {
             OnPlayerMove(playerControllerInput.Movement.ReadValue<Vector2>());
 
-            // Stol- I mean borrowed from the old player motor script
+            // Gravity for jumping
             playerVelocity.y += -gravity * Time.deltaTime;
 
             if (isPlayerGrounded && playerVelocity.y < 0)
@@ -61,10 +61,10 @@ public class PlayerMovement : MonoBehaviour
 
     private void OnPlayerMove(Vector2 movementInput)
     {
-        // Something something world space movement
+        // Creates a new Vector3 using movementInput and then converts it to world space movement
         Vector3 worldSpaceMovement = transform.TransformDirection(new Vector3(movementInput.x, 0, movementInput.y));
 
-        // Move the player controller
+        // Move the player controller based on the world space movement
         playerController.Move(worldSpaceMovement * moveSpeed * Time.deltaTime);
     }
 
@@ -78,6 +78,7 @@ public class PlayerMovement : MonoBehaviour
         }
         else
         {
+            // Vaulting onto objects is currently WIP
             vaultOntoObject.Vault(2, vaultableFirePoint);
         }
     }

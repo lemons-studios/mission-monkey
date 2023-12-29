@@ -1,10 +1,14 @@
 using UnityEngine;
 
+// This interaction system is very similar to the old one, but I just want to have the experience of not using a tutorial to write it
 public abstract class Interactable : MonoBehaviour
 {
-    public string interactText = string.Empty; // will very likely be not used because this game might follow a differeent gameplay philosphy 
-    protected virtual void TriggerInteract()
+    public void TriggerInteract()
     {
-        // Completely Empty, as inherited classes will determine what to do
+        Interact();
+    }
+    protected virtual void Interact()
+    {
+        // Completely empty, as other scripts will be overriding this script to have their own functionality
     }
 }

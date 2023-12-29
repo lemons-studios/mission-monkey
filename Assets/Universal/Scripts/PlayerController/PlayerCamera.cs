@@ -25,9 +25,7 @@ public class PlayerCamera : MonoBehaviour
     }
 
     private void Update()
-    {
-
-
+    { 
         // Reads information being fed through the Look action in PlayerInput and assigns it to mouseDelta 
         // OnFoot.Look() is a pass through value 
         // This works on any input device (i.e. Mouse, Controller, Fire TV Stick, etc)
