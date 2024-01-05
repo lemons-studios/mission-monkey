@@ -22,7 +22,7 @@ public class PlayerDeathController : MonoBehaviour
 
     public void ReloadLevel()
     {
-        PlayerHealth.Health = 100;
+        PlayerHealth.health = 100;
         foreach(GameObject UIElements in PlayerUIElements)
         {
             UIElements.SetActive(true);

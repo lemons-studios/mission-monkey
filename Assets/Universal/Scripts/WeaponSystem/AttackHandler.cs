@@ -12,20 +12,25 @@ public abstract class AttackHandler : MonoBehaviour
 
     public GameObject BulletProjectile;
     public Transform FirePoint;
-    public PlayerInput Input;
-    // public Animation AttackAnim, SpecialAttackAnim; /* (For 0.4.0) */ 
+    public AudioClip regularAttackSoundEffect, specialAttackSoundEffect;
 
+    private Animator weaponAnimator;
+    private AudioSource weaponSfxSource;
+    private PlayerInput playerInput;
     private Camera Camera;
     private Ray BulletRay;
     private Coroutine clickHeldRoutine;
 
     public void Start()
     {
-        Input = new PlayerInput();
-        Input.OnFoot.Attack.started += OnAttackStarted;
-        Input.OnFoot.Attack.canceled += OnAttackCanceled;
+        playerInput = new PlayerInput();
+        var onFootAttack = playerInput.OnFoot.Attack;
+        onFootAttack.started += OnAttackStarted;
+        onFootAttack.canceled += OnAttackCanceled;
+        playerInput.Enable();
 
-        Input.Enable();
+        weaponAnimator = GetComponent<Animator>();
+        weaponSfxSource = GetComponent<AudioSource>();
         Camera = GetComponentInParent<Camera>();
     }
 
@@ -65,7 +70,8 @@ public abstract class AttackHandler : MonoBehaviour
 
     protected virtual void Attack()
     {
-        if (gameObject.GetComponentInParent<PlayerHealth>().Health >= 1 && Time.timeScale >= 1)
+        weaponSfxSource.PlayOneShot(regularAttackSoundEffect);
+        if (gameObject.GetComponentInParent<PlayerHealth>().health >= 1 && Time.timeScale >= 1)
         {
             if (BulletProjectile != null)
             {
@@ -95,7 +101,8 @@ public abstract class AttackHandler : MonoBehaviour
                     {
                         var HitEnemyHealth = hit.collider.gameObject.GetComponentInParent<EnemyAIHealth>();
                         HitEnemyHealth.DamageAI(WeaponDamage);
-                        Debug.Log("Health remaining on enemy: " + HitEnemyHealth.GetAIHealth());
+
+                        // Debug.Log("health remaining on enemy: " + HitEnemyHealth.GetAIHealth());
                     }
                 }
             }
@@ -115,6 +122,6 @@ public abstract class AttackHandler : MonoBehaviour
 
     protected virtual void AlternateAttack(InputAction.CallbackContext context)
     {
-        // Empty since no base alternate attack stuff is in here yet (most likely to change once I get to programming this in for 0.4)
+        weaponSfxSource.PlayOneShot(specialAttackSoundEffect);
     }
 }
