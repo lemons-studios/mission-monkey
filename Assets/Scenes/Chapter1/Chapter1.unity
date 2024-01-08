@@ -23,7 +23,7 @@ RenderSettings:
   m_AmbientSkyColor: {r: 0.212, g: 0.227, b: 0.259, a: 1}
   m_AmbientEquatorColor: {r: 0.114, g: 0.125, b: 0.133, a: 1}
   m_AmbientGroundColor: {r: 0.047, g: 0.043, b: 0.035, a: 1}
-  m_AmbientIntensity: 1.29
+  m_AmbientIntensity: 2.67
   m_AmbientMode: 0
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
   m_SkyboxMaterial: {fileID: 2100000, guid: d99f97fd3a11da342984714087023741, type: 2}
@@ -367,7 +367,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 94133e5fe41970944866d0b523e2d0a9, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 402600063}
   m_SourcePrefab: {fileID: 100100000, guid: 94133e5fe41970944866d0b523e2d0a9, type: 3}
 --- !u!4 &402600059 stripped
 Transform:
@@ -379,6 +382,33 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 94133e5fe41970944866d0b523e2d0a9, type: 3}
   m_PrefabInstance: {fileID: 402600058}
   m_PrefabAsset: {fileID: 0}
+--- !u!54 &402600063
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 402600060}
+  serializedVersion: 4
+  m_Mass: 0.1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &476087534
 GameObject:
   m_ObjectHideFlags: 0
@@ -939,14 +969,14 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10911, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 7482667652216324306, guid: 27da4aeb0d09285408d8a7bcf7c0e842, type: 3}
+  m_Type: 3
   m_PreserveAspect: 0
   m_FillCenter: 1
-  m_FillMethod: 4
+  m_FillMethod: 0
   m_FillAmount: 1
   m_FillClockwise: 1
-  m_FillOrigin: 0
+  m_FillOrigin: 1
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
 --- !u!222 &974800994
@@ -1768,7 +1798,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f3a688d5c85ab7e4c9f779197d58e3d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  healthModifier: -10
+  healthModifier: 5
   playerHealth: {fileID: 3459851930493492627}
 --- !u!1 &2015445885
 GameObject:
@@ -2403,11 +2433,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0c56837259a0f5e48b6d6c015a2daac6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 100
-  player: {fileID: 3459851930493492617}
-  playerGui: {fileID: 1512182172}
-  playerDeathScreen: {fileID: 1064645985}
-  playerDeathController: {fileID: 3459851930493492626}
+  enforceMaxHealth: 1
 --- !u!114 &3459851930493492628
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -13,8 +13,6 @@ public abstract class AttackHandler : MonoBehaviour
     public GameObject BulletProjectile;
     public Transform FirePoint;
     public AudioClip regularAttackSoundEffect, specialAttackSoundEffect;
-
-    private Animator weaponAnimator;
     private AudioSource weaponSfxSource;
     private PlayerInput playerInput;
     private Camera Camera;
@@ -29,7 +27,6 @@ public abstract class AttackHandler : MonoBehaviour
         onFootAttack.canceled += OnAttackCanceled;
         playerInput.Enable();
 
-        weaponAnimator = GetComponent<Animator>();
         weaponSfxSource = GetComponent<AudioSource>();
         Camera = GetComponentInParent<Camera>();
     }
@@ -71,13 +68,13 @@ public abstract class AttackHandler : MonoBehaviour
     protected virtual void Attack()
     {
         weaponSfxSource.PlayOneShot(regularAttackSoundEffect);
-        if (gameObject.GetComponentInParent<PlayerHealth>().health >= 1 && Time.timeScale >= 1)
+        if (gameObject.GetComponentInParent<PlayerHealth>().GetHealth() >= 1 && Time.timeScale >= 1)
         {
             if (BulletProjectile != null)
             {
                 InstantiateBulletProjectile(FirePoint);
             }
-            else Debug.LogError("GameObject 'BulletProjectile' is null!");
+            else Debug.LogError("'BulletProjectile' is null!");
 
             RaycastHit hit;
             BulletRay = Camera.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
@@ -112,16 +109,15 @@ public abstract class AttackHandler : MonoBehaviour
     private void InstantiateBulletProjectile(Transform point)
     {
         // Stolen code from 0.2 (it works good enough)
-
         // Creates a copy of the BulletProjectile GameObject and then adds a force to the rigidbody component after creating the copy (Again, all of these variables would be set by the classes that inherit this script)
+        
         var CurrentProjectile = Instantiate(BulletProjectile, point.position, FirePoint.transform.rotation) as GameObject;
-
         CurrentProjectile.SetActive(true);
         CurrentProjectile.GetComponent<Rigidbody>().velocity = point.transform.forward * BulletSpeed;
     }
 
     protected virtual void AlternateAttack(InputAction.CallbackContext context)
     {
-        weaponSfxSource.PlayOneShot(specialAttackSoundEffect);
+        if(specialAttackSoundEffect != null) weaponSfxSource.PlayOneShot(specialAttackSoundEffect);
     }
 }

@@ -31,8 +31,8 @@
 
 ## ⚙️ Requirements to Develop
 1. Windows or Linux (MacOS might be possible but good luck pal)
-2. [Unity 2023.2.0](https://unity.com/releases/editor/archive#download-archive-2023)
-3. [Blender 4.0+](https://www.blender.org/download/) ([Or Download From Steam](https://store.steampowered.com/app/365670/Blender/))
+2. [Unity 2023.2.3](https://unity.com/releases/editor/archive#download-archive-2023)
+3. [Blender 4.0+](https://www.blender.org/download/)
 4. A C++ compiler (See compiler instructions below)
 5. ~5-10GB of storage to clone the source code and download all the packages required for the project
 

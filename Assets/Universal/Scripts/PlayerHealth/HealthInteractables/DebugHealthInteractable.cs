@@ -8,6 +8,7 @@ public class DebugHealthInteractable : Interactable
     protected override void Interact()
     {
         base.Interact();
-        playerHealth.health += healthModifier;
+        playerHealth.DamagePlayer(healthModifier);
+        Debug.Log("Health remaining: " + playerHealth.GetHealth());
     }
 }

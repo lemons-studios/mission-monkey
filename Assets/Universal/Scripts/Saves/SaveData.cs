@@ -5,7 +5,6 @@ using System.IO;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-#pragma warning disable CS0414 // The private field 'field' is assigned but its value is never used
 public class SaveData : MonoBehaviour
 {
     private JsonData jsonData = new JsonData();
@@ -17,7 +16,6 @@ public class SaveData : MonoBehaviour
     private string persistentData;
     private string fileName = "missionMonkeyData.json";
     private string fileDir;
-
     private static bool isSceneLoadedFromSaveData = false;
 
     // Encryption/Decryption key
@@ -65,11 +63,6 @@ public class SaveData : MonoBehaviour
         }
     }
 
-    public string GetSaveDataLocation()
-    {
-        return fileDir;
-    }
-
     public void GenerateSaveData()
     {
         // New game = delete save file and regenerate
@@ -77,11 +70,8 @@ public class SaveData : MonoBehaviour
         {
             File.Delete(fileDir);
         }
-        string defaultData = jsonData.JsonDataToString(currentActiveScene, new Vector3(-85, 0.5f, -11.75f)); // The coordinates are the default position the player spawns in in the first game scene
+        string defaultData = jsonData.JsonDataToString(currentActiveScene, new Vector3(-0f, 0f, -0f)); // Placeholder coordinates
         File.WriteAllText(fileDir, defaultData);
-        
-
-        /// File.WriteAllText(fileDir, EncryptSaveData(defaultData)); // For Later
     }
 
     public void LoadSaveData()
@@ -126,6 +116,10 @@ public class SaveData : MonoBehaviour
         PlayerPrefs.SetFloat("Fov", Fov);
         PlayerPrefs.SetInt("QualityLevel", qualityPreset);
         PlayerPrefs.SetInt("AntiAliasing", antiAliasing);
+    }
+    public string GetSaveDataLocation()
+    {
+        return fileDir;
     }
 }
 
