@@ -14,18 +14,14 @@ public class GetSaveDataInfo : MonoBehaviour
         {
             try
             {
-                Debug.Log("Holy moly it was found");
+                Debug.Log("File contains tag '" + tagName + "'");
                 var jsonObject = JObject.Parse(jsonData);
                 return jsonObject.SelectToken(tagName).Value<string>();
             }
-            catch (Exception e)
-            {
-                Debug.LogError(e);
-            }
-
+            catch (Exception e) {Debug.LogError(e);}
         }
-        else Debug.LogError("tag not found");
-        return null;
+        else Debug.LogError("Tag '" + tagName + "' not found in " + jsonData);
+        return "tagNotFoundError";
     }
 
     public string GetSavedSceneName()
@@ -40,7 +36,7 @@ public class GetSaveDataInfo : MonoBehaviour
                 case 1:
                     return "Chapter 1";
                 case 2:
-                    return "Chapter 1: Interlude";
+                    return "Chapter 1: Epilogue";
                 case 3:
                     return "Chapter 2";
             }

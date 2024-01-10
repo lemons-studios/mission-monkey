@@ -114,8 +114,6 @@ public class SaveData : MonoBehaviour
 [Serializable]
 class JsonData
 {
-    
-
     // Note to future self: ANY VARS FOR SAVE DATA NEED TO BE PUBLIC, OR IT WON'T BE RETURNED IN JsonDataToString()
     public string currentScene;
     public int currentSceneBuildNumber;

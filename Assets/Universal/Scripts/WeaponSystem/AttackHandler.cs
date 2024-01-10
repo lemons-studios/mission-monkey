@@ -68,7 +68,7 @@ public abstract class AttackHandler : MonoBehaviour
     protected virtual void Attack()
     {
         weaponSfxSource.PlayOneShot(regularAttackSoundEffect);
-        if (gameObject.GetComponentInParent<PlayerHealth>().GetHealth() >= 1 && Time.timeScale >= 1)
+        if (gameObject.GetComponentInParent<PlayerHealth>().GetHealth() >= 1 && Time.timeScale != 0)
         {
             if (BulletProjectile != null)
             {
