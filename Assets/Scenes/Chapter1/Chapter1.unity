@@ -876,6 +876,7 @@ GameObject:
   m_Component:
   - component: {fileID: 929192973}
   - component: {fileID: 929192971}
+  - component: {fileID: 929192974}
   m_Layer: 0
   m_Name: BgScripts
   m_TagString: Untagged
@@ -914,6 +915,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &929192974
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 929192970}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 16a33b7012dd52c4bbd3adc555c6a77a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  saveData: {fileID: 0}
 --- !u!1 &974800991
 GameObject:
   m_ObjectHideFlags: 0
@@ -1409,6 +1423,7 @@ GameObject:
   - component: {fileID: 1512182176}
   - component: {fileID: 1512182175}
   - component: {fileID: 1512182174}
+  - component: {fileID: 1512182177}
   m_Layer: 0
   m_Name: PlayerUI
   m_TagString: Untagged
@@ -1501,6 +1516,18 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
+--- !u!114 &1512182177
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1512182172}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f52ddbfb235574349b67230e5601dcfc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1519146421
 GameObject:
   m_ObjectHideFlags: 0
@@ -2444,6 +2471,7 @@ GameObject:
   - component: {fileID: 2231138582591641022}
   - component: {fileID: 3238980990474127559}
   - component: {fileID: 2837139816774977304}
+  - component: {fileID: 3459851930493492629}
   - component: {fileID: 3459851930493492621}
   - component: {fileID: 3459851930493492623}
   - component: {fileID: 3459851930493492622}
@@ -2574,6 +2602,28 @@ MonoBehaviour:
   healthUI: {fileID: 974800991}
   healthText: {fileID: 1519146423}
   healthBarLerpSpeed: 10
+--- !u!95 &3459851930493492629
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3459851930493492617}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!81 &4368670743826906851
 AudioListener:
   m_ObjectHideFlags: 0

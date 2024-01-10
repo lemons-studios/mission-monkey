@@ -35,10 +35,11 @@
 3. [Blender 4.0+](https://www.blender.org/download/)
 4. ~5-10GB of storage to clone the source code and download all the packages required for the project
 
+Clone the repo with:
 ```sh
 git clone https://github.com/Lemons-Studios/Mission-Monkey.git
 ```
-Add the project to the Unity Hub, and you are good to launch the game!
+Then, add the project to the Unity Hub. You are good to go from there!!
 
 ## 🏗️ Build From Source
 To build from source, you must have all of the software mentioned in **Requirements to Develop** installed, as well as the ~5-10GB of storage required to have the project on your computer

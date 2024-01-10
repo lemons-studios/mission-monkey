@@ -126,7 +126,7 @@ public class MainMenuFunctions : MonoBehaviour
 
     public void newGame(string sceneName)
     {
-        if (LemonStudiosCsExtensions.DoesFileExist(saveData.GetSaveDataLocation()))
+        if (LemonStudiosCsExtensions.DoesFileExist(saveData.GetSaveDirectory()))
         {
             saveData.DeleteSaveData();
             LoadNewScene(sceneName);
