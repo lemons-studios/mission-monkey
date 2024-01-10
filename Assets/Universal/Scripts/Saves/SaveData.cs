@@ -14,10 +14,9 @@ public class SaveData : MonoBehaviour
 
     private string currentActiveScene;
     private string persistentData;
-    private string fileName = "missionMonkeyData.json";
+    public string fileName = "missionMonkeyData.json";
     private string fileDir;
     private static bool isSceneLoadedFromSaveData = false;
-    public GetSaveDataInfo getSaveDataInfo;
 
     private void Start()
     {
@@ -59,8 +58,6 @@ public class SaveData : MonoBehaviour
             playerController.enabled = true;
             isSceneLoadedFromSaveData = false;
         }
-
-        Debug.Log(getSaveDataInfo.GetSavedSceneName());
     }
 
     public void GenerateSaveData()
