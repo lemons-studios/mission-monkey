@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class OtherOptions : MonoBehaviour
 {
+    public SaveData saveData;
+
     public void HideUI(GameObject uiToHide)
     {
         uiToHide.SetActive(false);
@@ -12,5 +14,10 @@ public class OtherOptions : MonoBehaviour
     public void ShowUI(GameObject uiToShow)
     {
         uiToShow.SetActive(true);
+    }
+
+    public void DeleteSavedata()
+    {
+        saveData.DeleteSaveData();
     }
 }

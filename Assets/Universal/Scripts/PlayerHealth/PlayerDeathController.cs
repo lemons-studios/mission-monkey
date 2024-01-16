@@ -1,40 +1,24 @@
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class PlayerDeathController : MonoBehaviour
 {
-    public PlayerHealth PlayerHealth;
-    public GameObject Player, PlayerDeathScreen;
-    public GameObject[] PlayerUIElements;
-    public void KillPlayer()
+    public SaveData saveData;
+    public PauseGame pauseGame;
+    public GameObject mainUI, deathUI;
+
+    public void OnPlayerDeath()
     {
-        Cursor.lockState = CursorLockMode.Confined;
-        //Time.timeScale = 0.0001f;
-        foreach(GameObject UIElements in PlayerUIElements)
-        {
-            UIElements.SetActive(false);
-        }
-        PlayerDeathScreen.SetActive(true);
-        Player.GetComponent<Animator>().enabled = true;
-        Player.GetComponent<Animator>().SetBool("Died", true);
-        PlayerDeathScreen.GetComponent<Animator>().SetBool("Died", true);
+        mainUI.SetActive(false);
+        pauseGame.enabled = false;
+        Time.timeScale = 0;
+        Cursor.lockState = CursorLockMode.None;
+        deathUI.SetActive(true);
     }
 
-    public void ReloadLevel()
+    public void ReloadFromLastSave()
     {
-        PlayerHealth.SetHealth(100);
-        foreach(GameObject UIElements in PlayerUIElements)
-        {
-            UIElements.SetActive(true);
-        }
-        
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-        
-    }
-
-    public void LoadToMainMenu()
-    {
+        saveData.LoadSaveData();
         Time.timeScale = 1;
-        SceneManager.LoadScene(0);
+        Cursor.lockState = CursorLockMode.Locked;
     }
 }

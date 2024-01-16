@@ -23,7 +23,7 @@ public class PlayerHealth : MonoBehaviour
         health -= DamageDealt;
         if (health <= 0)
         {
-            GetComponent<PlayerDeathController>().KillPlayer();
+            GetComponent<PlayerDeathController>().OnPlayerDeath();
         }
     }
 
