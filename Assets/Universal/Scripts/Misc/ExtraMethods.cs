@@ -1,5 +1,6 @@
 using System.IO;
 using System.Linq;
+using UnityEngine.SceneManagement;
 
 namespace LemonStudios.CsExtensions
 {
@@ -18,6 +19,15 @@ namespace LemonStudios.CsExtensions
                 return true;
             }
             else return false;
+        }
+
+        public static bool IsOnMainMenu()
+        {
+            Scene currentScene = SceneManager.GetActiveScene();
+            if(currentScene.buildIndex == 0)
+            {
+                return true;
+            } else return false;
         }
     }
 }

@@ -63,7 +63,6 @@ public class MainMenuFunctions : MonoBehaviour
         mainVolume.SetFloat("Volume", Mathf.Log10(volume) * 20);
         volumePercentageText.text = UpdateSliderValue(TextDisplayVolume.ToString(), true);
         PlayerPrefs.SetFloat("Volume", volume);
-
     }
 
     public void SetMouseSensitivty(float MouseSens)
@@ -153,7 +152,7 @@ public class MainMenuFunctions : MonoBehaviour
         if (scene == null) { Debug.LogError("Scene not properly specified on 1 or more objects"); }
     }
 
-    private string UpdateSliderValue(string inputValue, bool percentage)
+    private string UpdateSliderValue(string inputValue, bool percentage=false)
     {
         if(percentage)
         {

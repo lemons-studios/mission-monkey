@@ -69,6 +69,26 @@ MonoBehaviour:
   downsample: 2
   scale: 0.5
   iterations: 6
+--- !u!114 &-4310973848593478697
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 980a78cc4df543b29a2663be288cd2f5, type: 3}
+  m_Name: UniversalBlurFeature
+  m_EditorClassIdentifier: 
+  m_Active: 1
+  passMaterial: {fileID: 2100000, guid: 9850a4d8fa91d463f97c9078274547d0, type: 2}
+  passIndex: 0
+  injectionPoint: 600
+  intensity: 1
+  downsample: 2
+  scale: 0.5
+  iterations: 6
 --- !u!114 &-3335700842739582426
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -119,7 +139,8 @@ MonoBehaviour:
   - {fileID: -3335700842739582426}
   - {fileID: -8560609843737040168}
   - {fileID: -6527694362460855762}
-  m_RendererFeatureMap: 263a89bfc135b5d1d86a5703b49a32892e62330390f868a5
+  - {fileID: -4310973848593478697}
+  m_RendererFeatureMap: 263a89bfc135b5d1d86a5703b49a32892e62330390f868a5d74b960e20582cc4
   m_UseNativeRenderPass: 0
   postProcessData: {fileID: 11400000, guid: 41439944d30ece34e96484bdb6645b55, type: 2}
   shaders:
@@ -135,7 +156,6 @@ MonoBehaviour:
     coreBlitColorAndDepthPS: {fileID: 4800000, guid: d104b2fc1ca6445babb8e90b0758136b, type: 3}
     blitHDROverlay: {fileID: 4800000, guid: a89bee29cffa951418fc1e2da94d1959, type: 3}
     cameraMotionVector: {fileID: 4800000, guid: c56b7e0d4c7cb484e959caeeedae9bbf, type: 3}
-    objectMotionVector: {fileID: 4800000, guid: 7b3ede40266cd49a395def176e1bc486, type: 3}
     screenSpaceLensFlare: {fileID: 4800000, guid: 701880fecb344ea4c9cd0db3407ab287, type: 3}
     dataDrivenLensFlare: {fileID: 4800000, guid: 6cda457ac28612740adb23da5d39ea92, type: 3}
   m_AssetVersion: 2
