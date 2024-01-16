@@ -119,6 +119,7 @@ class JsonData
     public int currentSceneBuildNumber;
     public Vector3 playerPosition;
     public string lastSaveDate;
+    public string lastPlayedVersion;
 
     public string JsonDataToString(string scene, Vector3 position)
     {
@@ -131,6 +132,7 @@ class JsonData
         playerPosition = position;
         currentSceneBuildNumber = SceneManager.GetActiveScene().buildIndex;
         lastSaveDate = formattedSaveTime;
+        lastPlayedVersion = Application.version;
         return JsonUtility.ToJson(this);
     }
 }
