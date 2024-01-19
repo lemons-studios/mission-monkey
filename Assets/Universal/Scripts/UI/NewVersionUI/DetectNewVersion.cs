@@ -6,7 +6,7 @@ public class DetectNewVersion : MonoBehaviour
     public GameObject newVersionUI;
     private void Start() 
     {
-        if(getSaveDataInfo.GetSaveInfoAsString("lastPlayedVersion") != Application.version)
+        if(getSaveDataInfo.GetSaveDataAsString("lastPlayedVersion") != Application.version)
         {
             newVersionUI.SetActive(true);
         }    

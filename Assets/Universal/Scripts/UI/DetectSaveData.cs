@@ -10,6 +10,7 @@ public class DetectSaveData : MonoBehaviour
     {
         if(!LemonStudiosCsExtensions.DoesFileExist(Path.Combine(Application.persistentDataPath, "missionMonkeyData.json")))
         {
+            saveData.GenerateSaveData();
             SceneManager.LoadScene("Chapter1");
         }
         else
@@ -20,7 +21,7 @@ public class DetectSaveData : MonoBehaviour
 
     public void StartNewGame()
     {
-        saveData.DeleteSaveData();
+        saveData.RegenerateSaveData();
         SceneManager.LoadScene("Chapter1");
     }
 }

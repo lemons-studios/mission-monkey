@@ -11,6 +11,6 @@ public class SetSaveDataUIText : MonoBehaviour
     private void Start() 
     {
         chapterNameText.text = getSaveDataInfo.GetSavedSceneName();
-        lastSaveDateText.text = getSaveDataInfo.GetSaveInfoAsString("lastSaveDate");
+        lastSaveDateText.text = getSaveDataInfo.GetSaveDataAsString("lastSaveDate");
     }
 }

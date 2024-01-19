@@ -127,7 +127,7 @@ public class MainMenuFunctions : MonoBehaviour
     {
         if (LemonStudiosCsExtensions.DoesFileExist(saveData.GetSaveDirectory()))
         {
-            saveData.DeleteSaveData();
+            saveData.RegenerateSaveData();
             LoadNewScene(sceneName);
         }
         else LoadNewScene(sceneName);

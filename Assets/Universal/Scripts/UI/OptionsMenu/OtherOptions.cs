@@ -15,9 +15,4 @@ public class OtherOptions : MonoBehaviour
     {
         uiToShow.SetActive(true);
     }
-
-    public void DeleteSavedata()
-    {
-        saveData.DeleteSaveData();
-    }
 }

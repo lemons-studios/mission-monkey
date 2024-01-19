@@ -8,6 +8,6 @@ public class SetSaveMenuSnapshot : MonoBehaviour
     public GetSaveDataInfo getSaveDataInfo;
     private void Awake() 
     {
-        saveMenuSnapshot.sprite = chapterSnapshots[getSaveDataInfo.GetSaveInfoAsInt("currentSceneBuildNumber")];
+        saveMenuSnapshot.sprite = chapterSnapshots[getSaveDataInfo.GetSaveDataAsInt("currentSceneBuildNumber")];
     }
 }

@@ -15,14 +15,15 @@ public class SaveData : MonoBehaviour
     private string currentActiveScene;
     private string persistentData;
     public string fileName = "missionMonkeyData.json";
-    private string fileDir;
+    private string filePath;
     private static bool isSceneLoadedFromSaveData = false;
 
+    // Uses Awake() instead of Start() so any script using this script can actually use it without errors
     private void Awake()
     {
         currentActiveScene = SceneManager.GetActiveScene().name;
         persistentData = Application.persistentDataPath; // Read up on the Unity docs on what the persistent data path is on different operating systems
-        fileDir = Path.Combine(persistentData, fileName);
+        filePath = Path.Combine(persistentData, fileName);
         // Resume game in the case that the game is loaded from the game pause menu
         Time.timeScale = 1;
 
@@ -32,7 +33,7 @@ public class SaveData : MonoBehaviour
         {
             Player = GameObject.FindWithTag("Player");
             playerController = Player.GetComponent<CharacterController>();
-            if(!LemonStudiosCsExtensions.DoesFileExist(fileDir))
+            if(!LemonStudiosCsExtensions.DoesFileExist(filePath))
             {
                 GenerateSaveData();
             }
@@ -42,7 +43,7 @@ public class SaveData : MonoBehaviour
         {
             // The player controller must be disabled before the script is able to move the player model anywhere
             playerController.enabled = false;
-            string jsonData = File.ReadAllText(fileDir);
+            string jsonData = File.ReadAllText(filePath);
             JObject json = JObject.Parse(jsonData);
 
             // Get coordinates of x, y, and z from json 
@@ -59,18 +60,13 @@ public class SaveData : MonoBehaviour
 
     public void GenerateSaveData()
     {
-        // New game = delete save file and regenerate
-        if (LemonStudiosCsExtensions.DoesFileExist(fileDir))
-        {
-            File.Delete(fileDir);
-        }
-        string defaultData = jsonData.JsonDataToString(currentActiveScene, new Vector3(-23f, 25.7f, -42f)); // Placeholder coordinates
-        File.WriteAllText(fileDir, defaultData);
+        string defaultData = jsonData.JsonDataToString("Chapter1", new Vector3(-128.1f, 36.2f, -46.8f)); // Current Coordinates for the starting pos in the debug ch1 scene
+        File.WriteAllText(filePath, defaultData);
     }
 
     public void LoadSaveData()
     {
-        string jsonData = File.ReadAllText(fileDir);
+        string jsonData = File.ReadAllText(filePath);
         var jsonObject = JObject.Parse(jsonData);
         var savedLoadedScene = jsonObject.Value<string>("currentScene");
 
@@ -80,9 +76,9 @@ public class SaveData : MonoBehaviour
 
     public void WriteSaveData()
     {
-        File.Delete(fileDir);
+        File.Delete(filePath);
         string updatedData = jsonData.JsonDataToString(currentActiveScene, Player.transform.position);
-        File.WriteAllText(fileDir, updatedData);
+        File.WriteAllText(filePath, updatedData);
     }
 
     public void RegenerateSaveData()
@@ -90,15 +86,15 @@ public class SaveData : MonoBehaviour
         DeleteSaveData();
         GenerateSaveData();
     }
-    public void DeleteSaveData()
+    private void DeleteSaveData()
     {
-        File.Delete(fileDir);
+        File.Delete(filePath);
     }
 
     public string GetSaveDirectory()
     {
         // Returns the directory the save data JSON is stored in
-        return fileDir;
+        return filePath;
     }
 
     public string GetFileName()
