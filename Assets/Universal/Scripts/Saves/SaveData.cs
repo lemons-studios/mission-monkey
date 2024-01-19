@@ -18,12 +18,11 @@ public class SaveData : MonoBehaviour
     private string fileDir;
     private static bool isSceneLoadedFromSaveData = false;
 
-    private void Start()
+    private void Awake()
     {
         currentActiveScene = SceneManager.GetActiveScene().name;
         persistentData = Application.persistentDataPath; // Read up on the Unity docs on what the persistent data path is on different operating systems
         fileDir = Path.Combine(persistentData, fileName);
-        Debug.Log(fileDir);
         // Resume game in the case that the game is loaded from the game pause menu
         Time.timeScale = 1;
 
@@ -33,12 +32,10 @@ public class SaveData : MonoBehaviour
         {
             Player = GameObject.FindWithTag("Player");
             playerController = Player.GetComponent<CharacterController>();
-        }
-
-        // Generate save data if the file could not be found in the proper location
-        if (!LemonStudiosCsExtensions.DoesFileExist(fileDir))
-        {
-            GenerateSaveData();
+            if(!LemonStudiosCsExtensions.DoesFileExist(fileDir))
+            {
+                GenerateSaveData();
+            }
         }
 
         if (currentActiveScene != "MainMenu" && isSceneLoadedFromSaveData)
