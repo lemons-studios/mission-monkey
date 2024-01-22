@@ -6,7 +6,7 @@ public class DiscordRichPresenceController : MonoBehaviour
     Discord.Discord RichPresence;
     private long ClientId = 1090862646993096745;
     private long StartTime;
-    private string Description = "Playing Mission: Monkey";
+    private string Details = string.Empty;
     private string LargeImageText;
     public string LargeImage, SmallImage, State, SmallImageText;
 
@@ -47,7 +47,7 @@ public class DiscordRichPresenceController : MonoBehaviour
             var Activity = new Discord.Activity
             {
                 State = State,
-                Details = Description,
+                Details = Details,
                 Assets =
             {
                 LargeImage = LargeImage,
