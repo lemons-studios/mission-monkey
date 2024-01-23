@@ -1,6 +1,6 @@
-using Microsoft.Unity.VisualStudio.Editor;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class SetSaveDataUIText : MonoBehaviour
 {

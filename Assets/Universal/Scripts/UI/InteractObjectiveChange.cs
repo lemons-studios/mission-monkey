@@ -1,4 +1,4 @@
-public class ChangeObjectiveOnInteract : Interactable
+public class InteractObjectiveChange : Interactable
 {
     public string newObjective;
     private ChangeObjective changeObjective;

@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class OtherOptions : MonoBehaviour
@@ -14,5 +12,14 @@ public class OtherOptions : MonoBehaviour
     public void ShowUI(GameObject uiToShow)
     {
         uiToShow.SetActive(true);
+    }
+
+    public void QuitGame()
+    {
+        Cursor.lockState = CursorLockMode.None;
+#if UNITY_EDITOR
+        UnityEditor.EditorApplication.isPlaying = false;
+#endif
+        Application.Quit();
     }
 }

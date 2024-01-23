@@ -9,7 +9,7 @@ public class PauseGame : MonoBehaviour
     private void Start() 
     {
         playerInput = new PlayerInput();
-        playerInput.OnFoot.PauseGame.performed += TogglePause;  
+        playerInput.OnFoot.Pause.performed += TogglePause;  
         playerInput.Enable();
     }
 

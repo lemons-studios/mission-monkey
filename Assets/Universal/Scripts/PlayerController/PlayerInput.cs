@@ -107,15 +107,6 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""PauseGame"",
-                    ""type"": ""Button"",
-                    ""id"": ""efc87a77-7618-4c41-b4a0-8afccfe6f94f"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -369,28 +360,6 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Attack"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""7331f176-fb2b-47cf-91e3-df57a926a33e"",
-                    ""path"": ""<Keyboard>/escape"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""PauseGame"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""d4f690f5-e178-4d01-9d7b-be804c32d1af"",
-                    ""path"": ""<Gamepad>/start"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""PauseGame"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -948,7 +917,6 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         m_OnFoot_GunSwitchPC = m_OnFoot.FindAction("GunSwitchPC", throwIfNotFound: true);
         m_OnFoot_GunSwitchControllers = m_OnFoot.FindAction("GunSwitchControllers", throwIfNotFound: true);
         m_OnFoot_Attack = m_OnFoot.FindAction("Attack", throwIfNotFound: true);
-        m_OnFoot_PauseGame = m_OnFoot.FindAction("PauseGame", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Navigate = m_UI.FindAction("Navigate", throwIfNotFound: true);
@@ -1031,7 +999,6 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
     private readonly InputAction m_OnFoot_GunSwitchPC;
     private readonly InputAction m_OnFoot_GunSwitchControllers;
     private readonly InputAction m_OnFoot_Attack;
-    private readonly InputAction m_OnFoot_PauseGame;
     public struct OnFootActions
     {
         private @PlayerInput m_Wrapper;
@@ -1045,7 +1012,6 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         public InputAction @GunSwitchPC => m_Wrapper.m_OnFoot_GunSwitchPC;
         public InputAction @GunSwitchControllers => m_Wrapper.m_OnFoot_GunSwitchControllers;
         public InputAction @Attack => m_Wrapper.m_OnFoot_Attack;
-        public InputAction @PauseGame => m_Wrapper.m_OnFoot_PauseGame;
         public InputActionMap Get() { return m_Wrapper.m_OnFoot; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -1082,9 +1048,6 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
             @Attack.started += instance.OnAttack;
             @Attack.performed += instance.OnAttack;
             @Attack.canceled += instance.OnAttack;
-            @PauseGame.started += instance.OnPauseGame;
-            @PauseGame.performed += instance.OnPauseGame;
-            @PauseGame.canceled += instance.OnPauseGame;
         }
 
         private void UnregisterCallbacks(IOnFootActions instance)
@@ -1116,9 +1079,6 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
             @Attack.started -= instance.OnAttack;
             @Attack.performed -= instance.OnAttack;
             @Attack.canceled -= instance.OnAttack;
-            @PauseGame.started -= instance.OnPauseGame;
-            @PauseGame.performed -= instance.OnPauseGame;
-            @PauseGame.canceled -= instance.OnPauseGame;
         }
 
         public void RemoveCallbacks(IOnFootActions instance)
@@ -1265,7 +1225,6 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         void OnGunSwitchPC(InputAction.CallbackContext context);
         void OnGunSwitchControllers(InputAction.CallbackContext context);
         void OnAttack(InputAction.CallbackContext context);
-        void OnPauseGame(InputAction.CallbackContext context);
     }
     public interface IUIActions
     {
