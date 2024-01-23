@@ -1,6 +1,7 @@
+using System.Collections;
 using UnityEngine;
 
-public class OtherOptions : MonoBehaviour
+public class MenuNavigation : MonoBehaviour
 {
     public SaveData saveData;
 
@@ -21,5 +22,16 @@ public class OtherOptions : MonoBehaviour
         UnityEditor.EditorApplication.isPlaying = false;
 #endif
         Application.Quit();
+    }
+
+    public void OpenLink(string webAddress)
+    {
+        Application.OpenURL(webAddress);
+    }
+
+    private IEnumerator waitUntilHideGUI(float waitTime, GameObject uiToHide)
+    {
+        yield return new WaitForSeconds(waitTime);
+        uiToHide.SetActive(false);
     }
 }

@@ -59,10 +59,7 @@ public class MainMenuFunctions : MonoBehaviour
     {
         // I have no idea how this script calculates volume percentage but it works so I do not care
 
-        int TextDisplayVolume = Mathf.FloorToInt(volume * 100);
-        mainVolume.SetFloat("Volume", Mathf.Log10(volume) * 20);
-        volumePercentageText.text = UpdateSliderValue(TextDisplayVolume.ToString(), true);
-        PlayerPrefs.SetFloat("Volume", volume);
+
     }
 
     public void SetMouseSensitivty(float MouseSens)
