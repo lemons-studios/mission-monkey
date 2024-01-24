@@ -78,7 +78,7 @@ public class OptionsMenu : MonoBehaviour
         // WIP
         PlayerPrefs.SetInt("SubtitlesMode", subtitlesMode);
     }
-
+    
     public void SetVolume(float volume)
     {
         mainVolume.SetFloat("Volume", Mathf.Log10(volume) * 20);
@@ -88,14 +88,16 @@ public class OptionsMenu : MonoBehaviour
         volumeValueText.text = TextDisplayVolume + "%";
     }
 
-    public void SetMouseSensitivity(int newMouseSensitivity)
+    public void SetMouseSensitivity(float newMouseSensitivity)
     {
+        int roundedMouseSensitivity = (int) newMouseSensitivity;
         if(playerCamera != null)
         {
-            playerCamera.SetSensitivity(newMouseSensitivity);
+            playerCamera.SetSensitivity(roundedMouseSensitivity);
         }
-        PlayerPrefs.SetInt("MouseSensitivity", newMouseSensitivity);
-        mouseSensitivityValueText.text = newMouseSensitivity.ToString();
+
+        PlayerPrefs.SetInt("MouseSensitivity", roundedMouseSensitivity);
+        mouseSensitivityValueText.text = roundedMouseSensitivity.ToString();
     }
 
     public void SetFieldOfView(float newFovValue)

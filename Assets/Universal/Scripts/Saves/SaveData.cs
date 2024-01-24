@@ -14,7 +14,7 @@ public class SaveData : MonoBehaviour
 
     private string currentActiveScene;
     private string persistentData;
-    public string fileName = "missionMonkeyData.json";
+    private string fileName = "missionMonkeyData.json";
     private string filePath;
     private static bool isSceneLoadedFromSaveData = false;
 
