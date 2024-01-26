@@ -136,6 +136,8 @@ GameObject:
   - component: {fileID: 9345034}
   - component: {fileID: 9345036}
   - component: {fileID: 9345037}
+  - component: {fileID: 9345039}
+  - component: {fileID: 9345038}
   m_Layer: 5
   m_Name: MainMenuUI
   m_TagString: Untagged
@@ -298,6 +300,42 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   saveData: {fileID: 9345034}
+--- !u!114 &9345038
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9345028}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d0dfc863eeffe34aad22c17849e45d9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  qualityDropdownm: {fileID: 576253042}
+  aaModeDropdown: {fileID: 571853320}
+  aaQualityDropdown: {fileID: 1462167169}
+  captionsDropdown: {fileID: 1982196187}
+  volumeSlider: {fileID: 1397748279}
+  fovSlider: {fileID: 1218768396}
+  mouseSensitivitySlider: {fileID: 1140502315}
+--- !u!114 &9345039
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9345028}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2752deccd3ee9741b28bf9ef426d85c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mainVolume: {fileID: 24100000, guid: 3a5200ccdd38f3e4f95028236fab6f11, type: 2}
+  mainCamera: {fileID: 2146539181}
+  volumeValueText: {fileID: 1928308933}
+  mouseSensitivityValueText: {fileID: 178792452}
+  fieldOfViewValueText: {fileID: 296744025}
 --- !u!1 &34538712
 GameObject:
   m_ObjectHideFlags: 0
@@ -1674,8 +1712,6 @@ GameObject:
   m_Component:
   - component: {fileID: 296018125}
   - component: {fileID: 296018126}
-  - component: {fileID: 296018127}
-  - component: {fileID: 296018128}
   m_Layer: 5
   m_Name: OptionsMenu
   m_TagString: Untagged
@@ -1718,42 +1754,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   uiToHide: {fileID: 296018124}
---- !u!114 &296018127
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 296018124}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f2752deccd3ee9741b28bf9ef426d85c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerCamera: {fileID: 0}
-  mainVolume: {fileID: 24100000, guid: 3a5200ccdd38f3e4f95028236fab6f11, type: 2}
-  volumeValueText: {fileID: 1928308933}
-  mouseSensitivityValueText: {fileID: 178792452}
-  fieldOfViewValueText: {fileID: 296744025}
---- !u!114 &296018128
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 296018124}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0d0dfc863eeffe34aad22c17849e45d9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  qualityDropdownm: {fileID: 576253042}
-  aaModeDropdown: {fileID: 571853320}
-  aaQualityDropdown: {fileID: 1462167169}
-  captionsDropdown: {fileID: 1982196187}
-  volumeSlider: {fileID: 1397748279}
-  fovSlider: {fileID: 1218768396}
-  mouseSensitivitySlider: {fileID: 1140502315}
 --- !u!114 &296744025 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8231265369829332019, guid: 4951bc8b2ff417e4584333b512e3e02f, type: 3}
@@ -3120,6 +3120,7 @@ GameObject:
   - component: {fileID: 795052123}
   - component: {fileID: 795052125}
   - component: {fileID: 795052124}
+  - component: {fileID: 795052126}
   m_Layer: 5
   m_Name: GithubIcon
   m_TagString: Untagged
@@ -3184,6 +3185,62 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 795052122}
   m_CullTransparentMesh: 1
+--- !u!114 &795052126
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 795052122}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Navigation:
+    m_Mode: 3
+    m_WrapAround: 0
+    m_SelectOnUp: {fileID: 0}
+    m_SelectOnDown: {fileID: 0}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
+  m_Transition: 1
+  m_Colors:
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
+  m_SpriteState:
+    m_HighlightedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 0}
+    m_SelectedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 0}
+  m_AnimationTriggers:
+    m_NormalTrigger: Normal
+    m_HighlightedTrigger: Highlighted
+    m_PressedTrigger: Pressed
+    m_SelectedTrigger: Selected
+    m_DisabledTrigger: Disabled
+  m_Interactable: 1
+  m_TargetGraphic: {fileID: 795052124}
+  m_OnClick:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 9345033}
+        m_TargetAssemblyTypeName: MenuNavigation, Assembly-CSharp
+        m_MethodName: OpenLink
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: https://github.com/Lemons-Studios/Mission-Monkey
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &832143356
 GameObject:
   m_ObjectHideFlags: 0
@@ -5022,6 +5079,7 @@ GameObject:
   - component: {fileID: 1220663958}
   - component: {fileID: 1220663960}
   - component: {fileID: 1220663959}
+  - component: {fileID: 1220663961}
   m_Layer: 5
   m_Name: DiscordIcon
   m_TagString: Untagged
@@ -5086,6 +5144,62 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1220663957}
   m_CullTransparentMesh: 1
+--- !u!114 &1220663961
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1220663957}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Navigation:
+    m_Mode: 3
+    m_WrapAround: 0
+    m_SelectOnUp: {fileID: 0}
+    m_SelectOnDown: {fileID: 0}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
+  m_Transition: 1
+  m_Colors:
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
+  m_SpriteState:
+    m_HighlightedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 0}
+    m_SelectedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 0}
+  m_AnimationTriggers:
+    m_NormalTrigger: Normal
+    m_HighlightedTrigger: Highlighted
+    m_PressedTrigger: Pressed
+    m_SelectedTrigger: Selected
+    m_DisabledTrigger: Disabled
+  m_Interactable: 1
+  m_TargetGraphic: {fileID: 1220663959}
+  m_OnClick:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 9345033}
+        m_TargetAssemblyTypeName: MenuNavigation, Assembly-CSharp
+        m_MethodName: OpenLink
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: https://discord.gg/UxzEPmEZ82
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1220759860
 GameObject:
   m_ObjectHideFlags: 0
@@ -8881,7 +8995,7 @@ MonoBehaviour:
     m_Bits: 1
   m_VolumeTrigger: {fileID: 0}
   m_VolumeFrameworkUpdateModeOption: 2
-  m_RenderPostProcessing: 0
+  m_RenderPostProcessing: 1
   m_Antialiasing: 0
   m_AntialiasingQuality: 2
   m_StopNaN: 0
@@ -8941,7 +9055,7 @@ Camera:
     y: 0
     width: 1
     height: 1
-  near clip plane: 0.3
+  near clip plane: 0.1
   far clip plane: 1000
   field of view: 90
   orthographic: 0
@@ -9327,7 +9441,7 @@ PrefabInstance:
     - target: {fileID: 6482500986201911155, guid: 4951bc8b2ff417e4584333b512e3e02f, type: 3}
       propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 296018127}
+      objectReference: {fileID: 0}
     - target: {fileID: 6482500986201911155, guid: 4951bc8b2ff417e4584333b512e3e02f, type: 3}
       propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
       value: 2
@@ -9577,7 +9691,7 @@ PrefabInstance:
     - target: {fileID: 6482500986201911155, guid: 4951bc8b2ff417e4584333b512e3e02f, type: 3}
       propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 296018127}
+      objectReference: {fileID: 0}
     - target: {fileID: 6482500986201911155, guid: 4951bc8b2ff417e4584333b512e3e02f, type: 3}
       propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
       value: 2
@@ -9797,7 +9911,7 @@ PrefabInstance:
     - target: {fileID: 231708395723927062, guid: 0029873f7a7b1484bb7026b99bbc7a40, type: 3}
       propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 296018127}
+      objectReference: {fileID: 0}
     - target: {fileID: 231708395723927062, guid: 0029873f7a7b1484bb7026b99bbc7a40, type: 3}
       propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
       value: 2
@@ -10436,7 +10550,7 @@ PrefabInstance:
     - target: {fileID: 231708395723927062, guid: 0029873f7a7b1484bb7026b99bbc7a40, type: 3}
       propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 296018127}
+      objectReference: {fileID: 0}
     - target: {fileID: 231708395723927062, guid: 0029873f7a7b1484bb7026b99bbc7a40, type: 3}
       propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
       value: 2
@@ -10691,7 +10805,7 @@ PrefabInstance:
     - target: {fileID: 231708395723927062, guid: 0029873f7a7b1484bb7026b99bbc7a40, type: 3}
       propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 296018127}
+      objectReference: {fileID: 0}
     - target: {fileID: 231708395723927062, guid: 0029873f7a7b1484bb7026b99bbc7a40, type: 3}
       propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
       value: 2
@@ -11517,7 +11631,7 @@ PrefabInstance:
     - target: {fileID: 231708395723927062, guid: 0029873f7a7b1484bb7026b99bbc7a40, type: 3}
       propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 296018127}
+      objectReference: {fileID: 0}
     - target: {fileID: 231708395723927062, guid: 0029873f7a7b1484bb7026b99bbc7a40, type: 3}
       propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
       value: 2
@@ -11808,7 +11922,7 @@ PrefabInstance:
     - target: {fileID: 6482500986201911155, guid: 4951bc8b2ff417e4584333b512e3e02f, type: 3}
       propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 296018127}
+      objectReference: {fileID: 0}
     - target: {fileID: 6482500986201911155, guid: 4951bc8b2ff417e4584333b512e3e02f, type: 3}
       propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
       value: 2

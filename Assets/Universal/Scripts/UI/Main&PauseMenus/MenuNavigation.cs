@@ -29,6 +29,7 @@ public class MenuNavigation : MonoBehaviour
     {
         Application.OpenURL(webAddress);
     }
+    
     public void LoadSceneFromBuildNumber(int sceneToLoad)
     {
         SceneManager.LoadScene(sceneToLoad);

@@ -2,24 +2,28 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.Audio;
 using UnityEngine.Rendering.Universal;
-using UnityEngine.SceneManagement;
 
 public class OptionsMenu : MonoBehaviour
 {
-    private Camera mainCamera;
-    private UniversalAdditionalCameraData urpCamData;
-    public PlayerCamera playerCamera;
     public AudioMixer mainVolume;
+    public Camera mainCamera;
     public TextMeshProUGUI volumeValueText, mouseSensitivityValueText, fieldOfViewValueText;
 
-    private void Awake()
+    private PlayerCamera playerCamera;
+    private UniversalAdditionalCameraData urpCamData;
+
+    private void Awake() 
     {
-        mainCamera = Camera.main;
+        try
+        {
+            playerCamera = mainCamera.GetComponent<PlayerCamera>();
+        }
+        catch (MissingReferenceException e)
+        {
+            Debug.LogWarning("playerCamera not assigned: " + e);
+        }
+
         urpCamData = mainCamera.GetComponent<UniversalAdditionalCameraData>();
-    }
-    
-    private void Start() 
-    {
         SetOptionsFromPlayerPrefs();
     }
 
