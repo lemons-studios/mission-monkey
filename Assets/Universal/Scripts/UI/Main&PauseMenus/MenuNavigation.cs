@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class MenuNavigation : MonoBehaviour
 {
@@ -27,6 +28,10 @@ public class MenuNavigation : MonoBehaviour
     public void OpenLink(string webAddress)
     {
         Application.OpenURL(webAddress);
+    }
+    public void LoadSceneFromBuildNumber(int sceneToLoad)
+    {
+        SceneManager.LoadScene(sceneToLoad);
     }
 
     private IEnumerator waitUntilHideGUI(float waitTime, GameObject uiToHide)

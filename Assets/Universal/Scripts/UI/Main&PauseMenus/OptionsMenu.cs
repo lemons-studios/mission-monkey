@@ -2,6 +2,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.Audio;
 using UnityEngine.Rendering.Universal;
+using UnityEngine.SceneManagement;
 
 public class OptionsMenu : MonoBehaviour
 {
@@ -11,10 +12,14 @@ public class OptionsMenu : MonoBehaviour
     public AudioMixer mainVolume;
     public TextMeshProUGUI volumeValueText, mouseSensitivityValueText, fieldOfViewValueText;
 
-    private void Start()
+    private void Awake()
     {
         mainCamera = Camera.main;
         urpCamData = mainCamera.GetComponent<UniversalAdditionalCameraData>();
+    }
+    
+    private void Start() 
+    {
         SetOptionsFromPlayerPrefs();
     }
 
@@ -25,7 +30,8 @@ public class OptionsMenu : MonoBehaviour
         SetAntiAliasingQuality(PlayerPrefs.GetInt("AntiAliasingQuality"));
         SetSubtitles(PlayerPrefs.GetInt("SubtitlesMode"));
         SetVolume(PlayerPrefs.GetFloat("Volume"));
-        SetFieldOfView(PlayerPrefs.GetInt("FieldOfView"));
+        SetFieldOfView(PlayerPrefs.GetFloat("FieldOfView"));
+        SetMouseSensitivity(PlayerPrefs.GetFloat("MouseSensitivity"));
     }
 
 
@@ -84,28 +90,31 @@ public class OptionsMenu : MonoBehaviour
         mainVolume.SetFloat("Volume", Mathf.Log10(volume) * 20);
         PlayerPrefs.SetFloat("Volume", volume);
 
-        int TextDisplayVolume = Mathf.FloorToInt(volume * 100);
+        int TextDisplayVolume = Mathf.RoundToInt(volume * 100);
         volumeValueText.text = TextDisplayVolume + "%";
     }
 
     public void SetMouseSensitivity(float newMouseSensitivity)
     {
-        int roundedMouseSensitivity = (int) newMouseSensitivity;
+        int roundedMouseSensitivity = Mathf.RoundToInt(newMouseSensitivity);
         if(playerCamera != null)
         {
             playerCamera.SetSensitivity(roundedMouseSensitivity);
         }
 
-        PlayerPrefs.SetInt("MouseSensitivity", roundedMouseSensitivity);
+        PlayerPrefs.SetFloat("MouseSensitivity", roundedMouseSensitivity);
         mouseSensitivityValueText.text = roundedMouseSensitivity.ToString();
     }
 
     public void SetFieldOfView(float newFovValue)
     {
-        int roundedFovValue = (int) newFovValue;
-        mainCamera.fieldOfView = roundedFovValue;
-        PlayerPrefs.SetInt("FieldOfView", roundedFovValue);
-
+        if(playerCamera != null)
+        {
+            mainCamera.fieldOfView = newFovValue;
+        }
+        
+        PlayerPrefs.SetFloat("FieldOfView", newFovValue);
+        int roundedFovValue = Mathf.RoundToInt(newFovValue);
         fieldOfViewValueText.text = roundedFovValue.ToString();
     }
 }

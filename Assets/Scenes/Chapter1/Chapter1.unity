@@ -1256,7 +1256,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 402600060}
   serializedVersion: 4
-  m_Mass: 0.1
+  m_Mass: 0.01
   m_Drag: 0
   m_AngularDrag: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
@@ -3718,7 +3718,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e0ccdc908c92604ab11bf0a233f48b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MusicMixer: {fileID: 24100000, guid: 3a5200ccdd38f3e4f95028236fab6f11, type: 2}
 --- !u!114 &1136019012
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3731,7 +3730,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bbba08a98ea019549a59234c8fea97a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mainCamera: {fileID: 8362386602154426309}
 --- !u!114 &1136019013
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3959,6 +3957,7 @@ MonoBehaviour:
   getSaveDataInfo: {fileID: 929192974}
   chapterNameText: {fileID: 1884761914}
   lastSaveDateText: {fileID: 1466584931}
+  chapterPreview: {fileID: 0}
 --- !u!1 &1251970840
 GameObject:
   m_ObjectHideFlags: 0
@@ -4011,6 +4010,7 @@ MonoBehaviour:
   getSaveDataInfo: {fileID: 929192974}
   chapterNameText: {fileID: 1261584746}
   lastSaveDateText: {fileID: 1011790296}
+  chapterPreview: {fileID: 0}
 --- !u!1 &1261584744
 GameObject:
   m_ObjectHideFlags: 0
@@ -5376,7 +5376,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f52ddbfb235574349b67230e5601dcfc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fileName: missionMonkeyData.json
 --- !u!114 &1512182178
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7171,7 +7170,7 @@ MonoBehaviour:
   AttackCooldown: 0.15
   SpecialAttackCooldown: 10
   BulletsPerBurstShot: 1
-  BulletSpeed: 5
+  BulletSpeed: 150
   WeaponDamage: 15
   BulletProjectile: {fileID: 402600060}
   FirePoint: {fileID: 283358896}
