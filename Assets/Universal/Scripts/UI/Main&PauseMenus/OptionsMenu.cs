@@ -1,16 +1,20 @@
 using TMPro;
 using UnityEngine;
 using UnityEngine.Audio;
+using UnityEngine.Rendering;
 using UnityEngine.Rendering.Universal;
+using UnityEngine.UI;
 
 public class OptionsMenu : MonoBehaviour
 {
     public AudioMixer mainVolume;
     public Camera mainCamera;
     public TextMeshProUGUI volumeValueText, mouseSensitivityValueText, fieldOfViewValueText;
-
+    public TMP_Dropdown qualityDropdown, aaModeDropdown, aaQualityDropdown, captionsDropdown;
+    public Slider volumeSlider, fovSlider, mouseSensitivitySlider;
     private PlayerCamera playerCamera;
     private UniversalAdditionalCameraData urpCamData;
+    private UniversalRenderPipelineAsset urpAsset;
 
     private void Awake() 
     {
@@ -24,18 +28,32 @@ public class OptionsMenu : MonoBehaviour
         }
 
         urpCamData = mainCamera.GetComponent<UniversalAdditionalCameraData>();
+        urpAsset = GraphicsSettings.currentRenderPipeline as UniversalRenderPipelineAsset;
         SetOptionsFromPlayerPrefs();
     }
 
     private void SetOptionsFromPlayerPrefs()
     {
-        SetGraphicsQuality(PlayerPrefs.GetInt("GraphicsQuality"));
-        SetAntiAliasingMode(PlayerPrefs.GetInt("AntiAliasingMode"));
-        SetAntiAliasingQuality(PlayerPrefs.GetInt("AntiAliasingQuality"));
-        SetSubtitles(PlayerPrefs.GetInt("SubtitlesMode"));
-        SetVolume(PlayerPrefs.GetFloat("Volume"));
-        SetFieldOfView(PlayerPrefs.GetFloat("FieldOfView"));
-        SetMouseSensitivity(PlayerPrefs.GetFloat("MouseSensitivity"));
+        qualityDropdown.value = PlayerPrefs.GetInt("GraphicsQuality");
+        SetGraphicsQuality(qualityDropdown.value);
+
+        aaModeDropdown.value = PlayerPrefs.GetInt("AntiAliasingMode");
+        SetAntiAliasingMode(aaModeDropdown.value);
+
+        aaQualityDropdown.value = PlayerPrefs.GetInt("AntiAliasingQuality");
+        SetAntiAliasingQuality(aaQualityDropdown.value);
+
+        captionsDropdown.value = PlayerPrefs.GetInt("SubtitlesMode");
+        SetSubtitles(captionsDropdown.value);
+
+        volumeSlider.value = PlayerPrefs.GetFloat("Volume");
+        SetVolume(volumeSlider.value);
+
+        fovSlider.value = PlayerPrefs.GetFloat("FieldOfView");
+        SetFieldOfView(fovSlider.value);
+
+        mouseSensitivitySlider.value = PlayerPrefs.GetFloat("MouseSensitivity");
+        SetMouseSensitivity(mouseSensitivitySlider.value);
     }
 
 
@@ -106,8 +124,8 @@ public class OptionsMenu : MonoBehaviour
             playerCamera.SetSensitivity(roundedMouseSensitivity);
         }
 
-        PlayerPrefs.SetFloat("MouseSensitivity", roundedMouseSensitivity);
         mouseSensitivityValueText.text = roundedMouseSensitivity.ToString();
+        PlayerPrefs.SetFloat("MouseSensitivity", roundedMouseSensitivity);
     }
 
     public void SetFieldOfView(float newFovValue)
@@ -116,9 +134,9 @@ public class OptionsMenu : MonoBehaviour
         {
             mainCamera.fieldOfView = newFovValue;
         }
-        
-        PlayerPrefs.SetFloat("FieldOfView", newFovValue);
         int roundedFovValue = Mathf.RoundToInt(newFovValue);
         fieldOfViewValueText.text = roundedFovValue.ToString();
+
+        PlayerPrefs.SetFloat("FieldOfView", newFovValue);
     }
 }
