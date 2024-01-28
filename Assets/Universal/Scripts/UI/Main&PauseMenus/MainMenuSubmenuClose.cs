@@ -1,19 +1,17 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class CloseSubmenuOnEscape : MonoBehaviour
+// This class is ONLY to be used on the Main Menu
+public class MainMenuSubmenuClose : MonoBehaviour
 {
     private PlayerInput playerInput;
     public GameObject uiToHide;
-    private PauseGame pauseGame;
+    
     private void Start()
     {
         playerInput = new PlayerInput();
         playerInput.OnFoot.Pause.performed += CloseMenu;
         playerInput.Enable();
-
-        // PauseGame will only ever be on the player
-        // pauseGame = GameObject.FindGameObjectWithTag("Player").GetComponent<PauseGame>();
     }
 
     private void CloseMenu(InputAction.CallbackContext context)

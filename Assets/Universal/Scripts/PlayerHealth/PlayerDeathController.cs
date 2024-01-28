@@ -3,7 +3,7 @@ using UnityEngine;
 public class PlayerDeathController : MonoBehaviour
 {
     public SaveData saveData;
-    public PauseGame pauseGame;
+    public PauseMenuLogic pauseGame;
     public GameObject mainUI, deathUI;
 
     public void OnPlayerDeath()

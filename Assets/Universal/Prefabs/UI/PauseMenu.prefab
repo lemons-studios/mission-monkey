@@ -1852,7 +1852,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8189946510841087873}
-  - component: {fileID: 1942134357059421571}
   m_Layer: 5
   m_Name: OptionsMenu
   m_TagString: Untagged
@@ -1882,19 +1881,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0.00024414062, y: 0.000061035156}
   m_SizeDelta: {x: 1060, y: 492}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1942134357059421571
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4866328473056939683}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 59f9f41b84b73ef4a83bbade67012a11, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  uiToHide: {fileID: 4866328473056939683}
 --- !u!1 &4914975263375846525
 GameObject:
   m_ObjectHideFlags: 0
@@ -4015,7 +4001,7 @@ PrefabInstance:
     - target: {fileID: 9061992556679045613, guid: 39cfd1cfbd8068243b81042de8c9e3d9, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 5095265638561612979}
     - target: {fileID: 9061992556679045613, guid: 39cfd1cfbd8068243b81042de8c9e3d9, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.GameObject, UnityEngine
@@ -4138,7 +4124,8 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 147284065229772238, guid: 921ec4931b2ef0e4ba3a73b7d7d87426, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -4146,6 +4133,11 @@ PrefabInstance:
 --- !u!224 &2230311641401443882 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 3771153431158885992, guid: 921ec4931b2ef0e4ba3a73b7d7d87426, type: 3}
+  m_PrefabInstance: {fileID: 3073280752396159042}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &5095265638561612979 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7786857438781000945, guid: 921ec4931b2ef0e4ba3a73b7d7d87426, type: 3}
   m_PrefabInstance: {fileID: 3073280752396159042}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &3167501903185415068
@@ -4248,11 +4240,17 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 7868069877947967762, guid: 9fd8fdd6fb42a674b9318877dd71f774, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9fd8fdd6fb42a674b9318877dd71f774, type: 3}
+--- !u!1 &4732975740164420118 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7663950539846531466, guid: 9fd8fdd6fb42a674b9318877dd71f774, type: 3}
+  m_PrefabInstance: {fileID: 3167501903185415068}
+  m_PrefabAsset: {fileID: 0}
 --- !u!224 &7637235259719315081 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 4758566700060108053, guid: 9fd8fdd6fb42a674b9318877dd71f774, type: 3}
@@ -5043,7 +5041,7 @@ PrefabInstance:
     - target: {fileID: 9061992556679045613, guid: 39cfd1cfbd8068243b81042de8c9e3d9, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 4732975740164420118}
     - target: {fileID: 9061992556679045613, guid: 39cfd1cfbd8068243b81042de8c9e3d9, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.GameObject, UnityEngine
@@ -5158,7 +5156,8 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 3886013821392587456}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 7715921669851645862, guid: fc4adf9198f651e478f2e4adeb8d30b2, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
