@@ -1,7 +1,6 @@
 using UnityEngine;
 using LemonStudios.CsExtensions;
 using System.IO;
-using UnityEngine.SceneManagement;
 
 public class DetectSaveData : MonoBehaviour
 {
@@ -17,5 +16,5 @@ public class DetectSaveData : MonoBehaviour
         {
             newGameUI.SetActive(true);
         }
-    } 
+    }
 }

@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-
+// This script is ONLY for the pause menu
 public class PauseMenuLogic : MonoBehaviour
 {
     public GameObject gameUI, pauseUI;
@@ -11,18 +11,6 @@ public class PauseMenuLogic : MonoBehaviour
     {
         playerInput = new PlayerInput();
         playerInput.OnFoot.Pause.performed += EscapeActionHandler;  
-        playerInput.Enable();
-    }
-
-    // The DisableInputAction() and EnableInputAction() methods are specifically for the game to not unpause when the player 
-    // performs the "pause" action in a submenu of the pause menu (where the same action can close the submenu).
-    // A similar process happens there to prevent it from conflicting with the pause action in this script
-    public void DisableInputAction()
-    {
-        playerInput.Disable();
-    }
-    public void EnableInputAction()
-    {
         playerInput.Enable();
     }
 
@@ -40,6 +28,7 @@ public class PauseMenuLogic : MonoBehaviour
                 }
             }
         }
+
         else 
         {
             switch(IsGamePaused())
@@ -55,7 +44,6 @@ public class PauseMenuLogic : MonoBehaviour
                     break;
             }
         }
-        // Debug.Log("Pause toggled");
     }
 
     private bool IsGamePaused()
