@@ -59,10 +59,6 @@ public class MainMenuFunctions : MonoBehaviour
     {
         // I have no idea how this script calculates volume percentage but it works so I do not care
 
-        int TextDisplayVolume = Mathf.FloorToInt(volume * 100);
-        mainVolume.SetFloat("Volume", Mathf.Log10(volume) * 20);
-        volumePercentageText.text = UpdateSliderValue(TextDisplayVolume.ToString(), true);
-        PlayerPrefs.SetFloat("Volume", volume);
 
     }
 
@@ -126,9 +122,9 @@ public class MainMenuFunctions : MonoBehaviour
 
     public void newGame(string sceneName)
     {
-        if (LemonStudiosCsExtensions.DoesFileExist(saveData.GetSaveDataLocation()))
+        if (LemonStudiosCsExtensions.DoesFileExist(saveData.GetSaveDirectory()))
         {
-            saveData.DeleteSaveData();
+            saveData.RegenerateSaveData();
             LoadNewScene(sceneName);
         }
         else LoadNewScene(sceneName);
@@ -153,7 +149,7 @@ public class MainMenuFunctions : MonoBehaviour
         if (scene == null) { Debug.LogError("Scene not properly specified on 1 or more objects"); }
     }
 
-    private string UpdateSliderValue(string inputValue, bool percentage)
+    private string UpdateSliderValue(string inputValue, bool percentage=false)
     {
         if(percentage)
         {

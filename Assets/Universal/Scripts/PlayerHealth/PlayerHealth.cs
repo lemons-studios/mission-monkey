@@ -1,43 +1,43 @@
 using UnityEngine;
 
-// Anything death animation related will be added later
 public class PlayerHealth : MonoBehaviour
 {
-    // private Animation DeathAnim;
-    public int health = 100;
+    private int health = 100;
+    public bool enforceMaxHealth = true;
 
-    public GameObject player, playerGui, playerDeathScreen;
-    public PlayerDeathController playerDeathController;
-
-    public void DamagePlayer(int DamageDealt)
+    private void Start()
     {
-        health -= DamageDealt;
-
-        if (health <= 0)
-        {
-            playerDeathController.KillPlayer();
-        }
-    }
-    public void HealPlayer(int HealthHealed)
-    {
-        health += HealthHealed;
+        GetComponent<Animator>().enabled = false;
     }
 
     private void Update()
     {
-        if (health >= 101)
+        if(enforceMaxHealth)
         {
-            health = 100;
+            health = Mathf.Clamp(health, 0, 100);
         }
+    }
+
+    public void DamagePlayer(int DamageDealt)
+    {
+        health -= DamageDealt;
+        if (health <= 0)
+        {
+            GetComponent<PlayerDeathController>().OnPlayerDeath();
+        }
+    }
+
+    public void HealPlayer(int HealthHealed)
+    {
+        health += HealthHealed;
     }
 
     public int GetHealth()
     {
         return health;
     }
-
-    private void Awake()
+    public void SetHealth(int newHealth)
     {
-        player.GetComponent<Animator>().enabled = false;
+        health = newHealth;
     }
 }

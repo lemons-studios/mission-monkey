@@ -5,7 +5,6 @@ using System.IO;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-#pragma warning disable CS0414 // The private field 'field' is assigned but its value is never used
 public class SaveData : MonoBehaviour
 {
     private JsonData jsonData = new JsonData();
@@ -16,19 +15,15 @@ public class SaveData : MonoBehaviour
     private string currentActiveScene;
     private string persistentData;
     private string fileName = "missionMonkeyData.json";
-    private string fileDir;
-
+    private string filePath;
     private static bool isSceneLoadedFromSaveData = false;
 
-    // Encryption/Decryption key
-    
-
-    private void Start()
+    // Uses Awake() instead of Start() so any script using this script can actually use it without errors
+    private void Awake()
     {
         currentActiveScene = SceneManager.GetActiveScene().name;
         persistentData = Application.persistentDataPath; // Read up on the Unity docs on what the persistent data path is on different operating systems
-        fileDir = Path.Combine(persistentData, fileName);
-
+        filePath = Path.Combine(persistentData, fileName);
         // Resume game in the case that the game is loaded from the game pause menu
         Time.timeScale = 1;
 
@@ -38,19 +33,17 @@ public class SaveData : MonoBehaviour
         {
             Player = GameObject.FindWithTag("Player");
             playerController = Player.GetComponent<CharacterController>();
-        }
-
-        // Generate save data if the file could not be found in the proper location
-        if (!LemonStudiosCsExtensions.DoesFileExist(fileDir))
-        {
-            GenerateSaveData();
+            if(!LemonStudiosCsExtensions.DoesFileExist(filePath))
+            {
+                GenerateSaveData();
+            }
         }
 
         if (currentActiveScene != "MainMenu" && isSceneLoadedFromSaveData)
         {
             // The player controller must be disabled before the script is able to move the player model anywhere
             playerController.enabled = false;
-            string jsonData = File.ReadAllText(fileDir);
+            string jsonData = File.ReadAllText(filePath);
             JObject json = JObject.Parse(jsonData);
 
             // Get coordinates of x, y, and z from json 
@@ -65,31 +58,17 @@ public class SaveData : MonoBehaviour
         }
     }
 
-    public string GetSaveDataLocation()
-    {
-        return fileDir;
-    }
-
     public void GenerateSaveData()
     {
-        // New game = delete save file and regenerate
-        if (LemonStudiosCsExtensions.DoesFileExist(fileDir))
-        {
-            File.Delete(fileDir);
-        }
-        string defaultData = jsonData.JsonDataToString(currentActiveScene, new Vector3(-85, 0.5f, -11.75f)); // The coordinates are the default position the player spawns in in the first game scene
-        File.WriteAllText(fileDir, defaultData);
-        
-
-        /// File.WriteAllText(fileDir, EncryptSaveData(defaultData)); // For Later
+        string defaultData = jsonData.JsonDataToString("Chapter1", new Vector3(-128.1f, 36.2f, -46.8f)); // Current Coordinates for the starting pos in the debug ch1 scene
+        File.WriteAllText(filePath, defaultData);
     }
 
     public void LoadSaveData()
     {
-        string jsonData = File.ReadAllText(fileDir);
+        string jsonData = File.ReadAllText(filePath);
         var jsonObject = JObject.Parse(jsonData);
         var savedLoadedScene = jsonObject.Value<string>("currentScene");
-        // Debug.Log(savedLoadedScene);
 
         SceneManager.LoadScene(savedLoadedScene);
         isSceneLoadedFromSaveData = true;
@@ -97,49 +76,56 @@ public class SaveData : MonoBehaviour
 
     public void WriteSaveData()
     {
-        File.Delete(fileDir);
+        File.Delete(filePath);
         string updatedData = jsonData.JsonDataToString(currentActiveScene, Player.transform.position);
-        File.WriteAllText(fileDir, updatedData);
+        File.WriteAllText(filePath, updatedData);
     }
 
-    public void DeleteSaveData()
+    public void RegenerateSaveData()
     {
-        // Add any extra settings keys here when they are added (These will probably be replaced with a json file too later)
-        float tempVolHolder = PlayerPrefs.GetFloat("Volume");
-        float tempFovHolder = PlayerPrefs.GetFloat("Fov");
-        float tempMsHolder = PlayerPrefs.GetFloat("MouseSensitivityValue");
-        int tempAntiAliasingHolder = PlayerPrefs.GetInt("AntiAliasing");
-        int tempQualityHolder = PlayerPrefs.GetInt("QualityLevel");
-        PlayerPrefs.DeleteAll();
-
-        // Regenerate save data JSON after wiping
-        File.Delete(fileDir);
+        DeleteSaveData();
         GenerateSaveData();
-
-        ResetSettingsKeyValues(tempVolHolder, tempFovHolder, tempMsHolder, tempAntiAliasingHolder, tempQualityHolder);
+    }
+    private void DeleteSaveData()
+    {
+        File.Delete(filePath);
     }
 
-    private void ResetSettingsKeyValues(float Volume, float Fov, float mouseSens, int antiAliasing, int qualityPreset)
+    public string GetSaveDirectory()
     {
-        PlayerPrefs.SetFloat("Volume", Volume);
-        PlayerPrefs.SetFloat("MouseSensitivityValue", mouseSens);
-        PlayerPrefs.SetFloat("Fov", Fov);
-        PlayerPrefs.SetInt("QualityLevel", qualityPreset);
-        PlayerPrefs.SetInt("AntiAliasing", antiAliasing);
+        // Returns the directory the save data JSON is stored in
+        return filePath;
+    }
+
+    public string GetFileName()
+    {
+        // Returns the name of the player's savedata
+        return fileName;
     }
 }
 
 [Serializable]
 class JsonData
 {
+    // Note to future self: ANY VARS FOR SAVE DATA NEED TO BE PUBLIC, OR IT WON'T BE RETURNED IN JsonDataToString()
     public string currentScene;
+    public int currentSceneBuildNumber;
     public Vector3 playerPosition;
+    public string lastSaveDate;
+    public string lastPlayedVersion;
 
     public string JsonDataToString(string scene, Vector3 position)
     {
+        // Get system time in yyyy-mm-dd, hh:mm:ss
+        DateTime unformattedSaveTime = DateTime.Now;
+        // Convert system time to dd-mm-yyyy, hh:mm
+        string formattedSaveTime = unformattedSaveTime.ToString("dd/MM/yyyy, hh:mm tt");
+        
         currentScene = scene;
         playerPosition = position;
-
+        currentSceneBuildNumber = SceneManager.GetActiveScene().buildIndex;
+        lastSaveDate = formattedSaveTime;
+        lastPlayedVersion = Application.version;
         return JsonUtility.ToJson(this);
     }
 }
