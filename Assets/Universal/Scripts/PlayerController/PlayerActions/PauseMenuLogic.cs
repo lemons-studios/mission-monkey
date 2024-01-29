@@ -28,7 +28,6 @@ public class PauseMenuLogic : MonoBehaviour
                 }
             }
         }
-
         else 
         {
             switch(IsGamePaused())
@@ -66,7 +65,6 @@ public class PauseMenuLogic : MonoBehaviour
                         return true;
                     }
                 }
-                
             }
             return false;
         }

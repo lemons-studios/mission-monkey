@@ -32,7 +32,7 @@ public class OptionsMenu : MonoBehaviour
         SetOptionsFromPlayerPrefs();
     }
 
-    private void SetOptionsFromPlayerPrefs()
+    private void SetOptionsFromPlayerPrefs() 
     {
         qualityDropdown.value = PlayerPrefs.GetInt("GraphicsQuality");
         SetGraphicsQuality(qualityDropdown.value);
@@ -55,7 +55,6 @@ public class OptionsMenu : MonoBehaviour
         mouseSensitivitySlider.value = PlayerPrefs.GetFloat("MouseSensitivity");
         SetMouseSensitivity(mouseSensitivitySlider.value);
     }
-
 
     public void SetGraphicsQuality(int newQualityLevel)
     {
