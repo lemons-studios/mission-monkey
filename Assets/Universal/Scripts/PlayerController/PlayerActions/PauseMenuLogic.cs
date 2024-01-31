@@ -10,11 +10,11 @@ public class PauseMenuLogic : MonoBehaviour
     private void Start() 
     {
         playerInput = new PlayerInput();
-        playerInput.OnFoot.Pause.performed += EscapeActionHandler;  
+        playerInput.OnFoot.Pause.performed += ctx => EscapeActionHandler();  
         playerInput.Enable();
     }
 
-    private void EscapeActionHandler(InputAction.CallbackContext callbackContext)
+    public void EscapeActionHandler()
     {
         if(IsSubmenuActive())
         {

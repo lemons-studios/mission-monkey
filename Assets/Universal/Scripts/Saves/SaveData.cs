@@ -60,7 +60,7 @@ public class SaveData : MonoBehaviour
 
     public void GenerateSaveData()
     {
-        string defaultData = jsonData.JsonDataToString("Chapter1", new Vector3(-128.1f, 36.2f, -46.8f)); // Current Coordinates for the starting pos in the debug ch1 scene
+        string defaultData = jsonData.JsonDataToString("Chapter1", new Vector3(38.43f, -32.907f, -168.51f)); // Current Coordinates for the starting pos in the debug ch1 scene
         File.WriteAllText(filePath, defaultData);
     }
 
@@ -68,7 +68,7 @@ public class SaveData : MonoBehaviour
     {
         string jsonData = File.ReadAllText(filePath);
         var jsonObject = JObject.Parse(jsonData);
-        var savedLoadedScene = jsonObject.Value<string>("currentScene");
+        var savedLoadedScene = jsonObject.Value<int>("currentSceneBuildNumber");
 
         SceneManager.LoadScene(savedLoadedScene);
         isSceneLoadedFromSaveData = true;

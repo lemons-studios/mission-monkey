@@ -1,40 +1,52 @@
 
 using System.Collections;
+using LemonStudios.CsExtensions;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 public abstract class AttackHandler : MonoBehaviour
 {
-    public float ProjectileDestroyTime, AttackCooldown, SpecialAttackCooldown;
-    public int BulletsPerBurstShot, BulletSpeed;
-    public float WeaponDamage;
-    private bool IsInputHeld;
-
-    public GameObject BulletProjectile;
-    public Transform FirePoint;
     public AudioClip regularAttackSoundEffect, specialAttackSoundEffect;
+    public EnemyAIHealthbar enemyAiHealthbar;
+    public GameObject bulletProjectile;
+    public Transform firePoint;
+
     private AudioSource weaponSfxSource;
-    private PlayerInput playerInput;
-    private Camera Camera;
-    private Ray BulletRay;
+    private Camera mainCamera;
     private Coroutine clickHeldRoutine;
+    private PlayerHealth playerHealth;
+    private PlayerInput playerInput;
+    private Ray bulletRay;
+    
+    public int bulletsPerBurst, bulletSpeed, baseWeaponDamage;
+    public float attackCooldown, maxDamageIncrease, maxDamageReduction, projectileDestroyTime, secondaryAttackCooldown;
+    public bool doesWeaponRandomiseDamage = true;
+    private bool isInputHeld;
 
     public void Start()
     {
+        // Create Input Actions
         playerInput = new PlayerInput();
-        var onFootAttack = playerInput.OnFoot.Attack;
+        var onFootAttack = playerInput.OnFoot.Attack;   // This is only here to shorten the next two lines
         onFootAttack.started += OnAttackStarted;
         onFootAttack.canceled += OnAttackCanceled;
         playerInput.Enable();
+        
+        // PlayerHealth is on the player GameObject
+        playerHealth = GetComponentInParent<PlayerHealth>();
 
-        weaponSfxSource = GetComponent<AudioSource>();
-        Camera = GetComponentInParent<Camera>();
+        // AudioSources for any weapon will be a child of that GameObject
+        weaponSfxSource = GetComponentInChildren<AudioSource>();
+        
+        // This class was designed specifically for the usage with the player's camera (or the main camera)
+        mainCamera = Camera.main;
     }
 
     public void OnAttackStarted(InputAction.CallbackContext context)
     {
-        IsInputHeld = true;
-        Attack(); // The idea behind this is that spam clicking would result in a faster bullet fire rate if the cooldown for hold clicks is longer than needing to spam click
+        // Starts a coroutine that will constantly call WeaponAttack() while the input is being held
+        isInputHeld = true;
+        WeaponAttack(); // The idea behind this is that spam clicking would result in a faster bullet fire rate if the cooldown for hold clicks is longer than needing to spam click
 
         // Debug.Log("Attack action started");
         if (clickHeldRoutine == null)
@@ -45,7 +57,8 @@ public abstract class AttackHandler : MonoBehaviour
 
     public void OnAttackCanceled(InputAction.CallbackContext context)
     {
-        IsInputHeld = false;
+        // Stops the coroutine when the player stops holding the fire button
+        isInputHeld = false;
         // Debug.Log("Attack action canceled");
 
         if (clickHeldRoutine != null)
@@ -57,30 +70,37 @@ public abstract class AttackHandler : MonoBehaviour
 
     public IEnumerator ClickHeldRoutine()
     {
-        while (IsInputHeld)
+        while (isInputHeld)
         {
             // Attack after a specified wait time that is decided upon in the scripts that inheirt this class
-            Attack();
-            yield return new WaitForSeconds(AttackCooldown);
+            WeaponAttack();
+            yield return new WaitForSeconds(attackCooldown);
         }
     }
 
-    protected virtual void Attack()
+    protected virtual void WeaponAttack()
     {
-        weaponSfxSource.PlayOneShot(regularAttackSoundEffect);
-        if (gameObject.GetComponentInParent<PlayerHealth>().GetHealth() >= 1 && Time.timeScale != 0)
+        if (CanPlayerAttack())
         {
-            if (BulletProjectile != null)
+            if(regularAttackSoundEffect != null)
             {
-                InstantiateBulletProjectile(FirePoint);
+                weaponSfxSource.PlayOneShot(regularAttackSoundEffect);
+            }
+
+            if (bulletProjectile != null)
+            {
+                InstantiateBulletProjectile(firePoint);
             }
             else Debug.LogError("'BulletProjectile' is null!");
-
+            
+            bulletRay = mainCamera.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
             RaycastHit hit;
-            BulletRay = Camera.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
-            if (Physics.Raycast(BulletRay, out hit))
+            
+            if (Physics.Raycast(bulletRay, out hit))
             {
-                // Debug.DrawRay(Camera.transform.position, transform.forward * 15, Color.red);
+                Debug.DrawRay(mainCamera.transform.position, transform.forward * 15, Color.red);
+                
+                // Debug.Log("Hit " + hit.collider.gameObject.name);
                 if (hit.collider.CompareTag("WeaponInteractable"))
                 {
                     // Create a variable for the GameObject the projectile hit
@@ -93,14 +113,19 @@ public abstract class AttackHandler : MonoBehaviour
 
                 else if (hit.collider.gameObject.CompareTag("Enemy"))
                 {
-                    // Debug.Log("Hit an Enemy!");
+                    EnemyAIHealth aiHealth = hit.collider.GetComponent<EnemyAIHealth>();
                     if (hit.collider.GetComponentInParent<EnemyAIHealth>() != null)
                     {
-                        var HitEnemyHealth = hit.collider.gameObject.GetComponentInParent<EnemyAIHealth>();
-                        HitEnemyHealth.DamageAI(WeaponDamage);
+                        if(doesWeaponRandomiseDamage)
+                        {
+                            aiHealth.RandomAIDamage(baseWeaponDamage, maxDamageReduction, maxDamageIncrease);
+                        }
 
-                        // Debug.Log("health remaining on enemy: " + HitEnemyHealth.GetAIHealth());
+                        else aiHealth.DamageAI(baseWeaponDamage);
+                        enemyAiHealthbar.SetEnemyHealthbar(aiHealth);
+                        return;
                     }
+                    else Debug.LogError("Enemy does not have EnemyAIHealth Component!");
                 }
             }
         }
@@ -111,13 +136,31 @@ public abstract class AttackHandler : MonoBehaviour
         // Stolen code from 0.2 (it works good enough)
         // Creates a copy of the BulletProjectile GameObject and then adds a force to the rigidbody component after creating the copy (Again, all of these variables would be set by the classes that inherit this script)
         
-        var CurrentProjectile = Instantiate(BulletProjectile, point.position, FirePoint.transform.rotation) as GameObject;
+        var CurrentProjectile = Instantiate(bulletProjectile, point.position, firePoint.transform.rotation) as GameObject;
         CurrentProjectile.SetActive(true);
-        CurrentProjectile.GetComponent<Rigidbody>().velocity = point.transform.forward * BulletSpeed;
+        CurrentProjectile.GetComponent<Rigidbody>().velocity = point.transform.forward * bulletSpeed;
     }
 
     protected virtual void AlternateAttack(InputAction.CallbackContext context)
     {
-        if(specialAttackSoundEffect != null) weaponSfxSource.PlayOneShot(specialAttackSoundEffect);
+        // WIP
+        if(CanPlayerAttack())
+        {
+            if(specialAttackSoundEffect != null) 
+            { 
+                weaponSfxSource.PlayOneShot(specialAttackSoundEffect);
+            }
+        }
+
+    }
+
+    private bool CanPlayerAttack()
+    {
+        // The player shouldn't be able to attack if the game is paused or if they are dead
+        if (playerHealth.GetHealth() >= 1 && !LemonStudiosCsExtensions.IsGamePaused())
+        {
+            return true;
+        }
+        else return false;
     }
 }

@@ -1,5 +1,6 @@
 using System.IO;
 using System.Linq;
+using UnityEngine;
 using UnityEngine.SceneManagement;
 
 namespace LemonStudios.CsExtensions
@@ -28,6 +29,11 @@ namespace LemonStudios.CsExtensions
             {
                 return true;
             } else return false;
+        }
+        public static bool IsGamePaused()
+        {
+            if(Time.timeScale == 0) return true;
+            else return false;
         }
     }
 }

@@ -1870,6 +1870,7 @@ GameObject:
   - component: {fileID: 6726341620790279334}
   - component: {fileID: 7894522536462947052}
   - component: {fileID: 1933089425032445287}
+  - component: {fileID: 8090692385632382514}
   m_Layer: 5
   m_Name: MainMenu
   m_TagString: Untagged
@@ -2054,6 +2055,20 @@ MonoBehaviour:
   volumeSlider: {fileID: 1322671601085383764}
   fovSlider: {fileID: 2806208058315597328}
   mouseSensitivitySlider: {fileID: 639446015480919258}
+--- !u!114 &8090692385632382514
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3671721440083227701}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0277702d50bf07c4c86270007ff56f11, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  getSaveDataInfo: {fileID: 7531433011700795082}
+  loadGameButton: {fileID: 3999773041845579590}
 --- !u!1 &3828371446988465027
 GameObject:
   m_ObjectHideFlags: 0
@@ -4645,6 +4660,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 39cfd1cfbd8068243b81042de8c9e3d9, type: 3}
+--- !u!114 &3999773041845579590 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 9061992556679045613, guid: 39cfd1cfbd8068243b81042de8c9e3d9, type: 3}
+  m_PrefabInstance: {fileID: 5350459237282942635}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!224 &5187813750246986914 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 990360130718456329, guid: 39cfd1cfbd8068243b81042de8c9e3d9, type: 3}

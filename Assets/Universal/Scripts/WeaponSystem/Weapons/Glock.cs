@@ -2,9 +2,9 @@ using UnityEngine.InputSystem;
 
 public class Glock : AttackHandler
 {
-    protected override void Attack()
+    protected override void WeaponAttack()
     {
-        base.Attack();
+        base.WeaponAttack();
     }
 
     protected override void AlternateAttack(InputAction.CallbackContext context)

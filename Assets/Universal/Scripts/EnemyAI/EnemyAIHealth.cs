@@ -2,15 +2,40 @@ using UnityEngine;
 
 public class EnemyAIHealth : MonoBehaviour
 {
-    public float health = 100;
+    public string enemyName;
+    public int health = 100;
+    private int maxHealth;
     
-    public float DamageAI(float damage)
+
+    private void Start() 
     {
-        return damage * Mathf.RoundToInt(Random.Range(0.5f, 2.0f)); // will be changed later, just needed to have this to prevent the weapon system from screaming at me
+        maxHealth = health;    
     }
 
-    public float GetAIHealth()
+    public void DamageAI(int damage)
+    {
+        health -= damage; 
+        if(health <= 0) GameObject.Destroy(gameObject);
+    }
+
+    public void RandomAIDamage(int damage, float maxDamageReduction, float maxDamageIncrease)
+    {
+        health -= Mathf.RoundToInt(damage * Random.Range(maxDamageReduction, maxDamageIncrease));
+        if(health <= 0) GameObject.Destroy(gameObject);
+    }
+
+    public int GetAIHealth()
     {
         return health;
+    }
+
+    public int GetMaxAIHealth()
+    {
+        return maxHealth;
+    }
+
+    public string GetAIName()
+    {
+        return enemyName;
     }
 }
