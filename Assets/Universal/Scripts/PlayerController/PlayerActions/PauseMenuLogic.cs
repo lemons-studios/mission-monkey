@@ -28,17 +28,17 @@ public class PauseMenuLogic : MonoBehaviour
                 }
             }
         }
+
         else 
         {
             switch(IsGamePaused())
             {
                 case true:
-                    Time.timeScale = 1;
-
+                    ResumeGame();
                     SwitchMenus(pauseUI, gameUI, true);
                     break;
                 case false:
-                    Time.timeScale = 0;
+                    PauseGame();
                     SwitchMenus(gameUI, pauseUI, false);
                     break;
             }
@@ -48,10 +48,12 @@ public class PauseMenuLogic : MonoBehaviour
     public void PauseGame()
     {
         Time.timeScale = 0;
+        Cursor.lockState = CursorLockMode.None;
     }
     public void ResumeGame()
     {
         Time.timeScale = 1;
+        Cursor.lockState = CursorLockMode.Locked;
     }
 
     private bool IsGamePaused()

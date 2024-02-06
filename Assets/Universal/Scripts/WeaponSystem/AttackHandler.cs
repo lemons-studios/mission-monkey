@@ -122,7 +122,7 @@ public abstract class AttackHandler : MonoBehaviour
                         }
 
                         else aiHealth.DamageAI(baseWeaponDamage);
-                        enemyAiHealthbar.SetEnemyHealthbar(aiHealth);
+                        // enemyAiHealthbar.SetEnemyHealthbar(aiHealth);
                         return;
                     }
                     else Debug.LogError("Enemy does not have EnemyAIHealth Component!");

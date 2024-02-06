@@ -1,8 +1,4 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using System.IO;
-using System.Runtime.InteropServices.WindowsRuntime;
 using Newtonsoft.Json.Linq;
 using UnityEngine;
 
@@ -12,7 +8,7 @@ public class SaveDataBase : MonoBehaviour
 
     private void Awake() 
     {
-        filePath = Path.Combine(filePath, "MissionMonkeyGlobalData.json");
+        filePath = Path.Combine(Application.persistentDataPath, "MissionMonkeyGlobalData.json");
     }
 
     public JObject ParseSaveDataFile()

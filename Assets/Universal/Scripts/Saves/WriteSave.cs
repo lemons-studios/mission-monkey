@@ -11,6 +11,7 @@ public class WriteSave : SaveDataBase
     {
         if(!base.DoesSaveDataFileExist())
         {
+            Debug.Log("First Load Detected. Generating Save Data.....");
             GenerateSaveData();
         }    
     }
@@ -18,16 +19,14 @@ public class WriteSave : SaveDataBase
     // This method only runs if no save data is detected or if the save data was just deleted
     public void GenerateSaveData()
     {
-        File.Create(base.GetSavePath());
         File.WriteAllText(base.GetSavePath(), saveDataTemplate.CreateSaveJsonData("Chapter1", 1, 100, Vector3.zero, true));
     }
 
-    // WriteSaveData() can only run in game scenes, which mean that they should contain all the scripts that are about to be called, as
-    // all the scripts are attached to the player model
     public void WriteSaveData()
     {
+        // WriteSaveData() can only run in game scenes, which mean that they should contain all the scripts that are about to be called, as
+        // all the scripts are attached to the player model
         GameObject player = GameObject.FindGameObjectWithTag("Player");
-
         Vector3 currentPlayerPosition = player.transform.position;
         int currentPlayerHealth = player.GetComponent<PlayerHealth>().GetHealth();
         string currentScene = SceneManager.GetActiveScene().ToString();
@@ -42,7 +41,6 @@ public class WriteSave : SaveDataBase
         File.Delete(base.GetSavePath());
         GenerateSaveData();
     }
-
 }
 
 class SaveDataTemplate
