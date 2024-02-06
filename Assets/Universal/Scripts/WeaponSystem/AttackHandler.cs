@@ -7,7 +7,6 @@ using UnityEngine.InputSystem;
 public abstract class AttackHandler : MonoBehaviour
 {
     public AudioClip regularAttackSoundEffect, specialAttackSoundEffect;
-    public EnemyAIHealthbar enemyAiHealthbar;
     public GameObject bulletProjectile;
     public Transform firePoint;
 
