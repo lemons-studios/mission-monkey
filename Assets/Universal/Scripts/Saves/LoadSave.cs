@@ -1,4 +1,3 @@
-using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -24,6 +23,7 @@ public class LoadSave : SaveDataBase
             SceneManager.LoadScene(lastSavedSceneBuildIndex);
             Debug.Log("Loading scene: " + lastSavedSceneBuildIndex);
         }
+
         else
         {
             CharacterController charController = player.GetComponent<CharacterController>();

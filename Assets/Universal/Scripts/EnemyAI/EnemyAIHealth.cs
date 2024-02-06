@@ -2,7 +2,6 @@ using UnityEngine;
 
 public class EnemyAIHealth : MonoBehaviour
 {
-    public string enemyName;
     public int health = 100;
     private int maxHealth;
     
@@ -28,14 +27,14 @@ public class EnemyAIHealth : MonoBehaviour
     {
         return health;
     }
+    
+    public void HealAI(int newHealth)
+    {
+        health += newHealth;
+    }
 
     public int GetMaxAIHealth()
     {
         return maxHealth;
-    }
-
-    public string GetAIName()
-    {
-        return enemyName;
     }
 }
