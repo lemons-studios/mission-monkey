@@ -38,15 +38,15 @@ public class SaveDataBase : MonoBehaviour
     }
 
     // Specifically for position. May not be needed now, but may be needed in the future.
-    public Vector3 GetPositionFromSaveData(string tagName)
+    public Vector3 GetPositionFromSaveData()
     {
-        if(IsTagInSaveData(tagName))
+        if(IsTagInSaveData("playerPosition"))
         {
             JObject saveData = ParseSaveDataFile();
             // Get Coordinates of tag playerPosition
-            float savePosX = saveData.SelectToken(tagName + ".x").Value<float>();
-            float savePosY = saveData.SelectToken(tagName + ".y").Value<float>();
-            float savePosZ = saveData.SelectToken(tagName + ".z").Value<float>();
+            float savePosX = saveData.SelectToken("playerPosition.x").Value<float>();
+            float savePosY = saveData.SelectToken("playerPosition.y").Value<float>();
+            float savePosZ = saveData.SelectToken("playerPosition.z").Value<float>();
             return new Vector3(savePosX, savePosY, savePosZ);
         }
         else return Vector3.zero;   // I should probably have better errors in here in the future

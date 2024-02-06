@@ -9,7 +9,7 @@ public class AssignSaveValuesOnLoad : SaveDataBase
 
     private void Awake() 
     {
-        player.transform.position = base.GetPositionFromSaveData("playerPosition");
+        player.transform.position = base.GetPositionFromSaveData();
         player.GetComponent<PlayerHealth>().SetHealth(GetSaveDataInfoFromTag<int>("remainingHealth"));
     }
 }

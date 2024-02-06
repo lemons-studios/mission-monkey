@@ -4,31 +4,34 @@ using UnityEngine.SceneManagement;
 
 public class LoadSave : SaveDataBase
 {
-    public void LoadSaveData()
+    private GameObject player;
+
+    private void Start()
     {
-        StartCoroutine(LoadSaveCoroutine());
+        player = GameObject.FindGameObjectWithTag("Player");
     }
 
-    // AI is very good when used effectively
-    public IEnumerator LoadSaveCoroutine()
+    public void LoadSaveData()
     {
         int lastSavedSceneBuildIndex = base.GetSaveDataInfoFromTag<int>("savedSceneBuildNumber");
         int currentlyLoadedScene = SceneManager.GetActiveScene().buildIndex;
-    
-        // Start the asynchronous unloading of the current scene
-        AsyncOperation unloadOperation = SceneManager.UnloadSceneAsync(currentlyLoadedScene);
-    
-        // Wait for the unloading to complete
-        yield return unloadOperation;
-    
-        // Destroy the specific GameObject before loading the new scene
-        GameObject playerAssets = GameObject.FindGameObjectWithTag("PlayerAssets");
-        if (playerAssets != null && playerAssets.scene.buildIndex == currentlyLoadedScene)
+
+
+
+        if(currentlyLoadedScene != lastSavedSceneBuildIndex)
         {
-            Destroy(playerAssets);
+            // Load the saved scene
+            SceneManager.LoadScene(lastSavedSceneBuildIndex);
+            Debug.Log("Loading scene: " + lastSavedSceneBuildIndex);
         }
-    
-        // Load the saved scene additively
-        SceneManager.LoadScene(lastSavedSceneBuildIndex, LoadSceneMode.Additive);
+        else
+        {
+            CharacterController charController = player.GetComponent<CharacterController>();
+            charController.enabled = false;
+            player.transform.position = base.GetPositionFromSaveData();
+            player.GetComponent<PlayerHealth>().SetHealth(base.GetSaveDataInfoFromTag<int>("remainingHealth"));
+            charController.enabled = true;
+        }
+
     }
 }
