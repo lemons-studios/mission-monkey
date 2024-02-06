@@ -10,7 +10,8 @@ using UnityEngine.UI;
 
 public class MainMenuFunctions : MonoBehaviour
 {
-    public SaveData saveData;
+    public WriteSave writeSave;
+    public LoadSave loadSave;
     [Tooltip("Only assign on game scenes, not main menu")]
     public GameObject gameSavedPopup;
     //[Tooltip("Only assign on game scenes, not main menu")]
@@ -122,17 +123,12 @@ public class MainMenuFunctions : MonoBehaviour
 
     public void newGame(string sceneName)
     {
-        if (LemonStudiosCsExtensions.DoesFileExist(saveData.GetSaveDirectory()))
-        {
-            saveData.RegenerateSaveData();
-            LoadNewScene(sceneName);
-        }
-        else LoadNewScene(sceneName);
+        loadSave.LoadSaveData();
     }
 
     public void WriteToSaveData()
     {
-        saveData.WriteSaveData();
+        writeSave.WriteSaveData();
         // pauseMenuMethods.ResumeGame();
         // pauseMenuMethods.IsOnPauseMenu -= 1; // I gotta clean up the pause menu code later
         ShowGUI(gameSavedPopup);

@@ -1,16 +1,30 @@
 using TMPro;
-using UnityEngine;
 using UnityEngine.UI;
 
-public class SetSaveDataUIText : MonoBehaviour
+public class SetSaveDataUIText : SaveDataBase
 {
-    public GetSaveDataInfo getSaveDataInfo;
     public TextMeshProUGUI chapterNameText, lastSaveDateText;
     public Image chapterPreview;
     
     private void Start() 
     {
-        chapterNameText.text = getSaveDataInfo.GetSavedSceneName();
-        lastSaveDateText.text = getSaveDataInfo.GetSaveDataAsString("lastSaveDate");
+        chapterNameText.text = formatSavedSceneNames();
+        lastSaveDateText.text = base.GetSaveDataInfoFromTag<string>("lastSaveDate");
+    }
+
+    private string formatSavedSceneNames()
+    {
+        switch(base.GetSaveDataInfoFromTag<int>("savedSceneBuildNumber"))
+        {
+            case 0:
+                return "Main Menu (how)";
+            case 1:
+                return "Chapter 1";
+            case 2: 
+                return "Chapter 1: Interlude";
+            case 3: 
+                return "Chapter 2";
+        }
+        return string.Empty;
     }
 }

@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class PlayerDeathController : MonoBehaviour
 {
-    public SaveData saveData;
+    public LoadSave loadSave;
     public PauseMenuLogic pauseGame;
     public GameObject mainUI, deathUI;
 
@@ -17,7 +17,7 @@ public class PlayerDeathController : MonoBehaviour
 
     public void ReloadFromLastSave()
     {
-        saveData.LoadSaveData();
+        loadSave.LoadSaveData();
         Time.timeScale = 1;
         Cursor.lockState = CursorLockMode.Locked;
     }

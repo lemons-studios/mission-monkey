@@ -4,8 +4,6 @@ using UnityEngine.SceneManagement;
 
 public class MenuNavigation : MonoBehaviour
 {
-    public SaveData saveData;
-
     public void HideUI(GameObject uiToHide)
     {
         uiToHide.SetActive(false);

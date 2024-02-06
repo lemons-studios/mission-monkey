@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using TMPro;
 using UnityEngine;
@@ -6,15 +5,16 @@ using UnityEngine.UI;
 
 public class EnemyAIHealthbar : MonoBehaviour
 {
-    public Image enemyAIHealthImage;
+    public Image enemyHealthbarTop, enemyHealthbarMiddle;
     public TextMeshProUGUI healthValue, enemyName;
     public float healthbarUpdateSpeed = 15.5f;
+    public float middleHalthbarUpdateSpeed = 25.5f;
     public GameObject enemyHealthbar;
 
     private void Update()
     {
         // Healthbar shouldn't be active if the enemy is dead
-        if(enemyAIHealthImage.fillAmount <= 0.01f)
+        if(enemyHealthbarTop.fillAmount <= 0.01f)
         {
             enemyHealthbar.SetActive(false);
         }
@@ -35,20 +35,23 @@ public class EnemyAIHealthbar : MonoBehaviour
         }
 
         enemyName.text = enemy.GetAIName();
-        healthValue.text = enemy.GetAIHealth() + "/" + enemy.GetMaxAIHealth();
+        healthValue.text = enemy.GetAIHealth() + " / " + enemy.GetMaxAIHealth();
 
         // Pretty much the same thing as the one in UpdateHealthUI
-        // StartCoroutine(LerpEnemyImageFillValue(enemy.GetAIHealth() / enemy.GetMaxAIHealth(), enemy));
-        StartCoroutine(LerpEnemyImageFillValue((float) enemy.GetAIHealth() / enemy.GetMaxAIHealth()));
+        var lerpValue = enemy.GetAIHealth() / enemy.GetMaxAIHealth();
+        StartCoroutine(LerpEnemyImageFillValue(lerpValue, enemyHealthbarTop, healthbarUpdateSpeed));
+        StartCoroutine(LerpEnemyImageFillValue(lerpValue, enemyHealthbarMiddle, middleHalthbarUpdateSpeed));
     }
 
-    private IEnumerator LerpEnemyImageFillValue(float targetFill)
+    private IEnumerator LerpEnemyImageFillValue(float targetFill, Image targetGraphic, float targetGraphicUpdateSpeed)
     {
-        float currentFillAmount = enemyAIHealthImage.fillAmount;
+        float currentFillAmount = targetGraphic.fillAmount;
+        
+        // While the current fill of the Image is not the target fill, lerp the value towards the desired value each frame
         while(Mathf.Abs(currentFillAmount - targetFill) > 0.01f)
         {
-            currentFillAmount = Mathf.Lerp(currentFillAmount, targetFill, Time.deltaTime * healthbarUpdateSpeed);
-            enemyAIHealthImage.fillAmount = currentFillAmount;
+            currentFillAmount = Mathf.Lerp(currentFillAmount, targetFill, Time.deltaTime * targetGraphicUpdateSpeed);
+            enemyHealthbarTop.fillAmount = currentFillAmount;
             yield return new WaitForEndOfFrame();
         }
     }

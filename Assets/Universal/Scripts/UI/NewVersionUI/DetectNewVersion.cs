@@ -1,12 +1,11 @@
 using UnityEngine;
 
-public class DetectNewVersion : MonoBehaviour
+public class DetectNewVersion : SaveDataBase
 {
-    public GetSaveDataInfo getSaveDataInfo;
     public GameObject newVersionUI;
     private void Start() 
     {
-        if(getSaveDataInfo.GetSaveDataAsString("lastPlayedVersion") != Application.version || getSaveDataInfo.isSaveDataPresent(getSaveDataInfo.GetSaveDirectory()))
+        if(base.GetSaveDataInfoFromTag<string>("lastPlayedVersion") != Application.version || !base.DoesSaveDataFileExist())
         {
             newVersionUI.SetActive(true);
         }    

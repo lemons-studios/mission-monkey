@@ -10,11 +10,11 @@ public class PauseMenuLogic : MonoBehaviour
     private void Start() 
     {
         playerInput = new PlayerInput();
-        playerInput.OnFoot.Pause.performed += ctx => EscapeActionHandler();  
+        playerInput.OnFoot.Pause.performed += EscapeActionHandler;  
         playerInput.Enable();
     }
 
-    public void EscapeActionHandler()
+    public void EscapeActionHandler(InputAction.CallbackContext ctx)
     {
         if(IsSubmenuActive())
         {
@@ -43,6 +43,15 @@ public class PauseMenuLogic : MonoBehaviour
                     break;
             }
         }
+    }
+
+    public void PauseGame()
+    {
+        Time.timeScale = 0;
+    }
+    public void ResumeGame()
+    {
+        Time.timeScale = 1;
     }
 
     private bool IsGamePaused()
