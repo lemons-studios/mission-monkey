@@ -69,4 +69,9 @@ public class PlayerCamera : MonoBehaviour
     {
         playerCamera.fieldOfView = newFieldOfView;
     }
+    
+    private void OnDestroy() 
+    {
+        playerInput.Disable();    
+    }
 }

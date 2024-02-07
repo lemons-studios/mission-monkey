@@ -21,6 +21,8 @@ public class PlayerHealth : MonoBehaviour
     public void DamagePlayer(int DamageDealt)
     {
         health -= DamageDealt;
+        Debug.Log(GetHealth());
+
         if (health <= 0)
         {
             GetComponent<PlayerDeathController>().OnPlayerDeath();

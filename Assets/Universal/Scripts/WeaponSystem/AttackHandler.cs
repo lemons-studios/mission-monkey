@@ -162,4 +162,9 @@ public abstract class AttackHandler : MonoBehaviour
         }
         else return false;
     }
+
+    private void OnDestroy() 
+    {
+        playerInput.Disable();    
+    }
 }

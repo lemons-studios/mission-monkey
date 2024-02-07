@@ -1,3 +1,4 @@
+using System.Collections;
 using System.IO;
 using System.Linq;
 using UnityEngine;
@@ -35,5 +36,16 @@ namespace LemonStudios.CsExtensions
             if(Time.timeScale == 0) return true;
             else return false;
         }
+
+        public static IEnumerator LoadAsyncScene(int sceneBuildIndex)
+        {
+            AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(sceneBuildIndex);
+
+            while(!asyncLoad.isDone)
+            {
+                yield return null;
+            }
+        }
+
     }
 }

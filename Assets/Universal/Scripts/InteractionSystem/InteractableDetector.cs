@@ -16,7 +16,6 @@ public class InteractableDetector : MonoBehaviour
     }
     private void FindInteractables()
     {
-        Debug.Log("Performed");
         Ray interactionRaycast = new Ray(mainCamera.transform.position, mainCamera.transform.forward);
         RaycastHit hit;
         if (Physics.Raycast(interactionRaycast, out hit, interactRayDistance, interactableMask))
@@ -27,5 +26,10 @@ public class InteractableDetector : MonoBehaviour
                 hit.collider.GetComponent<Interactable>().TriggerInteract();
             }
         }
+    }
+
+    private void OnDestroy() 
+    {
+        playerInput.Disable();    
     }
 }

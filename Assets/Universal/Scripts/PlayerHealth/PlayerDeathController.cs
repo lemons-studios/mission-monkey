@@ -4,7 +4,7 @@ public class PlayerDeathController : MonoBehaviour
 {
     public LoadSave loadSave;
     public PauseMenuLogic pauseGame;
-    public GameObject mainUI, deathUI;
+    private GameObject mainUI, deathUI;
 
     public void OnPlayerDeath()
     {
