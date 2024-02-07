@@ -7,13 +7,13 @@ using UnityEngine.SceneManagement;
 public class WriteSave : SaveDataBase
 {
     SaveDataTemplate saveDataTemplate = new SaveDataTemplate();
-    private void Start() 
+    private void Start()
     {
-        if(!base.DoesSaveDataFileExist())
+        if (!base.DoesSaveDataFileExist())
         {
             Debug.Log("First Load Detected. Generating Save Data.....");
             GenerateSaveData();
-        }    
+        }
     }
 
     // This method only runs if no save data is detected or if the save data was just deleted
@@ -55,7 +55,7 @@ class SaveDataTemplate
     public int savedSceneBuildNumber;
     public bool isNewGame;
 
-    public string CreateSaveJsonData(string currentScene,  int currentSceneIndex, int playerHealth, Vector3 currentPlayerPos, bool isNewlyGeneratedSave)
+    public string CreateSaveJsonData(string currentScene, int currentSceneIndex, int playerHealth, Vector3 currentPlayerPos, bool isNewlyGeneratedSave)
     {
         playerPosition = currentPlayerPos;
         savedSceneName = currentScene;

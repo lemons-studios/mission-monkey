@@ -6,7 +6,7 @@ public class MainMenuSubmenuClose : MonoBehaviour
 {
     PlayerInput playerInput;
     private GameObject currentActiveMenu;
-    
+
     private void Start()
     {
         playerInput = new PlayerInput();
@@ -17,9 +17,9 @@ public class MainMenuSubmenuClose : MonoBehaviour
     private void CloseMenu(InputAction.CallbackContext context)
     {
         currentActiveMenu = GameObject.FindGameObjectWithTag("Submenu");    // Only one submenu can be open at any given time, and inactive GameObjects cannot be found
-        if(currentActiveMenu != null)
+        if (currentActiveMenu != null)
         {
-            currentActiveMenu.SetActive(false);   
+            currentActiveMenu.SetActive(false);
         }
         // else Debug.Log("No Submenus Active");
     }

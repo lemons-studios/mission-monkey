@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class UnlockCursorOnSceneLoad : MonoBehaviour
 {
-    private void OnEnable() 
+    private void OnEnable()
     {
-        Cursor.lockState = CursorLockMode.None;    
+        Cursor.lockState = CursorLockMode.None;
     }
 }

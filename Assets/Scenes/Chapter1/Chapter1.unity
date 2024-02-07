@@ -778,6 +778,7 @@ GameObject:
   m_Component:
   - component: {fileID: 929192973}
   - component: {fileID: 929192971}
+  - component: {fileID: 929192974}
   m_Layer: 0
   m_Name: BgScripts
   m_TagString: Untagged
@@ -816,6 +817,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &929192974
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 929192970}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9c4bbd67bab806444a80bf23d6a4d1cc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &974800991
 GameObject:
   m_ObjectHideFlags: 0
@@ -1131,11 +1144,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1064645985 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4097101318872784413, guid: 66af6c6505c7be94eb7b8f131ac23606, type: 3}
-  m_PrefabInstance: {fileID: 9036140051041180214}
-  m_PrefabAsset: {fileID: 0}
 --- !u!224 &1064645986 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 8904570060596554468, guid: 66af6c6505c7be94eb7b8f131ac23606, type: 3}
@@ -2817,8 +2825,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   loadSave: {fileID: 1512182181}
   pauseGame: {fileID: 1512182180}
-  mainUI: {fileID: 57511325}
-  deathUI: {fileID: 1064645985}
 --- !u!114 &3459851930493492627
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3127,7 +3133,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2995953185276837283, guid: 71b8d9edacbff3e468acee1654e92af2, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2995953185276837283, guid: 71b8d9edacbff3e468acee1654e92af2, type: 3}
       propertyPath: m_TagString

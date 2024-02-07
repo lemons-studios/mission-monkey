@@ -24,7 +24,7 @@ public class UpdateHealthUI : MonoBehaviour
     public void Update()
     {
         int currentPlayerHealth = GetComponent<PlayerHealth>().GetHealth();
-         
+
         if (currentPlayerHealth >= 65)
         {
             playerHealthImage.color = highHealthColour;
@@ -41,7 +41,7 @@ public class UpdateHealthUI : MonoBehaviour
         }
 
         healthText.text = currentPlayerHealth.ToString() + "/100";
-        
+
         float currentFillAmount = playerHealthImage.fillAmount;
         float fillAmount = Mathf.Lerp(currentFillAmount, currentPlayerHealth / 100f, Time.deltaTime * healthBarLerpSpeed); // Wtf is a lerp I gotta learn this
         playerHealthImage.fillAmount = fillAmount;

@@ -28,8 +28,8 @@ public class InteractableDetector : MonoBehaviour
         }
     }
 
-    private void OnDestroy() 
+    private void OnDestroy()
     {
-        playerInput.Disable();    
+        playerInput.Disable();
     }
 }

@@ -12,7 +12,7 @@ public class PlayerHealth : MonoBehaviour
 
     private void Update()
     {
-        if(enforceMaxHealth)
+        if (enforceMaxHealth)
         {
             health = Mathf.Clamp(health, 0, 100);
         }

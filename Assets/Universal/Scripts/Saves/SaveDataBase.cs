@@ -6,7 +6,7 @@ public class SaveDataBase : MonoBehaviour
 {
     private string filePath;
 
-    private void Awake() 
+    private void Awake()
     {
         filePath = Path.Combine(Application.persistentDataPath, "MissionMonkeyGlobalData.json");
     }
@@ -24,12 +24,12 @@ public class SaveDataBase : MonoBehaviour
 
     public T GetSaveDataInfoFromTag<T>(string tagName)
     {
-        if(IsTagInSaveData(tagName))
+        if (IsTagInSaveData(tagName))
         {
             JObject saveData = ParseSaveDataFile();
             // Select the json token from the save file
             JToken token = saveData.SelectToken(tagName);
-            if(token != null && token.Type != JTokenType.Null)
+            if (token != null && token.Type != JTokenType.Null)
             {
                 return token.Value<T>();
             }
@@ -40,7 +40,7 @@ public class SaveDataBase : MonoBehaviour
     // Specifically for position. May not be needed now, but may be needed in the future.
     public Vector3 GetPositionFromSaveData()
     {
-        if(IsTagInSaveData("playerPosition"))
+        if (IsTagInSaveData("playerPosition"))
         {
             JObject saveData = ParseSaveDataFile();
             // Get Coordinates of tag playerPosition
@@ -54,15 +54,15 @@ public class SaveDataBase : MonoBehaviour
 
     private bool IsTagInSaveData(string tagName)
     {
-        if(DoesSaveDataFileExist())
+        if (DoesSaveDataFileExist())
         {
             string data = ReadSaveDataFile();
-            if(data.Contains(tagName))
+            if (data.Contains(tagName))
             {
                 // Debug.Log("File contains tag '" + tagName + "'");
                 return true;
             }
-            else 
+            else
             {
                 Debug.LogError("Tag '" + tagName + "' not found in " + data);
                 return false;
@@ -73,7 +73,7 @@ public class SaveDataBase : MonoBehaviour
 
     public bool DoesSaveDataFileExist()
     {
-        if(File.Exists(GetSavePath()))
+        if (File.Exists(GetSavePath()))
         {
             return true;
         }

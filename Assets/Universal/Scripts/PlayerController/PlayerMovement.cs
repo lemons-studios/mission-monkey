@@ -17,7 +17,7 @@ public class PlayerMovement : MonoBehaviour
     {
         // Default to the player GameObject if the vaultableFirePoint is not assigned in the editor
         if (vaultableFirePoint == null)
-            vaultableFirePoint = GameObject.FindGameObjectWithTag("Player"); 
+            vaultableFirePoint = GameObject.FindGameObjectWithTag("Player");
 
         playerController = GetComponent<CharacterController>();
 
@@ -87,8 +87,8 @@ public class PlayerMovement : MonoBehaviour
         moveSpeed /= sprintSpeedMultiplier;
     }
 
-    private void OnDestroy() 
+    private void OnDestroy()
     {
-        playerInput.Disable();    
+        playerInput.Disable();
     }
 }

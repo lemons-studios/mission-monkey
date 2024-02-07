@@ -1,9 +1,9 @@
 using UnityEngine;
 
-public class OnSceneLoad : MonoBehaviour 
+public class OnSceneLoad : MonoBehaviour
 {
-    private void Start() 
+    private void Start()
     {
-        Time.timeScale = 1;    
+        Time.timeScale = 1;
     }
 }

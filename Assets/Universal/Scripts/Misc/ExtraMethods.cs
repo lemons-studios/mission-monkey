@@ -26,14 +26,15 @@ namespace LemonStudios.CsExtensions
         public static bool IsOnMainMenu()
         {
             Scene currentScene = SceneManager.GetActiveScene();
-            if(currentScene.buildIndex == 0)
+            if (currentScene.buildIndex == 0)
             {
                 return true;
-            } else return false;
+            }
+            else return false;
         }
         public static bool IsGamePaused()
         {
-            if(Time.timeScale == 0) return true;
+            if (Time.timeScale == 0) return true;
             else return false;
         }
 
@@ -41,7 +42,7 @@ namespace LemonStudios.CsExtensions
         {
             AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(sceneBuildIndex);
 
-            while(!asyncLoad.isDone)
+            while (!asyncLoad.isDone)
             {
                 yield return null;
             }
