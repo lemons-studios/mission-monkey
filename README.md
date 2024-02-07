@@ -46,8 +46,4 @@ Add the project to the Unity Hub, and you are good to launch the game!
 To build from source, you must have all of the software mentioned in **Requirements to Develop** installed, as well as an additional 15-20GB of storage (Just in case)
 Follow the exact same steps provided on how to open the project in **Requirements to Develop**. Once you have the project open, navigate to the ["build settings" tab](https://cdn.discordapp.com/attachments/888136140564095007/1174972604847771739/image.png?ex=65698982&is=65571482&hm=216d691f61f592c5fe6c86d884b92a40366e25f26158b118bdf07426ac5f4c96&), and select your build options from there.
 
-> **Note**
-> 
-> If you are attempting to build for MacOS on a non-Mac, you must [turn off IL2CPP](https://youtu.be/E71ta7EwD8I) in the project settings befoire being able to build for Macs.
-
 #### ©2023 Lemon Studios
