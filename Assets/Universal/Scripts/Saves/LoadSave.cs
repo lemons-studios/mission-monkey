@@ -1,6 +1,5 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using LemonStudios.CsExtensions;
 
 public class LoadSave : SaveDataBase
 {
@@ -17,5 +16,6 @@ public class LoadSave : SaveDataBase
 
         // Load the saved scene
         AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(lastSavedSceneBuildIndex, LoadSceneMode.Single);
+        SaveDataBase.isLastLoadFromSaveData = true;
     }
 }

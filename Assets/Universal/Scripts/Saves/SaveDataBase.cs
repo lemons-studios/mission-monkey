@@ -5,7 +5,8 @@ using UnityEngine;
 public class SaveDataBase : MonoBehaviour
 {
     private string filePath;
-
+    public static bool isLastLoadFromSaveData;
+    
     private void Awake()
     {
         filePath = Path.Combine(Application.persistentDataPath, "MissionMonkeyGlobalData.json");
