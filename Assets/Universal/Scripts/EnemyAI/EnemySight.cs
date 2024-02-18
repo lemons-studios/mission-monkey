@@ -51,14 +51,15 @@ public class EnemySight : MonoBehaviour
         {
             foreach(GameObject currentDetectionPoint in detectionPoints)
             {
+                
                 if (currentDetectionPoint != null)
                 {
                     // Change color to red if the player is in sight
                     if (isPlayerVisible())
                     {
-                        Gizmos.color = Color.red;
+                        Gizmos.color = new Color(1, 0, 0, 0.2f);
                     }
-                    else Gizmos.color = Color.green;
+                    else Gizmos.color = new Color(0, 1, 0, 0.2f);
                     
                     Gizmos.matrix = currentDetectionPoint.transform.localToWorldMatrix;
                     Gizmos.DrawCube(new Vector3(0f, 0f, detectionDepth / 2f), new Vector3(detectionRadius, detectionRadius, detectionDepth));
