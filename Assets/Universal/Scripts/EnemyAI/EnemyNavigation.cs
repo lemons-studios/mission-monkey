@@ -6,29 +6,28 @@ public class EnemyNavigation : MonoBehaviour
 {
     private NavMeshAgent agent;
     public GameObject navigateToPoint;
-    public float destinationUpdateFrequency = 0.25f;
 
-    // [Tooltip("Controls how fast the AI looks towards the player. Set it to a higher value if you prefer more \"human-like\" movement")]
+    public EnemySight enemySight;
+    public EnemyAttackBase attackModule;
+    
+    public float destinationUpdateFrequency = 0.25f;
     public float rotationTowardsTargetDelay = 0.15f;
 
     private void Start()
     {
         agent = GetComponent<NavMeshAgent>();
-        StartCoroutine(UpdateAgentDestination());
-        StartCoroutine(FaceTowardsTarget());
     }
 
-    private IEnumerator UpdateAgentDestination()
+    private IEnumerator NavigateToPlayer(GameObject player)
     {
         while (true)
         {
-            agent.destination = navigateToPoint.transform.position;
-            FaceTowardsTarget();
+            agent.destination = player.transform.position;
             yield return new WaitForSeconds(destinationUpdateFrequency);
         }
     }
 
-    private IEnumerator FaceTowardsTarget()
+    private IEnumerator FaceTowardsTarget(GameObject target)
     {
         // Once again "borrowing" code from people that actually know how to do this stuff
         // The Vector3 gets thrown through a lot of complicated math to be turned into a rotation coordinate
@@ -46,6 +45,6 @@ public class EnemyNavigation : MonoBehaviour
 
     public void SetNewDestination(GameObject newDestination)
     {
-
+        navigateToPoint = newDestination;
     }
 }

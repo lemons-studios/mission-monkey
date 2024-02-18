@@ -112,8 +112,8 @@ public abstract class AttackHandler : MonoBehaviour
 
                 else if (hit.collider.gameObject.CompareTag("Enemy"))
                 {
-                    EnemyAIHealth aiHealth = hit.collider.GetComponent<EnemyAIHealth>();
-                    if (hit.collider.GetComponentInParent<EnemyAIHealth>() != null)
+                    EnemyHealth aiHealth = hit.collider.GetComponent<EnemyHealth>();
+                    if (hit.collider.GetComponentInParent<EnemyHealth>() != null)
                     {
                         if (doesWeaponRandomiseDamage)
                         {

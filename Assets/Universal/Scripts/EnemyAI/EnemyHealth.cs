@@ -1,9 +1,9 @@
 using UnityEngine;
 
-public class EnemyAIHealth : MonoBehaviour
+public class EnemyHealth : MonoBehaviour
 {
-    public int health = 100;
-    private int maxHealth;
+    public int health = 100;    // Can be changed in the editor
+    private int maxHealth;  // Max Health of the AI is needed in some methods outside this script
 
 
     private void Start()

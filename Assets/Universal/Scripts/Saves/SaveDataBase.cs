@@ -14,25 +14,26 @@ public class SaveDataBase : MonoBehaviour
 
     public JObject ParseSaveDataFile()
     {
-        return JObject.Parse(File.ReadAllText(filePath));
+        return JObject.Parse(ReadSaveDataFile());
     }
 
-    public string ReadSaveDataFile()
+    private string ReadSaveDataFile()
     {
         return File.ReadAllText(filePath);
     }
 
 
-    public T GetSaveDataInfoFromTag<T>(string tagName)
+    public T? GetSaveDataInfoFromTag<T>(string tagName)
     {
         if (IsTagInSaveData(tagName))
         {
             JObject saveData = ParseSaveDataFile();
             // Select the json token from the save file
-            JToken token = saveData.SelectToken(tagName);
+            JToken? token = saveData.SelectToken(tagName);
             if (token != null && token.Type != JTokenType.Null)
             {
-                return token.Value<T>();
+                T? t = token.Value<T>();
+                return t;
             }
         }
         return default;  // "default" is the default value of whatever Type was specified in the method call
@@ -58,16 +59,7 @@ public class SaveDataBase : MonoBehaviour
         if (DoesSaveDataFileExist())
         {
             string data = ReadSaveDataFile();
-            if (data.Contains(tagName))
-            {
-                // Debug.Log("File contains tag '" + tagName + "'");
-                return true;
-            }
-            else
-            {
-                Debug.LogError("Tag '" + tagName + "' not found in " + data);
-                return false;
-            }
+            return data.Contains(tagName);
         }
         else return false;
     }

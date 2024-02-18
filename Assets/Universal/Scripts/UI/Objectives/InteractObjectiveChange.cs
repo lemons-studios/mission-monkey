@@ -1,16 +1,25 @@
+using TMPro;
+using UnityEngine;
+
 public class InteractObjectiveChange : Interactable
 {
     public string newObjective;
-    private ChangeObjective changeObjective;
+    private TextMeshProUGUI objectiveText;
+    
 
     private void Start()
     {
-        changeObjective = new ChangeObjective();
+        objectiveText = GameObject.FindGameObjectWithTag("ObjectiveUI").GetComponent<TextMeshProUGUI>();
     }
 
     protected override void Interact()
     {
         base.Interact();
-        changeObjective.ChangeObjectiveText(newObjective);
+        objectiveText.text = newObjective;
+    }
+
+    private void OnDestroy() 
+    {
+        objectiveText = null;
     }
 }
