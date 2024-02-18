@@ -12,7 +12,7 @@ public abstract class AttackHandler : MonoBehaviour
 
     private AudioSource weaponSfxSource;
     private Camera mainCamera;
-    private Coroutine clickHeldRoutine;
+    private Coroutine? clickHeldRoutine;
     private PlayerHealth playerHealth;
     private PlayerInput playerInput;
     private Ray bulletRay;
@@ -20,6 +20,7 @@ public abstract class AttackHandler : MonoBehaviour
     public int bulletsPerBurst, bulletSpeed, baseWeaponDamage;
     public float attackCooldown, maxDamageIncrease, maxDamageReduction, projectileDestroyTime, secondaryAttackCooldown;
     public bool doesWeaponRandomiseDamage = true;
+    public bool enableWeaponDebugFeatures = false;
     private bool isInputHeld;
 
     public void Start()
@@ -97,9 +98,12 @@ public abstract class AttackHandler : MonoBehaviour
 
             if (Physics.Raycast(bulletRay, out hit))
             {
-                Debug.DrawRay(mainCamera.transform.position, transform.forward * 15, Color.red);
-
-                // Debug.Log("Hit " + hit.collider.gameObject.name);
+                if(enableWeaponDebugFeatures)
+                {
+                    Debug.DrawRay(mainCamera.transform.position, transform.forward * 15, Color.red);
+                    Debug.Log("Hit " + hit.collider.gameObject.name);
+                }
+                
                 if (hit.collider.CompareTag("WeaponInteractable"))
                 {
                     // Create a variable for the GameObject the projectile hit
@@ -117,11 +121,9 @@ public abstract class AttackHandler : MonoBehaviour
                     {
                         if (doesWeaponRandomiseDamage)
                         {
-                            aiHealth.RandomAIDamage(baseWeaponDamage, maxDamageReduction, maxDamageIncrease);
+                            aiHealth.RandomAIDamage(baseWeaponDamage, 0.5f, 2.0f);   
                         }
-
                         else aiHealth.DamageAI(baseWeaponDamage);
-                        // enemyAiHealthbar.SetEnemyHealthbar(aiHealth);
                         return;
                     }
                     else Debug.LogError("Enemy does not have EnemyAIHealth Component!");
