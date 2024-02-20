@@ -1,50 +1,65 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using LemonStudios.CsExtensions;
 
+[RequireComponent(typeof(NavMeshAgent))]
 public class EnemyNavigation : MonoBehaviour
 {
+    public List<GameObject> patrolPoints;
+    private GameObject currentTarget;
+    private GameObject lastKnownPlayerLocation;     // Specifically for the player if they go out of sight of the AI by turning a corner or something
     private NavMeshAgent agent;
-    public GameObject navigateToPoint;
-
-    public EnemySight enemySight;
-    public EnemyAttackBase attackModule;
-    
-    public float destinationUpdateFrequency = 0.25f;
-    public float rotationTowardsTargetDelay = 0.15f;
-
-    private void Start()
+    public float rotationFrequency = 0.25f;
+    private int currentPatrolIndex = 0;
+    private void Start() 
     {
         agent = GetComponent<NavMeshAgent>();
     }
 
-    private IEnumerator NavigateToPlayer(GameObject player)
+    public void SetCurrentTarget(GameObject target)
     {
-        while (true)
+        currentTarget = target;
+    }
+
+    public void NavigateToPatrolPoint()
+    {
+        SetCurrentTarget(patrolPoints[currentPatrolIndex]);     // This should re-run each time this method runs in the case that one of the patrol points are moving
+        
+        agent.destination = currentTarget.transform.position;
+        if(agent.remainingDistance == 0) 
         {
-            agent.destination = player.transform.position;
-            yield return new WaitForSeconds(destinationUpdateFrequency);
+            currentPatrolIndex = GetNextPatrolPoint(currentPatrolIndex);
+        }
+    }
+    
+    public void NavigateToPlayer()
+    {
+        SetCurrentTarget(lastKnownPlayerLocation);
+        agent.destination = currentTarget.transform.position;
+    }
+
+    public IEnumerator FaceTarget()
+    {
+        // Shamelessly stealing Quaternion code because I despise math (It pains me to know that I will have to learn 3d math one day)
+        while(true)
+        {
+            Vector3 targetPosition = currentTarget.transform.position; 
+            targetPosition.y = 0;   // Prevents the ai from getting silly on the Y axis (I think?)
+            Quaternion targetRotation = Quaternion.LookRotation(targetPosition);
+            transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, 0.2f);    
+
+            yield return new WaitForSeconds(rotationFrequency);
         }
     }
 
-    private IEnumerator FaceTowardsTarget(GameObject target)
+
+    private int GetNextPatrolPoint(int input)
     {
-        // Once again "borrowing" code from people that actually know how to do this stuff
-        // The Vector3 gets thrown through a lot of complicated math to be turned into a rotation coordinate
-        while (true)
-        {
-            Vector3 targetPosition = navigateToPoint.transform.position - transform.position;
-            targetPosition.y = 0;
-            Quaternion targetPosRotation = Quaternion.LookRotation(targetPosition);
-            transform.rotation = Quaternion.Slerp(transform.rotation, targetPosRotation, 0.2f);
-
-            yield return new WaitForSeconds(rotationTowardsTargetDelay);
-        }
-
+        int patrolPointListLength = patrolPoints.Count;
+        if(input < patrolPointListLength || input > patrolPointListLength) return LemonUtils.GetFirstNonNullEntryInList(patrolPoints);
+        else return input += 1;
     }
 
-    public void SetNewDestination(GameObject newDestination)
-    {
-        navigateToPoint = newDestination;
-    }
 }

@@ -158,7 +158,7 @@ public abstract class AttackHandler : MonoBehaviour
     private bool CanPlayerAttack()
     {
         // The player shouldn't be able to attack if the game is paused or if they are dead
-        if (playerHealth.GetHealth() >= 1 && !LemonStudiosCsExtensions.IsGamePaused())
+        if (playerHealth.GetHealth() >= 1 && !LemonUtils.IsGamePaused())
         {
             return true;
         }

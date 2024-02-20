@@ -80,8 +80,6 @@ class SaveDataTemplate
     public string GetCultureTimePattern(CultureInfo culture)
     {
         // Should return something along the lines of "dd/MM/yyyy, hh:mm tt" (This depends on what the current System Locale is)
-        string cultureTimePattern = culture.DateTimeFormat.ShortDatePattern + ", " + culture.DateTimeFormat.LongTimePattern;
-        Debug.Log(cultureTimePattern);
-        return cultureTimePattern;
+        return culture.DateTimeFormat.ShortDatePattern + ", " + culture.DateTimeFormat.LongTimePattern;
     }
 }

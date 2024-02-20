@@ -1,6 +1,10 @@
 using System.Collections;
 using UnityEngine;
 
+#if UNITY_EDITOR
+    using UnityEditor;
+#endif
+
 public class EnemySight : MonoBehaviour
 {
     // Script partially written with the help of https://www.noveltech.dev/ai-player-detection
@@ -16,7 +20,7 @@ public class EnemySight : MonoBehaviour
     public float detectionDepth; // Z-Axis 
 
     
-
+    [Space]
     [Tooltip("Enable to show detection gizmo for this AI. NOTE: The gizmo is slightly innaccurate, and is only an estimate of the detection range")]
     public bool enableDetectionGizmo = false; 
     [Tooltip("Enable to send a message to the console whenever the player is detected (Detection check occurs every 2.5 seconds)")]
@@ -46,7 +50,10 @@ public class EnemySight : MonoBehaviour
     // This method is written completely with the code from the article I linked at the start of the class, it's good stuff!
     private void OnDrawGizmos()
     {
+
         player = GameObject.FindGameObjectWithTag("Player");
+        if(Selection.activeGameObject != transform.gameObject) return;
+        
         if(enableDetectionGizmo)
         {
             foreach(GameObject currentDetectionPoint in detectionPoints)

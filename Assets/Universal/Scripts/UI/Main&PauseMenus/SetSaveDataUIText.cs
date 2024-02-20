@@ -10,12 +10,12 @@ public class SetSaveDataUIText : SaveDataBase
     private void Update()
     {
         chapterNameText.text = FormatSavedSceneNames();
-        lastSaveDateText.text = base.GetSaveDataInfoFromTag<string>("lastSaveDate");
+        lastSaveDateText.text = GetSaveDataInfoFromTag<string>("lastSaveDate");
     }
 
     private string FormatSavedSceneNames()
     {
-        switch (base.GetSaveDataInfoFromTag<int>("savedSceneBuildNumber"))
+        switch (GetSaveDataInfoFromTag<int>("savedSceneBuildNumber"))
         {
             case 0:
                 return "Main Menu (how)";

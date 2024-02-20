@@ -28,7 +28,8 @@ public class OptionsMenu : MonoBehaviour
         }
 
         urpCamData = mainCamera.GetComponent<UniversalAdditionalCameraData>();
-        urpAsset = GraphicsSettings.currentRenderPipeline as UniversalRenderPipelineAsset;
+        // Unused for now
+        // urpAsset = GraphicsSettings.currentRenderPipeline as UniversalRenderPipelineAsset;
         SetOptionsFromPlayerPrefs();
     }
 

@@ -1,4 +1,6 @@
+using System;
 using System.Collections;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using UnityEngine;
@@ -6,23 +8,8 @@ using UnityEngine.SceneManagement;
 
 namespace LemonStudios.CsExtensions
 {
-    public static class LemonStudiosCsExtensions
+    public static class LemonUtils
     {
-        // https://stackoverflow.com/questions/3870263/how-can-i-write-like-x-either-1-or-2-in-a-programming-language 
-        public static bool Either(this object value, params object[] array)
-        {
-            return array.Any(p => Equals(value, p));
-        }
-
-        public static bool DoesFileExist(string file)
-        {
-            if (File.Exists(file))
-            {
-                return true;
-            }
-            else return false;
-        }
-
         public static bool IsOnMainMenu()
         {
             Scene currentScene = SceneManager.GetActiveScene();
@@ -48,5 +35,25 @@ namespace LemonStudios.CsExtensions
             }
         }
 
+        public static bool DoesFileExist(string file)
+        {
+            if (File.Exists(file))
+            {
+                return true;
+            }
+            else return false;
+        }
+
+        public static int GetFirstNonNullEntryInList<T>(List<T> list)
+        {
+            for(int i = 0; i < list.Count; i++)
+            {
+                if(list[i] != null)
+                {
+                    return i;
+                }
+            }
+            return -1;  // Return -1 as an error for now
+        }
     }
 }
