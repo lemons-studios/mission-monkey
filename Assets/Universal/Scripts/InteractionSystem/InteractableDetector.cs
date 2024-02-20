@@ -22,7 +22,7 @@ public class InteractableDetector : MonoBehaviour
         {
             if (hit.collider.GetComponent<Interactable>() != null)
             {
-                Debug.Log("Performing interact with interactable GameObject");
+                // Debug.Log("Performing interact with interactable GameObject");
                 hit.collider.GetComponent<Interactable>().TriggerInteract();
             }
         }

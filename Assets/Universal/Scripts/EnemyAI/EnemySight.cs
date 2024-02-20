@@ -52,7 +52,10 @@ public class EnemySight : MonoBehaviour
     {
 
         player = GameObject.FindGameObjectWithTag("Player");
-        if(Selection.activeGameObject != transform.gameObject) return;
+        if (Selection.activeGameObject == null || (Selection.activeGameObject != gameObject && !transform.IsChildOf(Selection.activeGameObject.transform)))
+        {
+            return;
+        }
         
         if(enableDetectionGizmo)
         {
@@ -64,9 +67,9 @@ public class EnemySight : MonoBehaviour
                     // Change color to red if the player is in sight
                     if (isPlayerVisible())
                     {
-                        Gizmos.color = new Color(1, 0, 0, 0.2f);
+                        Gizmos.color = new Color(1, 0, 0, 0.35f);
                     }
-                    else Gizmos.color = new Color(0, 1, 0, 0.2f);
+                    else Gizmos.color = new Color(0, 1, 0, 0.35f);
                     
                     Gizmos.matrix = currentDetectionPoint.transform.localToWorldMatrix;
                     Gizmos.DrawCube(new Vector3(0f, 0f, detectionDepth / 2f), new Vector3(detectionRadius, detectionRadius, detectionDepth));

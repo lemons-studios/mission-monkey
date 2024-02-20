@@ -16,6 +16,18 @@ public class EnemyNavigation : MonoBehaviour
     private void Start() 
     {
         agent = GetComponent<NavMeshAgent>();
+        StartCoroutine(FaceTarget());
+        StartCoroutine(stupidPlayerNavigation());
+    }
+
+    private IEnumerator stupidPlayerNavigation()
+    {
+        while(true)
+        {
+            currentTarget = GameObject.FindGameObjectWithTag("Player");
+            agent.destination = currentTarget.transform.position;
+            yield return new WaitForSeconds(0.25f);
+        }
     }
 
     public void SetCurrentTarget(GameObject target)
@@ -58,7 +70,7 @@ public class EnemyNavigation : MonoBehaviour
     private int GetNextPatrolPoint(int input)
     {
         int patrolPointListLength = patrolPoints.Count;
-        if(input < patrolPointListLength || input > patrolPointListLength) return LemonUtils.GetFirstNonNullEntryInList(patrolPoints);
+        if(input < patrolPointListLength || input > patrolPointListLength) return LemonUtils.GetFirstNonNullEntryOfList(patrolPoints);
         else return input += 1;
     }
 

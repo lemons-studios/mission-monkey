@@ -2,10 +2,17 @@ using UnityEngine;
 
 public class DebugHealthInteractable : Interactable
 {
-    [Tooltip("Supports Negative Values")]
     public int healthModifier;
-    public PlayerHealth playerHealth;
+    private PlayerHealth playerHealth;
+
     public bool damagePlayer;
+
+    private void Start()
+    {
+        playerHealth = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerHealth>();
+    }
+
+
     protected override void Interact()
     {
         base.Interact();

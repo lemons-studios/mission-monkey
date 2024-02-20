@@ -3,10 +3,14 @@ using UnityEngine;
 public class PlayerHealth : MonoBehaviour
 {
     private int health = 100;
+    private int maxHealth; 
+    
+    [HideInInspector]
     public bool enforceMaxHealth = true;
 
     private void Start()
     {
+        maxHealth = health;
         GetComponent<Animator>().enabled = false;
     }
 
@@ -16,17 +20,15 @@ public class PlayerHealth : MonoBehaviour
         {
             health = Mathf.Clamp(health, 0, 100);
         }
+        if (health <= 0)
+        {
+            GetComponent<PlayerDeathController>().OnPlayerDeath();
+        }
     }
 
     public void DamagePlayer(int DamageDealt)
     {
         health -= DamageDealt;
-        Debug.Log(GetHealth());
-
-        if (health <= 0)
-        {
-            GetComponent<PlayerDeathController>().OnPlayerDeath();
-        }
     }
 
     public void HealPlayer(int HealthHealed)
@@ -38,6 +40,12 @@ public class PlayerHealth : MonoBehaviour
     {
         return health;
     }
+
+    public int GetMaxHealth()
+    {
+        return maxHealth;
+    }
+
     public void SetHealth(int newHealth)
     {
         health = newHealth;

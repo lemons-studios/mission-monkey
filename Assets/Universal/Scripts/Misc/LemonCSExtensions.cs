@@ -17,7 +17,7 @@ namespace LemonStudios.CsExtensions
             else return false;
         }
 
-        public static int GetFirstNonNullEntryInList<T>(List<T> list)
+        public static int GetFirstNonNullEntryOfList<T>(List<T> list)
         {
             for(int i = 0; i < list.Count; i++)
             {
