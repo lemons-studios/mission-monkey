@@ -16,7 +16,6 @@ public class EnemyNavigation : MonoBehaviour
         agent = GetComponent<NavMeshAgent>();
     }
 
-
     private IEnumerator FaceTarget(GameObject target)
     {
         // Shamelessly stealing Quaternion code because I despise math (It pains me to know that I will have to learn 3d math one day)
