@@ -85,7 +85,8 @@ public class EnemySight : MonoBehaviour
     // if it actually hits the player. This prevents situations where the player can be found if they are in range of the SphereCast
     // but are behind a GameObject where the AI should not be able to see it (For example, the player could be behind a wall that the AI may be able to see through) 
     
-    private bool isPlayerVisible()
+    // Only this bool should be public as it's the only one that needs to be called from other methods or instances of the class
+    public bool isPlayerVisible()
     {
         if (isPlayerInRange())
         {
@@ -124,7 +125,6 @@ public class EnemySight : MonoBehaviour
                 }
             }
         }
-
         return false;
     }
 }

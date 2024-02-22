@@ -4,7 +4,6 @@ public class DebugHealthInteractable : Interactable
 {
     public int healthModifier;
     private PlayerHealth playerHealth;
-
     public bool damagePlayer;
 
     private void Start()

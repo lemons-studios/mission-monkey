@@ -11,7 +11,6 @@ public class PlayerHealth : MonoBehaviour
     private void Start()
     {
         maxHealth = health;
-        GetComponent<Animator>().enabled = false;
     }
 
     private void Update()
@@ -20,6 +19,7 @@ public class PlayerHealth : MonoBehaviour
         {
             health = Mathf.Clamp(health, 0, 100);
         }
+
         if (health <= 0)
         {
             GetComponent<PlayerDeathController>().OnPlayerDeath();
@@ -29,6 +29,12 @@ public class PlayerHealth : MonoBehaviour
     public void DamagePlayer(int DamageDealt)
     {
         health -= DamageDealt;
+    }
+
+    public void DamagePlayerRandom(int baseDamage, float minimumDamageMultiplier, float maximumDamageMultiplier)
+    {
+        int randomizedDamage = Mathf.RoundToInt(Random.Range(minimumDamageMultiplier, maximumDamageMultiplier));
+        health -= randomizedDamage;
     }
 
     public void HealPlayer(int HealthHealed)
