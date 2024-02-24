@@ -13,22 +13,25 @@ public class EnemySight : MonoBehaviour
     public GameObject[] detectionPoints;   // Needed because some models are awful when it comes to proper detection
     private GameObject player;  // Every project requires some cursed wizzardry to work
     private LayerMask detectLayer;
+    
     [Space]
-    [Tooltip("X/Y axis")]
+    [Tooltip("X & Y axis")]
     public float detectionRadius;   // X and Y Axis
     [Tooltip("Z Axis")]
     public float detectionDepth; // Z-Axis 
 
-    
     [Space]
     [Tooltip("Enable to show detection gizmo for this AI. NOTE: The gizmo is slightly innaccurate, and is only an estimate of the detection range")]
-    public bool enableDetectionGizmo = false; 
+    public bool enableDetectionGizmo = false;
+    public float gizmoTransperancy = 0.35f; 
+
+    [Space]
     [Tooltip("Enable to send a message to the console whenever the player is detected (Detection check occurs every 2.5 seconds)")]
     public bool enableDebugMessages = false;
 
     private void Start() 
     {
-        detectLayer = 1 << 3;   // Bit shift detection layer to layer 3 (Player LayerMask) 
+        detectLayer = 1 << 3;   // Bit shift detection layer to layer 3 (Player Layer) 
         player = GameObject.FindGameObjectWithTag("Player");    // Needed for runtime in a compiled build, as OnDrawGizmos is an Editor-Only method
 
         if(enableDebugMessages) StartCoroutine(debugTargetDetector());
@@ -50,7 +53,7 @@ public class EnemySight : MonoBehaviour
     // This method is written completely with the code from the article I linked at the start of the class, it's good stuff!
     private void OnDrawGizmos()
     {
-
+        gizmoTransperancy = Mathf.Clamp(gizmoTransperancy, 0, 1);
         player = GameObject.FindGameObjectWithTag("Player");
         if (Selection.activeGameObject == null || (Selection.activeGameObject != gameObject && !transform.IsChildOf(Selection.activeGameObject.transform)))
         {
@@ -61,15 +64,14 @@ public class EnemySight : MonoBehaviour
         {
             foreach(GameObject currentDetectionPoint in detectionPoints)
             {
-                
                 if (currentDetectionPoint != null)
                 {
                     // Change color to red if the player is in sight
                     if (isPlayerVisible())
                     {
-                        Gizmos.color = new Color(1, 0, 0, 0.35f);
+                        Gizmos.color = new Color(1, 0, 0, gizmoTransperancy);
                     }
-                    else Gizmos.color = new Color(0, 1, 0, 0.35f);
+                    else Gizmos.color = new Color(0, 1, 0, gizmoTransperancy);
                     
                     Gizmos.matrix = currentDetectionPoint.transform.localToWorldMatrix;
                     Gizmos.DrawCube(new Vector3(0f, 0f, detectionDepth / 2f), new Vector3(detectionRadius, detectionRadius, detectionDepth));

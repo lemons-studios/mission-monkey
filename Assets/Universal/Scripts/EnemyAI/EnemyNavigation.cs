@@ -45,7 +45,7 @@ public class EnemyNavigation : MonoBehaviour
                 {
                     if(agent.remainingDistance <= agent.stoppingDistance)
                     {
-                        Debug.Log(gameObject.name + " reached its destination. going to next destination");
+                        // Debug.Log(gameObject.name + " reached its destination. going to next destination");
                         currentTarget = GetNextPatrolPointIndex(patrolPoints, currentTarget);
                     }    
                     agent.destination = patrolPoints[currentTarget].position;
@@ -54,7 +54,7 @@ public class EnemyNavigation : MonoBehaviour
                 // Check if the AI has noticed the player 
                 if(enemySight.isPlayerVisible())
                 {
-                    Debug.Log(gameObject.name + " has found the player!");
+                    // Debug.Log(gameObject.name + " has found the player!");
                     seenPlayer = true;
                 }
             }

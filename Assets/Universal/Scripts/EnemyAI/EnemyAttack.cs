@@ -26,7 +26,10 @@ public class EnemyAttack : MonoBehaviour
         {
             if(agent.remainingDistance <= shootingDistance && enemyNavigation.hasNoticedPlayer())
             {
-                sfxSource.PlayOneShot(shootSoundEffect);
+                if(sfxSource != null & shootSoundEffect != null)
+                {
+                    sfxSource.PlayOneShot(shootSoundEffect);
+                }
                 DirectHitAttack();
             }
             yield return new WaitForSeconds(timeBetweenAttacks);
