@@ -82,4 +82,9 @@ public class EnemyNavigation : MonoBehaviour
             return patrolPoints[currentTarget].position;
         }
     }
+
+    public bool hasNoticedPlayer()
+    {
+        return seenPlayer;
+    }
 }

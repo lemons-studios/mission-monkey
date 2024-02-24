@@ -1,45 +1,59 @@
+using System.Collections;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class EnemyAttack : MonoBehaviour
 {
+    public AudioSource sfxSource;
+    public AudioClip shootSoundEffect;   
     public GameObject attackPoint;
+    
+    private NavMeshAgent agent;
+    private EnemyNavigation enemyNavigation;
     public int damageAmount;
-    public bool isAttackPrecise = true;
-    public bool randomizeDamage;
+    public float timeBetweenAttacks, shootingDistance;
 
-
-    public void DirectHitAttack()
+    private void Start() 
     {
-        // Fire a raycast towards the player and check if it hits, then do the damage stuff if it hits
-        if (isAttackPrecise)
-        {
-            RaycastHit hit;
-            Ray ray = new Ray(attackPoint.transform.position, Vector3.forward);
+        agent = GetComponent<NavMeshAgent>();
+        enemyNavigation = GetComponent<EnemyNavigation>();
+        StartCoroutine(EnemyAttackHandler());   // This entire AI system is built off coroutines lol
+    }
 
-            if(Physics.Raycast(ray, out hit))
-            {
-                if(hit.collider.GetComponent<PlayerHealth>() != null)
-                {
-                    if(randomizeDamage) hit.collider.GetComponent<PlayerHealth>().DamagePlayerRandom(damageAmount, 0.5f, 2.0f);
-                    else hit.collider.GetComponent<PlayerHealth>().DamagePlayer(damageAmount);
-                }
-            }
-        }
-        else
+    private IEnumerator EnemyAttackHandler()
+    {
+        while(true)
         {
-            // TODO: Imprecise aiming of raycast
+            if(agent.remainingDistance <= shootingDistance && enemyNavigation.hasNoticedPlayer())
+            {
+                sfxSource.PlayOneShot(shootSoundEffect);
+                DirectHitAttack();
+            }
+            yield return new WaitForSeconds(timeBetweenAttacks);
         }
     }
 
-    public void AreaOfEffectAttack()
+    private void DirectHitAttack()
     {
-        if(isAttackPrecise)
-        {
+        // Fire a raycast towards the player and check if it hits, then do the damage stuff if it hits
+        RaycastHit hit;
+        GameObject player = GameObject.FindGameObjectWithTag("Player");
 
-        }
-        else
+        Vector3 raycastOrigin = attackPoint.transform.position;
+        Vector3 directionToTarget = (player.transform.position - raycastOrigin).normalized;
+
+        Debug.DrawRay(raycastOrigin, directionToTarget);
+        if(Physics.Raycast(raycastOrigin, directionToTarget, out hit))
         {
-            // TODO (Again): Imprecise aiming of both the spherecast and the raycast used in this method
+            if(hit.collider.GetComponent<PlayerHealth>() != null)
+            {
+                hit.collider.GetComponent<PlayerHealth>().DamagePlayer(damageAmount);
+            }
         }
+    }
+
+    private void AreaOfEffectAttack()
+    {
+        // TODO: AoE Attacks
     }
 }
