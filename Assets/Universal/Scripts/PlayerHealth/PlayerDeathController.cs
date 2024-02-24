@@ -6,6 +6,13 @@ public class PlayerDeathController : MonoBehaviour
     public PauseMenuLogic pauseGame;
     public GameObject mainUI, deathUI;
 
+    private void Start()
+    {
+        mainUI = GameObject.FindGameObjectWithTag("GameUI");
+        deathUI = GameObject.FindGameObjectWithTag("DeathUI");
+        deathUI.SetActive(false);
+    }
+
     public void OnPlayerDeath()
     {
         mainUI.SetActive(false);
@@ -20,5 +27,11 @@ public class PlayerDeathController : MonoBehaviour
         loadSave.LoadSaveData();
         Time.timeScale = 1;
         Cursor.lockState = CursorLockMode.Locked;
+    }
+
+    private void OnDestroy() 
+    {
+        mainUI = null;
+        deathUI = null;    
     }
 }

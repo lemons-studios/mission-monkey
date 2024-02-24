@@ -12,14 +12,15 @@ public abstract class AttackHandler : MonoBehaviour
 
     private AudioSource weaponSfxSource;
     private Camera mainCamera;
-    private Coroutine clickHeldRoutine;
+    private Coroutine? clickHeldRoutine;
     private PlayerHealth playerHealth;
     private PlayerInput playerInput;
     private Ray bulletRay;
-    
+
     public int bulletsPerBurst, bulletSpeed, baseWeaponDamage;
     public float attackCooldown, maxDamageIncrease, maxDamageReduction, projectileDestroyTime, secondaryAttackCooldown;
     public bool doesWeaponRandomiseDamage = true;
+    public bool enableWeaponDebugFeatures = false;
     private bool isInputHeld;
 
     public void Start()
@@ -30,13 +31,13 @@ public abstract class AttackHandler : MonoBehaviour
         onFootAttack.started += OnAttackStarted;
         onFootAttack.canceled += OnAttackCanceled;
         playerInput.Enable();
-        
+
         // PlayerHealth is on the player GameObject
         playerHealth = GetComponentInParent<PlayerHealth>();
 
         // AudioSources for any weapon will be a child of that GameObject
         weaponSfxSource = GetComponentInChildren<AudioSource>();
-        
+
         // This class was designed specifically for the usage with the player's camera (or the main camera)
         mainCamera = Camera.main;
     }
@@ -81,7 +82,7 @@ public abstract class AttackHandler : MonoBehaviour
     {
         if (CanPlayerAttack())
         {
-            if(regularAttackSoundEffect != null)
+            if (regularAttackSoundEffect != null)
             {
                 weaponSfxSource.PlayOneShot(regularAttackSoundEffect);
             }
@@ -91,15 +92,18 @@ public abstract class AttackHandler : MonoBehaviour
                 InstantiateBulletProjectile(firePoint);
             }
             else Debug.LogError("'BulletProjectile' is null!");
-            
+
             bulletRay = mainCamera.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
             RaycastHit hit;
-            
+
             if (Physics.Raycast(bulletRay, out hit))
             {
-                Debug.DrawRay(mainCamera.transform.position, transform.forward * 15, Color.red);
+                if(enableWeaponDebugFeatures)
+                {
+                    Debug.DrawRay(mainCamera.transform.position, transform.forward * 15, Color.red);
+                    Debug.Log("Hit " + hit.collider.gameObject.name);
+                }
                 
-                // Debug.Log("Hit " + hit.collider.gameObject.name);
                 if (hit.collider.CompareTag("WeaponInteractable"))
                 {
                     // Create a variable for the GameObject the projectile hit
@@ -112,16 +116,14 @@ public abstract class AttackHandler : MonoBehaviour
 
                 else if (hit.collider.gameObject.CompareTag("Enemy"))
                 {
-                    EnemyAIHealth aiHealth = hit.collider.GetComponent<EnemyAIHealth>();
-                    if (hit.collider.GetComponentInParent<EnemyAIHealth>() != null)
+                    EnemyHealth aiHealth = hit.collider.GetComponent<EnemyHealth>();
+                    if (hit.collider.GetComponentInParent<EnemyHealth>() != null)
                     {
-                        if(doesWeaponRandomiseDamage)
+                        if (doesWeaponRandomiseDamage)
                         {
-                            aiHealth.RandomAIDamage(baseWeaponDamage, maxDamageReduction, maxDamageIncrease);
+                            aiHealth.RandomAIDamage(baseWeaponDamage, 0.5f, 2.0f);   
                         }
-
                         else aiHealth.DamageAI(baseWeaponDamage);
-                        // enemyAiHealthbar.SetEnemyHealthbar(aiHealth);
                         return;
                     }
                     else Debug.LogError("Enemy does not have EnemyAIHealth Component!");
@@ -134,7 +136,7 @@ public abstract class AttackHandler : MonoBehaviour
     {
         // Stolen code from 0.2 (it works good enough)
         // Creates a copy of the BulletProjectile GameObject and then adds a force to the rigidbody component after creating the copy (Again, all of these variables would be set by the classes that inherit this script)
-        
+
         var CurrentProjectile = Instantiate(bulletProjectile, point.position, firePoint.transform.rotation) as GameObject;
         CurrentProjectile.SetActive(true);
         CurrentProjectile.GetComponent<Rigidbody>().velocity = point.transform.forward * bulletSpeed;
@@ -143,10 +145,10 @@ public abstract class AttackHandler : MonoBehaviour
     protected virtual void AlternateAttack(InputAction.CallbackContext context)
     {
         // WIP
-        if(CanPlayerAttack())
+        if (CanPlayerAttack())
         {
-            if(specialAttackSoundEffect != null) 
-            { 
+            if (specialAttackSoundEffect != null)
+            {
                 weaponSfxSource.PlayOneShot(specialAttackSoundEffect);
             }
         }
@@ -156,10 +158,15 @@ public abstract class AttackHandler : MonoBehaviour
     private bool CanPlayerAttack()
     {
         // The player shouldn't be able to attack if the game is paused or if they are dead
-        if (playerHealth.GetHealth() >= 1 && !LemonStudiosCsExtensions.IsGamePaused())
+        if (playerHealth.GetHealth() >= 1 && !LemonGameUtils.IsGamePaused())
         {
             return true;
         }
         else return false;
+    }
+
+    private void OnDestroy()
+    {
+        playerInput.Disable();
     }
 }

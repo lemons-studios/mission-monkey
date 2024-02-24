@@ -7,13 +7,13 @@ using UnityEngine.SceneManagement;
 public class WriteSave : SaveDataBase
 {
     SaveDataTemplate saveDataTemplate = new SaveDataTemplate();
-    private void Start() 
+    private void Start()
     {
-        if(!base.DoesSaveDataFileExist())
+        if (!base.DoesSaveDataFileExist())
         {
             Debug.Log("First Load Detected. Generating Save Data.....");
             GenerateSaveData();
-        }    
+        }
     }
 
     // This method only runs if no save data is detected or if the save data was just deleted
@@ -29,9 +29,11 @@ public class WriteSave : SaveDataBase
         GameObject player = GameObject.FindGameObjectWithTag("Player");
         Vector3 currentPlayerPosition = player.transform.position;
         int currentPlayerHealth = player.GetComponent<PlayerHealth>().GetHealth();
-        string currentScene = SceneManager.GetActiveScene().ToString();
+        string currentScene = SceneManager.GetActiveScene().name;
         int curretnSceneBuildNumber = SceneManager.GetActiveScene().buildIndex;
-        saveDataTemplate.CreateSaveJsonData(currentScene, curretnSceneBuildNumber, currentPlayerHealth, currentPlayerPosition, false);
+
+        string saveContents = saveDataTemplate.CreateSaveJsonData(currentScene, curretnSceneBuildNumber, currentPlayerHealth, currentPlayerPosition, false);
+        File.WriteAllText(GetSavePath(), saveContents);
     }
 
     // Delete the save data file and regenerate the file (As it is needed)
@@ -53,11 +55,11 @@ class SaveDataTemplate
     public int savedSceneBuildNumber;
     public bool isNewGame;
 
-    public string CreateSaveJsonData(string currentScene,  int currentSceneIndex, int playerHealth, Vector3 currentPlayerPos, bool isNewlyGeneratedSave)
+    public string CreateSaveJsonData(string currentScene, int currentSceneIndex, int playerHealth, Vector3 currentPlayerPos, bool isNewlyGeneratedSave)
     {
         playerPosition = currentPlayerPos;
         savedSceneName = currentScene;
-        lastSaveDate = GetFormattedCurrentTime(GetCultureTimePattern(CultureInfo.CurrentCulture));
+        lastSaveDate = GetFormattedCurrentTime();
         remainingHealth = playerHealth;
         lastPlayedVersion = Application.version;
         isNewGame = isNewlyGeneratedSave;
@@ -66,14 +68,16 @@ class SaveDataTemplate
         return JsonUtility.ToJson(this);
     }
 
-    private string GetFormattedCurrentTime(string cultureTimePattern)
+    public string GetFormattedCurrentTime()
     {
         DateTime unformattedSaveTime = DateTime.Now;
         // Convert current system time to date formatting in the System locale (In my case, En_CA)
-        return unformattedSaveTime.ToString(cultureTimePattern);
+        string pattern = GetCultureTimePattern(CultureInfo.CurrentCulture);
+        string formattedTime = unformattedSaveTime.ToString(pattern);
+        return formattedTime;
     }
 
-    private string GetCultureTimePattern(CultureInfo culture)
+    public string GetCultureTimePattern(CultureInfo culture)
     {
         // Should return something along the lines of "dd/MM/yyyy, hh:mm tt" (This depends on what the current System Locale is)
         return culture.DateTimeFormat.ShortDatePattern + ", " + culture.DateTimeFormat.LongTimePattern;

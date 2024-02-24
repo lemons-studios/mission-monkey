@@ -5,8 +5,8 @@ public class SetSaveMenuSnapshot : SaveDataBase
 {
     public Sprite[] chapterSnapshots;
     public Image saveMenuSnapshot;
-    
-    private void OnEnable() 
+
+    private void OnEnable()
     {
         // currentSavedChapter returns the scene build number found in missionMonkeyData.json. It then selects a snapshot from the chapterSnapshots array  
         int currentSavedChapter = base.GetSaveDataInfoFromTag<int>("savedSceneBuildNumber");

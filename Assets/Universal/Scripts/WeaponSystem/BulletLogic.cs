@@ -14,3 +14,4 @@ public class BulletLogic : MonoBehaviour
         Destroy(gameObject);
     }
 }
+

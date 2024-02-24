@@ -91,15 +91,6 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": true
                 },
                 {
-                    ""name"": ""GunSwitchControllers"",
-                    ""type"": ""Button"",
-                    ""id"": ""e612ad6f-2c13-4ffa-9d37-d63d91432056"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
                     ""name"": ""Attack"",
                     ""type"": ""Button"",
                     ""id"": ""d927c16e-4d91-4b5b-914f-f6baeed5840d"",
@@ -327,28 +318,6 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Sprint"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""82dae069-b60b-4716-97c0-6e6b1eee396c"",
-                    ""path"": ""<Gamepad>/leftShoulder"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""GunSwitchControllers"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""019a72db-a424-4357-a325-fc24e25f1235"",
-                    ""path"": ""<Gamepad>/rightShoulder"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""GunSwitchControllers"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -915,7 +884,6 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         m_OnFoot_Interact = m_OnFoot.FindAction("Interact", throwIfNotFound: true);
         m_OnFoot_Sprint = m_OnFoot.FindAction("Sprint", throwIfNotFound: true);
         m_OnFoot_GunSwitchPC = m_OnFoot.FindAction("GunSwitchPC", throwIfNotFound: true);
-        m_OnFoot_GunSwitchControllers = m_OnFoot.FindAction("GunSwitchControllers", throwIfNotFound: true);
         m_OnFoot_Attack = m_OnFoot.FindAction("Attack", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
@@ -997,7 +965,6 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
     private readonly InputAction m_OnFoot_Interact;
     private readonly InputAction m_OnFoot_Sprint;
     private readonly InputAction m_OnFoot_GunSwitchPC;
-    private readonly InputAction m_OnFoot_GunSwitchControllers;
     private readonly InputAction m_OnFoot_Attack;
     public struct OnFootActions
     {
@@ -1010,7 +977,6 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         public InputAction @Interact => m_Wrapper.m_OnFoot_Interact;
         public InputAction @Sprint => m_Wrapper.m_OnFoot_Sprint;
         public InputAction @GunSwitchPC => m_Wrapper.m_OnFoot_GunSwitchPC;
-        public InputAction @GunSwitchControllers => m_Wrapper.m_OnFoot_GunSwitchControllers;
         public InputAction @Attack => m_Wrapper.m_OnFoot_Attack;
         public InputActionMap Get() { return m_Wrapper.m_OnFoot; }
         public void Enable() { Get().Enable(); }
@@ -1042,9 +1008,6 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
             @GunSwitchPC.started += instance.OnGunSwitchPC;
             @GunSwitchPC.performed += instance.OnGunSwitchPC;
             @GunSwitchPC.canceled += instance.OnGunSwitchPC;
-            @GunSwitchControllers.started += instance.OnGunSwitchControllers;
-            @GunSwitchControllers.performed += instance.OnGunSwitchControllers;
-            @GunSwitchControllers.canceled += instance.OnGunSwitchControllers;
             @Attack.started += instance.OnAttack;
             @Attack.performed += instance.OnAttack;
             @Attack.canceled += instance.OnAttack;
@@ -1073,9 +1036,6 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
             @GunSwitchPC.started -= instance.OnGunSwitchPC;
             @GunSwitchPC.performed -= instance.OnGunSwitchPC;
             @GunSwitchPC.canceled -= instance.OnGunSwitchPC;
-            @GunSwitchControllers.started -= instance.OnGunSwitchControllers;
-            @GunSwitchControllers.performed -= instance.OnGunSwitchControllers;
-            @GunSwitchControllers.canceled -= instance.OnGunSwitchControllers;
             @Attack.started -= instance.OnAttack;
             @Attack.performed -= instance.OnAttack;
             @Attack.canceled -= instance.OnAttack;
@@ -1223,7 +1183,6 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         void OnInteract(InputAction.CallbackContext context);
         void OnSprint(InputAction.CallbackContext context);
         void OnGunSwitchPC(InputAction.CallbackContext context);
-        void OnGunSwitchControllers(InputAction.CallbackContext context);
         void OnAttack(InputAction.CallbackContext context);
     }
     public interface IUIActions

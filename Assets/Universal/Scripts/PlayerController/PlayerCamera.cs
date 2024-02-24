@@ -25,9 +25,9 @@ public class PlayerCamera : MonoBehaviour
     }
 
     private void Update()
-    { 
+    {
         // If the game is paused, do not run the camera rotation method
-        if(Time.timeScale == 0)
+        if (Time.timeScale == 0)
         {
             return;
         }
@@ -68,5 +68,10 @@ public class PlayerCamera : MonoBehaviour
     public void SetFieldOfView(int newFieldOfView)
     {
         playerCamera.fieldOfView = newFieldOfView;
+    }
+
+    private void OnDestroy()
+    {
+        playerInput.Disable();
     }
 }

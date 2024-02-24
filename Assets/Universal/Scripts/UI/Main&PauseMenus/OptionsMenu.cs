@@ -16,7 +16,7 @@ public class OptionsMenu : MonoBehaviour
     private UniversalAdditionalCameraData urpCamData;
     private UniversalRenderPipelineAsset urpAsset;
 
-    private void Awake() 
+    private void Awake()
     {
         try
         {
@@ -28,11 +28,12 @@ public class OptionsMenu : MonoBehaviour
         }
 
         urpCamData = mainCamera.GetComponent<UniversalAdditionalCameraData>();
-        urpAsset = GraphicsSettings.currentRenderPipeline as UniversalRenderPipelineAsset;
+        // Unused for now
+        // urpAsset = GraphicsSettings.currentRenderPipeline as UniversalRenderPipelineAsset;
         SetOptionsFromPlayerPrefs();
     }
 
-    private void SetOptionsFromPlayerPrefs() 
+    private void SetOptionsFromPlayerPrefs()
     {
         qualityDropdown.value = PlayerPrefs.GetInt("GraphicsQuality");
         SetGraphicsQuality(qualityDropdown.value);
@@ -64,7 +65,7 @@ public class OptionsMenu : MonoBehaviour
 
     public void SetAntiAliasingMode(int newAntiAliasingMode)
     {
-        switch(newAntiAliasingMode)
+        switch (newAntiAliasingMode)
         {
             case 0:     // OFF
                 urpCamData.antialiasing = AntialiasingMode.None;
@@ -85,12 +86,12 @@ public class OptionsMenu : MonoBehaviour
 
     public void SetAntiAliasingQuality(int newAAQuality)
     {
-        switch(newAAQuality)
+        switch (newAAQuality)
         {
             case 0:
                 urpCamData.antialiasingQuality = AntialiasingQuality.Low;
                 break;
-            case 1: 
+            case 1:
                 urpCamData.antialiasingQuality = AntialiasingQuality.Medium;
                 break;
             case 2:
@@ -105,7 +106,7 @@ public class OptionsMenu : MonoBehaviour
         // WIP
         PlayerPrefs.SetInt("SubtitlesMode", subtitlesMode);
     }
-    
+
     public void SetVolume(float volume)
     {
         mainVolume.SetFloat("Volume", Mathf.Log10(volume) * 20);
@@ -118,7 +119,7 @@ public class OptionsMenu : MonoBehaviour
     public void SetMouseSensitivity(float newMouseSensitivity)
     {
         int roundedMouseSensitivity = Mathf.RoundToInt(newMouseSensitivity);
-        if(playerCamera != null)
+        if (playerCamera != null)
         {
             playerCamera.SetSensitivity(roundedMouseSensitivity);
         }
@@ -129,7 +130,7 @@ public class OptionsMenu : MonoBehaviour
 
     public void SetFieldOfView(float newFovValue)
     {
-        if(playerCamera != null)
+        if (playerCamera != null)
         {
             mainCamera.fieldOfView = newFovValue;
         }

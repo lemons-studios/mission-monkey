@@ -31,7 +31,7 @@
 
 ## ⚙️ Requirements to Develop
 1. Windows or Linux (MacOS might be possible but good luck pal)
-2. [Unity 2023.2.3](https://unity.com/releases/editor/archive#download-archive-2023)
+2. [Unity 2023.2.8](https://unity.com/releases/editor/archive#download-archive-2023)
 3. [Blender 4.0+](https://www.blender.org/download/)
 4. ~5-10GB of storage to clone the source code and download all the packages required for the project
 

@@ -5,24 +5,25 @@ public class SetSaveDataUIText : SaveDataBase
 {
     public TextMeshProUGUI chapterNameText, lastSaveDateText;
     public Image chapterPreview;
-    
-    private void Start() 
+
+    // Should make this consume less resources at some point in the future, but it SHOULD work whenever the player saves again    
+    private void Update()
     {
-        chapterNameText.text = formatSavedSceneNames();
-        lastSaveDateText.text = base.GetSaveDataInfoFromTag<string>("lastSaveDate");
+        chapterNameText.text = FormatSavedSceneNames();
+        lastSaveDateText.text = GetSaveDataInfoFromTag<string>("lastSaveDate");
     }
 
-    private string formatSavedSceneNames()
+    private string FormatSavedSceneNames()
     {
-        switch(base.GetSaveDataInfoFromTag<int>("savedSceneBuildNumber"))
+        switch (GetSaveDataInfoFromTag<int>("savedSceneBuildNumber"))
         {
             case 0:
                 return "Main Menu (how)";
             case 1:
                 return "Chapter 1";
-            case 2: 
+            case 2:
                 return "Chapter 1: Interlude";
-            case 3: 
+            case 3:
                 return "Chapter 2";
         }
         return string.Empty;

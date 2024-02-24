@@ -2,50 +2,89 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.AI;
 
+[RequireComponent(typeof(NavMeshAgent))]
 public class EnemyNavigation : MonoBehaviour
 {
+    public Transform[] patrolPoints;
+    private EnemySight enemySight;
     private NavMeshAgent agent;
-    public GameObject navigateToPoint;
-    public float destinationUpdateFrequency = 0.25f;
-
-    // [Tooltip("Controls how fast the AI looks towards the player. Set it to a higher value if you prefer more \"human-like\" movement")]
-    public float rotationTowardsTargetDelay = 0.15f;
+    
+    private int currentTarget = 0;
+    public float navigationUpdateFrequency = 0.15f;
+    private bool seenPlayer = false;
 
     private void Start() 
     {
+        enemySight = GetComponent<EnemySight>();
         agent = GetComponent<NavMeshAgent>();
-        StartCoroutine(UpdateAgentDestination());
-        StartCoroutine(FaceTowardsTarget());
+        StartCoroutine(Navigate());
     }
 
-    private IEnumerator UpdateAgentDestination()
+    private void Update()
+    {
+        Vector3 currentTargetPosition = GetCurrentTargetPosition();
+        Quaternion targetRotation = Quaternion.LookRotation(currentTargetPosition - transform.position);
+        float rotationSpeed =  0.2f;
+        transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
+    }
+
+    private IEnumerator Navigate()
     {
         while(true)
         {
-            agent.destination = navigateToPoint.transform.position;
-            FaceTowardsTarget();
-            yield return new WaitForSeconds(destinationUpdateFrequency);
+            if(seenPlayer)
+            {
+                GameObject player = GameObject.FindGameObjectWithTag("Player");
+                agent.destination = player.transform.position;
+            }
+
+            else
+            {
+                // Patrol point navigation if there are any
+                if(patrolPoints != null)
+                {
+                    if(agent.remainingDistance <= agent.stoppingDistance)
+                    {
+                        // Debug.Log(gameObject.name + " reached its destination. going to next destination");
+                        currentTarget = GetNextPatrolPointIndex(patrolPoints, currentTarget);
+                    }    
+                    agent.destination = patrolPoints[currentTarget].position;
+                }
+
+                // Check if the AI has noticed the player 
+                if(enemySight.isPlayerVisible())
+                {
+                    // Debug.Log(gameObject.name + " has found the player!");
+                    seenPlayer = true;
+                }
+            }
+            yield return new WaitForSeconds(navigationUpdateFrequency);
         }
     }
-
-    private IEnumerator FaceTowardsTarget()
+    
+    private int GetNextPatrolPointIndex(Transform[] patrolPointArray, int currentElement)
     {
-        // Once again "borrowing" code from people that actually know how to do this stuff
-        // The Vector3 gets thrown through a lot of complicated math to be turned into a rotation coordinate
-        while(true)
+        if(currentTarget + 1 > patrolPointArray.Length - 1)
         {
-            Vector3 targetPosition = navigateToPoint.transform.position - transform.position;
-            targetPosition.y = 0;
-            Quaternion targetPosRotation = Quaternion.LookRotation(targetPosition);
-            transform.rotation = Quaternion.Slerp(transform.rotation, targetPosRotation, 0.2f);
-            
-            yield return new WaitForSeconds(rotationTowardsTargetDelay);
+            return 0;   // Start back at beginning of array
         }
-
+        else return currentElement + 1;
     }
 
-    public void SetNewDestination(GameObject newDestination)
+    private Vector3 GetCurrentTargetPosition()
     {
+        if(seenPlayer)
+        {
+            return GameObject.FindGameObjectWithTag("Player").transform.position;
+        }
+        else
+        {
+            return patrolPoints[currentTarget].position;
+        }
+    }
 
+    public bool hasNoticedPlayer()
+    {
+        return seenPlayer;
     }
 }

@@ -1,6 +1,6 @@
-using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using LemonStudios.CsExtensions;
 
 public class MenuNavigation : MonoBehaviour
 {
@@ -27,15 +27,9 @@ public class MenuNavigation : MonoBehaviour
     {
         Application.OpenURL(webAddress);
     }
-    
+
     public void LoadSceneFromBuildNumber(int sceneToLoad)
     {
-        SceneManager.LoadScene(sceneToLoad);
-    }
-
-    private IEnumerator waitUntilHideGUI(float waitTime, GameObject uiToHide)
-    {
-        yield return new WaitForSeconds(waitTime);
-        uiToHide.SetActive(false);
+        AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(sceneToLoad, LoadSceneMode.Single);
     }
 }

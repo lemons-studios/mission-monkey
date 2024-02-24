@@ -5,41 +5,37 @@ using UnityEngine.InputSystem;
 public class PauseMenuLogic : MonoBehaviour
 {
     public GameObject gameUI, pauseUI;
-    public GameObject[] pauseUISubmenus;
     private PlayerInput playerInput;
-    private void Start() 
+    
+    private void OnEnable() 
     {
         playerInput = new PlayerInput();
         playerInput.OnFoot.Pause.performed += EscapeActionHandler;  
         playerInput.Enable();
+
+        gameUI = GameObject.FindGameObjectWithTag("GameUI");
+        pauseUI = GameObject.FindGameObjectWithTag("PauseUI");
+        pauseUI.SetActive(false);
     }
 
     public void EscapeActionHandler(InputAction.CallbackContext ctx)
     {
         if(IsSubmenuActive())
         {
-            for(int i = 0; i < pauseUISubmenus.Length; i++)
-            {
-                if(pauseUISubmenus[i].activeInHierarchy)
-                {
-                    // I designed the pause menu
-                    pauseUISubmenus[i].SetActive(false);
-                    break;
-                }
-            }
+            // Debug.Log("Active Submenu Found");
+            GameObject currentActiveSubmenu = GameObject.FindGameObjectWithTag("Submenu");
+            currentActiveSubmenu.SetActive(false);
+            return;
         }
-
-        else 
+        else
         {
             switch(IsGamePaused())
             {
                 case true:
                     ResumeGame();
-                    SwitchMenus(pauseUI, gameUI, true);
                     break;
                 case false:
                     PauseGame();
-                    SwitchMenus(gameUI, pauseUI, false);
                     break;
             }
         }
@@ -48,11 +44,14 @@ public class PauseMenuLogic : MonoBehaviour
     public void PauseGame()
     {
         Time.timeScale = 0;
+        SwitchMenus(gameUI, pauseUI);
         Cursor.lockState = CursorLockMode.None;
     }
+
     public void ResumeGame()
     {
         Time.timeScale = 1;
+        SwitchMenus(pauseUI, gameUI);
         Cursor.lockState = CursorLockMode.Locked;
     }
 
@@ -65,33 +64,19 @@ public class PauseMenuLogic : MonoBehaviour
 
     private bool IsSubmenuActive()
     {
-        if(IsGamePaused())
-        {
-            for(int i = 0; i < pauseUISubmenus.Length; i++)
-            {
-                if(pauseUISubmenus[i].activeSelf == true)
-                {
-                    if(pauseUISubmenus[i].activeInHierarchy)
-                    {
-                        return true;
-                    }
-                }
-            }
-            return false;
-        }
-        else return false;
+        return GameObject.FindGameObjectWithTag("Submenu") != null;
     }
 
-    private void SwitchMenus(GameObject menuToHide, GameObject menuToUnhide, bool lockCursor)
+    private void SwitchMenus(GameObject menuToHide, GameObject menuToUnhide)
     {
         menuToHide.SetActive(false);
         menuToUnhide.SetActive(true);
+    }
 
-        // Sets the cursor's lock state within the game depending if the player is switching to the pause menu or not
-        if(lockCursor)
-        {
-            Cursor.lockState = CursorLockMode.Locked;
-        }
-        else Cursor.lockState = CursorLockMode.None;
+    private void OnDestroy() 
+    {
+        playerInput.Disable();
+        gameUI = null;
+        pauseUI = null;    
     }
 }

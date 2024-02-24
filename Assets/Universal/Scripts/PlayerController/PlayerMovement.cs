@@ -7,20 +7,19 @@ public class PlayerMovement : MonoBehaviour
     public GameObject vaultableFirePoint;
 
     private PlayerInput playerInput;
-    private VaultOntoObject vaultOntoObject;
     private CharacterController playerController;
     private Vector3 playerVelocity;
     public float moveSpeed, jumpHeight, gravity;
     public float sprintSpeedMultiplier = 2.0f;
     private bool isPlayerGrounded;
+
     private void Start()
     {
         // Default to the player GameObject if the vaultableFirePoint is not assigned in the editor
         if (vaultableFirePoint == null)
-            vaultableFirePoint = GameObject.FindGameObjectWithTag("Player"); 
+            vaultableFirePoint = GameObject.FindGameObjectWithTag("Player");
 
         playerController = GetComponent<CharacterController>();
-        vaultOntoObject = new VaultOntoObject();
 
         playerInput = new PlayerInput();
         var playerControllerInput = playerInput.OnFoot; // Easier to call methods when inputs are performed
@@ -76,11 +75,6 @@ public class PlayerMovement : MonoBehaviour
             // Only reason this is being refactored in the first place is because i want to expand it more easily later down the line lol
             playerVelocity.y = Mathf.Sqrt(jumpHeight * -3.0f * -gravity);
         }
-        else
-        {
-            // Vaulting onto objects is currently WIP
-            vaultOntoObject.Vault(2, vaultableFirePoint);
-        }
     }
 
     private void OnSprintStarted(InputAction.CallbackContext context)
@@ -91,5 +85,10 @@ public class PlayerMovement : MonoBehaviour
     private void OnSprintEnded(InputAction.CallbackContext context)
     {
         moveSpeed /= sprintSpeedMultiplier;
+    }
+
+    private void OnDestroy()
+    {
+        playerInput.Disable();
     }
 }
