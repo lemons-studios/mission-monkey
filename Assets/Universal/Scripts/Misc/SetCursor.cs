@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class SetCursor : MonoBehaviour
 {
@@ -8,10 +9,10 @@ public class SetCursor : MonoBehaviour
     {
         Cursor.SetCursor(cursorTexture, Vector2.zero, CursorMode.Auto);
     }
-    
+
     private void Update() 
     {
-        if(Time.timeScale != 0)
+        if(Time.timeScale != 0 && SceneManager.GetActiveScene().name != "MainMenu")
         {
             Cursor.visible = false;
         }
