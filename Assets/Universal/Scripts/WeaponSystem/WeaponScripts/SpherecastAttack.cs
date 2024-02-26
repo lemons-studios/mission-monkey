@@ -47,7 +47,5 @@ public class SpherecastAttack : WeaponBase
                 if(base.enableDebugMessages) Debug.Log("Hit " + hitGameObjects + " with AoE Attack");
             }
         }
-
-        
     }
 }
