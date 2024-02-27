@@ -1,3 +1,4 @@
+using LemonStudios.CsExtensions;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -28,30 +29,39 @@ public abstract class WeaponBase : MonoBehaviour
 
     protected virtual void Attack(InputAction.CallbackContext context)
     {
-        if(Time.time - primaryLastPerformed < primaryCooldown)
+        if (!LemonGameUtils.IsGamePaused())
         {
-            // Only able to perform if the cooldown is over
-            if(enableDebugMessages) Debug.Log("Remaining time until next use of attack: " + (Time.time + secondaryLastPerformed));
-            return;
+            if (Time.time - primaryLastPerformed < primaryCooldown)
+            {
+                // Only able to perform if the cooldown is over
+                if (enableDebugMessages)
+                    Debug.Log("Remaining time until next use of attack: " + (Time.time + secondaryLastPerformed));
+                return;
+            }
+
+            if (enableDebugMessages) Debug.Log("Performing regular attack");
+            primaryLastPerformed = Time.time;
+            GetComponent<WeaponEffectsManager>().TriggerWeaponEffects(); // The only line in here for now since both scripts will have sound effects and animations
         }
-        
-        if(enableDebugMessages) Debug.Log("Performing regular attack");
-        primaryLastPerformed = Time.time;
-        GetComponent<WeaponEffectsManager>().TriggerWeaponEffects();    // The only line in here for now since both scripts will have sound effects and animations
     }
 
     protected virtual void SecondaryAttack(InputAction.CallbackContext context)
     {
-        if(Time.time - secondaryLastPerformed < secondaryCooldown)
+        if (!LemonGameUtils.IsGamePaused())
         {
-            if(enableDebugMessages) Debug.Log("Remaining time until next use of attack: " + (Time.time + secondaryLastPerformed));
-            return;
+            if(Time.time - secondaryLastPerformed < secondaryCooldown)
+            {
+                if(enableDebugMessages) Debug.Log("Remaining time until next use of attack: " + (Time.time + secondaryLastPerformed));
+                return;
+            }
+            if(enableDebugMessages) Debug.Log("Performing Secondary Attack"); 
+            secondaryLastPerformed = Time.time;
+            GetComponent<WeaponEffectsManager>().TriggerSecondaryWeaponEffects();
         }
-        if(enableDebugMessages) Debug.Log("Performing Secondary Attack"); 
-        secondaryLastPerformed = Time.time;
-        GetComponent<WeaponEffectsManager>().TriggerSecondaryWeaponEffects();
     }
 
+
+    
     protected Camera GetCamera()
     {
         return playerCamera;

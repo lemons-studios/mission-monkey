@@ -103,7 +103,7 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                     ""name"": ""SwitchWeapons"",
                     ""type"": ""Value"",
                     ""id"": ""7e2330e5-2e98-48f6-8f77-1943861299c3"",
-                    ""expectedControlType"": ""Integer"",
+                    ""expectedControlType"": ""Vector2"",
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true

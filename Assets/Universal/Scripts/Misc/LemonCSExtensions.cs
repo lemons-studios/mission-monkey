@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 
 namespace LemonStudios.CsExtensions
 {
-    public static class LemonUtils
+    public static class LemonUtilsGeneric
     {
         public static bool DoesFileExist(string file)
         {
@@ -28,12 +28,6 @@ namespace LemonStudios.CsExtensions
 
     public static class LemonGameUtils
     {
-        public static bool IsOnMainMenu()
-        {
-            Scene currentScene = SceneManager.GetActiveScene();
-            return currentScene.buildIndex == 0;
-        }
-
         public static bool IsGamePaused()
         {
             return Time.timeScale == 0;
@@ -47,6 +41,15 @@ namespace LemonStudios.CsExtensions
             {
                 yield return null;
             }
+        }
+    }
+
+    public static class LemonUIUtils
+    {
+        public static void SwitchMenus(GameObject menuToHide, GameObject menuToShow)
+        {
+            menuToHide.SetActive(false);
+            menuToShow.SetActive(true);
         }
     }
 }

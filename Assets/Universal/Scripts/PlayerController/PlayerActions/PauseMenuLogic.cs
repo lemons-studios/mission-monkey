@@ -1,3 +1,4 @@
+using LemonStudios.CsExtensions;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -18,7 +19,7 @@ public class PauseMenuLogic : MonoBehaviour
         pauseUI.SetActive(false);
     }
 
-    public void EscapeActionHandler(InputAction.CallbackContext ctx)
+    private void EscapeActionHandler(InputAction.CallbackContext ctx)
     {
         if(IsSubmenuActive())
         {
@@ -28,7 +29,7 @@ public class PauseMenuLogic : MonoBehaviour
         }
         else
         {
-            switch(IsGamePaused())
+            switch(LemonGameUtils.IsGamePaused())
             {
                 case true:
                     ResumeGame();
@@ -43,35 +44,22 @@ public class PauseMenuLogic : MonoBehaviour
     public void PauseGame()
     {
         Time.timeScale = 0;
-        SwitchMenus(gameUI, pauseUI);
+        LemonUIUtils.SwitchMenus(gameUI, pauseUI);
         Cursor.lockState = CursorLockMode.None;
     }
 
     public void ResumeGame()
     {
-        Time.timeScale = 1;
-        SwitchMenus(pauseUI, gameUI);
+        Time.timeScale = 1; 
+        LemonUIUtils.SwitchMenus(pauseUI, gameUI);
         Cursor.lockState = CursorLockMode.Locked;
-    }
-
-    private bool IsGamePaused()
-    {
-        // A timescale of  <= 0 indicates that the game is paused, while a higher timescale indicates that the game is not paused
-        if(Time.timeScale <= 0) return true;
-        else return false;
     }
 
     private bool IsSubmenuActive()
     {
         return GameObject.FindGameObjectWithTag("Submenu") != null;
     }
-
-    private void SwitchMenus(GameObject menuToHide, GameObject menuToShow)
-    {
-        menuToHide.SetActive(false);
-        menuToShow.SetActive(true);
-    }
-
+    
     private void OnDestroy() 
     {
         playerInput.Disable();

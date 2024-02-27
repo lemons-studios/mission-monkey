@@ -32,7 +32,7 @@ public class WeaponEffectsManager : MonoBehaviour
             }
             if(weaponAnimations != null)
             {
-
+                
             }
         }
     }
