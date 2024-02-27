@@ -29,12 +29,12 @@ public class UpdateHealthUI : MonoBehaviour
             playerHealthImage.color = highHealthColour;
         }
 
-        if (currentPlayerHealth >= 35 && currentPlayerHealth <= 64)
+        if (currentPlayerHealth is >= 35 and <= 64)
         {
             playerHealthImage.color = midHealthColour;
         }
 
-        if (currentPlayerHealth >= 0 && currentPlayerHealth <= 34)
+        if (currentPlayerHealth is >= 0 and <= 34)
         {
             playerHealthImage.color = lowHealthColour;
         }

@@ -4,7 +4,7 @@ using UnityEngine.InputSystem;
 public class SwitchWeapons : MonoBehaviour 
 {
     public GameObject[] weapons;
-    PlayerInput playerInput = new PlayerInput();
+    private readonly PlayerInput playerInput = new PlayerInput();
     
     // TODO: Weapon Switching System
     private void Start() 

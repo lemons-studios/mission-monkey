@@ -22,14 +22,4 @@ public class EnemyHealth : MonoBehaviour
         health -= Mathf.RoundToInt(damage * Random.Range(maxDamageReduction, maxDamageIncrease));
         if (health <= 0) Destroy(gameObject);
     }
-
-    public int GetAIHealth()
-    {
-        return health;
-    }
-
-    public int GetMaxAIHealth()
-    {
-        return maxHealth;
-    }
 }

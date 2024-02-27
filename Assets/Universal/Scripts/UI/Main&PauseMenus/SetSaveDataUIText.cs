@@ -15,17 +15,13 @@ public class SetSaveDataUIText : SaveDataBase
 
     private string FormatSavedSceneNames()
     {
-        switch (GetSaveDataInfoFromTag<int>("savedSceneBuildNumber"))
+        return GetSaveDataInfoFromTag<int>("savedSceneBuildNumber") switch
         {
-            case 0:
-                return "Main Menu (how)";
-            case 1:
-                return "Chapter 1";
-            case 2:
-                return "Chapter 1: Interlude";
-            case 3:
-                return "Chapter 2";
-        }
-        return string.Empty;
+            0 => "Main Menu (how)",
+            1 => "Chapter 1",
+            2 => "Chapter 1: Interlude",
+            3 => "Chapter 2",
+            _ => string.Empty
+        };
     }
 }

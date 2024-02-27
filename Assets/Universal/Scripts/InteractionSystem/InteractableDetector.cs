@@ -17,8 +17,7 @@ public class InteractableDetector : MonoBehaviour
     private void FindInteractables()
     {
         Ray interactionRaycast = new Ray(mainCamera.transform.position, mainCamera.transform.forward);
-        RaycastHit hit;
-        if (Physics.Raycast(interactionRaycast, out hit, interactRayDistance, interactableMask))
+        if (Physics.Raycast(interactionRaycast, out RaycastHit hit, interactRayDistance, interactableMask))
         {
             if (hit.collider.GetComponent<Interactable>() != null)
             {

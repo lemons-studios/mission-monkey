@@ -1,7 +1,6 @@
 using TMPro;
 using UnityEngine;
 using UnityEngine.Audio;
-using UnityEngine.Rendering;
 using UnityEngine.Rendering.Universal;
 using UnityEngine.UI;
 
@@ -18,18 +17,11 @@ public class OptionsMenu : MonoBehaviour
 
     private void Awake()
     {
-        try
-        {
-            playerCamera = mainCamera.GetComponent<PlayerCamera>();
-        }
-        catch (MissingReferenceException e)
-        {
-            Debug.LogWarning("playerCamera not assigned: " + e);
-        }
-
+        mainCamera = Camera.main;
+        if (mainCamera == null) return;
+        playerCamera = mainCamera.GetComponentInParent<PlayerCamera>();
         urpCamData = mainCamera.GetComponent<UniversalAdditionalCameraData>();
-        // Unused for now
-        // urpAsset = GraphicsSettings.currentRenderPipeline as UniversalRenderPipelineAsset;
+
         SetOptionsFromPlayerPrefs();
     }
 
@@ -112,8 +104,8 @@ public class OptionsMenu : MonoBehaviour
         mainVolume.SetFloat("Volume", Mathf.Log10(volume) * 20);
         PlayerPrefs.SetFloat("Volume", volume);
 
-        int TextDisplayVolume = Mathf.RoundToInt(volume * 100);
-        volumeValueText.text = TextDisplayVolume + "%";
+        int textDisplayVolume = Mathf.RoundToInt(volume * 100);
+        volumeValueText.text = textDisplayVolume + "%";
     }
 
     public void SetMouseSensitivity(float newMouseSensitivity)
@@ -130,7 +122,7 @@ public class OptionsMenu : MonoBehaviour
 
     public void SetFieldOfView(float newFovValue)
     {
-        if (playerCamera != null)
+        if (mainCamera != null)
         {
             mainCamera.fieldOfView = newFovValue;
         }

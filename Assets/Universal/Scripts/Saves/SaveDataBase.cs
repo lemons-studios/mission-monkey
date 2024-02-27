@@ -5,14 +5,14 @@ using UnityEngine;
 public class SaveDataBase : MonoBehaviour
 {
     private string filePath;
-    public static bool isLastLoadFromSaveData;
+    protected static bool IsLastLoadFromSaveData;
     
     private void Awake()
     {
         filePath = Path.Combine(Application.persistentDataPath, "MissionMonkeyGlobalData.json");
     }
 
-    public JObject ParseSaveDataFile()
+    private JObject ParseSaveDataFile()
     {
         return JObject.Parse(ReadSaveDataFile());
     }
@@ -23,7 +23,7 @@ public class SaveDataBase : MonoBehaviour
     }
 
 
-    public T? GetSaveDataInfoFromTag<T>(string tagName)
+    protected T GetSaveDataInfoFromTag<T>(string tagName)
     {
         if (IsTagInSaveData(tagName))
         {
@@ -40,7 +40,7 @@ public class SaveDataBase : MonoBehaviour
     }
 
     // Specifically for position. May not be needed now, but may be needed in the future.
-    public Vector3 GetPositionFromSaveData()
+    protected Vector3 GetPositionFromSaveData()
     {
         if (IsTagInSaveData("playerPosition"))
         {

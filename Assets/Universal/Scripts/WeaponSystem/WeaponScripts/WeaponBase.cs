@@ -10,7 +10,7 @@ public abstract class WeaponBase : MonoBehaviour
     public float secondaryCooldown = 20f;
     public int weaponDamage = 10;
     [Space]
-    public bool enableDebugMessages = false;
+    public bool enableDebugMessages;
     private float primaryLastPerformed, secondaryLastPerformed;
 
 
@@ -31,7 +31,7 @@ public abstract class WeaponBase : MonoBehaviour
         if(Time.time - primaryLastPerformed < primaryCooldown)
         {
             // Only able to perform if the cooldown is over
-            if(enableDebugMessages) Debug.Log("Remaining time until next use of attack: " + (Time.time + secondaryLastPerformed).ToString());
+            if(enableDebugMessages) Debug.Log("Remaining time until next use of attack: " + (Time.time + secondaryLastPerformed));
             return;
         }
         
@@ -44,15 +44,15 @@ public abstract class WeaponBase : MonoBehaviour
     {
         if(Time.time - secondaryLastPerformed < secondaryCooldown)
         {
-            if(enableDebugMessages) Debug.Log("Remaining time until next use of attack: " + (Time.time + secondaryLastPerformed).ToString());
+            if(enableDebugMessages) Debug.Log("Remaining time until next use of attack: " + (Time.time + secondaryLastPerformed));
             return;
-        }  
+        }
         if(enableDebugMessages) Debug.Log("Performing Secondary Attack"); 
         secondaryLastPerformed = Time.time;
         GetComponent<WeaponEffectsManager>().TriggerSecondaryWeaponEffects();
     }
 
-    public Camera GetCamera()
+    protected Camera GetCamera()
     {
         return playerCamera;
     }

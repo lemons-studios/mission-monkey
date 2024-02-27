@@ -5,9 +5,9 @@ public class OnSceneLoad : SaveDataBase
     private void Start()
     {
         Time.timeScale = 1;
-        if(SaveDataBase.isLastLoadFromSaveData)
+        if(SaveDataBase.IsLastLoadFromSaveData)
         {
-            SaveDataBase.isLastLoadFromSaveData = false;
+            SaveDataBase.IsLastLoadFromSaveData = false;
             GameObject player = GameObject.FindGameObjectWithTag("Player");
             CharacterController playerController = player.GetComponent<CharacterController>();
             playerController.enabled = false;

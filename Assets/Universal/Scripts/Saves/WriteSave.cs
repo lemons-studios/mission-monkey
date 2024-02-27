@@ -6,10 +6,11 @@ using UnityEngine.SceneManagement;
 
 public class WriteSave : SaveDataBase
 {
-    SaveDataTemplate saveDataTemplate = new SaveDataTemplate();
+    private SaveDataTemplate saveDataTemplate;
     private void Start()
     {
-        if (!base.DoesSaveDataFileExist())
+        saveDataTemplate = new SaveDataTemplate();
+        if (!DoesSaveDataFileExist())
         {
             Debug.Log("First Load Detected. Generating Save Data.....");
             GenerateSaveData();
@@ -17,9 +18,9 @@ public class WriteSave : SaveDataBase
     }
 
     // This method only runs if no save data is detected or if the save data was just deleted
-    public void GenerateSaveData()
+    private void GenerateSaveData()
     {
-        File.WriteAllText(base.GetSavePath(), saveDataTemplate.CreateSaveJsonData("Chapter1", 1, 100, Vector3.zero, true));
+        File.WriteAllText(GetSavePath(), saveDataTemplate.CreateSaveJsonData("Chapter1", 1, 100, new Vector3(-105f, 3f, -45f), true));
     }
 
     public void WriteSaveData()
@@ -40,12 +41,12 @@ public class WriteSave : SaveDataBase
     public void DeleteSaveData()
     {
         // Would involve regenerating the save after
-        File.Delete(base.GetSavePath());
+        File.Delete(GetSavePath());
         GenerateSaveData();
     }
 }
 
-class SaveDataTemplate
+internal class SaveDataTemplate
 {
     public Vector3 playerPosition;
     public string savedSceneName;
@@ -68,6 +69,7 @@ class SaveDataTemplate
         return JsonUtility.ToJson(this);
     }
 
+    // ReSharper disable twice MemberCanBePrivate.Global
     public string GetFormattedCurrentTime()
     {
         DateTime unformattedSaveTime = DateTime.Now;

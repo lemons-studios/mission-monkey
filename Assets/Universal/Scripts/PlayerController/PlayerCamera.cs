@@ -11,10 +11,10 @@ public class PlayerCamera : MonoBehaviour
     private float rotationSpeedX = 1.0f;
     private float rotationSpeedY = 1.0f;
 
-    private float maxPitch = 85.0f;
-    private float minPitch = -80.0f;
+    private readonly float maxPitch = 85.0f;
+    private readonly float minPitch = -80.0f;
 
-    private float currentPitch = 0.0f;
+    private float currentPitch;
 
     private void Start()
     {
@@ -38,12 +38,12 @@ public class PlayerCamera : MonoBehaviour
         OnPlayerLook(playerInput.OnFoot.Look.ReadValue<Vector2>());
     }
 
-    private void OnPlayerLook(Vector2 mouseDelta)
+    private void OnPlayerLook(Vector2 lookMouseDelta)
     {
 
         // Thanks to Phind AI (GPT) for doing the Quaternion stuff because I can't wrap my head around it yet
-        float rotationX = mouseDelta.x * rotationSpeedX;
-        float rotationY = -mouseDelta.y * rotationSpeedY;
+        float rotationX = lookMouseDelta.x * rotationSpeedX;
+        float rotationY = -lookMouseDelta.y * rotationSpeedY;
 
         // Clamp the maximum Y rotation on the camera to minPitch (-80 degrees) and maxPitch (80 degrees)
         currentPitch = Mathf.Clamp(currentPitch + rotationY, minPitch, maxPitch);

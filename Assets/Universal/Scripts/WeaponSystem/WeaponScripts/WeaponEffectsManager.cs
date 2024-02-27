@@ -1,4 +1,4 @@
-using System;
+using LemonStudios.CsExtensions;
 using UnityEngine;
 
 public class WeaponEffectsManager : MonoBehaviour
@@ -9,25 +9,31 @@ public class WeaponEffectsManager : MonoBehaviour
 
     public void TriggerWeaponEffects()
     {
-        if(audioSource != null && attackSound != null)
+        if (!LemonGameUtils.IsGamePaused())
         {
-            audioSource.PlayOneShot(attackSound);
-        }
-        if(weaponAnimations != null)
-        {
-            // TODO: Weapon Animations and scripting them into the system
+            if(audioSource != null && attackSound != null)
+            {
+                audioSource.PlayOneShot(attackSound);
+            }
+            if(weaponAnimations != null)
+            {
+                // TODO: Weapon Animations and scripting them into the system
+            }
         }
     }
 
     public void TriggerSecondaryWeaponEffects()
     {
-        if(audioSource != null && secondaryAttackSound != null)
+        if (!LemonGameUtils.IsGamePaused())
         {
-            audioSource.PlayOneShot(secondaryAttackSound);
-        }
-        if(weaponAnimations != null)
-        {
+            if(audioSource != null && secondaryAttackSound != null)
+            {
+                audioSource.PlayOneShot(secondaryAttackSound);
+            }
+            if(weaponAnimations != null)
+            {
 
+            }
         }
     }
 }

@@ -52,7 +52,7 @@ public class EnemyNavigation : MonoBehaviour
                 }
 
                 // Check if the AI has noticed the player 
-                if(enemySight.isPlayerVisible())
+                if(enemySight.IsPlayerVisible())
                 {
                     // Debug.Log(gameObject.name + " has found the player!");
                     seenPlayer = true;
@@ -73,17 +73,10 @@ public class EnemyNavigation : MonoBehaviour
 
     private Vector3 GetCurrentTargetPosition()
     {
-        if(seenPlayer)
-        {
-            return GameObject.FindGameObjectWithTag("Player").transform.position;
-        }
-        else
-        {
-            return patrolPoints[currentTarget].position;
-        }
+        return seenPlayer ? GameObject.FindGameObjectWithTag("Player").transform.position : patrolPoints[currentTarget].position;
     }
 
-    public bool hasNoticedPlayer()
+    public bool HasNoticedPlayer()
     {
         return seenPlayer;
     }

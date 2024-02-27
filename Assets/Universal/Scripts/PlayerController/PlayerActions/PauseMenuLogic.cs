@@ -25,7 +25,6 @@ public class PauseMenuLogic : MonoBehaviour
             // Debug.Log("Active Submenu Found");
             GameObject currentActiveSubmenu = GameObject.FindGameObjectWithTag("Submenu");
             currentActiveSubmenu.SetActive(false);
-            return;
         }
         else
         {
@@ -67,10 +66,10 @@ public class PauseMenuLogic : MonoBehaviour
         return GameObject.FindGameObjectWithTag("Submenu") != null;
     }
 
-    private void SwitchMenus(GameObject menuToHide, GameObject menuToUnhide)
+    private void SwitchMenus(GameObject menuToHide, GameObject menuToShow)
     {
         menuToHide.SetActive(false);
-        menuToUnhide.SetActive(true);
+        menuToShow.SetActive(true);
     }
 
     private void OnDestroy() 

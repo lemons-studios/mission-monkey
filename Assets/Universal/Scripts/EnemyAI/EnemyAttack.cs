@@ -20,11 +20,12 @@ public class EnemyAttack : MonoBehaviour
         StartCoroutine(EnemyAttackHandler());   // This entire AI system is built off coroutines lol
     }
 
+    
     private IEnumerator EnemyAttackHandler()
     {
         while(true)
         {
-            if(agent.remainingDistance <= shootingDistance && enemyNavigation.hasNoticedPlayer())
+            if(agent.remainingDistance <= shootingDistance && enemyNavigation.HasNoticedPlayer())
             {
                 if(sfxSource != null & shootSoundEffect != null)
                 {
@@ -39,14 +40,13 @@ public class EnemyAttack : MonoBehaviour
     private void DirectHitAttack()
     {
         // Fire a raycast towards the player and check if it hits, then do the damage stuff if it hits
-        RaycastHit hit;
         GameObject player = GameObject.FindGameObjectWithTag("Player");
 
         Vector3 raycastOrigin = attackPoint.transform.position;
         Vector3 directionToTarget = (player.transform.position - raycastOrigin).normalized;
 
         Debug.DrawRay(raycastOrigin, directionToTarget);
-        if(Physics.Raycast(raycastOrigin, directionToTarget, out hit))
+        if(Physics.Raycast(raycastOrigin, directionToTarget, out RaycastHit hit))
         {
             if(hit.collider.GetComponent<PlayerHealth>() != null)
             {

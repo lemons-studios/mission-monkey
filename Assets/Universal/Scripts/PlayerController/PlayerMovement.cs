@@ -4,8 +4,7 @@ using UnityEngine.InputSystem;
 [RequireComponent(typeof(CharacterController))]
 public class PlayerMovement : MonoBehaviour
 {
-    public GameObject vaultableFirePoint;
-
+    
     private PlayerInput playerInput;
     private CharacterController playerController;
     private Vector3 playerVelocity;
@@ -15,10 +14,6 @@ public class PlayerMovement : MonoBehaviour
 
     private void Start()
     {
-        // Default to the player GameObject if the vaultableFirePoint is not assigned in the editor
-        if (vaultableFirePoint == null)
-            vaultableFirePoint = GameObject.FindGameObjectWithTag("Player");
-
         playerController = GetComponent<CharacterController>();
 
         playerInput = new PlayerInput();
@@ -26,7 +21,6 @@ public class PlayerMovement : MonoBehaviour
         playerControllerInput.Sprint.started += OnSprintStarted;
         playerControllerInput.Sprint.canceled += OnSprintEnded;
         playerControllerInput.Jump.performed += JumpActions;
-
         playerInput.Enable();
 
         // Locks cursor in the center of the screen the moment the script starts
@@ -36,7 +30,7 @@ public class PlayerMovement : MonoBehaviour
     // Update() runs once per game frame
     private void Update()
     {
-        var playerControllerInput = playerInput.OnFoot; // just makes everyhing slightly more simple on line 46
+        var playerControllerInput = playerInput.OnFoot; // Just makes everything slightly more simple on line 46
         isPlayerGrounded = playerController.isGrounded;
 
         if (playerInput != null)
@@ -64,7 +58,7 @@ public class PlayerMovement : MonoBehaviour
         Vector3 worldSpaceMovement = transform.TransformDirection(new Vector3(movementInput.x, 0, movementInput.y));
 
         // Move the player controller based on the world space movement
-        playerController.Move(worldSpaceMovement * moveSpeed * Time.deltaTime);
+        playerController.Move(worldSpaceMovement * (moveSpeed * Time.deltaTime));
     }
 
     private void JumpActions(InputAction.CallbackContext context)

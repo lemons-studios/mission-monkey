@@ -9,15 +9,14 @@ public class RaycastAttack : WeaponBase
 
         // Raycasts are considerably more simple than AoE attacks.
         // Fire a raycast and check if it hit something. Raycast is fired through the player Camera
-        Ray attackRay = base.GetCamera().ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
-        RaycastHit hit;
+        Ray attackRay = GetCamera().ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
 
-        if(Physics.Raycast(attackRay, out hit))
+        if(Physics.Raycast(attackRay, out RaycastHit hit))
         {
             if(hit.collider.CompareTag("Enemy"))
             {
                 if(enableDebugMessages) Debug.Log("Hit GameObject is an enemy");
-                hit.collider.GetComponent<EnemyHealth>().DamageAI(base.weaponDamage);
+                hit.collider.GetComponent<EnemyHealth>().DamageAI(weaponDamage);
             }
             else if(hit.collider.CompareTag("WeaponInteractable"))
             {

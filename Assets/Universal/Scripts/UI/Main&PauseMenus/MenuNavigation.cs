@@ -1,7 +1,5 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using LemonStudios.CsExtensions;
-
 public class MenuNavigation : MonoBehaviour
 {
     public void HideUI(GameObject uiToHide)

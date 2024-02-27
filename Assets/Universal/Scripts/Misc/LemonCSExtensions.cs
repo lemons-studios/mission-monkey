@@ -10,11 +10,7 @@ namespace LemonStudios.CsExtensions
     {
         public static bool DoesFileExist(string file)
         {
-            if (File.Exists(file))
-            {
-                return true;
-            }
-            else return false;
+            return File.Exists(file);
         }
 
         public static int GetFirstNonNullEntryOfList<T>(List<T> list)
@@ -35,17 +31,12 @@ namespace LemonStudios.CsExtensions
         public static bool IsOnMainMenu()
         {
             Scene currentScene = SceneManager.GetActiveScene();
-            if (currentScene.buildIndex == 0)
-            {
-                return true;
-            }
-            else return false;
+            return currentScene.buildIndex == 0;
         }
 
         public static bool IsGamePaused()
         {
-            if (Time.timeScale == 0) return true;
-            else return false;
+            return Time.timeScale == 0;
         }
 
         public static IEnumerator LoadAsyncScene(int sceneBuildIndex)

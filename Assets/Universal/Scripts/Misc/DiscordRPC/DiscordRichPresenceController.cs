@@ -3,26 +3,26 @@ using UnityEngine;
 
 public class DiscordRichPresenceController : MonoBehaviour
 {
-    Discord.Discord RichPresence;
-    private long ClientId = 1090862646993096745;
-    private long StartTime;
-    private string Details = string.Empty;
-    private string LargeImageText;
-    public string LargeImage, SmallImage, State, SmallImageText;
+    private Discord.Discord richPresence;
+    private readonly long clientId = 1090862646993096745;
+    private long startTime;
+    private readonly string details = string.Empty;
+    private string largeImageText;
+    public string largeImage, smallImage, state, smallImageText;
 
     private void Start()
     {
-        RichPresence = new Discord.Discord(ClientId, (UInt64)Discord.CreateFlags.NoRequireDiscord);
-        StartTime = System.DateTimeOffset.Now.ToUnixTimeMilliseconds();
+        richPresence = new Discord.Discord(clientId, (UInt64)Discord.CreateFlags.NoRequireDiscord);
+        startTime = DateTimeOffset.Now.ToUnixTimeMilliseconds();
         SetStatus();
-        LargeImageText = "Playing on Verssion " + Application.version;
+        largeImageText = "Playing on Version " + Application.version;
     }
 
     private void Update()
     {
         try
         {
-            RichPresence.RunCallbacks();
+            richPresence.RunCallbacks();
         }
         catch
         {
@@ -36,31 +36,32 @@ public class DiscordRichPresenceController : MonoBehaviour
 
     private void OnApplicationQuit()
     {
-        RichPresence.Dispose();
+        richPresence.Dispose();
     }
 
     private void SetStatus()
     {
         try
         {
-            var ActivityManager = RichPresence.GetActivityManager();
-            var Activity = new Discord.Activity
+            var activityManager = richPresence.GetActivityManager();
+            var activity = new Discord.Activity
             {
-                State = State,
-                Details = Details,
+                State = state,
+                Details = details,
                 Assets =
             {
-                LargeImage = LargeImage,
-                SmallImage = SmallImage,
-                LargeText = LargeImageText,
-                SmallText = SmallImageText
+                LargeImage = largeImage,
+                SmallImage = smallImage,
+                LargeText = largeImageText,
+                SmallText = smallImageText
             },
                 Timestamps =
             {
-                Start = StartTime
+                Start = startTime
             }
             };
-            ActivityManager.UpdateActivity(Activity, (res) =>
+            
+            activityManager.UpdateActivity(activity, (res) =>
             {
                 if (res == Discord.Result.Ok)
                 {

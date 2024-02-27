@@ -9,9 +9,9 @@ public class EnemySight : MonoBehaviour
 {
     // Script partially written with the help of https://www.noveltech.dev/ai-player-detection
 
-    [Tooltip("I highly suggest having multiple detection points for you AI, or you will find deadzones for the AI where there shouldn't be")]
+    [Tooltip("I highly suggest having multiple detection points for you AI, or you will find dead-zones for the AI where there shouldn't be")]
     public GameObject[] detectionPoints;   // Needed because some models are awful when it comes to proper detection
-    private GameObject player;  // Every project requires some cursed wizzardry to work
+    private GameObject player;  // Every project requires some cursed wizardry to work
     private LayerMask detectLayer;
     
     [Space]
@@ -34,14 +34,14 @@ public class EnemySight : MonoBehaviour
         detectLayer = 1 << 3;   // Bit shift detection layer to layer 3 (Player Layer) 
         player = GameObject.FindGameObjectWithTag("Player");    // Needed for runtime in a compiled build, as OnDrawGizmos is an Editor-Only method
 
-        if(enableDebugMessages) StartCoroutine(debugTargetDetector());
+        if(enableDebugMessages) StartCoroutine(DebugTargetDetector());
     }
 
-    private IEnumerator debugTargetDetector()
+    private IEnumerator DebugTargetDetector()
     {
         while(true)
         {
-            if(isPlayerVisible())
+            if(IsPlayerVisible())
             {
                 Debug.Log(gameObject.name + " Has detected the player");
             }
@@ -67,7 +67,7 @@ public class EnemySight : MonoBehaviour
                 if (currentDetectionPoint != null)
                 {
                     // Change color to red if the player is in sight
-                    if (isPlayerVisible())
+                    if (IsPlayerVisible())
                     {
                         Gizmos.color = new Color(1, 0, 0, gizmoTransperancy);
                     }
@@ -88,9 +88,9 @@ public class EnemySight : MonoBehaviour
     // but are behind a GameObject where the AI should not be able to see it (For example, the player could be behind a wall that the AI may be able to see through) 
     
     // Only this bool should be public as it's the only one that needs to be called from other methods or instances of the class
-    public bool isPlayerVisible()
+    public bool IsPlayerVisible()
     {
-        if (isPlayerInRange())
+        if (IsPlayerInRange())
         {
             foreach(GameObject currentDetectionPoint in detectionPoints)
             {
@@ -114,14 +114,13 @@ public class EnemySight : MonoBehaviour
         return false;
     }
 
-    private bool isPlayerInRange()
+    private bool IsPlayerInRange()
     {
         foreach(GameObject currentDetectionPoint in detectionPoints)
         {
             if (detectionPoints != null)
             {
-                RaycastHit hitInfo;
-                if (Physics.SphereCast(currentDetectionPoint.transform.position, detectionRadius, currentDetectionPoint.transform.forward, out hitInfo, detectionDepth, detectLayer))
+                if (Physics.SphereCast(currentDetectionPoint.transform.position, detectionRadius, currentDetectionPoint.transform.forward, out RaycastHit hitInfo, detectionDepth, detectLayer))
                 {
                     return hitInfo.transform.CompareTag("Player");
                 }

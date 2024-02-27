@@ -26,9 +26,9 @@ public class PlayerHealth : MonoBehaviour
         }
     }
 
-    public void DamagePlayer(int DamageDealt)
+    public void DamagePlayer(int damageDealt)
     {
-        health -= DamageDealt;
+        health -= damageDealt;
     }
 
     public void DamagePlayerRandom(int baseDamage, float minimumDamageMultiplier, float maximumDamageMultiplier)
@@ -37,9 +37,9 @@ public class PlayerHealth : MonoBehaviour
         health -= randomizedDamage;
     }
 
-    public void HealPlayer(int HealthHealed)
+    public void HealPlayer(int healthHealed)
     {
-        health += HealthHealed;
+        health += healthHealed;
     }
 
     public int GetHealth()
