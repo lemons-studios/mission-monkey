@@ -1,7 +1,9 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 namespace LemonStudios.CsExtensions
@@ -50,6 +52,18 @@ namespace LemonStudios.CsExtensions
         {
             menuToHide.SetActive(false);
             menuToShow.SetActive(true);
+        }
+
+        public static IEnumerator SmoothlyUpdateFillUI(Image targetGraphic, float targetFillAmount)
+        {
+            while (Math.Abs(targetGraphic.fillAmount - targetFillAmount) > 0.0001f)
+            {
+                float currentFill = targetGraphic.fillAmount;
+                float loopFill = Mathf.Lerp(currentFill, targetFillAmount, Time.deltaTime * 0.2f);
+                targetGraphic.fillAmount = loopFill;
+                
+                yield return new WaitForEndOfFrame();
+            }
         }
     }
 }

@@ -4,7 +4,7 @@ using UnityEngine;
 public class WeaponEffectsManager : MonoBehaviour
 {
     public AudioSource audioSource;
-    public AudioClip attackSound, secondaryAttackSound;
+    public AudioClip attackSound, secondaryAttackSound, reloadSound;
     public Animator weaponAnimations;
 
     public void TriggerWeaponEffects()
@@ -33,6 +33,17 @@ public class WeaponEffectsManager : MonoBehaviour
             if(weaponAnimations != null)
             {
                 
+            }
+        }
+    }
+
+    public void TriggerReloadEffects()
+    {
+        if (!LemonGameUtils.IsGamePaused())
+        {
+            if (audioSource != null && reloadSound != null)
+            {
+                audioSource.PlayOneShot(reloadSound);
             }
         }
     }

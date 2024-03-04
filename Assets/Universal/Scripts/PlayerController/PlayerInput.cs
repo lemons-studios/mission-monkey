@@ -107,6 +107,15 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Reload"",
+                    ""type"": ""Button"",
+                    ""id"": ""44fae6f0-f976-4840-aa57-e6c0d927d1d6"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -382,6 +391,17 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""SwitchWeapons"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""5c528ceb-ffb0-452f-abee-2dc4b275b030"",
+                    ""path"": ""<Keyboard>/r"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Reload"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -956,6 +976,7 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         m_OnFoot_Attack = m_OnFoot.FindAction("Attack", throwIfNotFound: true);
         m_OnFoot_SecondaryAttack = m_OnFoot.FindAction("SecondaryAttack", throwIfNotFound: true);
         m_OnFoot_SwitchWeapons = m_OnFoot.FindAction("SwitchWeapons", throwIfNotFound: true);
+        m_OnFoot_Reload = m_OnFoot.FindAction("Reload", throwIfNotFound: true);
         // InAir
         m_InAir = asset.FindActionMap("InAir", throwIfNotFound: true);
         m_InAir_AirActions = m_InAir.FindAction("AirActions", throwIfNotFound: true);
@@ -1041,6 +1062,7 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
     private readonly InputAction m_OnFoot_Attack;
     private readonly InputAction m_OnFoot_SecondaryAttack;
     private readonly InputAction m_OnFoot_SwitchWeapons;
+    private readonly InputAction m_OnFoot_Reload;
     public struct OnFootActions
     {
         private @PlayerInput m_Wrapper;
@@ -1054,6 +1076,7 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         public InputAction @Attack => m_Wrapper.m_OnFoot_Attack;
         public InputAction @SecondaryAttack => m_Wrapper.m_OnFoot_SecondaryAttack;
         public InputAction @SwitchWeapons => m_Wrapper.m_OnFoot_SwitchWeapons;
+        public InputAction @Reload => m_Wrapper.m_OnFoot_Reload;
         public InputActionMap Get() { return m_Wrapper.m_OnFoot; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -1090,6 +1113,9 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
             @SwitchWeapons.started += instance.OnSwitchWeapons;
             @SwitchWeapons.performed += instance.OnSwitchWeapons;
             @SwitchWeapons.canceled += instance.OnSwitchWeapons;
+            @Reload.started += instance.OnReload;
+            @Reload.performed += instance.OnReload;
+            @Reload.canceled += instance.OnReload;
         }
 
         private void UnregisterCallbacks(IOnFootActions instance)
@@ -1121,6 +1147,9 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
             @SwitchWeapons.started -= instance.OnSwitchWeapons;
             @SwitchWeapons.performed -= instance.OnSwitchWeapons;
             @SwitchWeapons.canceled -= instance.OnSwitchWeapons;
+            @Reload.started -= instance.OnReload;
+            @Reload.performed -= instance.OnReload;
+            @Reload.canceled -= instance.OnReload;
         }
 
         public void RemoveCallbacks(IOnFootActions instance)
@@ -1313,6 +1342,7 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         void OnAttack(InputAction.CallbackContext context);
         void OnSecondaryAttack(InputAction.CallbackContext context);
         void OnSwitchWeapons(InputAction.CallbackContext context);
+        void OnReload(InputAction.CallbackContext context);
     }
     public interface IInAirActions
     {

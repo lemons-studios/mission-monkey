@@ -9,11 +9,14 @@ public abstract class WeaponBase : MonoBehaviour
     [Space]
     public float primaryCooldown = 0.25f;
     public float secondaryCooldown = 20f;
+    public float reloadTime = 2.5f;
+    [Space] 
+    public int maxAmmo;
     public int weaponDamage = 10;
     [Space]
     public bool enableDebugMessages;
     private float primaryLastPerformed, secondaryLastPerformed;
-
+    private bool inReloadState; 
 
     private void Start() 
     {
@@ -29,7 +32,7 @@ public abstract class WeaponBase : MonoBehaviour
 
     protected virtual void Attack(InputAction.CallbackContext context)
     {
-        if (!LemonGameUtils.IsGamePaused())
+        if (!LemonGameUtils.IsGamePaused() && !inReloadState)
         {
             if (Time.time - primaryLastPerformed < primaryCooldown)
             {
@@ -47,7 +50,7 @@ public abstract class WeaponBase : MonoBehaviour
 
     protected virtual void SecondaryAttack(InputAction.CallbackContext context)
     {
-        if (!LemonGameUtils.IsGamePaused())
+        if (!LemonGameUtils.IsGamePaused() && !inReloadState)
         {
             if(Time.time - secondaryLastPerformed < secondaryCooldown)
             {
@@ -60,7 +63,10 @@ public abstract class WeaponBase : MonoBehaviour
         }
     }
 
-
+    public void setReloadState(bool newState)
+    {
+        inReloadState = newState;
+    }
     
     protected Camera GetCamera()
     {
